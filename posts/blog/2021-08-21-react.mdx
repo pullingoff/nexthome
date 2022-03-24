@@ -1,0 +1,132 @@
+---
+title: "리액트의 useState, useRef를 직접 연습해봤다"
+date: 2021-08-21 08:00
+tag:
+- react
+category: blog
+author: Hailey Park
+description: 
+---
+
+새로 배운 리액트 코드를 복습해본다.  
+가장 먼저 만들어볼 결과물은 이거다. 클릭을 하면 감추기/보이기 로 컴포넌트 구성이 달라진다.
+
+## useState()
+
+![usestate 예시](/images/blog/210821/usestate.gif)
+
+```javascript
+function App() {
+    const [text, setText] = useState('감추기');
+    // 1
+
+    const buttonClick = () => {
+        text==='감추기'? setText("보이기") : setText("감추기")
+    }
+    // 2
+
+    return (
+        <div className="App">
+            {text==='보이기' && <MainHeader text='hello'></MainHeader>}  
+            <button onClick={buttonClick}>{text}</button>    
+        </div>
+    );
+    //3
+}
+```
+
+1. useState(초기값), 리턴값은 배열로 [상태데이터, 상태 세터함수]
+2. 간결하게 쓴 if문이다!
+3. text==='보이기'에 and 연산을 함으로써 해당 조건에 맞으면 ```<MainHeader>``` 컴포넌트를 표시하도록 하였다.
+
+## 변수 객체화
+
+![변수 간단하게 쓰기](/images/blog/210821/rct1.png)
+
+이름의 성(lastname), 이름(first name)과 같이 거의 따로 쓰는 게 없을 때, 위의 코드보단  
+객체화해서 아래처럼 쓰는게 좋다.
+
+```javascript
+const [name, setName] = useState({
+    first: '하은',
+    last: '박'
+});
+```
+
+## useRef()
+
+- input 관리할 때 유용한 함수다.
+
+```javascript
+ return (
+    <div className="App">
+      <h1>{name.last}{name.first}</h1>
+      <input name='성' placeholder='성'></input>
+      <input name='이름' placeholder='이름'></input>
+      <button onClick={confirm}>확인</button>
+    </div>
+  );
+```
+
+위와 같은 코드가 있다고 할때, input에 입력된 값을 저장하거나 받는 함수가 없다.  
+그럴 때 쓸 수 있는게 useRef() 함수다!
+
+```javascript
+  const firstNameRef = useRef()
+  const lastNameRef = useRef()
+
+  const confirm = () => {
+    // setName();
+    console.log(firstNameRef.current.value)
+  }
+
+  return (
+    <div className="App">
+      <h1>{name.last}{name.first}</h1>
+      <input name='성' placeholder='성' ref={lastNameRef}></input>
+      <input name='이름' placeholder='이름' ref={firstNameRef}></input>
+      <button onClick={confirm}>확인</button>
+    </div>
+  );
+```
+
+이런 식으로 ```<input>``` 태그 ref 속성에 useRef 함수를 넣어주면 그 안에 들어온 인풋값을 참조해올 수 있다.  
+
+![useRef console](/images/blog/210821/rct2.png)
+
+confirm()함수에서 ```firstNameRef.current.value``` 를 콘솔 찍어보니 input으로 받은 값이 나온다!
+이벤트 함수에서 e.target.value와 비슷한 원리인 듯 하다.
+
+## useRef를 사용해 인풋 값을 화면에 띄우는 코드
+
+```javascript
+function App() {
+  const [name, setName] = useState({
+    first: '하은',
+    last: '박'
+  });
+
+  const firstNameRef = useRef()
+  const lastNameRef = useRef()
+
+  const confirm = () => {
+    setName({
+      first: firstNameRef.current.value,
+      last: lastNameRef.current.value
+    })
+  }
+
+  return (
+    <div className="App">
+      <h1>{name.last}{name.first}</h1>
+      <input name='성' placeholder='성' ref={lastNameRef}></input>
+      <input name='이름' placeholder='이름' ref={firstNameRef}></input>
+      <button onClick={confirm}>확인</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+useRef 함수로 참조해온 값을 setter 함수(setName)에서 바꿔주면 간단하게 완성된다!!

@@ -1,0 +1,81 @@
+---
+title: "리액트 프레임워크인 Next.js를 써봤다! + 배운 것 (라우팅, client-side nav, etc)"
+date: 2022-03-03 08:00
+tag:
+- nextjs
+category: blog
+author: Hailey Park
+description: 
+---
+
+요즘 핫한 리액트 프레임워크 next.js!!  
+처음 next.js를 알게 된 건 next.js로 만든 멋진 블로그를 보고 나서부터였다. 그이후로 점점 next.js의 이름을 많이 들었더니, 관심이 안 생길 수가 없었다 👀  
+next.js documentation을 좀 읽어보는데 쉽게 따라할 수 있는 튜토리얼이 있다고 해서 한번 따라해봤다.  
+그리고 배운 것들을 정리해 보겠음 📂
+
+## Next.js
+
+![nextjs](https://nextjs.org/static/images/learn/foundations/next-app.png)
+
+리액트 프레임워크로 위 사진 속에 보이듯 routing, data fetching 등을 도와준다.  
+리액트를 쓸 때 라우팅을 하려면 react-router-dom을 따로 쓰고 설정을 해줘야했는데, next.js를 쓰면 얘가 알아서 해준다.  
+여러모로 개발자가 리액트로 개발하는데 아주 큰 도움을 준다!!!!! (잠깐 써보고 벌써 체감했다.)
+
+## Next.js의 라우팅
+
+바로 위에서 언급한 next.js의 라우팅에 대해 이야기해보겠다. Next.js에서 한 페이지는 'pages' 폴더 안에 있는 한 파일 속 리액트 컴포넌트다.  
+그래서 그 파일 이름으로 라우팅이 된다.  
+
+```pages/posts/first-post.js``` 파일이 있으면 저절로 ```posts/first-post``` 로 경로가 설정된다.
+
+다른 라우팅 라이브러리가 필요하지 않아서 진짜... 너무너무너무너무너무 편하다!!!!
+
+## Link
+
+Next.js에서 다른 컴포넌트로 이동할땐 ```<a>``` 태그 대신 ```<Link>``` 태그를 사용한다.  
+이때 중요한 점은 '클라이언트 사이드' navigation을 한다는 것이다.
+
+### Client-side navigation
+
+![client side nav](https://nextjs.org/static/images/learn/navigate-between-pages/client-side.gif)
+
+client-side navigation이란 자바스크립트를 이용해 페이지를 전환하기 때문에 브라우저의 기본 navigation보다 더 빠르다.  
+위 이미지를 보면 페이지 전환이 일어나도 노란 CSS 설정이 계속 남아있다.  
+브라우저가 페이지 전체를 다시 로드하지 않고, client-side에서 navigation을 하기 때문에 일어나는 현상이다.  
+next.js의 ```<Link>```가 아니라 기본 html tag인 ```<a>```를 쓰면 브라우저가 전체 페이지를 새로고침하기 때문에 노란 CSS가 사라질 것이다.
+
+```javascript
+export default function FirstPost() {
+    return (
+        <>
+            <h1>First Post</h1>
+            <h2>
+                <Link href="/">
+                   <a> Back to home</a>
+                </Link>
+            </h2>
+        </>
+    )
+}
+```
+
+간단히 코드를 짜보면 이런식으로 ```<Link>``` 안에 ```<a>```를 넣으면 된다. (링크 태그만 쓰는거 아님!)
+
+## Code splitting and prefetching
+
+**Next.js does code splitting automatically, so each page only loads what’s necessary for that page.**
+
+Next.js는 자동으로 코드를 분리해줘서 페이지별로 로드된다.  
+처음에 홈페이지가 렌더될 때 다른 코드들은 같이 로드되지 않는다.  
+또한 한 페이지에서 에러가 나도 다른 페이지들은 작동한다.  
+또 Link 태그가 브라우저의 viewport 안에 나타날 경우, Next.js가 자동으로 그 목적지 페이지의 코드를 미리 가져와둔다(prefetch).  
+그래서 그 페이지로 좀 더 빠르게 이동할 수 있다.
+
+## Layout Component
+
+Next.js에서는 CSS 설정을 할 때도 도움을 준다. className을 설정하면 뒤에 랜덤한 문자열을 붙여 자동적으로 고유한 클래스네임을 만들어준다.  
+CSS 이름이 겹칠 걱정은 하지 않아도 된다!
+
+## 느낀 점
+
+튜토리얼이 친절하고 너~~~무 유용한 프레임워크라 그런가 배우면서 즐거웠다. 리액트로 프로젝트를 할 때 추가로 불러와 쓰는 라이브러리가 많았다. 그에 따라 설정할 것도 많아서 헷갈리곤 했는데 Next.js가 내게 도움을 주니 정말 마음에 드는 리액트 프레임워크다. 앞으로 많은 프로젝트를 Next.js로 하게 될 것 같단 생각이 든다. ㅎㅎㅎ 

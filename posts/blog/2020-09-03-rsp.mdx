@@ -1,0 +1,23 @@
+---
+title: "개발할 때 책임 분리하는 법 (MVC 패턴, 레이어드 아키텍쳐)"
+date: 2020-09-03 08:00
+tag:
+- 디자인패턴
+- MVC
+- SRP
+category: blog
+author: Hailey Park
+description: 
+---
+
+## 책임 분리를 위한 구조들 (SRP)
+
+### MVC
+
+- 모델: service+dao+vo
+- 뷰: view 
+- 컨트롤러: controller 
+
+### layered architecture
+
+웨이터:controller, 뷰: 보여주기, service: 로직을 가지고있다 / db 가져오는 새끼주방장dao / db:재료 저장

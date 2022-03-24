@@ -1,0 +1,50 @@
+---
+title: "JS toggle로 고정된 네비게이션 햄버거 바 만들기"
+date: 2022-03-07 08:00
+tag:
+- css
+category: blog
+author: Hailey Park
+description: 샌드위치 바 아니고 햄버거 바.
+---
+
+지금 블로그 CSS 수정하다가 기억해두면 좋을 게 있어서 미래의 날 위해 적는다. 
+
+## 원하는 결과
+
+```position:fixed`` 인 nav 바의 3단 햄버거(한자 '석 삼')를 클릭하면 블로그 카테고리 리스트가 뜨되, 스크롤 시 그 아래로 지나가지 않게 하기
+
+## 해결책
+
+JS의 ```toggle()```을 사용하면 된다.
+
+## Toggle
+
+![toggle](/images/blog/220307/toggle.png)
+
+MDN 문서를 읽어보면 toggle()은 DOMTokenList(HTML Element의 classList 등)의 메소드다. 그 리스트에 파라미터(토큰)가 있는지 확인하고, 없으면 추가한 뒤 true를 리턴한다.
+
+예를 들어 ```HTMLElement.classList.toggle('show')``` 을 하면 HTMLElement 의 클래스 목록에 'show'가 있는지를 확인하고, 있으면 true, 없으면 추가하고 true를 리턴한다.
+
+## HTML
+
+```html
+<div id="threeBarNav" class="container" hidden onclick="clickNav(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+```
+
+## JS
+
+```js
+function clickNav(x) {
+    x.classList.toggle("open");
+    const nav = x.parentNode
+    nav.classList.toggle("open")
+}
+```
+
+그래서 햄버거 바를 만들때도 js onclick에 toggle()를 넣어서 classList.toggle 하게 하면 된다.  
+그리고 open이면 그에 맞는 css를 적용해주면 끝이다!

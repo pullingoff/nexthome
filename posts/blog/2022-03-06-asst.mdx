@@ -1,0 +1,50 @@
+---
+title: "Next.js 써보기: Assets, Metadata, and CSS"
+date: 2022-03-06 08:00
+tag:
+- nextjs
+category: blog
+author: Hailey Park
+description: 
+---
+
+## Static asset
+
+- public 디렉토리 아래에 저장
+- ```import Image from 'next/image'``` 컴포넌트를 쓰자.
+
+## Nextjs의 ```<Image/>``` 를 쓰면 좋은 점
+
+- 이미지 최적화해줌. WebP 지원되는 브라우저면 저절로 이미지 resizing을 도와준다.
+- 심지어 외부 이미지 링크에서 가져오더라도 최적화가 가능하다. 그저 빛 ⭐️
+
+### on-demand 최적화
+
+- 빌드 시가 아니라 사용자 요청이 들어올때 이미지를 최적화한다. 이미지가 많아도 빌드 성능에 영향을 끼치지 않는다.
+- lazy loaded! viewport에 들어올 때 이미지를 load한다.
+
+## Third-Party JavaScript
+
+- site의 부가적인 기능 (analytics, ads, widgets)을 위한 스크립트들을 추가할 땐  ```next/script``를 사용하자. 
+
+```js
+<Script
+src="https://connect.facebook.net/en_US/sdk.js"
+strategy="lazyOnload"
+onLoad={() =>
+    console.log(`script loaded correctly, window.FB has been populated`)
+}
+/>
+```
+
+- strategy: 언제 그 script가 로드될지
+
+## CSS Styling
+
+styled-jsx: CSS-in-JS / 리액트 컴포넌트 안에서 CSS를 쓸 수 있고, CSS 스타일의 **범위가 제한된다(=scoped)**  
+Next.js에는 styled-jsx가 빌트인 내장되어있음. (styled-components를 써봤으니 더 쉬울듯!)
+
+### Layout Component : 모든 페이지에 적용됨
+
+`components/layout.js`에 `components/layout.module.css`를 적용한다.  
+[module.css](https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css)는 unique한 클래스 이름을 만들어 충돌을 방지해준다.

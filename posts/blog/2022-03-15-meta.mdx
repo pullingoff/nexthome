@@ -1,0 +1,25 @@
+---
+title: "리액트 페이지에서 메타 데이터 적용하기"
+date: 2022-03-09 08:00
+tag:
+- memory
+category: blog
+description: 내 블로그 링크 공유할 때 좀 더 예쁘고 알차게 보이는 법!
+---
+
+모든 웹 페이지에는 메타 데이터가 있다. 특히 페이지를 외부(카카오톡 등)로 공유할 때 
+
+`MetaContainer` 컴포넌트를 만들어서 메타데이터가 변경되어야하는 코드 윗부분에 넣어주었다.
+아래의 코드에선 내가 쓴 블로그 글의 제목을 metadata의 title로 넣어주고 있다.
+
+```react
+
+    const customMeta = {
+      title: `${capitalize(category)}: ${title}`
+    }
+    return (
+      <>
+      <MetaContainer customMeta={customMeta}/>
+      <내용물 />
+    )
+```

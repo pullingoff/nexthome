@@ -1,0 +1,69 @@
+---
+title: "웹 서버사이드에서 개발자가 해야할 일, 자바에서 StringBuffer를 쓰는 이유 "
+date: 2020-08-27 06:00
+tag:
+- JAVA
+- StringBuffer
+category: blog
+author: Hailey Park
+description: 
+---
+
+## 서버가 하는 일
+
+1. 리스닝
+2. 그 요청을 처리할 app 운영, 동적 컨텐츠 만들어냄
+3. 필요한 jar파일 빌려서 씀 -> 응답 데이터로 내보내고
+
+=> 이거가 개별환경 세팅되어야함
+
+- classpath: 컴파일러가 검색을 시작하는 위치 - 컴파일한거 여기다가 가져다놔야함
+- qualified name:  검색 시작 이후/ classpath이후의 상대적인 위치
+
+1. 확장자가 java인 소스만들기. jar파일을 연결해주고 httpservlet
+2. webapps(독베이스)를 컨텍스트로 사용하고있을때 / 폴더개수 현재 was가 운영중인 컨텍스트가 7개 . /
+3. 모든 컨텍스트 아래엔 web-inf 폴더가 다있음  (classes(컨텍스트에 종속되는 클래스패스)/ src) + web.xml
+4. web.xml(한 앱의 유일한 설정파일 = deployment descriptor 배포 서술자) 에 서블릿네임, element 등록
+5. 헬로 명령-헬로서블렛 동작. 나우명령-나우서블렛 동작. 매핑정보 설정
+6. xml 읽게 서버 재구동
+
+## 웹 서버 개발자는 이런 작업들을 한다
+
+1. javax.servlet.http.HttpServlet 클래스의 상속 구현체 작성
+2. 컴파일 / -d 배포할 수 있는 classpath (context/WEB-INF/classes) (컨텍스트의 단독 클래스 패스이기 때문에)
+    -classpath 우리가 쓰는 se는 기업용이 아니라 서블렛이 없음. 그래서 톰캣에서 빌려서 %catalina_home%\lib\servlet-api.jar
+3. tomcat에 서블릿을 등록했다.  servlet은 standalone 형태로 실행 불가(메인메서드없음) helloServlet을 servlet context/WEB-INF/web.xml에 넣어줬음.
+   - servlet -> servlet-name, servlet-class 등록
+
+4. 서블릿 매핑 (가상의 주소가 결정됨: URI)
+   - servlet-mapping : servlet name, url-pattern
+
+5. 재구동. web.xml은 서버를 구동할때만 읽기때무네...
+
+## 자바에서 StringBuffer를 써야하는 이유
+
+```java
+int i(기본형 데이터) = 4(리터럴 상수);
+int j = 4; 
+```
+
+-> 메모리 공간 하나 잡힘.  (두개 다 4를 바라보고있음)
+
+기본형 데이터는 가비지 컬렉션이 되는 곳에 들어가지 않음.  
+이런식으로 상수 여러개 ... 하면 계속 쌓이고 쌓이면서 가비지 컬렉팅이 안됨. 이거 쌓이구 쌓이면 너무나 큰 용량이다
+
+```java
+String str = "string"; //-> 여기서 "string"은 상수로 쓰인다. 
+        str += "ett";
+```
+
+==>이렇게 하면 **메모리 공간이 총 3개쓰인다. string/ett/stringett**
+
+근데 만약
+
+```java
+StringBuffer sb = new StringBuffer("text");     // 해서 객체 형식으로 만들어주고
+             sb.append("text2")                 // 하면 가비지 컬렉션되는 메모리 영역에 1개. 
+```
+
+=> 스트링과 스트링버퍼를 쓸때 공간 절약 해야함~~!!! ~! 상수 남발하지뭬.,,,

@@ -1,0 +1,26 @@
+---
+title: "create-react-app가 생성하는 리액트 앱의 구성요소들"
+date: 2021-06-10 08:00
+tag:
+- react
+category: blog
+author: Hailey Park
+description: create-react-app으로 생성되는 파일들의 역할을 알아보자!
+---
+우리는 리액트 앱을 처음 생성할때 create-react-app라는 명령어를 쳐서 리액트 프로젝트를 생성한다.
+
+## src
+- App.js: App이라는 최상위 컴포넌트
+- index.js: entry point. index.js에서 시작해서 app.js를 호출하는 등 다른 파일들이 시행되는 곳
+- App.test.js: test 용 
+- reportWebVitals.js: web 상태를 report
+
+## public: 기준이 되는 , 정적 asset들
+- index.html: 기준이 된다. 
+- manifext.js: 웹 사이트의 기본 정보(로고, favicon 등)
+- robots.txt: 크롤링 허용/불허 관련 정보
+
+## root 
+- package.json: dependency 정보
+
+yarn eject: 환경 설정을 커스터마이징할 거라는 명령. script config 디렉토리가 추가됨

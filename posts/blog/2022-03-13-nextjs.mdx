@@ -1,0 +1,83 @@
+---
+title: "Next.js로 블로그 만들면서 배운 점과 느낀 점"
+date: 2022-03-13 08:00
+tag:
+- Next.js
+- 블로그 만들기
+category: blog
+description: Jekyll 블로그에서 Next.js로 이사가기
+thumbnail: /images/blog/nj1.png
+---
+
+얼마전에 Next.js 튜토리얼을 따라하면서 간결하고 편리해서 너무 맘에 들었었다. 그래서 jekyll로 만들어준 블로그를 리액트+Next.js로 옮기려고 며칠동안 뚝딱뚝딱 하는 중인데, 오늘은 정말 큰 진전이 있었다.
+일요일이라 집밖으로도 안나가고 하루종일 코딩만 했는데 (ㅋㅋㅋ) 넘나 뿌듯하구만? 까먹기 전에 후딱 적어보겠다.
+
+## Next.js로 블로그를 다시 만드는 이유
+
+내가 지금 만드는 게 기술블로그인 만큼, 블로그 게시판의 글이 잘 짜여져있는게 중요했다. jekyll로 만들었을 땐 페이지네이션이 없고 그냥 모든 글 목록이 한번에 나왔었다. 내가 계속 글을 쓰면 쓸수록 쌓일 텐데 매우 비효율적이라고 생각했다. 이게 내가 블로그를 새로 만들어야겠다고 생각한 가장 큰 이유였다. 
+
+## 블로그 포스트 페이지
+
+![pages 구조](/images/blog/nj1.png)
+
+최종적으로는 `pages/blog` 아래에 이런 구조로 만들어졌다. [Next.js 블로그 튜토리얼]()을 따라하고 구글링도 해가면서 만들었다.  
+간단히 설명하자면 `getStaticPaths()`로 `posts` 디렉토리 안에 있는 파일들을 모조리 불러와서 확장자를 제외한 파일명으로 slug(URI의 path)를 만든다.  
+그 다음엔 `getStaticProps()`로 해당 파일의 내용과 정보(frontmatter)를 불러온다. 그걸 그냥 컴포넌트에 넘겨주면 끝이다! 
+
+## 글목록 페이지네이션
+
+![글 목록](/images/blog/pgn.gif)
+
+(아직 디자인 하나도 안 들어간 날것 주의)  
+움짤을 보면 내가 이전페이지, 다음 페이지를 누르는 거에 따라 글 목록과 URI path가 달라지는 걸 볼 수 있다.  
+이때 1,2,3과 같은 페이지 번호가 `[page_index].js` 컴포넌트이다.  
+내 블로그 글의 개수를 `POST_PER_PAGE`로 나눠 페이지네이션을 구성하게 된다. 
+
+이 두 작업을 하면서 `getStaticPaths()`, `getStaticProps()`와 친해질 수 있었다. 😊  
+
+블로그 메인에 최근 글 목록(recent posts)도 몇개 띄우는데 이것도 비슷하게 root에 아예 api 폴더를 만들어놓고 거기서 최근 글 목록을 보내주도록 구성하였다.
+
+## 고민! Module CSS, tailwind, styled-components... 뭘 써야할까?
+
+고민 중이다. Next.js의 module css를 쓰면 클래스명을 겹치지 않도록 해준다. 적용할 스타일이 많은 부분엔 module css를 쓰고 있다. 대신 Tailwind가 커버할 수 있는 건 tailwind로 하고 있다. 
+
+지킬 블로그에서 쓰던 css를 가져와서 수정하는데, 품이 많이 든다. 🥲  
+일회성 컴포넌트에선 module.css 말고 styled-components를 쓰고 싶은데 SCSS가 길어지면 가독성이 별로가 된다.  
+각 컴포넌트별로 최적의 방법을 고민하는데에 시간을 많이 쓰고 있다.ㅋㅋㅋ
+
+## Module CSS의 className
+
+```js
+<div 
+    className={isNavOpen ? 
+            `${styles.threeBarNav} ${styles.open}` 
+            : styles.threeBarNav} 
+    onClick={clickNav}>
+    
+</div>
+```
+
+`isNavOpen`이라는 state에 따라 다른 클래스네임을 반환하는 코드다.  
+Module CSS에서 복수의 클래스를 쓰려면 저런 식으로 적어줘야한다.
+
+## SASS
+
+```css
+.threeBarNav {
+    &:hover {
+        opacity: 0.7;
+    }
+    @at-root .navMenuUl {
+        display: none;
+    }
+}
+```
+
+이건 오늘 처음 사용해본 SASS의 규칙 `@at-root`다. `@at-root`를 사용하면 중첩 안에서 root로 돌아간 효과를 준다.  
+.navMenuUl이 .threeBarNav 밖에 있어도 중첩문 안에서 사용할 수 있다.
+
+## 결론
+
+회사일, 아침헬스, 스터디, 사이드 팀 프로젝트 등 많은 걸 하느라 시간이 너무 빠르게 지나가는 요즘이었다.  
+그래도 여전히 개발을 시간 가는지도 모르게, 재미있게 할 수 있어서 좋다.  
+부지런하게 기존 지킬 블로그의 구조, 디자인 입히고 새로운 기능들도 추가해봐야지!!!

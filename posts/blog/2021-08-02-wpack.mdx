@@ -1,0 +1,50 @@
+---
+title: "JSX 사용법과 바벨, 웹팩에 대해 알아보자."
+date: 2021-08-02 08:00
+tag:
+- react
+- webpack
+- babel
+category: blog
+author: Hailey Park
+description: JSX란 무엇인지와 바벨, 웹팩이 해주는 일들에 대해 알아보자
+---
+
+## JSX: react element를 생성함. js의 확장된 문법 
+
+React.createElement()보다 HTML 보기에 용이.
+
+## Before JSX
+
+```javascript
+React.createElement("div", null, React.createElement("span", null, text)
+```
+
+## After JSX
+
+```javascript
+<div>
+  <span/>
+</div>
+```
+
+## 바벨(Babel): JS 컴파일러
+
+프론트엔드 개발하시는 분들은 한번쯤 들어보셨을 바벨! 바벨은 바로 **'자바스크립트 컴파일러'**입니다.  
+무슨 뜻일까요?
+
+## 자바스크립트 컴파일러?_?
+
+바벨의 옛날 이름은 6 to 5였습니다. 자바스크립트 ES6로 짜여진 코드를 ES5의 문법으로 바꿔주는 역할을 했죠. 그래야 신형 문법으로 코드를 짜도 구버전만 지원하는 브라우저들이 이해할 수 있었기 때문이죠!!
+
+즉 바벨은 **예전 언어만 알아듣는 브라우저를 위한 새로운 문법 통역사** 같은 존재인 겁니다!
+
+- 옛 이름: 6-to-5. (JS 옛 버전을 읽을 수 있도록 컴파일함)
+- JSX를 읽으려면 바벨이 필요함
+
+## 웹팩(Webpack.js): 모듈 번들러
+
+- 리액트에서 default 제공
+- static asset(js, css, jpg, png) 등으로
+- entry point를 config.js에서 정리하면 Js에서 사용하는 것들을 모아 주석, 불필요한 공백 등 없애고 압축해 .dist타입의 output 만듦.
+- create-react-app 안에 웹팩+바벨 설정이 들어가있어 사용자가 따로 할 필요 없음. (=boilerplate. 반복작업을 다 한 ..sample같은 것)

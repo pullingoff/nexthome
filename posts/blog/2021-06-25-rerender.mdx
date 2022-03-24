@@ -1,0 +1,41 @@
+---
+title: "리액트 컴포넌트가 리렌더링되는 때와 리렌더링 방지법"
+date: 2021-06-25 08:00
+tag:
+- react
+category: blog
+author: Hailey Park
+description: 리액트 컴포넌트가 리렌더링되는 상황과 리렌더링 방지법에 대해 알아본다.
+---
+
+## 리액트 컴포넌트가 리렌더링하는 상황
+1. 전달받은 **props가 변경**될 때
+2. 자신의 **state가 바뀔** 때
+3. **부모 컴포넌트가 리렌더링**될 때
+4. **forceUpdate 함수가 실행**될 때
+
+
+## 컴포넌트 리렌더링 방지법
+
+1. class 형 컴포넌트: shouldComponentUpdate라는 라이프사이클 메서드 사용
+
+2. **함수형** 컴포넌트: export 할 때 React.memo() 사용해 컴포넌트의 props가 바뀌지 않은 경우 리렌더링하지 않도록 설정
+
+3. setter 함수에 새로운 상태를 파라미터로 넣지 말고 상태 업데이트('->')를 어떻게 할지 정의하는 업데이트 함수를 넣기 
+
+### [업데이트 전]
+![상태 업데이트 전](https://images.velog.io/images/hailey99/post/f986c062-ee23-4aba-a6ce-dc507468da6b/image.png)
+
+### [업데이트 후]
+![상태 업데이트 후](https://images.velog.io/images/hailey99/post/13ecc8c4-1296-4339-8390-710aa358305e/image.png)
+
+4. **useReducer 사용**
+App.js 내(& 컴포넌트 밖)에 상태 업데이트 로직을 모아둘 수 있음.
+
+### [상태 업데이트 로직]
+
+![상태 업데이트 로직](https://images.velog.io/images/hailey99/post/04dea2b3-57f4-4d45-8627-1c0a1c20112e/image.png)
+
+### [useReducer()사용방법 및 dispatch()]
+![useReducer 사용](https://images.velog.io/images/hailey99/post/7316fa9b-bde2-46fe-b069-27e872eae6a5/image.png)
+useReducer(사용할 리듀서, 초기 상태)여야하는데 여기서는 useReducer(사용할 리듀서, undefined(초기상태), 초기상태 만드는 함수. 맨처음 렌더링될때만 호출)

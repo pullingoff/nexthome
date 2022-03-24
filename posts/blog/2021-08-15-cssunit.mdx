@@ -1,0 +1,19 @@
+---
+title: "[CSS] CSS units(단위)를 알아보자"
+date: 2021-08-15 08:00
+tag:
+- JavaScript
+category: blog
+author: Hailey Park
+description: CSS의 크기 단위에 대해 알아본다.
+---
+
+- 부모 요소 기준: %, em
+- 브라우저 기준: v*, rem(root elem)
+
+- 요소의 width, height을 따름: %, v*
+- font를 따름: em, rem
+
+
+#### em: 중첩될 수록 직관적인 계산이 어려워짐.
+e.g. 기본 폰트 사이즈를 12px로 하고, nested로 2em, 2em하면 12->24->48 되므로 헷갈림.
