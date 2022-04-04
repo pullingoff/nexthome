@@ -3,16 +3,16 @@
     "target": "esnext",
     "module": "esnext",
     "sourceMap": true,
+    "baseUrl": ".",
     "paths": {
       // "#public/*": ["public/*"],
       // "#commons/*": ["src/type/*"],
-      // "#components/*": ["src/components/*"],
+      "#components/*": ["src/components/*"],
       // "#constants/*": ["src/constants/*"],
-      "#utils/*": [
-        "src/utils/*"
-      ]
-      // "#src/*": ["src/*"]
+      "#utils/*": ["src/utils/*"],
+      "#src/*": ["src/*"]
     },
+    "outDir": "dist",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,7 +20,13 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
