@@ -18,7 +18,7 @@ export default function Post({frontmatter, mdxSource, headings}) {
       <MetaContainer customMeta={customMeta}/>
       <article>
         <PostHeader date={date} title={title} />
-        <PostHeadings headings={headings}/>
+        {/* <PostHeadings headings={headings}/> */}
         <PostDiv>
             <MDXRemote {...mdxSource} />
         </PostDiv>
@@ -39,15 +39,18 @@ margin-top: 20px;
         font-weight: 500;
         text-decoration: underline;
       }
-    ul, ol {
-        list-style: none;
+    ul {
         margin-bottom: 1rem;
-        padding: 5px 0;
+        li {
+            list-style: none;
+            padding-left: 1rem;
+            &:before {
+                content: '- ';
+            }
+        }
     }
-    p, li {
-        line-height: 1.3rem;
-        font-weight: 400;
-        margin-bottom: 10px;
+    ol {
+        margin-bottom: 1rem;
     }
     p img {
       margin: 15px 0;
