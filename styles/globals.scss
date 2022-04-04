@@ -272,12 +272,6 @@ p.post-meta {
   color: #b0b0b0;
 }
 
-article ul {
-  margin: 1rem;
-  li {list-style-type: circle;}
-}
-
-
 img {
   border: 0;
   max-width: 100%;
@@ -320,4 +314,10 @@ blockquote {
   color: lighten($color-main, 10%);
 }
 cite {display: block; color: var(--hover-color); margin-top: 0.5rem;}
+}
+
+@include desktop {
+  html {
+    font-size: 1.1rem;
+  }
 }
