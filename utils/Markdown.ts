@@ -108,6 +108,7 @@ export async function parseMarkdownToMdx(body: string
       remarkPlugins: [
         remarkMath,
         slug,
+        // path,
         // parseImageToNextImage(path),
       ],
       rehypePlugins: [rehypeKatex, prism, parseCodeSnippet],

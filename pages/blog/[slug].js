@@ -12,10 +12,11 @@ export async function getStaticPaths() {
     const fileNames = fs.readdirSync(blogDirectory)
     
     const paths = fileNames.map(filename => ({
-        params: {slug : filename.replace(/(\.mdx$)|(\.md$)|(\.markdown$)/, '')}
+        params: {
+            slug : filename.replace(/(\.mdx$)|(\.md$)|(\.markdown$)/, '')
+        }
     }));
     
-    // 아래 fallback blocking으로 하는 경우도 있음. 찾아보기
     return {paths, fallback: 'blocking'}
 }
 
@@ -24,7 +25,6 @@ export async function getStaticProps({params: {slug}}) {
     const markdownToMeta = fs.readFileSync(path.join(blogDirectory, slug+'.mdx'), 'utf-8');
     const {data:frontmatter, content}= matter(markdownToMeta);
     const headings = getHeadings(content)
-    // const mdxSource = await serialize(content);
     const mdxSource = await parseMarkdownToMdx(content);
 
     return {props: {slug, frontmatter, mdxSource, headings}}
