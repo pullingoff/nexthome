@@ -7,7 +7,7 @@ import { visit } from 'unist-util-visit'
 import { Node } from 'unist'
 // import sizeOf from 'image-size'
 // import remarkGfm from 'remark-gfm' 라는 좋은 것이 있구나...
-
+// @ts-ignore
 import prism from '@mapbox/rehype-prism'
 
 type TokenType =
