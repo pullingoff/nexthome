@@ -75,7 +75,7 @@ export default function Tag({ posts, tag, pageNo, hasNextPage}) {
                     desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}/>
         <ListLayout
             posts={posts}
-            category='Tags'
+            category='blog'
             pageNo={pageNo}
             hasNextPage={hasNextPage}
             nextPath={`/tags/${tag}/pages/${pageNo + 1}`}
