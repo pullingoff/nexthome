@@ -26,18 +26,4 @@ export default function ListRow ({category, post}) {
 }
 
 const StyledPostList = styled.li`
-box-sizing: border-box;
-  a {
-    display: block;
-    height: 100%;
-  }
-  // & .gatsby-image-wrapper {
-  //   transition: opacity 1s ease-out, transform 0.5s ease;
-  // }
-  // a:hover,
-  // a:focus {
-  //   .gatsby-image-wrapper {
-  //     transform: scale(1.03);
-  //   }
-  // }
 `

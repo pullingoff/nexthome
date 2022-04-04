@@ -17,7 +17,7 @@ margin: var(--lg);
 cursor: pointer;
 font-weight: 700;
 
-@media (min-width: ${({theme}) => theme.device.md}) {
-    font-size: var(--text-title);
-  }
+// @media (min-width: ${({theme}) => theme.device.md}) {
+//     font-size: var(--text-title);
+//   }
 `
