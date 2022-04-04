@@ -10,7 +10,7 @@ export default function ListLayout({posts, category, pageNo =1, hasNextPage = fa
 
     return(
         <StyledMain>
-        <SearchBar />
+        {/* <SearchBar /> */}
             <PostUl role='list'>
                 {posts.map((post) => (
                     <ListRow role='listitem' category={path} post={post} key={post.slug} />
