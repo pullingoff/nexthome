@@ -10,7 +10,7 @@ const PostCard = ({ href, title, desc, date, korDate, tag }) => {
   
 
   return (
-    <Wrapper>
+    <CardContainer>
       <CustomLink href={href}>
        
         <StyledText>
@@ -19,17 +19,17 @@ const PostCard = ({ href, title, desc, date, korDate, tag }) => {
             <StyledDateTime dateTime={date}>{korDate}</StyledDateTime>
         </StyledText>
       </CustomLink>
-      <TagWrapper>
+      <TagContainer>
         {tag != null && tag.map((t) => (
           <Tag key={t} text={t} />
         ))}
-        </TagWrapper>
+        </TagContainer>
       {/* Tag 4개 이상이면 안 보이도록 조치 필요 */}
-    </Wrapper>
+    </CardContainer>
   );
 };
 
-const Wrapper = styled.div`
+const CardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ const StyledText = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   margin-top: 3px;
   font-weight: 700;
   line-height: 1.3;
@@ -80,7 +80,7 @@ const StyledDateTime = styled.p`
 `;
 
 
-const TagWrapper = styled.div`
+const TagContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
 margin: 0 auto var(--2xl) var(--2xl);

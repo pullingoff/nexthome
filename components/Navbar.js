@@ -14,8 +14,8 @@ export default function Navbar() {
 
     return(
         <header className={isNavOpen
-                            ? `${styles.navWrapper} ${styles.open}` 
-                            : styles.navWrapper}>
+                            ? `${styles.navContainer} ${styles.open}` 
+                            : styles.navContainer}>
             <nav className={styles.siteNav}>
                 <SpiderLogo/>
                 

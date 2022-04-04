@@ -6,15 +6,15 @@ const CenteredImg = ({ src, alt }) => {
   if (!alt) alt = 'Thumbnail Image';
 
   return (
-    <ThumbnailWrapper>
-      <InnerWrapper>
+    <ThumbnailContainer>
+      <InnerContainer>
         <Image src={src} alt="thumbnail" layout='fill' objectFit='contain'/>
-      </InnerWrapper>
-    </ThumbnailWrapper>
+      </InnerContainer>
+    </ThumbnailContainer>
   );
 };
 
-export const ThumbnailWrapper = styled.div`
+export const ThumbnailContainer = styled.div`
   position: relative;
   width: 100%;
   &::after {
@@ -31,7 +31,7 @@ export const ThumbnailWrapper = styled.div`
   }
 `;
 
-export const InnerWrapper = styled.div`
+export const InnerContainer = styled.div`
   overflow: hidden;
   position: relative;
   height: 100%;
