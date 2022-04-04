@@ -1,12 +1,12 @@
 import { MDXRemote } from "next-mdx-remote"
-import MetaContainer from "./MetaContainer"
-import { capitalize } from "../lib"
+import MetaContainer from "../MetaContainer"
+import { capitalize } from "../../lib"
 import PostHeader from "./PostHeader"
 import styled from "styled-components"
 import PostGoBackLink from "./PostGoBackLink"
 import PostHeadings from "./PostHeadings"
 
-export default function Post({frontmatter, mdxSource, headings}) {
+const Post = ({frontmatter, mdxSource, headings}) => {
     const {title , date, category } = frontmatter
     const customMeta = {
       title: `${capitalize(category)}: ${title}`
@@ -27,7 +27,7 @@ export default function Post({frontmatter, mdxSource, headings}) {
       </>
     )
 }
-
+export default Post
 
 const PostDiv = styled.div`
 margin-top: 20px;

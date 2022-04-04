@@ -1,7 +1,7 @@
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink";
 import styled from "styled-components";
 
-export default function NavMenu({menu}) {
+const NavMenu = ({menu}) => {
     return (
         <StyledMenu>
             <CustomLink href={menu.path} >
@@ -10,6 +10,8 @@ export default function NavMenu({menu}) {
         </StyledMenu>
     )
 }
+
+export default NavMenu
 
 const StyledMenu = styled.li`
 display: inline-block;

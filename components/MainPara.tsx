@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function MainPara() {
+const MainPara = () => {
     return (
     <StyledP>
         <strong>&quot;거미는 자신의 실로써 공간의 자유에 이른다.&quot;</strong><br/>
@@ -8,6 +8,8 @@ export default function MainPara() {
     </StyledP>
     )
 }
+
+export default MainPara
 
 const StyledP = styled.p`
 text-align: center;

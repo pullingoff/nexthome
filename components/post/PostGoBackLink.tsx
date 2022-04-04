@@ -1,13 +1,15 @@
 import styled from "styled-components"
 import CustomLink from './CustomLink'
 
-export default function PostGoBackLink({link}) {
+const PostGoBackLink = ({link}: {link: string}) =>{
     return(
         <StyledCustomLink href={link}>
             &larr; 이전
         </StyledCustomLink>
     )
 }
+
+export default PostGoBackLink
 
 
 const StyledCustomLink = styled(CustomLink)`

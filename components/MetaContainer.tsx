@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { METADATA } from '../config';
 
-export default function MetaContainer({customMeta}) {
+const MetaContainer = ({customMeta}) => {
     const config = {   
         title: METADATA.title,
         description: METADATA.description,
@@ -32,3 +32,5 @@ export default function MetaContainer({customMeta}) {
       </Head>
     )
 }
+
+export default MetaContainer

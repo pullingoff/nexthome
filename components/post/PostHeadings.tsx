@@ -1,7 +1,7 @@
 import CustomLink from "./CustomLink";
 import styled from "styled-components";
 
-export default function PostHeadings({headings}) {
+const PostHeadings = ({headings})=> {
     return (
         <>
         {headings.length > 0 ? (
@@ -21,6 +21,8 @@ export default function PostHeadings({headings}) {
         </>
     )
 }
+
+export default PostHeadings
 
 const HeadingOl = styled.ul`
 

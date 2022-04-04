@@ -2,7 +2,7 @@ import styled from "styled-components"
 import CustomLink from "./CustomLink"
 import { METADATA } from "../config"
 
-export default function SocialMediaLogos() {
+const SocialMediaLogos = () => {
     const {github, twitter, email, linkedinLink} = METADATA
 
     const githubLink = `https://github.com/${github}`
@@ -33,6 +33,8 @@ export default function SocialMediaLogos() {
         </StyledLogos>
         )
 }
+
+export default SocialMediaLogos
 
 const StyledLogos = styled.div`
 display: flex;

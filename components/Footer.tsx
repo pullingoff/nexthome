@@ -3,7 +3,7 @@ import { METADATA } from "../config"
 import styled from "styled-components"
 import SocialMediaLogos from "./SocialMediaLogos"
 
-export default function Footer() {
+const Footer = () => {
     return (
         <StyledFooter>
             <SocialMediaLogos />
@@ -13,6 +13,8 @@ export default function Footer() {
         </StyledFooter>
     )
 }
+
+export default Footer;
 
 const StyledFooter = styled.footer`
     display: flex;

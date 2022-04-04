@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "../public/logo.svg"
 import styled from "styled-components";
 
-export default function SpiderLogo() {
+const SpiderLogo = () => {
     return (
         <NavLogo>
             <CustomLink href='/'>
@@ -12,6 +12,8 @@ export default function SpiderLogo() {
         </NavLogo>
     )
 }
+
+export default SpiderLogo
 
 const NavLogo = styled.div`
 display: inline;

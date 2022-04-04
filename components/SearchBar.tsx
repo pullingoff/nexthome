@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import SearchBarLogo from "./SearchBarLogo"
 
-export default function SearchBar() {
+const SearchBar = () => {
     return (
         <StyledSearchBar>
             <StyledInput  placeholder="무엇을 찾고 계십니까!? 🧞‍♂️"/>
@@ -9,6 +9,8 @@ export default function SearchBar() {
         </StyledSearchBar>
     )
 }
+
+export default SearchBar
 
 const StyledSearchBar = styled.div`
 position: relative;

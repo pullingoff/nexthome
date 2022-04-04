@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components';
-import CustomLink from './CustomLink';
-import Tag from "./Tag";
+import CustomLink from '../CustomLink';
+import Tag from "../Tag";
+import { DateTime } from '../../type';
 
 const RandomColorDiv = styled.div`
 height: 30px;
@@ -75,7 +76,7 @@ const Desc = styled.p`
   text-overflow: ellipsis;
 `;
 
-const StyledDateTime = styled.p`
+const StyledDateTime = styled.p<DateTime>`
   margin: 10px 0;
 `;
 

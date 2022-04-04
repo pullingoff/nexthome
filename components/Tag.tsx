@@ -2,13 +2,15 @@ import CustomLink from "./CustomLink"
 import styled from "styled-components"
 
 
-export default function Tag ({text}) {
+const Tag = ({text}: {text: string}) => {
     return(
         <StyledTag href={`/tags/${text}/pages/1`}>
             {text.split(' ').join('-')}
         </StyledTag>
     )
 }
+
+export default Tag;
 
 const StyledTag = styled(CustomLink)`
     color: var(--color-white);

@@ -66,7 +66,7 @@ export default function Tag({ posts, tag, pageNo, hasNextPage}) {
     const capitalizedTag =  tag.toUpperCase();
 
     const customMeta = {
-        title: `${capitalizedTag} (${pageNo}) : 개발자 박하은`,
+        title: `${capitalizedTag} : 개발자 박하은`,
     }
     return (
         <>

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
+import { Post } from '../type'
 
-export default function RecentPost({recentPosts}) {
+const RecentPost = ({recentPosts}: {recentPosts: Post[]}) => {
     return (
         <StyledSection>
         <Title>Recent Posts</Title>
@@ -16,6 +17,8 @@ export default function RecentPost({recentPosts}) {
       </StyledSection>
     )
 }
+
+export default RecentPost
 
 const StyledSection = styled.section`
 margin-bottom: var(--lg);

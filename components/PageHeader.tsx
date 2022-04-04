@@ -1,6 +1,6 @@
 import styled from "styled-components"; 
 
-export default function PageHeader({pageNm, desc}) {
+const PageHeader = ({pageNm, desc}: {pageNm: number, desc: string}) => {
     return (
         <StyledPageHeader>
             <PageName>{pageNm}</PageName>

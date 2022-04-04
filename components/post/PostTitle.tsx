@@ -1,12 +1,14 @@
 import styled from "styled-components"
 
-export default function PostTitle({ title }) {
+const PostTitle = ({ title }) => {
     return (
       <StyledTitle>
         {title}
       </StyledTitle>
     )
   }
+
+export default PostTitle
 
 const StyledTitle = styled.h1`
 font-size: var(--2xl);

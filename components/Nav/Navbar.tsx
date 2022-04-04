@@ -1,11 +1,11 @@
-import styles from "./navbar.module.scss"
+import styles from "../navbar.module.scss"
 import { useState } from "react";
-import { MENUS } from "../config"
+import { MENUS } from "../../config"
 import NavMenu from "./NavMenu";
-import SpiderLogo from "./SpiderLogo";
+import SpiderLogo from "../SpiderLogo";
 import styled from "styled-components";
 
-export default function Navbar() {
+const Navbar = () => {
     const [isNavOpen, setNavOpened] = useState(false);
 
     function onToggleNav() {
@@ -35,3 +35,5 @@ export default function Navbar() {
         </header>
     )
 }
+
+export default Navbar

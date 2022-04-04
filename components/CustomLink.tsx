@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import {HTMLProps} from 'react'
 
-function CustomLink({ href, children, ...rest}) {
+
+const CustomLink = ({ href, children, ...rest} : HTMLProps<HTMLAnchorElement>) => {
   // const isInternalLink = href && href.startsWith('/')
   // const isAnchorLink = href && href.startsWith('#')
 
@@ -10,7 +12,7 @@ function CustomLink({ href, children, ...rest}) {
 
   // if (isInternalLink) {
     return (
-      <Link href={href} passhref>
+      <Link href={href} passHref>
         <a {...rest}>
           {children}
         </a>

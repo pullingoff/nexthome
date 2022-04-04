@@ -11,7 +11,7 @@ export const METADATA = {
 // export const BLOG_TITLE = '개발자 박하은'
 
 // 글 목록 페이지네이션
-export const POSTS_PER_PAGE = 8;
+export const POSTS_PER_PAGE : number = 8;
 
 // nav bar에 나타날 메뉴
 export const MENUS = [
@@ -21,4 +21,4 @@ export const MENUS = [
 ]
 
 // posts 폴더 안의 subdirectories
-export const POST_DIRS = ['blog']
+export const POST_DIRS : string[] = ['blog']

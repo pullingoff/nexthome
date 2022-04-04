@@ -2,7 +2,7 @@
 import PostTitle from "./PostTitle"
 import styled from "styled-components"
 
-export default function PostHeader({ date, title }) {
+const PostHeader = ({ date, title } : {date: string, title: string}) => {
     return(
         <StyledHeader>
         <StyledPublishedTime>{date}</StyledPublishedTime>
@@ -11,6 +11,7 @@ export default function PostHeader({ date, title }) {
     )
 }
 
+export default PostHeader
 
 const StyledPublishedTime = styled.time`
   font-weight: 500;

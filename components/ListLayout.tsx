@@ -4,21 +4,35 @@ import {capitalize} from "../lib"
 import CustomLink from "./CustomLink";
 import SearchBar from "./SearchBar";
 import styled from "styled-components"
+import { Post } from "../type";
 
-export default function ListLayout({posts, category, pageNo =1, hasNextPage = false, prevPath, nextPath}) {
+const ListLayout = ({posts, category, 
+    // hasNextPage = false, prevPath, nextPath
+} : {
+    posts: Array<Post>,
+    category: string,
+    // pageNo: number,
+    // hasNextPage: boolean,
+    // prevPath: string,
+    // nextPath: string
+}) => {
     const path = category.toLowerCase();
 
     return(
         <StyledMain>
         {/* <SearchBar /> */}
-            <PostUl role='list'>
+            <PostUl>
                 {posts.map((post) => (
-                    <ListRow role='listitem' category={path} post={post} key={post.slug} />
+                    <ListRow key={post.slug} 
+                             category={path} 
+                             post={post} />
                 ))}
             </PostUl>
         </StyledMain>  
     )
 }
+
+export default ListLayout
 
 const StyledMain = styled.main`
 // width: 650px;   // 통일할것
@@ -26,11 +40,10 @@ const StyledMain = styled.main`
 
 const PostUl = styled.ul`
 margin: 30px auto;
-  display: grid;
-  grid-gap: 24px;
-  // grid-template-columns: repeat(2, 1fr);
-  list-style: none;
-  @media (min-width: ${({theme}) => theme.device.sm}) {
+display: grid;
+grid-gap: 24px;
+list-style: none;
+@media (min-width: ${({theme}) => theme.device.sm}) {
     grid-template-columns: repeat(2, 1fr);
-  }
+}
 `
