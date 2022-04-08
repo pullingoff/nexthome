@@ -5,7 +5,7 @@ import MetaContainer from "../../../../components/MetaContainer"
 import PageHeader from "../../../../components/PageHeader";
 
 
-export async function getStaticPaths() {
+export const getStaticPaths = async()=> {
     const allTags = await getAllTagsFromPosts()
     const posts = await getAllPosts()
     
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({params}) {
+export const getStaticProps= async({params}) => {
     const allPosts = await getAllPosts()
     const {tag , keyword} = params
     const pageNo = parseInt(keyword)
@@ -62,7 +62,7 @@ export async function getStaticProps({params}) {
     }
 }
 
-export default function Tag({ posts, tag, pageNo, hasNextPage}) {
+const Tag = ({ posts, tag, pageNo, hasNextPage}) => {
     const capitalizedTag =  tag.toUpperCase();
 
     const customMeta = {
@@ -80,8 +80,9 @@ export default function Tag({ posts, tag, pageNo, hasNextPage}) {
             hasNextPage={hasNextPage}
             nextPath={`/tags/${tag}/pages/${pageNo + 1}`}
             prevPath={`/tags/${tag}/pages/${pageNo - 1}`}
-            >
-        </ListLayout>
+            />
         </>
     )
 }
+
+export default Tag

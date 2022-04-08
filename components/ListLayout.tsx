@@ -11,10 +11,10 @@ const ListLayout = ({posts, category,
 } : {
     posts: Array<Post>,
     category: string,
-    // pageNo: number,
-    // hasNextPage: boolean,
-    // prevPath: string,
-    // nextPath: string
+    pageNo: number,
+    hasNextPage?: boolean,
+    prevPath?: string,
+    nextPath?: string
 }) => {
     const path = category.toLowerCase();
 

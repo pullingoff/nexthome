@@ -2,13 +2,13 @@ import CustomLink from "../components/CustomLink";
 import styled from "styled-components";
 
 
-const Pagination = ({category, pageNumber, currentPage} : {
+const Pagination = ({category, pageTotal, currentPage} : {
     category: string,
-    pageNumber: number,
+    pageTotal: number,
     currentPage: number
 }) => {
     const isFirst = currentPage === 1;
-    const isLast = currentPage === pageNumber;
+    const isLast = currentPage === pageTotal;
 
     const path = category.toLowerCase();
     return (

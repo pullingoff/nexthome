@@ -1,15 +1,12 @@
 import fs, { readdirSync } from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { sortByDate } from '.'
+import { markdownRegex, sortByDate } from '.'
 import { POST_DIRS } from '../config';
 
 const blogDirectory = path.join(process.cwd(), 'posts', 'blog') // current directory/posts
-const diaryDirectory = path.join(process.cwd(), 'posts', 'diary') // current directory/posts
 
-// 이 아래 두 함수 하나로 합칠 필요가 있을 듯
-
-export async function getAllPosts() {
+export const getAllPosts = () => {
     // 모든 Post기 때문에 디렉토리 주소를 포함해야함
     let allFileNames = []
     
@@ -39,7 +36,7 @@ export async function getAllPosts() {
     return allPostsData
 }
 
-export async function getSortedBlogPosts() {
+export const getSortedBlogPosts = async() => {
     const fileNames = fs.readdirSync(blogDirectory)
     // mac이라 생기는 DS_Store 일단 하드코딩으로 제거.
     if(fileNames[0] == '.DS_Store') {
@@ -47,7 +44,7 @@ export async function getSortedBlogPosts() {
     } 
     const allPostsData = fileNames.map(fileName => {
         // slug : 파일이름.md에서 .md 제거
-        const slug = fileName.replace(/(\.mdx$)|(\.md$)|(\.markdown$)/, '') // .md 지우고 id로 설정
+        const slug = fileName.replace(markdownRegex, '') // .md 지우고 id로 설정
         const fullPath = path.join(blogDirectory, slug+ '.mdx')
         
         // markdownWithMeta
@@ -57,24 +54,25 @@ export async function getSortedBlogPosts() {
         return { frontmatter, body, slug}
     })
 
+    console.log(allPostsData.length)
+    
     return allPostsData.sort(sortByDate)
 }
 
 // async로 할지 다시 한번 생각해보기
-export async function getRecentPosts() {
+export const getRecentPosts = async() => {
     // getAllPosts()
-    const allPostsData = getAllPosts()
+    const allPostsData = await getAllPosts()
     return {
         recentPosts : allPostsData.sort(sortByDate).slice(0,6)  // prop으로 모든 블로그 포스트 넘겨주기
     }
   }
 
-export async function getAllTagsFromPosts() {
+export const getAllTagsFromPosts = async() => {
     const tags = (await getAllPosts()).reduce(
         // prev:
         // curr: post 정보 전체
         (prev, curr) => {
-     
             curr.frontmatter.tag.forEach((tag) => {
                 prev.push(tag)
             })

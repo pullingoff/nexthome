@@ -1,11 +1,11 @@
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink";
 import styled from "styled-components";
 
 const PostHeadings = ({headings})=> {
     return (
         <>
         {headings.length > 0 ? (
-            <details>
+            <HeadingContainer>
                 <StyledSummary>목차</StyledSummary>
                 <HeadingOl>
                     {headings.map((heading) => (
@@ -16,7 +16,7 @@ const PostHeadings = ({headings})=> {
                         </HeadingLi>
                     ))}
                 </HeadingOl>
-            </details>
+            </HeadingContainer>
         ) : null}
         </>
     )
@@ -24,8 +24,10 @@ const PostHeadings = ({headings})=> {
 
 export default PostHeadings
 
+const HeadingContainer = styled.details`
+display: none;  // style 고민중... 
+`
 const HeadingOl = styled.ul`
-
 `
 
 const StyledSummary = styled.summary`

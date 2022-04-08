@@ -1,3 +1,5 @@
+export const markdownRegex = /(\.mdx$)|(\.md$)|(\.markdown$)/
+
 export function sortByDate(a, b) {
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
 }

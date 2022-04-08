@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import CustomLink from './CustomLink'
+import CustomLink from '../CustomLink'
 
 const PostGoBackLink = ({link}: {link: string}) =>{
     return(

@@ -9,6 +9,8 @@ const PageHeader = ({pageNm, desc}: {pageNm: number, desc: string}) => {
     )
 }
 
+export default PageHeader
+
 const StyledPageHeader = styled.div`
 padding: var(--md) 0;
 `

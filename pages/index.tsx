@@ -1,9 +1,10 @@
+import React from "react";
 import Main from "../components/Main"
 import RecentPost from '../components/RecentPost'
 import { getRecentPosts } from '../lib/posts-related-api'
 
 
-export async function getStaticProps() {
+export const getStaticProps = async() => {
   const {recentPosts} = await getRecentPosts();
 
   return {
@@ -14,7 +15,7 @@ export async function getStaticProps() {
 }
 
 
-export default function Home({recentPosts}) {
+const Home = ({recentPosts}) => {
 
   return (
     <>
@@ -23,3 +24,5 @@ export default function Home({recentPosts}) {
     </>
   )
 }
+
+export default Home

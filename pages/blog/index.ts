@@ -1,5 +1,5 @@
-import BlogPage from "./page/[page_index].js";
-import { getStaticProps } from "./page/[page_index].js";
+import BlogPage from "./page/[page_index]";
+import { getStaticProps } from "./page/[page_index]";
 
 
 export {getStaticProps};

@@ -18,7 +18,7 @@ const Post = ({frontmatter, mdxSource, headings}) => {
       <MetaContainer customMeta={customMeta}/>
       <article>
         <PostHeader date={date} title={title} />
-        {/* <PostHeadings headings={headings}/> */}
+        <PostHeadings headings={headings}/>
         <PostDiv>
             <MDXRemote {...mdxSource} />
         </PostDiv>
@@ -77,11 +77,4 @@ margin-top: 20px;
     h4 {
         font-size: 1.1em;
     }
-    // code {
-    //     background: var(--color-main);
-    //     padding: 0 3px;
-    //     font-size: 90%;
-    //     border-radius: 2px;
-    //     color: var(--color-white);
-    // }
 `

@@ -1,9 +1,10 @@
 import '../styles/globals.scss';
 import Layout from '../components/Layout';
 import MetaContainer from '../components/MetaContainer';
+import { AppProps } from 'next/app';
 
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <MetaContainer/>

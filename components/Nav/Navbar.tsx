@@ -1,9 +1,8 @@
-import styles from "../navbar.module.scss"
+import styles from "./navbar.module.scss"
 import { useState } from "react";
 import { MENUS } from "../../config"
 import NavMenu from "./NavMenu";
 import SpiderLogo from "../SpiderLogo";
-import styled from "styled-components";
 
 const Navbar = () => {
     const [isNavOpen, setNavOpened] = useState(false);
