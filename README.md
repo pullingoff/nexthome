@@ -4,7 +4,13 @@
 
 아직 한참 개발중 따끈따끈 🥨
 
+## Tech Stacks
+
 개발: React, Next.js
 스타일: Styled-components
 배포: Vercel
 마크다운 처리: MDXRemote
+
+## Inspirations
+
+[color theme](https://www.moma.org/calendar/galleries/5269)
