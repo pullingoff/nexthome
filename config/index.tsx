@@ -1,3 +1,7 @@
+export const prefix = 
+    process.env.NODE_ENV === "production"
+    ? "https://pullingoff.github.io/nexthome"
+    : "";
 export const METADATA = {
     title : '개발자 박하은',
     author: '박하은',

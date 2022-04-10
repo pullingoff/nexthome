@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import Loading from 'components/Loading';
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   

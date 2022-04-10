@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "tsc-watch --onSuccess 'node dist/app.js' ",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.8.0",

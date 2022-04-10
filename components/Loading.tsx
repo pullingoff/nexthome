@@ -3,7 +3,7 @@ import logo from "../public/logo.svg"
 import Image from "next/image";
 
 const Loading = (props: {
-    loading: boolean
+    loading: boolean,
 }) => {
     return (
         <div className={props.loading ? styles.body_loading : styles.none}>
