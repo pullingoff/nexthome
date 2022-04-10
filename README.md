@@ -8,5 +8,3 @@
 스타일: Styled-components
 배포: Vercel
 마크다운 처리: MDXRemote
-
-## 수
