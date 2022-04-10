@@ -1,12 +1,12 @@
 # 안녕하세요 👋
 
-아직 한참 개발중 따끈따
+[블로그 구경 가기](https://nexthome-amber.vercel.app/)
 
-React 
-Next.js 
-Styled-components
-MDXRemote
+아직 한참 개발중 따끈따끈 🥨
 
-## 수정 예정
+개발: React, Next.js
+스타일: Styled-components
+배포: Vercel
+마크다운 처리: MDXRemote
 
-- customMeta 핵심만 보내주면 '개발자: 박하은' 저절로 붙이도록 하기
+## 수
