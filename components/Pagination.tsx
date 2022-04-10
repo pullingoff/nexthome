@@ -1,11 +1,12 @@
-import CustomLink from "../components/CustomLink";
+import CustomLink from "./CustomLink";
 import styled from "styled-components";
 
 
-const Pagination = ({category, pageTotal, currentPage} : {
+const Pagination = ({category, pageTotal, currentPage, hasNextPage} : {
     category: string,
     pageTotal: number,
-    currentPage: number
+    currentPage: number, 
+    hasNextPage: boolean
 }) => {
     const isFirst = currentPage === 1;
     const isLast = currentPage === pageTotal;
