@@ -1,4 +1,5 @@
-export interface FrontMatter {
+
+export interface IFrontMatter {
     title: string
     category: string
     tags: string[]
@@ -10,13 +11,25 @@ export interface FrontMatter {
     socialImageCredit?: string
   }
 
-export interface Post {
+export interface IPost {
     slug: string  
-    frontmatter: FrontMatter
+    frontmatter: IFrontMatter
     body: string
-    path: string
+    path?: string
+    headings?: Array<IHeading>
   }
 
-export interface DateTime {
+
+export interface IHeading {
+  text: string,
+  link: string
+}
+
+export interface IDateTime {
   dateTime: string
+}
+
+export interface ICustomMeta {
+  title : string
+  // date: string
 }

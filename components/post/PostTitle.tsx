@@ -1,6 +1,10 @@
 import styled from "styled-components"
 
-const PostTitle = ({ title }) => {
+type TitleProp = {
+  title: string;
+}
+
+const PostTitle = ({ title } : TitleProp) => {
     return (
       <StyledTitle>
         {title}

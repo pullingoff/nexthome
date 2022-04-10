@@ -1,7 +1,15 @@
 import CustomLink from "../CustomLink";
 import styled from "styled-components";
 
-const NavMenu = ({menu}) => {
+type MenuType = {
+    title: string;
+    path: string;
+    emoji: string;
+}
+
+const NavMenu = ({menu} : {
+    menu: MenuType
+}) => {
     return (
         <StyledMenu>
             <CustomLink href={menu.path} >

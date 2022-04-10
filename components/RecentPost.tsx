@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import { Post } from '../type'
+import { IPost } from '../type'
 
-const RecentPost = ({recentPosts}: {recentPosts: Post[]}) => {
+const RecentPost = ({recentPosts}: {recentPosts: IPost[]}) => {
     return (
         <StyledSection>
         <Title>Recent Posts</Title>
@@ -36,7 +36,7 @@ font-size: var(--3xl);
 
 const StyledPostLi = styled.li`
 font-weight: var(--fw-medium);
-font-size: 0.8rem;
+font-size: 0.95rem;
 margin-bottom: var(--sm);
   &:before {
     content: '-';

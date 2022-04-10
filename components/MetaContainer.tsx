@@ -1,14 +1,18 @@
 import Head from 'next/head';
 import { METADATA } from '../config';
+import { ICustomMeta } from 'type';
 
-const MetaContainer = ({customMeta}) => {
+const MetaContainer = ({customMeta}: {
+    customMeta?: ICustomMeta,
+}) => {
     const config = {   
-        title: METADATA.title,
+        // title: METADATA.title,
         description: METADATA.description,
         author: METADATA.author,
         type: 'website',
+        //date: ISO 포맷으로 변경해야
         ...customMeta
-    }
+    } 
     
     return (
         <Head>
@@ -22,7 +26,7 @@ const MetaContainer = ({customMeta}) => {
         <meta property="og:description" content={config.description} />
         <meta property="og:title" content={config.title} />
         {/* <meta property="og:image" content={config.image} /> */}
-        {config.date && <meta property="article:published_time" content={config.date} />}
+        {/* {config.date && <meta property="article:published_time" content={config.date} />} */}
         {/* <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />

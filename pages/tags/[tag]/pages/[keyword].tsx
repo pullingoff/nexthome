@@ -3,19 +3,50 @@ import { getAllTagsFromPosts, getAllPosts } from "../../../../lib/posts-related-
 import { POSTS_PER_PAGE } from "../../../../config";
 import MetaContainer from "../../../../components/MetaContainer"
 import PageHeader from "../../../../components/PageHeader";
+import { GetStaticPaths, GetStaticProps } from "next";
+import {IPost} from "../../../../type"
+import {ParsedUrlQuery} from 'querystring'
 
+const Tag = ({ posts, tag, pageNo, hasNextPage} :{
+    posts: Array<IPost>,
+    tag: string,
+    pageNo: number,
+    hasNextPage?: boolean
+}) => {
+    const capitalizedTag : string = tag.toUpperCase();
 
-export const getStaticPaths = async()=> {
+    const customMeta = {
+        title: `${capitalizedTag} : 개발자 박하은`,
+    }
+    return (
+        <>
+        <MetaContainer customMeta={customMeta} />
+        <PageHeader pageNm={capitalizedTag}
+                    desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}/>
+        <ListLayout
+            posts={posts}
+            category='blog'
+            pageNo={pageNo}
+            // hasNextPage={hasNextPage}
+            nextPath={`/tags/${tag}/pages/${pageNo + 1}`}
+            prevPath={`/tags/${tag}/pages/${pageNo - 1}`}
+            />
+        </>
+    )
+}
+
+export default Tag
+
+export const getStaticPaths : GetStaticPaths = async()=> {
     const allTags = await getAllTagsFromPosts()
     const posts = await getAllPosts()
     
-    const paths = []
+    let paths: { params: { tag: string; keyword: string; }; }[] = []
     
     allTags.forEach(({ tag }) => {
         const tagsCount = posts.filter((post) => 
-            post.frontmatter.tag.find((t) => t === tag),
+            post.frontmatter.tags.find((t) => t === tag),
         ).length
-
         ;[
             ...new Array(Math.round(tagsCount / POSTS_PER_PAGE)).keys(),
         ].forEach((i) => {
@@ -28,12 +59,18 @@ export const getStaticPaths = async()=> {
     }
 }
 
-export const getStaticProps= async({params}) => {
+interface ITag extends ParsedUrlQuery {
+    [key: string]: string | undefined,
+    keyword: string,
+    tag: string
+}
+
+export const getStaticProps : GetStaticProps= async({params}) => {
     const allPosts = await getAllPosts()
-    const {tag , keyword} = params
+    const {tag , keyword} = params as ITag
     const pageNo = parseInt(keyword)
     const postsWithTag = allPosts.filter((post) => 
-                            post.frontmatter.tag.find((t) => t === tag
+                            post.frontmatter.tags.find((t) => t === tag
                         ))
 
     if (
@@ -61,28 +98,3 @@ export const getStaticProps= async({params}) => {
         },
     }
 }
-
-const Tag = ({ posts, tag, pageNo, hasNextPage}) => {
-    const capitalizedTag =  tag.toUpperCase();
-
-    const customMeta = {
-        title: `${capitalizedTag} : 개발자 박하은`,
-    }
-    return (
-        <>
-        <MetaContainer customMeta={customMeta} />
-        <PageHeader pageNm={capitalizedTag}
-                    desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}/>
-        <ListLayout
-            posts={posts}
-            category='blog'
-            pageNo={pageNo}
-            hasNextPage={hasNextPage}
-            nextPath={`/tags/${tag}/pages/${pageNo + 1}`}
-            prevPath={`/tags/${tag}/pages/${pageNo - 1}`}
-            />
-        </>
-    )
-}
-
-export default Tag

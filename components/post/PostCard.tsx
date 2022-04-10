@@ -1,27 +1,30 @@
 import styled, {css} from 'styled-components';
 import CustomLink from '../CustomLink';
 import Tag from "../Tag";
-import { DateTime } from '../../type';
+import { IDateTime, IPost } from '../../type';
 
 const RandomColorDiv = styled.div`
 height: 30px;
 `
 
-const PostCard = ({ href, title, desc, date, korDate, tag }) => {
-  
-
+const PostCard = ({ href, korDate, post}: {
+  href: string,
+  korDate: string,
+  post: IPost
+}) => {
+  const {title, description, date, tags} = post.frontmatter
   return (
     <CardContainer>
       <CustomLink href={href}>
        
         <StyledText>
             <Title>{title}</Title>
-            <Desc>{desc}</Desc>
+            <Desc>{description}</Desc>
             <StyledDateTime dateTime={date}>{korDate}</StyledDateTime>
         </StyledText>
       </CustomLink>
       <TagContainer>
-        {tag != null && tag.map((t) => (
+        {tags != null && tags.map((t) => (
           <Tag key={t} text={t} />
         ))}
         </TagContainer>
@@ -76,7 +79,7 @@ const Desc = styled.p`
   text-overflow: ellipsis;
 `;
 
-const StyledDateTime = styled.p<DateTime>`
+const StyledDateTime = styled.p<IDateTime>`
   margin: 10px 0;
 `;
 

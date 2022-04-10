@@ -1,18 +1,19 @@
-import Pagination from "../lib/Pagination";
+import Pagination from "./Pagination";
 import ListRow from "./ListRow";
 import {capitalize} from "../lib"
 import CustomLink from "./CustomLink";
 import SearchBar from "./SearchBar";
 import styled from "styled-components"
-import { Post } from "../type";
+import { IPost } from "../type";
 
 const ListLayout = ({posts, category, 
-    // hasNextPage = false, prevPath, nextPath
+    // hasNextPage = false,
+     prevPath, nextPath
 } : {
-    posts: Array<Post>,
+    posts: Array<IPost>,
     category: string,
     pageNo: number,
-    hasNextPage?: boolean,
+    // hasNextPage?: boolean,
     prevPath?: string,
     nextPath?: string
 }) => {

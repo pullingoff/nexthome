@@ -5,12 +5,31 @@ import {parseMarkdownToMdx} from "../../utils/Markdown"
 import Post from "../../components/post/Post";
 import {markdownRegex} from "../../lib";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { IFrontMatter } from "type";
+import { IPost } from "type";
+import { getAllPosts } from "lib/posts-related-api";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 // import rehypeSlug from 'rehype-slug';
 
 const blogDir = path.join(process.cwd(), 'posts', 'blog') // current directory/posts
 
+
+const PostPage = ( { post, mdxSource}: {
+    post: IPost,
+    mdxSource: MDXRemoteSerializeResult,
+}) => {
+    return(
+        <Post post={post}
+              mdxSource={mdxSource}   />
+    )
+}
+
+export default PostPage
+
 export const getStaticPaths : GetStaticPaths = async() => {
-    const fileNames = fs.readdirSync(blogDir)
+    const fileNames = fs.readdirSync(blogDir).filter((f)=> {
+        return !f.startsWith('.DS_')
+    });
     const paths = fileNames.map(fileNm => ({
         params: {
             slug : fileNm.replace(markdownRegex, '')
@@ -20,33 +39,33 @@ export const getStaticPaths : GetStaticPaths = async() => {
     return {paths, fallback: 'blocking'}
 }
 
-export const getStaticProps : GetStaticProps = async({params: {slug}}) => {
+interface SlugInterface {
+    [key: string]: string | string[] | null
+    year: string
+}
 
+export const getStaticProps : GetStaticProps = async({params}) => {
+    const {slug} = params as SlugInterface
+    
     const markdownToMeta = fs.readFileSync(path.join(blogDir, slug+'.mdx'), 'utf-8');
-    const {data:frontmatter, content}= matter(markdownToMeta);
+    const {content}= matter(markdownToMeta);
+    
+    const posts = await getAllPosts()
+    const post = posts.find((p => p?.slug === slug))
     const headings = getHeadings(content)
     const mdxSource = await parseMarkdownToMdx(content);
 
-    return {props: {slug, frontmatter, mdxSource, headings}}
+    return {props: {post, mdxSource, headings}}
 }
 
-const PostPage = ( {slug, frontmatter, mdxSource, headings}) => {
-    return(
-        <Post frontmatter={frontmatter}
-              mdxSource={mdxSource} 
-              headings={headings} />
-    )
-}
-
-export default PostPage
-
-const getHeadings = (source) => {
+// post content에서 ## 찾아서 헤딩 구성 (목차용)
+const getHeadings = (source : string) => {
     const regex = /^## (.*$)/gim;
     if (source.match(regex)) {
-        return source.match(regex).map((heading) => {
+        return source.match(regex)?.map((heading) => {
             const headingText = heading.replace("## ", "");
             const link = "#" + headingText.replace(/ /g, "_").toLowerCase();
-            // console.log(headingText)
+
             return {
                 text: headingText,
                 link,

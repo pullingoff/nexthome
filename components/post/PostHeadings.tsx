@@ -1,7 +1,10 @@
 import CustomLink from "../CustomLink";
 import styled from "styled-components";
+import { IHeading } from "type";
 
-const PostHeadings = ({headings})=> {
+const PostHeadings = ({headings}: {
+    headings: Array<IHeading>
+})=> {
     return (
         <>
         {headings.length > 0 ? (

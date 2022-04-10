@@ -1,33 +1,56 @@
-import { MDXRemote } from "next-mdx-remote"
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import MetaContainer from "../MetaContainer"
 import { capitalize } from "../../lib"
 import PostHeader from "./PostHeader"
 import styled from "styled-components"
-import PostGoBackLink from "./PostGoBackLink"
 import PostHeadings from "./PostHeadings"
+import {IPost} from "../../type"
+import { useRouter } from 'next/router'
 
-const Post = ({frontmatter, mdxSource, headings}) => {
-    const {title , date, category } = frontmatter
+
+// const Post = ({frontmatter, mdxSource, headings}) => {
+const Post = ({post, mdxSource}: {
+    post: IPost,
+    mdxSource: MDXRemoteSerializeResult
+}) => {
+    const router = useRouter()
+
+    const {title , date, category } = post.frontmatter
     const customMeta = {
-      title: `${capitalize(category)}: ${title}`
+      title: `${capitalize(category)}: ${title}`,
+      date: date
     }
-    const goToLink = `/${category}`
+    // const goToLink = `/${category}`
 
     return (
       <>
       <MetaContainer customMeta={customMeta}/>
       <article>
         <PostHeader date={date} title={title} />
-        <PostHeadings headings={headings}/>
+        {post.headings &&
+            <PostHeadings headings={post.headings}/>
+        }
         <PostDiv>
             <MDXRemote {...mdxSource} />
         </PostDiv>
-        <PostGoBackLink link={goToLink}/>
+        <StyledGoBackBtn onClick={()=>router.back()}>&larr; 이전</StyledGoBackBtn>
       </article>
       </>
     )
 }
 export default Post
+
+const StyledGoBackBtn = styled.span`
+display: block;
+margin: 10px 0;
+color: var(--color-point-blue);
+font-weight: 700;
+&:hover {
+  color: var(--hover-color);
+}
+cursor:pointer;
+`
+
 
 const PostDiv = styled.div`
 margin-top: 20px;

@@ -1,9 +1,11 @@
+import { IPost } from "type";
+
 export const markdownRegex = /(\.mdx$)|(\.md$)|(\.markdown$)/
 
-export function sortByDate(a, b) {
+export const sortByDate = (a : IPost, b: IPost) =>{
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
 }
 
-export function capitalize(str: string) {
+export const capitalize = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
