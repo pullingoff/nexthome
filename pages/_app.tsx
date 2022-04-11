@@ -5,6 +5,7 @@ import { AppProps } from 'next/app';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Loading from 'components/Loading';
+import styled from 'styled-components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -22,12 +23,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router]);
 
   return (
-    <Layout>
+    <StyledLayout>
       <MetaContainer/>
       <Loading loading={loading}/>
       <Component {...pageProps} />
-    </Layout>
+    </StyledLayout>
   )
 }
+
+const StyledLayout = styled(Layout)`
+background: var(--bg-yellow);
+`
 
 export default MyApp;

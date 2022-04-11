@@ -33,3 +33,11 @@ export interface ICustomMeta {
   title : string
   // date: string
 }
+
+export interface IProject {
+  title: string,
+  slug: string,     // path (query string)
+  type: string,     // 어떤 앱인지
+  thumbnail: string, // 이미지 파일명
+  shortDescription: string
+}

@@ -5,7 +5,6 @@ import {parseMarkdownToMdx} from "../../utils/Markdown"
 import Post from "../../components/post/Post";
 import {markdownRegex} from "../../lib";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { IFrontMatter } from "type";
 import { IPost } from "type";
 import { getAllPosts } from "lib/posts-related-api";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -41,7 +40,6 @@ export const getStaticPaths : GetStaticPaths = async() => {
 
 interface SlugInterface {
     [key: string]: string | string[] | null
-    year: string
 }
 
 export const getStaticProps : GetStaticProps = async({params}) => {

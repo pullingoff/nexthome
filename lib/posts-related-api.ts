@@ -1,12 +1,10 @@
-import fs, { readdirSync } from 'fs'
+import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { markdownRegex, sortByDate } from '.'
+import { sortByDate } from '.'
 import { POST_DIRS } from '../config';
 import { IFrontMatter, IPost } from 'type';
 import memoize from 'memoizee';
-
-const blogDirectory = path.join(process.cwd(), 'posts', 'blog') // current directory/posts
 
 export const retrieveAllPosts = async() : Promise<IPost[]> => {
     // 모든 Post기 때문에 디렉토리 주소를 포함해야함

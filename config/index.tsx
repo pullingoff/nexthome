@@ -3,7 +3,7 @@ export const METADATA = {
     author: '박하은',
     description: '어쩌구저쩌구 개발블로그입니다.',
     twitter: 'devpullingoff',
-    email: 'haileyhe01@gmail.com',
+    email: 'devhaeun@gmail.com',
     github: 'pullingoff',
     linkedinLink: 'https://www.linkedin.com/in/hailey-park/'
 }
@@ -17,6 +17,7 @@ export const POSTS_PER_PAGE : number = 8;
 export const MENUS = [
     {title: 'Blog', path: '/blog/page/1', emoji: '📝'},
     {title: 'TIL', path: 'https://pullingoff.github.io/vue-til', emoji: '📓'},
+    {title: 'Project', path: '/project', emoji: '🎞'}
     // {title: 'Project', path: '/project/', emoji: '🧱'}
 ]
 
