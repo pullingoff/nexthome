@@ -1,11 +1,7 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import CustomLink from '../CustomLink';
 import Tag from "../Tag";
 import { IDateTime, IPost } from '../../type';
-
-const RandomColorDiv = styled.div`
-height: 30px;
-`
 
 const PostCard = ({ href, korDate, post}: {
   href: string,
@@ -45,18 +41,20 @@ const CardContainer = styled.div`
 
   /* Fix Safari overflow:hidden with border radius not working error */
   z-index: 0;
+  &:hover {
+    transform: translateY(-15px);
+    box-shadow: 10px 10px var(--color-point-pink);
+    transition: box-shadow 300ms ease 0.1s, transform 300ms ease 0.1s
+  }
+}
 `;
 
 const StyledText = styled.div`
   display: flex;
   flex-direction: column;
-  // flex: 1 1 auto;
-  // justify-content: space-between;
   padding: var(--2xl);
   padding-bottom: 10px;
-  &:hover h1 {
-    color: var(--hover-color);
-  }
+
   & > * {
     display: block;
   }

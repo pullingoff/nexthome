@@ -46,7 +46,7 @@ margin: 10px 0;
 color: var(--color-point-blue);
 font-weight: 700;
 &:hover {
-  color: var(--hover-color);
+  color: var(--color-point-pink);
 }
 cursor:pointer;
 `
@@ -62,6 +62,11 @@ margin-top: 20px;
         font-weight: 500;
         text-decoration: underline;
       }
+
+    a:hover {
+        color: var(--color-point-pink);
+    }
+  
     ul {
         margin-bottom: 1rem;
         li {
