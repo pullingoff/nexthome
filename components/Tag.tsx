@@ -15,9 +15,13 @@ export default Tag;
 const StyledTag = styled(CustomLink)`
     color: var(--color-white);
     text-transform: uppercase;
-    font-weight: var(--fw-bold);
+    font-weight: 700;
     padding: var(--xs) var(--lg);
-    background-color: var(--color-deep-navy);
+    background-color: var(--theme2-color);
     border-radius: var(--border-radius-sm);
     margin-right: var(--md);
+    &:hover {
+        background-color: var(--color-point-pink);
+        color: white;
+    }
 `

@@ -20,6 +20,9 @@ display: inline;
 width: 4rem;
 margin: 1rem;
 &:hover {
-    opacity: 0.7;
+    & > img {
+        transform: rotate(180deg)
+        transition: transform 500ms ease;
+    }
 }
 `
