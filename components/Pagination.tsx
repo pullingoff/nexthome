@@ -46,6 +46,6 @@ li {
 
 const StyledLi = styled.li`
 &:hover {
-    color: var(--hover-color);
+    color: var(--color-point-pink);
 }
 `

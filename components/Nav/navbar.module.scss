@@ -6,7 +6,7 @@
 	z-index: 100;
 	border-bottom: 1px solid var(--border-color); //rgba(200,200,200,0.7);
 	.siteNav {
-		background-color: rgba(255,255,255,0.75);
+		background-color: var(--bg-yellow--opaque);
 		position: relative;
 		backdrop-filter: saturate(180%) blur(20px);
 		top: 0;
@@ -71,7 +71,7 @@
 			position: fixed;
 			top: 60px; // 80이었음 원래
 			left: 0;
-			background: white;
+			background: var(--bg-yellow);
 			width: 100vw;
 			height: 100vh;
 			flex-flow: column nowrap;
@@ -81,9 +81,6 @@
 				margin-bottom: 2vh;
 				margin-left: 8vw;
 			}
-		} 
-		.siteNav {
-			background-color: white!important; 	// 바 투명 없앰
 		}
 	}
 
@@ -106,4 +103,3 @@
 		display: initial;
 	}
 }
-

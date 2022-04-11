@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <StyledFooter>
             <SocialMediaLogos />
-            <CustomLink href="mailto:haileyhe01@gmail.com" >
+            <CustomLink href={`mailto:${METADATA.email}`} >
                 Email: {METADATA.email}
             </CustomLink>
         </StyledFooter>

@@ -26,7 +26,7 @@ font-weight: 800;
 `
 
 const PageDesc = styled.h3`
-color: var(--hover-color);
+color: var(--color-point-pink);
 @media (max-width: ${({theme}) => theme.device.md}) {
     margin: var(--md) 0;
 }

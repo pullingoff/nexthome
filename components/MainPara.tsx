@@ -13,13 +13,10 @@ export default MainPara
 
 const StyledP = styled.p`
 text-align: center;
-font-size: var(--text-base);
+font-size: 1rem;
 line-height: 150%;
 margin: var(--lg);
 cursor: pointer;
 font-weight: 700;
 
-// @media (min-width: ${({theme}) => theme.device.md}) {
-//     font-size: var(--text-title);
-//   }
 `

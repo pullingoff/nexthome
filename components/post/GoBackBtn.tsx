@@ -22,6 +22,6 @@ margin: 10px 0;
 color: var(--color-point-blue);
 font-weight: 700;
 &:hover {
-  color: var(--hover-color);
+  color: var(--color-point-pink);
 }
 `

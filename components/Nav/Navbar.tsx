@@ -3,6 +3,8 @@ import { useState } from "react";
 import { MENUS } from "../../config"
 import NavMenu from "./NavMenu";
 import SpiderLogo from "../SpiderLogo";
+import { GithubLogo } from "public/logos";
+import styled from "styled-components";
 
 const Navbar = () => {
     const [isNavOpen, setNavOpened] = useState(false);
@@ -29,10 +31,20 @@ const Navbar = () => {
                     {MENUS.map((menu, idx) => (
                        <NavMenu key={idx} menu={menu}/>
                     ))}
+                    <NavMenu menu={{title: '', path:'https://github.com/pullingoff'}}
+                            >
+                        <GithubLogo style={textStyle}/>
+                    </NavMenu>
                 </div>
             </nav>
         </header>
     )
 }
+
+const textStyle: React.CSSProperties = {
+    position: 'relative',
+    left: '-5px',
+    bottom: '-8px'
+  };
 
 export default Navbar

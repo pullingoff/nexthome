@@ -1,19 +1,22 @@
 import CustomLink from "../CustomLink";
 import styled from "styled-components";
+import Image from "next/image";
 
 type MenuType = {
     title: string;
     path: string;
-    emoji: string;
+    emoji?: string;
 }
 
-const NavMenu = ({menu} : {
-    menu: MenuType
+const NavMenu = ({menu, children} : {
+    menu: MenuType,
+    children?: React.ReactNode,
 }) => {
     return (
         <StyledMenu>
             <CustomLink href={menu.path} >
                 {menu.title}
+                {children}
             </CustomLink>
         </StyledMenu>
     )
@@ -29,7 +32,9 @@ font-size:25px;
 font-weight: 600;
 & > a{
     &:hover {
-        color: var(--hover-color);
+        color: var(--color-point-pink);
+        transition: all .4s ease;
+        -webkit-transition: all .4s ease;
     }
 }
 `
