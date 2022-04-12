@@ -1,8 +1,5 @@
 import { IProject } from "type"
-// import { ProjectView } from "../components/project/ProjectView"
 import { GetStaticPaths, GetStaticProps } from "next"
-import path from "path"
-import fs from "fs";
 import { ProjectList } from "utils/ProjectList";
 import ProjectView from "components/project/ProjectView";
 
@@ -25,7 +22,7 @@ export const getStaticPaths : GetStaticPaths = async() => {
             slug : pj.slug
         }
     }));
-    
+    console.log(paths)
     return {paths, fallback: 'blocking'}
 }
 
