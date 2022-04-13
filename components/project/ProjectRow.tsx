@@ -12,7 +12,7 @@ const ProjectRow = ({pj}: {
 }) => {
     const imgPath = path.join(thumbDir, pj.thumbnail)
     return (
-        <CustomLink href={`/${pj.slug}`}>
+        <Container href={`/project/${pj.slug}`}>
             <TitleContainer>
                 <Title>{pj.title}</Title>
                 <Type>{pj.shortDescription}</Type>
@@ -20,38 +20,49 @@ const ProjectRow = ({pj}: {
             <ImgContainer>
                 <StyledThumb priority
                     layout="fill"
-                    // objectFit="cover"
+                    objectFit="cover"
                     src={`/${imgPath}`}
                     alt={`${pj.title}의 썸네일`} />
             </ImgContainer>
-        </CustomLink>
+        </Container>
     )
 }
+
+const Container = styled(CustomLink)`
+display: flex;
+margin-left: 3vw;
+margin-bottom: 30px;
+gap: 10px;
+justify-content: space-between;
+@media (min-width: ${({theme}) => theme.device.sm}) {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    gap: 60px;
+}
+`
+
 const TitleContainer = styled.section`
-margin-left: 10vw;
+width: 60%;
+
 `
 const ImgContainer = styled.section`
     position: relative;
-    width: 50vw;
-    min-width: 150px;
-    min-height: 200px;
-    max-height: 300px;
+    width: 40%;
     max-width: 400px;
-    top: -5vw;
-    right: -40vw;
 `
 
 const StyledThumb = styled(Image)`
     position: relative;
 `
 const Title = styled.h1`
-font-size: var(--4xl);
-letter-spacing: 4px;
+font-size: var(--3xl);
 `
 
 const Type = styled.h5`
-font-size: var(--2xl);
+font-size: 1.15rem;
 font-weight: 400;
 margin: 10px 0;
+// max-width: 40%;
+display: inline-block;
 `
 export default ProjectRow;
