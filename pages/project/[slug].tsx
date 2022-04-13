@@ -7,7 +7,6 @@ const ProjectPage = ({project}: {
     project: IProject
 }) => {
 
-    console.log(project)
     return (
         <ProjectView pj={project}/>
     )
@@ -22,7 +21,6 @@ export const getStaticPaths : GetStaticPaths = async() => {
             slug : pj.slug
         }
     }));
-    console.log(paths)
     return {paths, fallback: 'blocking'}
 }
 
