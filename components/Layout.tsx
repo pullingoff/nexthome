@@ -1,4 +1,4 @@
-import Navbar from "./Nav/Navbar"
+import Navbar from "./nav/Navbar"
 import Footer from "./Footer"
 import styled, { ThemeProvider } from "styled-components";
 import styledTheme from "../styles/theme";
@@ -25,4 +25,5 @@ margin: auto;
 padding: 10px 20px;
 background: var(--bg-yellow);
 border-bottom: 1px solid var(--theme2-color);
+min-height: 80vh;
 `
