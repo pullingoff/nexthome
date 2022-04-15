@@ -3,6 +3,9 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import { ProjectList } from "utils/ProjectList";
 import ProjectView from "components/project/ProjectView";
 
+const visibleProjectList = ProjectList.filter(
+    pj => pj.isVisible
+)
 const ProjectPage = ({project}: {
     project: IProject
 }) => {
@@ -16,7 +19,7 @@ export default ProjectPage
 
 export const getStaticPaths : GetStaticPaths = async() => {
     
-    const paths = ProjectList.map(pj => ({
+    const paths = visibleProjectList.map(pj => ({
         params: {
             slug : pj.slug
         }
@@ -32,7 +35,7 @@ interface SlugInterface {
 export const getStaticProps : GetStaticProps = async({params}) => {
     const {slug} = params as SlugInterface
     
-    const project = ProjectList.find((pj => pj?.slug === slug))
+    const project = visibleProjectList.find((pj => pj?.slug === slug))
     
     return {props: {project, }}
 }

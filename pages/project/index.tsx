@@ -3,12 +3,15 @@ import { IProject } from "type";
 import { ProjectList } from "utils/ProjectList";
 import ProjectListView from "components/project/ProjectListView";
 
+const visibleProjectList = ProjectList.filter(
+    pj => pj.isVisible
+)
 export const getStaticProps : GetStaticProps = async() => {
     
     
     return {
         props: {
-            projects: ProjectList
+            projects: visibleProjectList
         }
     }
 }
