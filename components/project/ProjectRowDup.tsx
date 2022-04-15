@@ -5,7 +5,7 @@ import path from 'path'
 import ProjectThumb from "./ProjectThumb";
 import { useState } from "react";
 
-const thumbDir = path.join('images', 'projectThumbnails')
+const thumbDir = path.join('images', 'pjThumb')
 
 
 const ProjectRowDup = ({pj}: {

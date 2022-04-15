@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { IProject } from "type";
 import path from 'path'
 
-const thumbDir = path.join('images', 'projectThumbnails')
+const thumbDir = path.join('images', 'pjThumb')
 
 const ProjectRow = ({pj}: {
     pj: IProject
