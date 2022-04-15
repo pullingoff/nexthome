@@ -1,3 +1,4 @@
+import { imageType } from "image-size/dist/types"
 
 export interface IFrontMatter {
     title: string
@@ -43,5 +44,6 @@ export interface IProject {
   shortDescription: string, 
   longDescription: string,
   link: string, // 관련 링크
-  date: string  // 작업 시기
+  date: string,  // 작업 시기
+  imgPathList?: string[]
 }
