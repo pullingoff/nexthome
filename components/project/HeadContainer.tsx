@@ -34,7 +34,10 @@ color: black;
 `
 
 const Container = styled.section`
-margin-left: 13vw;
+margin-left: 5vw;
+@media (min-width: ${({theme}) => theme.device.sm}) {
+    margin-left: 13vw;
+}
 `
 
 const ImgContainer = styled.div`
