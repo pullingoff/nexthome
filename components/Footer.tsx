@@ -7,9 +7,9 @@ const Footer = () => {
     return (
         <StyledFooter>
             <SocialMediaLogos />
-            <CustomLink href={`mailto:${METADATA.email}`} >
+            <Mail href={`mailto:${METADATA.email}`} >
                 Email: {METADATA.email}
-            </CustomLink>
+            </Mail>
         </StyledFooter>
     )
 }
@@ -30,5 +30,8 @@ const StyledFooter = styled.footer`
     }
 `
 
-const MailDiv = styled.div`
+const Mail = styled(CustomLink)`
+&:hover {
+    font-weight: bold;
+}
 `
