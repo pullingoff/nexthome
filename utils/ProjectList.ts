@@ -3,6 +3,7 @@ import { IProject } from "type";
 export const ProjectList : Array<IProject> = [
     {
         title : ' 📱 Next.js Blog',
+        isVisible: true,
         slug: 'pjnxblog',
         type : 'Webapp',
         thumbnail : 'nxth',
@@ -15,6 +16,7 @@ export const ProjectList : Array<IProject> = [
     },  
     {
         title : 'Vuepress TIL & Note',
+        isVisible: true,
         slug: 'pjtil',
         type : 'Webapp',
         thumbnail: 'til',
@@ -26,14 +28,15 @@ export const ProjectList : Array<IProject> = [
         date: '2022.04'
     },  
     {
-        title : 'JS Quiz',
+        title : '(아직 개발중) JS Quiz',
+        isVisible: false,
         slug: 'pjjsquiz',
         type : 'Webapp',
         thumbnail: 'jsq',
         shortDescription : '대한민국 모든 프론트엔드 개발자를 위해! 자바스크립트 퀴즈를 풀어볼 수 있어요.',
-        longDescription: '자세한설명자세한설명자세한설명자세한설명, \
-            자세한설명자세한설명자세한설명자세한설명자세한설명',
-        link: 'https://blah',
+        longDescription: 'React와 Redux를 사용해 만들어본 자바스크립트 퀴즈입니다. 처음엔 제 지식을 확인해보고 단단히 하고 싶어 시작했지만,\
+        다른 개발자 분들과 나누면 더 좋을거 같아 여러 기능을 추가해봤어요.',
+        link: 'https://github.com/pullingoff',
         date: '2022.04'
     },  
 ]

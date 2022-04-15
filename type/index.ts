@@ -36,6 +36,7 @@ export interface ICustomMeta {
 
 export interface IProject {
   title: string,
+  isVisible: boolean,
   slug: string,     // path (query string)
   type: string,     // 어떤 앱인지
   thumbnail: string, // 이미지 파일명
