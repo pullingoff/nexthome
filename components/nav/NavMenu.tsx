@@ -1,6 +1,5 @@
 import CustomLink from "../CustomLink";
 import styled from "styled-components";
-import Image from "next/image";
 
 type MenuType = {
     title: string;

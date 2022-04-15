@@ -1,6 +1,3 @@
-import Image from "next/image";
-// import Link from "next/link";
-
 import format from "date-fns/format";
 import PostCard from "./post/PostCard"
 import styled from "styled-components";

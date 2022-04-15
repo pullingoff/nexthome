@@ -1,9 +1,9 @@
 import WebImg from "../../public/images/internet.png"
-import Image from "next/image"
 import { capitalize } from "lib"
 import styled from "styled-components"
 import { IProject } from "type"
 import CustomLink from "components/CustomLink"
+import Image from "next/image"
 
 const HeadContainer = ({pj} : {pj: IProject}) => {
     return (
