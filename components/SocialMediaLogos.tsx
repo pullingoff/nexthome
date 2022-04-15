@@ -32,7 +32,3 @@ flex-flow: row nowrap;
 gap: 3px;
 margin-bottom: var(--xl); 
 `
-
-const StyledSvg = styled.svg`
-fill: var(--theme1-color);
-`
