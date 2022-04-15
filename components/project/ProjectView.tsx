@@ -1,16 +1,20 @@
 
 import { IProject } from "type"
-import styled from "styled-components"
 import HeadContainer from "./HeadContainer"
 import ArticleContainer from "./ArticleContainer"
+import ImgGallery from "components/ImgGallery"
+
 const ProjectView = ({pj} : {
     pj: IProject
 }) => {
-    
     return (
         <>
             <HeadContainer pj={pj}/>
             <ArticleContainer pj={pj}/>
+            {
+                pj.imgPathList &&
+                <ImgGallery imgList={pj.imgPathList}/>
+            }
         </>
     )
 }
