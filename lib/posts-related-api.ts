@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { sortByDate } from '.'
-import { POST_DIRS } from '../config';
-import { IFrontMatter, IPost } from 'type';
+import { POST_DIRS } from '@config/index';
+import { IFrontMatter, IPost } from 'types';
 import memoize from 'memoizee';
 
 export const retrieveAllPosts = async() : Promise<IPost[]> => {

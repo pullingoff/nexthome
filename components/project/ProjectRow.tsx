@@ -1,6 +1,6 @@
 import CustomLink from "components/CustomLink";
 import styled from "styled-components";
-import { IProject } from "type";
+import { IProject } from "types";
 import path from 'path'
 import ProjectThumb from "./ProjectThumb";
 import { useState } from "react";

@@ -1,6 +1,6 @@
 import styles from "./navbar.module.scss"
 import { useState } from "react";
-import { MENUS } from "../../config"
+import { MENUS } from "@config/index"
 import NavMenu from "./NavMenu";
 import SpiderLogo from "../SpiderLogo";
 import { GithubLogo } from "public/logos";

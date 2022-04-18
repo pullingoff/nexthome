@@ -1,5 +1,5 @@
 
-import { IProject } from "type"
+import { IProject } from "types"
 import HeadContainer from "./HeadContainer"
 import ArticleContainer from "./ArticleContainer"
 import ImgGallery from "components/ImgGallery"

@@ -1,6 +1,6 @@
-import '../styles/globals.scss';
-import Layout from '../components/Layout';
-import MetaContainer from '../components/MetaContainer';
+import '@styles/globals.scss';
+import Layout from '@components/Layout';
+import MetaContainer from '@components/MetaContainer';
 import { AppProps } from 'next/app';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";

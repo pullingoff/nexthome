@@ -1,6 +1,6 @@
 import CustomLink from "./CustomLink";
 import Image from "next/image";
-import logo from "../public/logo.svg"
+import logo from "@public/logo.svg"
 import styled from "styled-components";
 
 const SpiderLogo = () => {

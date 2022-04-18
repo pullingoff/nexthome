@@ -1,10 +1,10 @@
 import Pagination from "./Pagination";
 import ListRow from "./ListRow";
-import {capitalize} from "../lib"
+import {capitalize} from "@lib/index"
 import CustomLink from "./CustomLink";
 import SearchBar from "./SearchBar";
 import styled from "styled-components"
-import { IPost } from "../type";
+import { IPost } from "../types";
 
 const ListLayout = ({posts, category, 
     // hasNextPage = false,

@@ -1,7 +1,7 @@
 import format from "date-fns/format";
 import PostCard from "./post/PostCard"
 import styled from "styled-components";
-import { IPost } from "type";
+import { IPost } from "types";
 
 // ListLayout에서 한 li임 
 const ListRow = ({category, post}: {

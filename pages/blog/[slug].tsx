@@ -1,11 +1,11 @@
 import fs from "fs";
 import path from "path";
 import matter from 'gray-matter'
-import {parseMarkdownToMdx} from "../../utils/Markdown"
-import Post from "../../components/post/Post";
-import {markdownRegex} from "../../lib";
+import {parseMarkdownToMdx} from "@utils/Markdown"
+import Post from "@components/post/Post";
+import {markdownRegex} from "@lib/index";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { IPost } from "type";
+import { IPost } from "types";
 import { getAllPosts } from "lib/posts-related-api";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 // import rehypeSlug from 'rehype-slug';

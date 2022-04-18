@@ -1,4 +1,4 @@
-import { IProject } from "type"
+import { IProject } from "types"
 import ProjectRow from "./ProjectRow"
 
 const ProjectListView = ({projects}: {

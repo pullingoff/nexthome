@@ -1,10 +1,10 @@
-import ListLayout from "../../../../components/ListLayout"
-import { getAllTagsFromPosts, getAllPosts } from "../../../../lib/posts-related-api";
-import { POSTS_PER_PAGE } from "../../../../config";
-import MetaContainer from "../../../../components/MetaContainer"
-import PageHeader from "../../../../components/PageHeader";
+import ListLayout from "@components/ListLayout"
+import { getAllTagsFromPosts, getAllPosts } from "@lib/posts-related-api";
+import { POSTS_PER_PAGE } from "@config/index";
+import MetaContainer from "@components/MetaContainer"
+import PageHeader from "@components/PageHeader";
 import { GetStaticPaths, GetStaticProps } from "next";
-import {IPost} from "../../../../type"
+import {IPost} from "../../../../types"
 import {ParsedUrlQuery} from 'querystring'
 
 const Tag = ({ posts, tag, pageNo, hasNextPage} :{

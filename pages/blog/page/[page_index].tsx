@@ -1,10 +1,10 @@
-import { getAllPosts } from "../../../lib/posts-related-api"
-import { POSTS_PER_PAGE } from "../../../config"
-import Pagination from "../../../components/Pagination";
-import ListLayout from "../../../components/ListLayout";
-import MetaContainer from "../../../components/MetaContainer";
+import { getAllPosts } from "@lib/posts-related-api"
+import { POSTS_PER_PAGE } from "@config/index"
+import Pagination from "@components/Pagination";
+import ListLayout from "@components/ListLayout";
+import MetaContainer from "@components/MetaContainer";
 import { GetStaticPaths, GetStaticProps, PageConfig } from "next";
-import { ICustomMeta, IPost } from "type";
+import { ICustomMeta, IPost } from "types";
 import {ParsedUrlQuery} from 'querystring'
 
 const category = 'Blog'

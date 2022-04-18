@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next"
-import { IProject } from "type";
+import { IProject } from "types";
 import { ProjectList } from "utils/ProjectList";
 import ProjectListView from "components/project/ProjectListView";
 

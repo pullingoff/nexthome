@@ -1,7 +1,7 @@
-import WebImg from "../../public/images/internet.png"
+import WebImg from "@public/images/internet.png"
 import { capitalize } from "lib"
 import styled from "styled-components"
-import { IProject } from "type"
+import { IProject } from "types"
 import CustomLink from "components/CustomLink"
 import Image from "next/image"
 

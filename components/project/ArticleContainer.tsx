@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IProject } from "type";
+import { IProject } from "types";
 import ImgGallery from "components/ImgGallery";
 
 const ArticleContainer = ({pj} :{

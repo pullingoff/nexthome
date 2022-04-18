@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import CustomLink from "./CustomLink"
-import { METADATA } from "../config"
+import { METADATA } from "@config/index"
 import { GithubLogo, LinkedInLogo, TwitterLogo } from "public/logos"
 
 const SocialMediaLogos = () => {

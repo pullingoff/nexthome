@@ -1,6 +1,6 @@
 import CustomLink from "../CustomLink";
 import styled from "styled-components";
-import { IHeading } from "type";
+import { IHeading } from "types";
 
 const PostHeadings = ({headings}: {
     headings: Array<IHeading>

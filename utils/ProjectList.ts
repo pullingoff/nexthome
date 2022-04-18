@@ -1,4 +1,4 @@
-import { IProject } from "type";
+import { IProject } from "types";
 
 export const ProjectList : Array<IProject> = [
     {

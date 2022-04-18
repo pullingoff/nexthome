@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import CustomLink from '../CustomLink';
 import Tag from "../Tag";
-import { IDateTime, IPost } from '../../type';
+import { IDateTime, IPost } from '../../types';
 
 const PostCard = ({ href, korDate, post}: {
   href: string,

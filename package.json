@@ -21,7 +21,7 @@
     "highlight.js": "^11.5.0",
     "image-size": "^1.0.1",
     "memoizee": "^0.4.15",
-    "next": "12.1.0",
+    "next": "^12.1.5",
     "prism-react-renderer": "^1.3.1",
     "prismjs": "^1.27.0",
     "react": "17.0.2",
@@ -32,11 +32,14 @@
     "remark-slug": "^7.0.1",
     "remark-toc": "^8.0.1",
     "sass": "^1.49.9",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
     "@types/memoizee": "^0.4.7",
+    "@types/react": "^18.0.5",
     "autoprefixer": "^10.4.2",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "next-mdx-remote": "^4.0.0",

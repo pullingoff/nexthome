@@ -1,7 +1,7 @@
 import Navbar from "./nav/Navbar"
 import Footer from "./Footer"
 import styled, { ThemeProvider } from "styled-components";
-import styledTheme from "../styles/theme";
+import styledTheme from "@styles/theme";
 import { ReactNode } from "react";
 
 const Layout = ({ children } : {children: ReactNode}) => {

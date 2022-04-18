@@ -1,5 +1,5 @@
 import CustomLink from "./CustomLink"
-import { METADATA } from "../config"
+import { METADATA } from "@config/index"
 import styled from "styled-components"
 import SocialMediaLogos from "./SocialMediaLogos"
 

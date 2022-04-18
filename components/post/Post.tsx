@@ -1,10 +1,10 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import MetaContainer from "../MetaContainer"
-import { capitalize } from "../../lib"
+import { capitalize } from "@lib/index"
 import PostHeader from "./PostHeader"
 import styled from "styled-components"
 import PostHeadings from "./PostHeadings"
-import {IPost} from "../../type"
+import {IPost} from "types"
 import { useRouter } from 'next/router'
 
 

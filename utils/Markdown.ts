@@ -3,7 +3,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import slug from 'remark-slug'
-import { visit } from 'unist-util-visit'
+import {visit} from 'unist-util-visit'
 import { Node } from 'unist'
 // import sizeOf from 'image-size'
 // import remarkGfm from 'remark-gfm' 라는 좋은 것이 있구나...

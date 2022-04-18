@@ -1,4 +1,4 @@
-import { IPost } from "type";
+import { IPost } from "types";
 
 export const markdownRegex = /(\.mdx$)|(\.md$)|(\.markdown$)/
 

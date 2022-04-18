@@ -5,12 +5,12 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      // "#public/*": ["public/*"],
-      // "#commons/*": ["src/type/*"],
-      "#components/*": ["src/components/*"],
-      // "#constants/*": ["src/constants/*"],
-      "#utils/*": ["src/utils/*"],
-      "#src/*": ["src/*"]
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"],
+      "@styles/*": ["styles/*"],
+      "@public/*": ["public/*"],
+      "@lib/*": ["lib/*"],
     },
     "outDir": "dist",
     "lib": [

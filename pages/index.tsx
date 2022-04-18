@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import React from "react";
-import { IPost } from "type";
-import Main from "../components/Main"
-import RecentPost from '../components/RecentPost'
-import { getRecentPosts } from '../lib/posts-related-api'
+import { IPost } from "types";
+import Main from "@components/Main"
+import RecentPost from '@components/RecentPost'
+import { getRecentPosts } from '@lib/posts-related-api'
 
 
 export const getStaticProps : GetStaticProps = async() => {
