@@ -11,6 +11,7 @@
       "@styles/*": ["styles/*"],
       "@public/*": ["public/*"],
       "@lib/*": ["lib/*"],
+      "@data/*": ["data/*"],
     },
     "outDir": "dist",
     "lib": [
