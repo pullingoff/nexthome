@@ -19,7 +19,7 @@ export default CenteredImg;
 export const ThumbnailContainer = styled.div`
   position: relative;
   width: 100%;
-  &::after {
+  &:after {
     content: '';
     display: block;
     position: absolute;
