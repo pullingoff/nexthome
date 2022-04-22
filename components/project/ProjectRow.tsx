@@ -13,18 +13,7 @@ const ProjectRow = ({pj}: {
 }) => {
     // hover 여부에 따라 Img path를 바꿔 색을 달리함
     const imgPath = path.join(thumbDir, pj.thumbnail)
-    const [realImgPath, setImgPath] = useState(`/${imgPath}-bright.png`);
-    const [bgColor, setBGColor] = useState('initial');
-
-    function mouseOver() {
-        setImgPath(`/${imgPath}-dark.png`);
-        setBGColor(`var(--theme1-color)`)
-    }
-
-    function mouseOut() {
-        setImgPath(`/${imgPath}-bright.png`);
-        setBGColor(`initial`)
-    }
+    
     return (
         <ContainerLi>
             <StyledLink href={`/project/${pj.slug}`}>
@@ -32,24 +21,26 @@ const ProjectRow = ({pj}: {
                     <Title>{pj.title}</Title>
                     <Type>{pj.shortDescription}</Type>
                 </TitleContainer>
-                <ImgContainer 
-                        onMouseOver={mouseOver}
-                        onMouseOut={mouseOut}
-                        style={{backgroundColor:`${bgColor}`}}>
+                <ImgContainer >
                     <ProjectThumb imgAlt={`${pj.title}의 썸네일`} 
-                                  imgPath={realImgPath}/>
+                                  imgPath={`/${imgPath}-bright.png`}/>
                 </ImgContainer>
             </StyledLink>
         </ContainerLi>
     )
 }
 
+
 const ContainerLi = styled.li`
+padding-left: 1.2vw;
+padding-right: 0.8vw;
+@media (min-width: ${({theme}) => theme.device.sm}) {
+    padding: 0 5vw;
+}
 `
 
 const StyledLink = styled(CustomLink)`
-
-
+animation: 3s anim-lineUp 0.1s ease-out 1;
 @media (min-width: ${({theme}) => theme.device.sm}) {
 }
 `
@@ -57,10 +48,9 @@ const StyledLink = styled(CustomLink)`
 const TitleContainer = styled.section`
 position: relative;
 z-index: 2;
-
 &:before {
     content: '';
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid lightgrey;
 }
 `
 const ImgContainer = styled.section`
