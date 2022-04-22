@@ -52,7 +52,7 @@ const CardContainer = styled.div`
 const StyledText = styled.div`
   display: flex;
   flex-direction: column;
-  padding: var(--2xl);
+  padding: var(--3xl);
   padding-bottom: 10px;
 
   & > * {
@@ -67,8 +67,9 @@ const Title = styled.h2`
 `;
 
 const Desc = styled.p`
-  line-height: 1.5;
-  margin: 8px 0;
+font-size: 1.05rem;  
+line-height: 1.5;
+  margin: 6px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;    // 줄 수 제한
   -webkit-box-orient: vertical;

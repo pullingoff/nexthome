@@ -13,7 +13,7 @@ export default MainPara
 
 const StyledP = styled.p`
 text-align: center;
-font-size: 1rem;
+font-size: 1.1rem;
 line-height: 150%;
 margin: var(--lg);
 cursor: pointer;

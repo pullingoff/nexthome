@@ -53,8 +53,8 @@ cursor:pointer;
 
 
 const PostDiv = styled.div`
-margin-top: 20px;
-    
+margin: 20px 2vw 10px;
+font-size: 18px;
     p strong, li strong {
         font-weight: bold;
     }
@@ -85,24 +85,35 @@ margin-top: 20px;
     }
 
     h1 {
-        font-size: 1.4rem;
+        font-size: var(--8xl);
         font-weight: 900;
-        margin-top: 1rem;
-        margin-bottom: 0.3rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
     }
     h2 {
         font-weight: 800;
-        font-size: 1.3rem;
+        font-size: var(--7xl);
         word-break: break-word;
-        margin-top: 1rem;
-        margin-bottom: 0.3rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        
     }
     h3 {
-        font-size: 1.2em;
-        margin-top: 0.8rem;
-        margin-bottom: 0.2rem;
+        font-size: var(--4xl);
+        font-weight: 600;
+        margin-top: 1.3rem;
+        margin-bottom: 0.8rem;
     }
     h4 {
-        font-size: 1.1em;
+        font-size: var(--3xl);
+    }
+    h2, h3, h4 {
+        &:before {
+            content: '# ';
+        }
+    }
+    // h2 바로 아래 p는 margin-top 제거
+    p:where(h2+*):not(:where([class~=not-p] *)) {
+        margin-top: 0;
     }
 `

@@ -75,12 +75,12 @@ max-width: 500px;
 `
 
 const Title = styled.h1`
-font-size: var(--3xl);
+font-size: var(--9xl);
 `
 
 const Type = styled.h5`
 font-size: 1.15rem;
-font-weight: 400;
+font-weight: 500;
 margin: 10px 0;
 display: inline-block;
 @media (min-width: ${({theme}) => theme.device.sm}) {
