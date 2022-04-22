@@ -15,19 +15,12 @@ export default PostHeader
 
 const StyledPublishedTime = styled.time`
   font-weight: 500;
-  color: var(--color-grey);
+  color: salmon;
 `
 
 
 const StyledHeader = styled.header`
 padding-top: var(--lg);
 text-align: center;
-&:after {
-  content: '';
-  display: flex;
-  flex: 1;
-  margin: 30px 2%;
-  height: 1px;
-  background-color: var(--color-grey-light);
-}
+animation: 3s anim-lineUp 0.1s ease-out 1;
 `

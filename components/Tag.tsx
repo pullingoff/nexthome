@@ -16,12 +16,12 @@ const StyledTag = styled(CustomLink)`
     color: var(--color-white);
     text-transform: uppercase;
     font-weight: 700;
-    padding: var(--xs) var(--lg);
-    background-color: var(--theme2-color);
+    padding: 0.125rem 0.75rem;
+    background-color: var(--theme1-color);
     border-radius: var(--border-radius-sm);
     margin-right: var(--md);
     &:hover {
-        background-color: var(--color-point-pink);
+        background-color: salmon;
         color: white;
     }
 `
