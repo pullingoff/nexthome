@@ -23,6 +23,10 @@ const ProjectThumb = ({imgAlt, imgPath}: IProps) => {
 
 const StyledThumb = styled(Image)`
     position: relative;
+    transition: transform .5s ease;
+    &:hover {
+        transform: scale(1.1);
+    }
 `
 
 export default ProjectThumb

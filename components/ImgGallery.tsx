@@ -47,6 +47,10 @@ margin-bottom: 20px;
 `
 const StyledThumb = styled(Image)`
     position: relative;
+    transition: transform .5s ease;
+    &:hover {
+        transform: scale(1.2);
+    }
 `
 
 const ImgItem = styled.section`
