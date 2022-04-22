@@ -1,4 +1,4 @@
-import { IHeaderInfo, IResumeData, ITechStack, IExp } from "types/resumeTypes"
+import { IHeaderInfo, IAboutData, ITechStack, IExp } from "types/aboutTypes"
 
 export const headerInfo : IHeaderInfo = {
     name: '박하은',
@@ -49,18 +49,10 @@ export const workExperiences : IExp[] = [
 ]
 
 export const otherExperiences : IExp[] = [
-    // {
-    //  organization: '대덕인재개발원',
-    //  description: '응용SW 엔지니어링 실무 과정',
-    //  period: '2020.04-2020.12',
-    //  details: [
-    //     'WIX를 벤치마킹한 노코드 웹빌더 어플리케이션 개발 (JAVA, Spring, JSP)',
-    //     'Spring의 Quartz로 메일 전송 Batch 구현, Chart.js로 그래프 시각화',
-    //  ]
-    // },
     {
-        organization: 'Google Developers Group',
-        description: "'Try! Flutter' 오거나이저",
+        organization: "Try! Flutter!",
+        description: "GDG Korea 주최 Flutter 교육 이벤트",
+        link: 'fd',
         period: '2019.06-2019.07',
         details: [
            '이벤트 오거나이저 및 디자이너로서 배너와 로고 디자인 및 제작'
@@ -69,6 +61,7 @@ export const otherExperiences : IExp[] = [
     {
         organization: 'Junction X Seoul',
         description: '160명의 개발자, 기획자와 디자이너가 참가한 해커톤',
+        link: '',
         period: '2019.05',
         details: [
            '해외 투자자와 국내 개발자 간 스타트업 미팅과 멘토링 세션에서 한-영 통역 담당',
@@ -77,13 +70,30 @@ export const otherExperiences : IExp[] = [
     },
 ]
 
-export const resumeData : IResumeData = {
-    license: [
-        'SQL Developer',
-        '네트워크 관리사 2급'
-    ],
+export const licenses : string[] = [
+    'SQL Developer',
+    '네트워크 관리사 2급'
+]
+
+export const education = [
+    {
+        institute: '대덕인재 개발원',
+        period: '2020.04 ~ 2020.12',
+        course: '응용SW 엔지니어링 실무 과정',
+        details: [
+                'WIX를 벤치마킹한 노코드 웹빌더 어플리케이션 개발 (JAVA, Spring, JSP)',
+                'Spring의 Quartz로 메일 전송 Batch 구현, Chart.js로 그래프 시각화',
+             ]
+    },
+    {
+        institute: 'Humber College',
+        period: '2018.07~',
+        course: 'Marketing Diploma'
+    }
+]
     
-}
+
+
 export const techStacks : ITechStack[] = [
     {
         skill: 'JavaScript',

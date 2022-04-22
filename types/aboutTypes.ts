@@ -15,17 +15,22 @@ export interface IWorkProject {
 export interface IExp { 
     organization: string,
     description: string,
+    link: string,
     period: string,
     projects?: IWorkProject[]
     details?: string[]
 }
 
-export interface IResumeData {
-    license: string[]
-}
 
 export interface ITechStack {
     key?: any
     skill: string
     ability: string[]
+}
+
+export interface IEducation {
+    key?: any
+    institute: string
+    period: string
+    details? : string[]
 }
