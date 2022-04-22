@@ -1,5 +1,4 @@
 // Breakpoints
-// $breakpoint-mobile: 1px; // 최소한까지 작아지면 mobile로 치자.
 $breakpoint-mobile: 335px;
 $breakpoint-tablet: 758px;
 $breakpoint-desktop: 980px; // max-width
@@ -8,15 +7,11 @@ $breakpoint-desktop: 980px; // max-width
     #COLOURS
 \*------------------------------------*/
 
-$theme1-color: #233e60; //#031930;
-$theme2-color: #2c3c55; //#2c3c55;
-$theme3-color: #5e7692; //#5e7aa0;
+
+$theme1-color: #2c3c55; //#2c3c55;
+$theme2-color: #5e7692; //#5e7aa0;
 $hover-color: salmon; //#a0afb9; //#8ba0bb;
-$color-main: rgb(19, 38, 78);
-$color-grey: #928e8b;
-$color-grey-light:#eaeaea;
 $color-pale-bg: #ffffff;
 $border-color: rgb(241 245 249 / 1);
 
 $border-on-light: darken($color-pale-bg, 5%);
-$color-text-lighter: $color-grey;

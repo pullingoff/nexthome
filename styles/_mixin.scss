@@ -2,13 +2,6 @@
 
 // mobile first!!
 
-
-// @mixin veryNarrowMobile { // 진짜 mobile 사이즈
-//   @media (min-width: 0px) and (max-width: #{$breakpoint-mobile - 1px}) {
-//     @content;
-//   }
-// }
-
 @mixin notDesktop {       // 지양하자
   @media (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
