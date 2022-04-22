@@ -46,6 +46,6 @@ li {
 
 const StyledLi = styled.li`
 &:hover {
-    color: var(--color-point-pink);
+    color: salmon;
 }
 `

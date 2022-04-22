@@ -26,7 +26,7 @@ font-weight: 800;
 `
 
 const PageDesc = styled.h3`
-color: var(--color-point-pink);
+color: salmon;
 @media (max-width: ${({theme}) => theme.device.md}) {
     margin: var(--md) 0;
 }

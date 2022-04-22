@@ -46,13 +46,19 @@ margin: 10px 0;
 color: var(--color-point-blue);
 font-weight: 700;
 &:hover {
-  color: var(--color-point-pink);
+  color: salmon;
 }
 cursor:pointer;
 `
 
 
 const PostDiv = styled.div`
+&:before {
+    content: ' ';
+    display: block;
+    margin: 30px 2%;
+    border: 1px solid lightgrey;
+  }
 margin: 20px 2vw 10px;
 font-size: 18px;
     p strong, li strong {
@@ -64,7 +70,7 @@ font-size: 18px;
       }
 
     a:hover {
-        color: var(--color-point-pink);
+        color: salmon;
     }
   
     ul {
@@ -115,5 +121,12 @@ font-size: 18px;
     // h2 바로 아래 p는 margin-top 제거
     p:where(h2+*):not(:where([class~=not-p] *)) {
         margin-top: 0;
+    }
+    code {
+        background: white;
+        border-radius: 6px;
+        font-weight: 700;
+        padding: 3px 6px;
+        color: var(--theme1-color);
     }
 `

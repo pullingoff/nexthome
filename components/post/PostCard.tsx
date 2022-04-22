@@ -43,7 +43,7 @@ const CardContainer = styled.div`
   z-index: 0;
   &:hover {
     transform: translateY(-15px);
-    box-shadow: 10px 10px var(--color-point-pink);
+    box-shadow: 10px 10px salmon;
     transition: box-shadow 300ms ease 0.1s, transform 300ms ease 0.1s
   }
 }

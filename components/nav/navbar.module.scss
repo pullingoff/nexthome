@@ -4,7 +4,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 100;
-	border-bottom: 1px solid var(--border-color); //rgba(200,200,200,0.7);
+	border-bottom: 1px solid lightgrey;
 	.siteNav {
 		background-color: var(--bg-yellow--opaque);
 		position: relative;
@@ -55,6 +55,7 @@
 
 @include notDesktop {
 	.open {
+		
 		.bar1 {
 			-webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
 			transform: rotate(-45deg) translate(-9px, 6px) ;
@@ -76,9 +77,8 @@
 			height: 100vh;
 			flex-flow: column nowrap;
 			justify-content: flex-start;
-			
 			li {
-				font-size: var(--9xl);
+				font-size: var(--6xl);
 				margin-bottom: 2vh;
 				margin-left: 8vw;
 			}
