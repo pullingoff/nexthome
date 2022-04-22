@@ -22,10 +22,10 @@ margin-top: var(--lg);
 const StyledInput = styled.input`
 display: block;
 width: 100%;
-color: var(--color-grey);
+color: salmon;
 border-radius: var(--md);
 border-width: 1px;
-border-color: var(--color-grey);
+border-color: salmon;
 padding: var(--md) var(--lg);
 // font-size: 0.875rem;
 line-height: 1.5rem;

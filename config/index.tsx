@@ -15,8 +15,9 @@ export const POSTS_PER_PAGE : number = 8;
 
 // nav bar에 나타날 메뉴
 export const MENUS = [
-    {title: 'Blog', path: '/blog/page/1', emoji: '📝'},
-    {title: 'Project', path: '/project', emoji: '🎞'},
+    {title: '소개', path: '/about', emoji: '🕷'},
+    {title: '생각', path: '/blog/page/1', emoji: '📝'},
+    {title: '프로젝트', path: '/project', emoji: '🎞'},
     {title: 'TIL', path: 'https://pullingoff.github.io/vue-til', emoji: '📓'},
 ]
 
