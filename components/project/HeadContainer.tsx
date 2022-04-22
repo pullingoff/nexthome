@@ -4,17 +4,13 @@ import styled from "styled-components"
 import { IProject } from "types"
 import CustomLink from "components/CustomLink"
 import Image from "next/image"
+import {DarkBtn} from "@components/Button"
 
 const HeadContainer = ({pj} : {pj: IProject}) => {
     return (
         <Container>
             <Title>{capitalize(pj.title)}</Title>  
-            <ImgContainer>
-                <Image width='20px' height='20px' src={WebImg} alt=""/>
-                <StyledLink href={pj.link}>
-                    {pj.link}
-                </StyledLink>
-            </ImgContainer>
+            <DarkBtn href={pj.link} text='링크 보러가기' />
         </Container>
     )
 }
@@ -29,7 +25,7 @@ position: relative;
 top: -5px;
 color: black;
 &:hover {
-    color: var(--color-point-pink);
+    color: salmon;
 }
 `
 
@@ -46,7 +42,7 @@ padding: 0 10px;
 `
 
 const Title = styled.h1`
-font-size: var(--5xl);
+font-size: var(--9xl);
 `
 
 export default HeadContainer
