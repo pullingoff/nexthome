@@ -38,6 +38,6 @@ export const LinkedInLogo = () => {
 const StyledSvg = styled.svg`
 fill: var(--theme1-color);
 &:hover {
-    fill: var(--color-point-pink);
+    fill: salmon;
 }
 `
