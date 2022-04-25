@@ -1,7 +1,10 @@
 import CustomLink from "./CustomLink";
 import styled from "styled-components";
 
-const DarkBtn = ({href, text}) => {
+const DarkBtn = ({href, text}: {
+    href: string
+    text: string
+}) => {
     return (
         <BtnDiv>
             <CustomLink href={href}>
