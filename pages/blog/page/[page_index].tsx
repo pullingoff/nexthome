@@ -1,6 +1,7 @@
 import { getAllPosts } from "@lib/posts-related-api"
 import { POSTS_PER_PAGE } from "@config/index"
-import Pagination from "@components/Pagination";
+import SimplePagination from "@components/SimplePagination";
+import NumberPagination from "@components/NumberPagination";
 import ListLayout from "@components/ListLayout";
 import MetaContainer from "@components/MetaContainer";
 import { GetStaticPaths, GetStaticProps, PageConfig } from "next";
@@ -40,11 +41,11 @@ export const getStaticProps : GetStaticProps = async({params}) => {
     //그때의 url 의 params가 없기 때문에 params 가 없을 때는 1로 지정하는 조건문을 걸어줌.
 	
     const posts= await getAllPosts();
-    const whatisthis= Math.ceil(posts.length / POSTS_PER_PAGE);
+    const pageTotal= Math.ceil(posts.length / POSTS_PER_PAGE);
     
     if (
         isNaN(page) ||
-        page > whatisthis ||
+        page > pageTotal ||
         page < 1
     ) {
         return {
@@ -65,7 +66,7 @@ export const getStaticProps : GetStaticProps = async({params}) => {
     props:{
         posts:orderedPosts,
           currentPage:page,
-        //   pageTotal: whatisthis,
+          pageTotal: pageTotal,
           hasNextPage,
       }
   }
@@ -85,7 +86,7 @@ export default function BlogPage({posts, currentPage, pageTotal, hasNextPage } :
                     pageNo={currentPage}
                     // prevPath={}
                     posts={posts}/>
-        <Pagination category={category} 
+        <NumberPagination category={category} 
                     hasNextPage={hasNextPage}
                     currentPage={currentPage} 
                     pageTotal={pageTotal} />
