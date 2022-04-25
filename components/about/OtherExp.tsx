@@ -1,12 +1,30 @@
 import { IExp } from "types/aboutTypes";
 import {Detail, DetailUl, PjContainer, Org, OrgWImg, JobDate} from "@styles/aboutStyle"
 import styled from "styled-components";
+import CustomLink from "@components/CustomLink";
+
+const ChainLink = ({href}: {
+    href: string
+}) => {
+    return (
+        <StyledChainLink href={href} target='blank'>
+            🔗
+        </StyledChainLink>
+    )
+}
+
+const StyledChainLink = styled(CustomLink)`
+margin-left: 5px;
+`
 
 const OtherExp = (exp : IExp) => {
     return (
         <PjContainer>
-            {exp.link.length > 0 
-                ? <OrgWImg href={exp.link}>{exp.organization}</OrgWImg>
+            {exp.link 
+                ? <OrgWImg>
+                        {exp.organization}
+                    <ChainLink href={exp.link} />
+                 </OrgWImg>
                 : <Org>{exp.organization}</Org>
             }
             <JobDate>{exp.description} | {exp.period}</JobDate>
