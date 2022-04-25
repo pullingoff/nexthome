@@ -66,6 +66,9 @@ max-width: 500px;
 
 const Title = styled.h1`
 font-size: var(--9xl);
+&:hover {
+    color: salmon;
+}
 `
 
 const Type = styled.h5`
