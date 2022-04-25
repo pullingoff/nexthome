@@ -44,7 +44,7 @@ const Navbar = () => {
 const textStyle: React.CSSProperties = {
     position: 'relative',
     left: '-5px',
-    bottom: '-8px'
+    bottom: '-5px'
   };
 
 export default Navbar

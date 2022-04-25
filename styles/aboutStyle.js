@@ -3,7 +3,6 @@ import CustomLink from "@components/CustomLink"
 // about에서 공통되는 부분만 여기에 적음. 공통 아닌 것은 각 컴포넌트 안에 있음.
 
 
-
 export const StyledMain = styled.main`
 &:before {
   content: ' ';
@@ -14,20 +13,22 @@ export const StyledMain = styled.main`
   display: block;
 }
 `
-
-export const Org = styled.span`
+export const OrgNoHover = styled.span`
 display: block;
 font-weight: 800;
 font-size: var(--5xl);
 margin-bottom: 7px;
 `
 
-export const OrgWImg = styled.span`
-display: block;
-font-weight: 800;
-font-size: var(--5xl);
-margin-bottom: 7px;
-cursor: pointer;
+export const Org = styled(OrgNoHover)`
+&:hover {
+  cursor: pointer;
+  color: salmon;
+}
+`
+
+export const OrgWImg = styled(Org)`
+
 `
 
 
