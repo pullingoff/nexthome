@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import mainImg from "@public/images/main.JPG"
-import CustomLink from "./CustomLink";
+import CustomLink from "../CustomLink";
 import styled from "styled-components";
 import MainPara from "./MainPara";
 

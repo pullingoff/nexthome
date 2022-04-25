@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { IPost } from '../types'
+import { IPost } from '../../types'
 
 const RecentPost = ({recentPosts}: {recentPosts: IPost[]}) => {
     return (
