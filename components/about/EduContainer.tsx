@@ -2,12 +2,13 @@ import {education} from '../../data/about'
 import {SectionHeader,StyledMain, StyledOrgContainer} from "@styles/aboutStyle.js"
 import Edu from './Edu'
 import { IEducation } from 'types/aboutTypes'
+import CustomEmoji from '@components/CustomEmoji'
 
 export default function EduContainer () {
     return (
         <StyledMain>
             <SectionHeader>
-                <span role='img' aria-label="">👩🏻‍💻 </span>
+                <CustomEmoji aria='Woman Technologist'>👩🏻‍💻 </CustomEmoji>
                 Education.
             </SectionHeader>
             <StyledOrgContainer>
