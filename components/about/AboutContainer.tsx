@@ -1,4 +1,3 @@
-import AboutHeader from './AboutHeader'
 import GridHeader from "./GridHeader"
 import WorkExpContainer from './WorkExperience'
 import TechStack from './TechContainer'
