@@ -2,7 +2,7 @@ import CustomLink from "./CustomLink";
 import styled from "styled-components";
 
 
-const Pagination = ({category, pageTotal, currentPage, hasNextPage} : {
+const SimplePagination = ({category, pageTotal, currentPage, hasNextPage} : {
     category: string,
     pageTotal: number,
     currentPage: number, 
@@ -10,8 +10,8 @@ const Pagination = ({category, pageTotal, currentPage, hasNextPage} : {
 }) => {
     const isFirst = currentPage === 1;
     const isLast = currentPage === pageTotal;
-
     const path = category.toLowerCase();
+    
     return (
         <StyledPagUl>
             { !isFirst && 
@@ -32,7 +32,7 @@ const Pagination = ({category, pageTotal, currentPage, hasNextPage} : {
     )
 }
 
-export default Pagination
+export default SimplePagination
 
 const StyledPagUl = styled.ul`
 display: flex;
