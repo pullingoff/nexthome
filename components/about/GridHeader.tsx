@@ -30,8 +30,8 @@ const IntroLines = styled.span`
 display: block;
 font-size: 1.2rem;
 margin: var(--xl) 0;
-line-height: 1.4rem;
 font-weight: 500;
+letter-spacing: initial;
 `
 
 const StyledEmail = styled.span`
