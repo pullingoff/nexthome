@@ -15,7 +15,7 @@ export interface IWorkProject {
 export interface IExp { 
     organization: string,
     description: string,
-    link: string,
+    link?: string,
     period: string,
     projects?: IWorkProject[]
     details?: string[]
@@ -31,6 +31,7 @@ export interface ITechStack {
 export interface IEducation {
     key?: any
     institute: string
+    course: string
     period: string
     details? : string[]
 }
