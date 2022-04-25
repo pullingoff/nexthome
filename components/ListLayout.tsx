@@ -1,4 +1,4 @@
-import Pagination from "./Pagination";
+import SimplePagination from "./SimplePagination";
 import ListRow from "./ListRow";
 import {capitalize} from "@lib/index"
 import CustomLink from "./CustomLink";
