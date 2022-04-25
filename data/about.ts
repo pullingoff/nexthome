@@ -1,4 +1,4 @@
-import { IHeaderInfo, IAboutData, ITechStack, IExp } from "types/aboutTypes"
+import { IHeaderInfo, ITechStack, IExp, IEducation } from "types/aboutTypes"
 
 export const headerInfo : IHeaderInfo = {
     name: '박하은',
@@ -6,9 +6,8 @@ export const headerInfo : IHeaderInfo = {
     email: "haileyhe01@gmail.com",
     // firstSentences는 문단 형식으로 나뉘게 했으므로 문장 길이보다 문단길이로 쓰는게 좋다.
     firstSentences: [
-        // '유일하게 오-래 엉덩이 붙이고 할 수 있는게 코딩이라 개발을 시작했습니다.',
-        '많은 질문을 해서 지식을 하나로 엮는 것과 새로운 무언가에 파고들어 내 것으로 만드는 걸 좋아합니다.',
-        '혼자보단 함께 하는 개발과 공부를 좋아하고, 능동적으로 다양한 개발 경험을 쌓고 있습니다.',
+        '새로운 무언가에 파고들어 내 것으로 만드는 걸 좋아합니다. 개발도 그렇게 시작했고, 다양한 질문을 통해 지식을 하나로 엮는 습관이 있습니다. 프론트엔드를 주로 하지만 파이썬의 간결함을 좋아합니다.',
+        '혼자보단 함께 하는 개발과 공부를 좋아하고, 사람들에게서 동기와 에너지를 얻습니다. 능동적으로 다양한 개발 경험을 쌓고 있습니다.',
         // '깊게 파고들 개발 분야를 찾기 위해 많은 것을 겪어보려고 하고 있습니다.',
     ]
 }
@@ -52,7 +51,7 @@ export const otherExperiences : IExp[] = [
     {
         organization: "Try! Flutter!",
         description: "GDG Korea 주최 Flutter 교육 이벤트",
-        link: 'fd',
+        link: 'https://www.linkedin.com/in/hailey-park/overlay/experience/1494287277/multiple-media-viewer/?treasuryMediaId=1564360948946',
         period: '2019.06-2019.07',
         details: [
            '이벤트 오거나이저 및 디자이너로서 배너와 로고 디자인 및 제작'
@@ -75,9 +74,9 @@ export const licenses : string[] = [
     '네트워크 관리사 2급'
 ]
 
-export const education = [
+export const education : IEducation[] = [
     {
-        institute: '대덕인재 개발원',
+        institute: '대덕인재개발원',
         period: '2020.04 ~ 2020.12',
         course: '응용SW 엔지니어링 실무 과정',
         details: [
@@ -99,7 +98,7 @@ export const techStacks : ITechStack[] = [
         skill: 'JavaScript',
         ability: [
             'ES6+ 문법에 익숙하고 TypeScript를 사용할 줄 압니다.',
-            'jQuery 없이 바닐라JS로 원하는 것을 구현할 수 있습니다.',
+            'jQuery 없이 DOM을 다루거나 원하는 것을 구현할 수 있습니다.',
             'React.js를 사용해 동적 블로그를 만들 수 있습니다.'
         ]
     },
