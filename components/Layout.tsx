@@ -20,7 +20,7 @@ const Layout = ({ children } : {children: ReactNode}) => {
 export default Layout
 
 const Content = styled.main`
-max-width: var(--breakpoint-desktop);
+max-width: calc(var(--breakpoint-desktop) - 100px);
 margin: auto;
 padding: 10px 30px;
 background: var(--bg-yellow);

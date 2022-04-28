@@ -16,7 +16,10 @@ export const StyledMain = styled.main`
 export const OrgNoHover = styled.span`
 display: block;
 font-weight: 800;
+font-size: var(--3xl);
+@media (min-width: ${({theme}) => theme.device.sm}) {
 font-size: var(--5xl);
+}
 margin-bottom: 7px;
 `
 
@@ -54,22 +57,39 @@ margin: 5px 0;
 
 
 export const PjTitle = styled.h4`
+@media (min-width: ${({theme}) => theme.device.sm}) {
 font-size: 1.35rem;
+}
+font-size: var(--xl);
 margin: 10px 0;
 `
 
 
 export const PExplain = styled.p`
   font-weight: 500;
+  @media (min-width: ${({theme}) => theme.device.sm}) {
   font-size: 1.1rem;
+  }
   margin-top:1px;
   margin-bottom: 7px;
   padding-left: 5px;
 `
 
+export const PjTech = styled.span`
+font-weight: 300;
+// margin-right: 1rem;
+padding-left: 5px;
+&+&:before {
+  content: '|';
+  margin-right: 5px;
+}
+`
+
 export const PjContainer = styled.section`
-  font-size: 18px;
-  font-weight:bold;
+@media (min-width: ${({theme}) => theme.device.sm}) {  
+font-size: 18px;
+}
+  // font-weight:bold;
   margin-top: var(--lg);
   margin-bottom: var(--md);
 `
@@ -80,8 +100,8 @@ list-style: none;
 `
 
 export const Detail = styled.li`
-font-weight: 600;
-font-size: 1.2rem;
+// font-weight: 600;
+// font-size: 1.2rem;
 margin: 4px 0;
 padding-left: 5px;
 &:before {
@@ -94,5 +114,7 @@ padding-left: 5px;
 
 export const JobDate = styled.span`
 font-weight: 400;
+@media (min-width: ${({theme}) => theme.device.sm}) {
 font-size: var(--2xl);
+}
 `
