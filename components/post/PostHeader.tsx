@@ -22,5 +22,5 @@ const StyledPublishedTime = styled.time`
 const StyledHeader = styled.header`
 padding-top: var(--lg);
 text-align: center;
-animation: 3s anim-lineUp 0.1s ease-out 1;
+animation: 1s anim-lineUp 0.1s ease-out 1;
 `
