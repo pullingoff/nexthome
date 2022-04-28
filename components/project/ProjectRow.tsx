@@ -40,7 +40,7 @@ padding-right: 0.8vw;
 `
 
 const StyledLink = styled(CustomLink)`
-animation: 3s anim-lineUp 0.1s ease-out 1;
+animation: 2s anim-lineUp 0.1s ease-out 1;
 @media (min-width: ${({theme}) => theme.device.sm}) {
 }
 `
