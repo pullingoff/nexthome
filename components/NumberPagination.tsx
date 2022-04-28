@@ -10,7 +10,7 @@ interface IPagination {
 }
 
 const NumberPagination = ({ category, pageTotal, currentPage, hasNextPage }: IPagination) => {
-//   const pageTotal = pageTotal
+
   const isFirst = currentPage === 1;
   const isLast = currentPage === pageTotal;
   const path = category.toLowerCase();
