@@ -10,7 +10,7 @@ const HeadContainer = ({pj} : {pj: IProject}) => {
     return (
         <Container>
             <Title>{capitalize(pj.title)}</Title>  
-            <DarkBtn href={pj.link} text='링크 보러가기' />
+            <DarkBtn href={pj.link} text='보러가기' />
         </Container>
     )
 }
