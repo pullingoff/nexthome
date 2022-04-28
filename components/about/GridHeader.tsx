@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { headerInfo } from '@data/about'
 
+
 const GridHeader = () => {
     
     return (
@@ -10,7 +11,8 @@ const GridHeader = () => {
                 <StyledJob>{headerInfo.job}</StyledJob>
             </StyledTitle>
             <StyledEmail>
-                Email: {headerInfo.email}
+                Email: {headerInfo.email} <br />
+                {/* Github: {headerInfo.github} */}
             </StyledEmail>
             <div>
                 {headerInfo.firstSentences &&
@@ -28,16 +30,18 @@ export default GridHeader
 
 const IntroLines = styled.span`
 display: block;
-font-size: 1.2rem;
-margin: var(--xl) 0;
+margin: var(--md) 0;
 font-weight: 500;
-letter-spacing: initial;
+@media (min-width: ${({theme}) => theme.device.sm}) {
+    font-size: 1.2rem;
+}
 `
 
 const StyledEmail = styled.span`
-font-size: 1.2rem;
+font-size: 1.1rem;
 font-weight: 400;
 margin:6px 0;
+letter-spacing: initial;
 `
 const StyledJob = styled.span`
 font-size: var(--3xl);
