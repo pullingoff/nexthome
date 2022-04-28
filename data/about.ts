@@ -86,8 +86,11 @@ export const education : IEducation[] = [
     },
     {
         institute: 'Humber College',
-        period: '2018.07~',
-        course: 'Marketing Diploma'
+        period: '2018.07 ~ 2019.12',
+        course: 'Marketing Diploma',
+        details: [
+            ''
+        ]
     }
 ]
     
