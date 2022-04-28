@@ -2,11 +2,13 @@ export interface IHeaderInfo {
     name: string,
     job: string,
     email: string,
+    github: string,
     firstSentences: string[]
 }
 
 export interface IWorkProject {
     title: string,
+    tech: string[],
     description: string,
     details: string[]
 }

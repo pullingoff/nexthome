@@ -4,13 +4,50 @@ export const headerInfo : IHeaderInfo = {
     name: '박하은',
     job: 'Software Engineer',
     email: "haileyhe01@gmail.com",
+    github: "https://github.com/pullingoff",
     // firstSentences는 문단 형식으로 나뉘게 했으므로 문장 길이보다 문단길이로 쓰는게 좋다.
     firstSentences: [
-        '새로운 무언가에 파고들어 내 것으로 만드는 걸 좋아합니다. 개발도 그렇게 시작했고, 다양한 질문을 통해 지식을 하나로 엮는 습관이 있습니다. 프론트엔드를 주로 하지만 파이썬의 간결함을 좋아합니다.',
-        '혼자보단 함께 하는 개발과 공부를 좋아하고, 사람들에게서 동기와 에너지를 얻습니다. 능동적으로 다양한 개발 경험을 쌓고 있습니다.',
+        '다양한 질문을 통해 지식을 하나로 엮는 걸 좋아합니다.',
+        '함께하는 개발, 공부를 좋아하고 사람들에게서 동기와 에너지를 얻습니다.',
+        // '새로운 무언가에 파고들어 내 것으로 만드는 걸 좋아합니다. 개발도 그렇게 시작했고, 다양한 질문을 통해 지식을 하나로 엮는 습관이 있습니다. 프론트엔드를 주로 하지만 파이썬의 간결함을 좋아합니다.',
+        // '혼자보단 함께 하는 개발과 공부를 좋아하고, 사람들에게서 동기와 에너지를 얻습니다. 능동적으로 다양한 개발 경험을 쌓고 있습니다.',
         // '깊게 파고들 개발 분야를 찾기 위해 많은 것을 겪어보려고 하고 있습니다.',
     ]
 }
+
+export const projectExperiences : IExp[] = [
+    {
+        organization: 'Dev6',
+        description: 'Frontend Developer',
+        period: '2021.01 ~ 현재',
+        projects: [
+            {
+                title: 'LeadPet: 유기견 ',
+                tech: ['React', 'Redux', 'TypeScript', 'Github', 'Figma'],
+                description: '유기견...',
+                details: [
+                    '관리페이지 개발'
+                ]
+            },
+        ]
+    },
+    {
+        organization: 'JamToMer',
+        description: 'Frontend Developer',
+        period: '2021.01 ~ 현재',
+        projects: [
+            {
+                title: 'Message To Me',
+                tech: ['React', 'Redux', 'TypeScript', 'GitLab'],
+                description: '메시지...',
+                details: [
+                    'Login 개발'
+                ]
+            },
+        ]
+    },
+]
+
 
 export const workExperiences : IExp[] = [
     {
@@ -19,7 +56,8 @@ export const workExperiences : IExp[] = [
         period: '2020.12 ~ 현재',
         projects: [
             {
-                title: '국가정보자원관리원 인공지능 모니터링맵 3차 구축',
+                title: '국가정보자원관리원 인공지능기반 서비스중심 종합관제 보안시스템 모니터링맵 (nMAPS)',
+                tech: ['Python', 'Docker'],
                 description: '해당 기관 산하 호스트간의 관계를 시각화해 연결 상태 및 문제를 바로 관제할 수 있도록 한다.',
                 details: [
                     'Host Node와 관계(Edge)를 GDB로 나타낼 수 있도록 파이썬으로 모델링',
@@ -29,6 +67,7 @@ export const workExperiences : IExp[] = [
             },
             {
                 title: '한국과학기술원 딥러닝 기반 약물 상호작용 예측 시스템 구축 및 하이브리드 앱 개발',
+                tech: ['PHP', 'JavaScript'],
                 description: '유저가 선택한 의약품을 기준으로 함께 복용하면 위험한 의약품 (DUR) 조합을 보여준다.',
                 details: [
                     'PHP로 필요한 데이터를 받아와 가공해 프론트엔드 단으로 전송',
@@ -37,6 +76,7 @@ export const workExperiences : IExp[] = [
             },
             {
                 title: '창업진흥원 온라인 창업교육 플랫폼 구축',
+                tech: ['JAVA', 'NAVER API'],
                 description: '유저에게 선택적으로 메일, SMS와 카카오 알림톡으로 알림을 보낸다.',
                 details: [
                     '관리자의 웹 알림 전송 및 보낸 알림 조회 페이지 개발',
