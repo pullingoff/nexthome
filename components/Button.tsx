@@ -6,15 +6,13 @@ const DarkBtn = ({href, text}: {
     text: string
 }) => {
     return (
-        <BtnDiv>
-            <CustomLink href={href}>
+            <BtnDiv href={href}>
                 {text}
-            </CustomLink>
-        </BtnDiv>
+            </BtnDiv>
     )
 }
 
-const BtnDiv = styled.div`
+const BtnDiv = styled(CustomLink)`
 display: inline-block;
 padding: 10px 30px;
 background-color: var(--theme1-color);
