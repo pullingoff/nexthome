@@ -42,7 +42,7 @@ export interface IProject {
   type: string,     // 어떤 앱인지
   thumbnail: string, // 이미지 파일명
   shortDescription: string, 
-  longDescription: string,
+  longDescription: string[],
   link: string, // 관련 링크
   date: string,  // 작업 시기
   imgPathList?: string[]
