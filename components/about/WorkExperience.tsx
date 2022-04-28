@@ -1,4 +1,4 @@
-import {workExperiences} from '../../data/about'
+import {workExperiences} from '@data/about'
 import {StyledOrgContainer, SectionHeader, StyledMain} from "@styles/aboutStyle"
 
 import OrgContainer from './OrgContainer'
