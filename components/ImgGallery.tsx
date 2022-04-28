@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import Image from "next/image"
 import path from 'path'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const ImgGallery = ({imgList} : {
     imgList : string[]
@@ -11,11 +13,22 @@ const ImgGallery = ({imgList} : {
         <BlockContainer>
             {imgList && imgList.map((img, idx) => (
                 <ImgItem key={idx}>
-                    <StyledThumb priority
-                            layout="fill"
-                            objectFit="contain"
-                            src={`/${path.join(imgDir, img)}`}
-                            alt={`${idx} 사진`}/>
+                    <Zoom 
+                        zoomMargin={1} 
+                        wrapStyle={{ 
+                            minWidth: "100%", 
+                            minHeight:"100%", 
+                            height:"200px" }}
+                        >
+                        <StyledThumb 
+                                priority
+                                layout="fill"
+                                objectFit="contain"
+                                className="img"
+                                
+                                src={`/${path.join(imgDir, img)}`}
+                                alt={`${idx} 사진`}/>
+                    </Zoom>
                 </ImgItem>
             ))}
         </BlockContainer>
@@ -57,5 +70,7 @@ const ImgItem = styled.section`
 position: relative;
 width: 100%;
 min-height: 200px;
+@media (min-width: ${({theme}) => theme.device.sm}) {
+}
 `
 export default ImgGallery
