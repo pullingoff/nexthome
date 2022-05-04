@@ -6,7 +6,7 @@ import CustomLink from "@components/CustomLink"
 export const StyledMain = styled.main`
 &:before {
   content: ' ';
-  border-top: 1px solid lightgrey;
+  border-top: 1px dashed lightgrey;
   margin-top: 20px;
   position: relative;
   top: 1px;
