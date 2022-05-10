@@ -4,7 +4,6 @@ import { MENUS } from "@config/index"
 import NavMenu from "./NavMenu";
 import SpiderLogo from "../SpiderLogo";
 import { GithubLogo } from "public/logos";
-import styled from "styled-components";
 
 const Navbar = () => {
     const [isNavOpen, setNavOpened] = useState(false);
