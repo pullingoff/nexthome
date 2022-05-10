@@ -5,11 +5,13 @@ import "@styles/aboutStyle.js"
 import styled from 'styled-components'
 import OtherExperiences from './OtherExpContainer'
 import EduContainer from "./EduContainer"
+import ProjectContainer from "./ProjectContainer"
 
 export default function AboutContainer() {
     return (
         <StyledAboutContainer>
             <GridHeader/>
+            <ProjectContainer/>
             <WorkExpContainer/>
             <OtherExperiences/>
             <TechStack/>
