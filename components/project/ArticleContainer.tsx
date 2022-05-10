@@ -32,13 +32,13 @@ margin: 0.5rem 0;
 `
 
 const Container = styled.section`
-margin:  2vw;
+// margin:  2vw;
 padding: 10px;
 
 @media (min-width: ${({theme}) => theme.device.sm}) {
-    margin:  0 5vw 5vw 10vw;
+    // margin:  0 5vw 5vw 10vw;
     // min-height: 300px;
-    padding: 30px 50px 0;
+    // padding: 30px 50px 0;
 }
 
 `;

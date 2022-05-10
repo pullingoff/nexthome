@@ -54,14 +54,14 @@ z-index: 2;
 }
 `
 const ImgContainer = styled.section`
-position: relative;
-right: -10vw;
-z-index: 1;
-max-width: 500px;
-@media (min-width: ${({theme}) => theme.device.sm}) {
-    top: -50px;
-    right: -35vw;
-}
+// position: relative;
+// right: -10vw;
+// z-index: 1;
+// max-width: 500px;
+// @media (min-width: ${({theme}) => theme.device.sm}) {
+//     top: -50px;
+//     right: -35vw;
+// }
 `
 
 const Title = styled.h1`
@@ -78,7 +78,7 @@ margin: 10px 0;
 display: inline-block;
 @media (min-width: ${({theme}) => theme.device.sm}) {
     position: absolute;
-    max-width: 30vw;
+    // max-width: 30vw;
 }
 `
 export default ProjectRow;
