@@ -9,6 +9,7 @@ export interface IHeaderInfo {
 export interface IWorkProject {
     title: string,
     tech: string[],
+    link?: string,
     description: string,
     details: string[]
 }

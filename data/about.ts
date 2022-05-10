@@ -58,6 +58,7 @@ export const workExperiences : IExp[] = [
             {
                 title: '국가정보자원관리원 인공지능기반 서비스중심 종합관제 보안시스템 모니터링맵 (nMAPS)',
                 tech: ['Python', 'Docker'],
+                link: 'https://pullingoff.github.io/vue-til',
                 description: '해당 기관 산하 호스트간의 관계를 시각화해 연결 상태 및 문제를 바로 관제할 수 있도록 한다.',
                 details: [
                     'Host Node와 관계(Edge)를 GDB로 나타낼 수 있도록 파이썬으로 모델링',
