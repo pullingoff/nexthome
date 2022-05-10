@@ -11,7 +11,7 @@ export default function AboutContainer() {
     return (
         <StyledAboutContainer>
             <GridHeader/>
-            <ProjectContainer/>
+            {/* <ProjectContainer/> */}
             <WorkExpContainer/>
             <OtherExperiences/>
             <TechStack/>
