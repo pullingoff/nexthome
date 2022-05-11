@@ -20,13 +20,15 @@ const ProjectThumb = ({imgAlt, imgPath}: IProps) => {
     )
 }
 
+export const HoverZoomImage = styled(Image)`
+transition: transform .5s ease;
+&:hover {
+    transform: scale(1.1);
+}
+`
 
-const StyledThumb = styled(Image)`
+const StyledThumb = styled(HoverZoomImage)`
     position: relative;
-    transition: transform .5s ease;
-    &:hover {
-        transform: scale(1.1);
-    }
 `
 
 export default ProjectThumb

@@ -2,6 +2,7 @@ import {Detail, DetailUl, Org, JobDate} from "@styles/aboutStyle"
 import AboutProject from "./AboutProject"
 import styled from "styled-components"
 import { IExp, IWorkProject } from "types/aboutTypes"
+import CustomLink from "@components/CustomLink"
 
 
 const OrgContainer = (exp: IExp) => {

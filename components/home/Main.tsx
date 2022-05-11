@@ -4,6 +4,7 @@ import mainImg from "@public/images/main.JPG"
 import CustomLink from "../CustomLink";
 import styled from "styled-components";
 import MainPara from "./MainPara";
+import { HoverZoomImage } from "@components/project/ProjectThumb";
 
 
 const Main =() => {
@@ -35,6 +36,6 @@ position: relative;
 }
 `
 
-const StyledImg = styled(Image)`
+const StyledImg = styled(HoverZoomImage)`
 cursor: pointer;
 `
