@@ -61,7 +61,7 @@ export const getStaticProps : GetStaticProps = async({params}) => {
     // (처음 시작인덱스 * 보여질 아이템 수), (다음 인덱스 * 다음 보여질 아이템 수)로 배열 자르기
     
     const hasNextPage = Math.floor(posts.length / POSTS_PER_PAGE) > page
-    // console.log(page, hasNextPage)
+    
   return {
     props:{
         posts:orderedPosts,
@@ -78,7 +78,7 @@ export default function BlogPage({posts, currentPage, pageTotal, hasNextPage } :
     pageTotal: number,
     hasNextPage: boolean,
 }) {
-    // const {title} = customMeta
+    
     return (
     <>
         <MetaContainer customMeta={customMeta}/>

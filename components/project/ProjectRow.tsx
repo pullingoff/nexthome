@@ -5,14 +5,12 @@ import path from 'path'
 import ProjectThumb from "./ProjectThumb";
 import { useState } from "react";
 
-const thumbDir = path.join('images', 'pjThumb')
 
 
 const ProjectRow = ({pj}: {
     pj: IProject
 }) => {
-    // hover 여부에 따라 Img path를 바꿔 색을 달리함
-    const imgPath = path.join(thumbDir, pj.thumbnail)
+    const imgPath = path.join('images', 'pjThumb', pj.thumbnail)
     
     return (
         <ContainerLi>
