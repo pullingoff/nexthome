@@ -20,9 +20,9 @@ display: inline;
 width: 4rem;
 margin: 1rem;
 &:hover {
-    & > img {
-        transform: rotate(180deg)
-        transition: transform 500ms ease;
+    & span img {
+        transform: rotate(360deg);
+        transition: transform .25s ease-in-out;
     }
 }
 `

@@ -53,14 +53,16 @@ cursor:pointer;
 
 
 const PostDiv = styled.div`
-&:before {
-    content: ' ';
-    display: block;
-    margin: 30px 2%;
-    border: 1px solid lightgrey;
-  }
-margin: 20px 2vw 10px;
-font-size: 18px;
+    &:before {
+        content: ' ';
+        display: block;
+        margin: 30px 2%;
+        border: 1px solid lightgrey;
+    }
+    margin: 20px 2vw 10px;
+    font-size: 18px;
+    word-break: break-word;
+
     p strong, li strong {
         font-weight: bold;
     }
@@ -75,6 +77,7 @@ font-size: 18px;
   
     ul {
         margin-bottom: 1rem;
+        line-height: 180%;
         li {
             list-style: none;
             padding-left: 1rem;
@@ -85,6 +88,7 @@ font-size: 18px;
     }
     ol {
         margin-bottom: 1rem;
+        line-height: 180%;
     }
     p img {
       margin: 15px 0;
@@ -92,28 +96,23 @@ font-size: 18px;
 
     h1 {
         font-size: var(--8xl);
-        font-weight: 900;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
     }
     h2 {
         font-weight: 800;
         font-size: var(--7xl);
-        word-break: break-word;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        
     }
     h3 {
-        font-size: var(--4xl);
+        font-size: var(--5xl);
         font-weight: 600;
-        margin-top: 1.3rem;
-        margin-bottom: 0.8rem;
     }
     h4 {
         font-size: var(--3xl);
     }
-    h2, h3, h4 {
+    h1, h2, h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    h2, h3 {
         &:before {
             content: '# ';
         }
