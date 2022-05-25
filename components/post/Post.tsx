@@ -57,7 +57,7 @@ const PostDiv = styled.div`
         content: ' ';
         display: block;
         margin: 30px 2%;
-        border: 1px solid lightgrey;
+        // border: 1px solid lightgrey;
     }
     margin: 20px 2vw 10px;
     font-size: 18px;
@@ -103,7 +103,7 @@ const PostDiv = styled.div`
     }
     h3 {
         font-size: var(--5xl);
-        font-weight: 600;
+        font-weight: 700;
     }
     h4 {
         font-size: var(--3xl);
@@ -111,6 +111,11 @@ const PostDiv = styled.div`
     h1, h2, h3 {
         margin-top: 2rem;
         margin-bottom: 1rem;
+    }
+
+    h1, h2 {
+        border-bottom: 1px solid rgb(211, 211, 211, 0.5);
+        padding-bottom: 1rem;
     }
     h2, h3 {
         &:before {

@@ -15,7 +15,7 @@ export default PostHeader
 
 const StyledPublishedTime = styled.time`
   font-weight: 500;
-  color: salmon;
+  color: var(--theme1-color);
 `
 
 

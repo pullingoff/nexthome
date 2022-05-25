@@ -22,7 +22,7 @@ export default Layout
 const Content = styled.main`
 max-width: calc(var(--breakpoint-desktop) - 100px);
 margin: auto;
-padding: 10px 30px;
+padding: 10px 15px;
 background: var(--bg-yellow);
 border-bottom: 1px solid lightgrey;
 min-height: 80vh;
