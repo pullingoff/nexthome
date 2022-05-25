@@ -25,7 +25,7 @@ margin-bottom: var(--lg);
 &:before {
   content: ' ';
   display: block;
-  border-bottom: 1px solid lightgrey;
+  // border-bottom: 1px solid lightgrey;
 }
 cursor: pointer
 `

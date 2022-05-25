@@ -17,9 +17,9 @@ const Main =() => {
                         onMouseLeave={() => setHover(false)}
             >   <ImgContainer>
                     <StyledImg alt="박하은의 이력서 보러가기" src={mainImg} priority />       
+                    {/* <MainPara/> */}
                 </ImgContainer>
             </CustomLink>
-            <MainPara/>
         </StyledMain>
     )
 }
@@ -38,4 +38,13 @@ position: relative;
 
 const StyledImg = styled(HoverZoomImage)`
 cursor: pointer;
+-webkit-filter: brightness(100%);
+&:hover {
+    -webkit-filter: brightness(50%);
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
 `

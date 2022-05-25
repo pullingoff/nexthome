@@ -18,5 +18,5 @@ line-height: 150%;
 margin: var(--lg);
 cursor: pointer;
 font-weight: 700;
-
+opacity: 0;
 `
