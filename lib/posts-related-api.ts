@@ -42,7 +42,7 @@ export const getRecentPosts = async() => {
     // getAllPosts()
     const allPostsData = await getAllPosts()
     return {
-        recentPosts : allPostsData.sort(sortByDate).slice(0,6)  // prop으로 모든 블로그 포스트 넘겨주기
+        recentPosts : allPostsData.sort(sortByDate).slice(0,9)  // prop으로 모든 블로그 포스트 넘겨주기
     }
   }
 
