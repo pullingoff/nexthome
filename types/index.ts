@@ -47,3 +47,14 @@ export interface IProject {
   date: string,  // 작업 시기
   imgPathList?: string[]
 }
+
+export interface IIssue {
+  name: string
+  labels: any
+}
+
+export interface IMsg {
+  title: string
+  body: string
+  labels: string[]
+}
