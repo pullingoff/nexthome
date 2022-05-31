@@ -12,8 +12,7 @@ export default function OtherExperiences(){
                 Other Experiences.
             </SectionHeader>
             <StyledOrgContainer>
-                {otherExperiences.length > 0 &&
-                otherExperiences.map(exp => (
+                {otherExperiences?.map(exp => (
                     <OtherExp {...exp} key={exp.organization}/>
                 ))}
             </StyledOrgContainer>

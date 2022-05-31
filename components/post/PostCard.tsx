@@ -20,7 +20,7 @@ const PostCard = ({ href, korDate, post}: {
         </StyledText>
       </CustomLink>
       <TagContainer>
-        {tags != null && tags.map((t) => (
+        {tags?.map((t) => (
           <Tag key={t} text={t} />
         ))}
         </TagContainer>

@@ -11,8 +11,7 @@ const OrgContainer = (exp: IExp) => {
         <>
         <Org>{exp.organization}</Org>
         <JobDate>{exp.description} | {exp.period}</JobDate>
-        {exp.projects &&
-            exp.projects.map((pj : IWorkProject) => (
+        { exp.projects?.map((pj : IWorkProject) => (
                 <AboutProject {...pj} key={pj.title} />
         ))}
         {exp.details && 

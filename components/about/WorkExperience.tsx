@@ -13,8 +13,7 @@ export default function WorkExperience () {
                 Work Experiences.
             </SectionHeader>
             <StyledOrgContainer>
-                {workExperiences.length > 0 &&
-                    workExperiences.map((exp: IExp) => (
+                { workExperiences?.map((exp: IExp) => (
                         <OrgContainer {...exp} key={exp.organization}/>
                     ))}
             </StyledOrgContainer>

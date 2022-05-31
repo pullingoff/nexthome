@@ -11,8 +11,7 @@ export default function TechContainer () {
                 Skills.
             </SectionHeader>
             <StyledOrgContainer>
-                {techStacks.length > 0 &&
-                techStacks.map((stack : ITechStack, idx: number) => (
+                {techStacks?.map((stack : ITechStack, idx: number) => (
                     <TechSkill key={idx} {...stack}/>
                 ))}
             </StyledOrgContainer>

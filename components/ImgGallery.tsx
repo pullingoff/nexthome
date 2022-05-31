@@ -11,7 +11,7 @@ const ImgGallery = ({imgList} : {
     const imgDir = path.join('images', 'pjDetail')
     return (
         <BlockContainer>
-            {imgList && imgList.map((img, idx) => (
+            {imgList?.map((img, idx) => (
                 <ImgItem key={idx}>
                     <Zoom 
                         zoomMargin={1} 

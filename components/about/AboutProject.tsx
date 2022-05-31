@@ -14,8 +14,7 @@ export default function AboutProject(pj : IWorkProject) {
             :   <PjTitle> {pj.title}</PjTitle>
             }
             <PExplain>{pj.description}</PExplain>
-                {pj.tech &&
-                pj.tech.map((t) => (
+                {pj.tech?.map((t) => (
                     <PjTech key={t}>
                         {t}
                     </PjTech>

@@ -12,8 +12,7 @@ export default function EduContainer () {
                 Education.
             </SectionHeader>
             <StyledOrgContainer>
-                {education.length > 0 &&
-                education.map((edu: IEducation, idx: number) => (
+                {education?.map((edu: IEducation, idx: number) => (
                     <Edu key={idx} {...edu}/>
                 ))}
             </StyledOrgContainer>
