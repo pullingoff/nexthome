@@ -13,27 +13,19 @@ export const StyledMain = styled.main`
   display: block;
 }
 `
-export const OrgNoHover = styled.span`
+export const Org = styled.span`
 display: block;
 font-weight: 800;
 font-size: var(--3xl);
-// @media (min-width: ${({theme}) => theme.device.sm}) {
-// font-size: var(--5xl);
-// }
 margin-bottom: 7px;
 `
 
-export const Org = styled(OrgNoHover)`
+export const OrgHover = styled(Org)`
 &:hover {
   cursor: pointer;
   color: salmon;
 }
 `
-
-export const OrgWImg = styled(Org)`
-
-`
-
 
 export const SectionHeader = styled.section`
   margin: 20px 0 10px;
@@ -56,12 +48,19 @@ margin: 5px 0;
 `
 
 
-export const PjTitle = styled.h4`
+export const PjTitle = styled.h3`
 // @media (min-width: ${({theme}) => theme.device.sm}) {
 // font-size: 1.35rem;
 // }
-font-size: var(--xl);
+// font-size: var(--xl);
 margin: 10px 0;
+`
+
+export const PjTitleHover = styled(PjTitle)`
+&:hover {
+  cursor: pointer;
+  color: salmon;
+}
 `
 
 

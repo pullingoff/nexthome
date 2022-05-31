@@ -9,6 +9,7 @@ const OrgContainer = (exp: IExp) => {
     
     return (
         <>
+        {exp.link}
         <Org>{exp.organization}</Org>
         <JobDate>{exp.description} | {exp.period}</JobDate>
         { exp.projects?.map((pj : IWorkProject) => (
