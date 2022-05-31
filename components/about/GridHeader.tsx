@@ -32,9 +32,9 @@ const IntroLines = styled.span`
 display: block;
 margin: var(--md) 0;
 font-weight: 500;
-@media (min-width: ${({theme}) => theme.device.sm}) {
-    font-size: 1.2rem;
-}
+// @media (min-width: ${({theme}) => theme.device.sm}) {
+//     font-size: 1.2rem;
+// }
 `
 
 const StyledEmail = styled.span`
