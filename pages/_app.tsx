@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Loading from 'components/Loading';
 import styled from 'styled-components';
+import { DefaultSeo } from 'next-seo'
+import * as gtag from '../lib/gtag'
+import { SEO } from '@components/seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -22,8 +25,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
 
+  // next/router를 이용해서 넥스트앱에서 라우팅이 발생됐을 때
+  // 강제적으로 gtag의 pageview 함수로 구글 애널리틱스에게 다른 페이지도 봤다고 알리는 겁니다.
+  useEffect(() => {
+    const handleRouteChange = (url: any) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <StyledLayout>
+      <DefaultSeo {...SEO} />
       <MetaContainer/>
       <Loading loading={loading}/>
       <Component {...pageProps} />
