@@ -26,9 +26,8 @@ export interface IExp {
 
 
 export interface ITechStack {
-    key?: any
-    skill: string
-    ability: string[]
+    type: string
+    skill: string[]
 }
 
 export interface IEducation {

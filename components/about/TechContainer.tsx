@@ -1,7 +1,7 @@
 import {techStacks} from '../../data/about'
 import {SectionHeader,StyledMain, StyledOrgContainer} from "@styles/aboutStyle.js"
-import TechSkill from './TechSkill'
 import { ITechStack } from 'types/aboutTypes'
+import styled from 'styled-components'
 
 export default function TechContainer () {
     return (
@@ -12,9 +12,30 @@ export default function TechContainer () {
             </SectionHeader>
             <StyledOrgContainer>
                 {techStacks?.map((stack : ITechStack, idx: number) => (
-                    <TechSkill key={idx} {...stack}/>
+                    <StrongP key={idx}>
+                        {stack.type}:
+                        {stack?.skill.map((sk, _)=> (
+                            <SkillSpan key={sk}> {sk}</SkillSpan>
+                        ))}
+                    </StrongP>
                 ))}
             </StyledOrgContainer>
         </StyledMain>
     )
 }
+
+const StrongP = styled.strong`
+font-size: 1.1rem;
+margin-bottom: 5px;
+&:before {
+    content: '-';
+    margin-right: 0.5rem;
+}
+`
+
+const SkillSpan = styled.span`
+font-weight: initial;
+&:not(:last-child):after {
+    content: ',';
+}
+`

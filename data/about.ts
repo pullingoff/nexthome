@@ -9,7 +9,7 @@ export const headerInfo : IHeaderInfo = {
     firstSentences: [
         '"거미는 자신의 실로써 공간의 자유에 이른다."',
         '새로운 언어와 기술에 관심이 많고, 질문을 통해 지식을 하나로 엮는 걸 좋아합니다.',
-        '사람들에게서 동기와 에너지를 얻으며 협업과 소통에 능합니다.',
+        '사람들에게서 동기와 에너지를 주로 얻으며 협업과 소통에 능합니다.',
         // '새로운 무언가에 파고들어 내 것으로 만드는 걸 좋아합니다. 개발도 그렇게 시작했고, 다양한 질문을 통해 지식을 하나로 엮는 습관이 있습니다. 프론트엔드를 주로 하지만 파이썬의 간결함을 좋아합니다.',
         // '혼자보단 함께 하는 개발과 공부를 좋아하고, 사람들에게서 동기와 에너지를 얻습니다. 능동적으로 다양한 개발 경험을 쌓고 있습니다.',
         // '깊게 파고들 개발 분야를 찾기 위해 많은 것을 겪어보려고 하고 있습니다.',
@@ -58,7 +58,7 @@ export const workExperiences : IExp[] = [
         projects: [
             {
                 title: '국가정보자원관리원 인공지능기반 서비스중심 종합관제 보안시스템 모니터링맵 (nMAPS)',
-                tech: ['Python', 'Docker'],
+                tech: ['Python', 'Neo4j', 'FastAPI', 'Docker', 'Django', 'Go.js', ],
                 link: 'https://pullingoff.github.io/til/Projects/nirs.html',
                 description: '해당 기관 산하 호스트간의 관계를 시각화해 연결 상태 및 문제를 바로 관제할 수 있도록 한다.',
                 details: [
@@ -78,7 +78,7 @@ export const workExperiences : IExp[] = [
             },
             {
                 title: '창업진흥원 온라인 창업교육 플랫폼 구축',
-                tech: ['JAVA', 'NAVER API'],
+                tech: ['JAVA', 'Spring', 'JSP', 'NAVER API'],
                 description: '유저에게 선택적으로 메일, SMS와 카카오 알림톡으로 알림을 보낸다.',
                 details: [
                     '관리자의 웹 알림 전송 및 보낸 알림 조회 페이지 개발',
@@ -93,7 +93,6 @@ export const otherExperiences : IExp[] = [
     {
         organization: "Try! Flutter!",
         description: "GDG Korea 주최 Flutter 교육 이벤트",
-        link: 'https://www.linkedin.com/in/hailey-park/overlay/experience/1494287277/multiple-media-viewer/?treasuryMediaId=1564360948946',
         period: '2019.06-2019.07',
         details: [
            '이벤트 오거나이저 및 디자이너로서 배너와 로고 디자인 및 제작'
@@ -102,7 +101,7 @@ export const otherExperiences : IExp[] = [
     {
         organization: 'Junction X Seoul',
         description: '160명의 개발자, 기획자와 디자이너가 참가한 해커톤',
-        link: '',
+        link: 'https://haeun.vercel.app/blog/190513-junctx',
         period: '2019.05',
         details: [
            '해외 투자자와 국내 개발자 간 스타트업 미팅과 멘토링 세션에서 한-영 통역 담당',
@@ -130,9 +129,7 @@ export const education : IEducation[] = [
         institute: 'Humber College',
         period: '2018.07 ~ 2019.12',
         course: 'Marketing Diploma',
-        details: [
-            ''
-        ]
+        details: []
     }
 ]
     
@@ -140,25 +137,20 @@ export const education : IEducation[] = [
 
 export const techStacks : ITechStack[] = [
     {
-        skill: 'JavaScript',
-        ability: [
-            'ES6+ 문법에 익숙하고 TypeScript를 사용할 줄 압니다.',
-            'jQuery 없이 DOM을 다루거나 원하는 것을 구현할 수 있습니다.',
-            'React.js를 사용해 동적 블로그를 만들 수 있습니다.'
-        ]
+        type: 'Front-End',
+        skill: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'SASS', 'HTML/CSS']
     },
     {
-        skill: 'Python',
-        ability: [
-            '가장 좋아하는 언어로, 업무에 사용할 수 있습니다.',
-            'Django REST API로 동적 웹 앱을 만들 수 있습니다.'
-        ]
+        type: 'Back-End',
+        skill: ['Python', 'Django']
     },
-    // {
-    //     skill: 'JAVA',
-    //     ability: [
-    //         'Spring MVC, Spring Batch 등 스프링 프레임워크를 사용할 줄 압니다.',
-    //         'Maven과 Tomcat으로 프로젝트를 진행해본 경험이 있습니다.'
-    //     ]
-    // },
+    {
+        type: 'Data',
+        skill: ['SQL', 'Neo4j']
+    },
+    {
+        type: 'Devops',
+        skill: ['Git', 'Docker']
+    },
+    
 ]
