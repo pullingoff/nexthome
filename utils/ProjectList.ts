@@ -34,7 +34,7 @@ export const ProjectList : Array<IProject> = [
                     'Vuepress로 가볍게 구현했으며, 2019년부터의 공부 기록이 남아있어요!',
                     'note에는 가볍게 든 생각과 개발하다 느낀 것들을 적어두곤 했습니다.'
                 ],
-        link: 'https://github.com/pullingoff/vue-til',
+        link: 'https://github.com/pullingoff',
         date: '2022.04',
         imgPathList: [
             "til1.png"

@@ -1,4 +1,5 @@
 export const METADATA = {
+    url: 'https://haeun.vercel.app',
     title : '개발자 박하은',
     author: '박하은',
     description: '어쩌구저쩌구 개발블로그입니다.',
@@ -18,7 +19,7 @@ export const MENUS = [
     {title: '소개', path: '/about', emoji: '🕷'},
     {title: '생각', path: '/blog/page/1', emoji: '📝'},
     {title: '프로젝트', path: '/project', emoji: '🎞'},
-    {title: 'TIL', path: 'https://pullingoff.github.io/vue-til', emoji: '📓'},
+    {title: 'TIL', path: 'https://pullingoff.github.io', emoji: '📓'},
 ]
 
 // posts 폴더 안의 subdirectories
