@@ -1,4 +1,4 @@
-import Message from "@components/guestbook/message";
+// import Message from "@components/guestbook/message";
 import { useEffect, useState } from "react";
 import { IIssue, IMsg } from "types";
 
@@ -27,10 +27,10 @@ const GuestBook = () => {
     
     return (
         <>
-        {msgs?.map((msg, idx) => (
+        {/* {msgs?.map((msg, idx) => (
                 <Message key={idx} msg={msg} />
             ))
-        }
+        } */}
         </>
     )
 }

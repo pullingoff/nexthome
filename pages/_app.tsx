@@ -8,7 +8,7 @@ import Loading from 'components/Loading';
 import styled from 'styled-components';
 import { DefaultSeo } from 'next-seo'
 import * as gtag from '../lib/gtag'
-import { SEO } from '@components/seo';
+// import { SEO } from '@components/seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <StyledLayout>
-      <DefaultSeo {...SEO} />
+      {/* <DefaultSeo {...SEO} /> */}
       <MetaContainer/>
       <Loading loading={loading}/>
       <Component {...pageProps} />
