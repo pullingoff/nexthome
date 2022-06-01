@@ -14,3 +14,7 @@
 ## Inspirations
 
 [color theme](https://www.moma.org/calendar/galleries/5269)
+
+## 주의 (수정 예정)
+
+포스트 마크다운에 tags: 안 넣으면 undefined error
