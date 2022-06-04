@@ -1,20 +1,27 @@
 # 안녕하세요 👋
 
-[블로그 구경 가기](https://nexthome-amber.vercel.app/)
+[블로그 구경 가기](https://haeun.vercel.app/)
 
-아직 한참 개발중 따끈따끈 🥨
+타입스크립트와 Next.js를 사용해 개발한 블로그입니다.
+원래 지킬을 사용해 정적 블로그를 만들었었는데, 리액트로도 만들어보고 싶어 기왕 할 거, SSR로 해보자! 싶어
+Next.js로 만들어봤습니다. ㅎㅎ
+이 블로그에선 제 생각을 담은 글과 이력서 위주로 정리하고 있으며,
+더 가벼운 글들은 TIL에서 만나보실 수 있습니다.
 
-## Tech Stacks
+## 사용한 프레임워크, 기술 스택들
 
-### 개발: `React, Next.js`  
-### 스타일: `Styled-components`  
-### 배포: `Vercel`  
-### 마크다운 처리: `MDXRemote`  
+개발: `React`, `Next.js`, `TypeScript`
+스타일: `Styled-components`, `SCSS`  
+배포: `Vercel`  
+마크다운 처리: `Markdown`, `MDXRemote`  
+기타: `Git`
 
-## Inspirations
+## 영감은 여기서 받았어요!
 
-[color theme](https://www.moma.org/calendar/galleries/5269)
+color theme: [Touching the Void](https://www.moma.org/calendar/galleries/5269)
 
-## 주의 (수정 예정)
+## To be continued...
 
-포스트 마크다운에 tags: 안 넣으면 undefined error
+- 포스트에 tags 안 넣어도 되도록 하기
+- 방명록 페이지!!!
+- 좀 더 
