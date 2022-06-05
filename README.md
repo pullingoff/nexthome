@@ -10,7 +10,7 @@ Next.js로 만들어봤습니다. ㅎㅎ
 
 ## 사용한 프레임워크, 기술 스택들
 
-개발: `React`, `Next.js`, `TypeScript`
+개발: `React`, `Next.js`, `TypeScript`  
 스타일: `Styled-components`, `SCSS`  
 배포: `Vercel`  
 마크다운 처리: `Markdown`, `MDXRemote`  
