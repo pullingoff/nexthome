@@ -36,13 +36,13 @@ const SocialMediaLogos = () => {
     
     return(
         <StyledLogos>
-            <CustomLink href={githubLink}>
+            <CustomLink aria-label='github' href={githubLink}>
                <GithubLogo />
             </CustomLink>
-            <CustomLink href={twitterLink}>
+            <CustomLink aria-label='twitter' href={twitterLink}>
                <TwitterLogo/>
             </CustomLink>
-            <CustomLink href={linkedinLink}>
+            <CustomLink aria-label='linkedin' href={linkedinLink}>
                <LinkedInLogo/>
             </CustomLink>
         </StyledLogos>
