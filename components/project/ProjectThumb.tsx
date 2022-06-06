@@ -14,8 +14,8 @@ const ProjectThumb = ({imgAlt, imgPath}: IProps) => {
                         // placeholder="blur"
                         layout="responsive"
                         objectFit="cover"
-                        width={250}
-                        height={160}
+                        width={200}
+                        height={110}
                         src={imgPath}
                         alt={imgAlt} />
     )
