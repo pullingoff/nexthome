@@ -32,7 +32,8 @@ export interface IDateTime {
 
 export interface ICustomMeta {
   title : string
-  // date: string
+  url?: string
+  date?: string
 }
 
 export interface IProject {
