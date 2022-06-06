@@ -10,10 +10,9 @@ const ProjectThumb = ({imgAlt, imgPath}: IProps) => {
     
     
     return (    
-        <StyledThumb priority
-                        // placeholder="blur"
-                        layout="responsive"
-                        objectFit="cover"
+        <StyledThumb //priority
+                        // layout="responsive"
+                        // objectFit="cover"
                         sizes='50vw'
                         width={200}
                         height={110}

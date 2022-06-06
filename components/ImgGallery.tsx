@@ -21,7 +21,7 @@ const ImgGallery = ({imgList} : {
                             height:"200px" }}
                         >
                         <StyledThumb 
-                                priority
+                                // priority
                                 layout="fill"
                                 objectFit="contain"
                                 className="img"
