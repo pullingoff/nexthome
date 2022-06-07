@@ -20,7 +20,11 @@ font-size: var(--3xl);
 margin-bottom: 7px;
 `
 
-export const OrgHover = styled(Org)`
+export const OrgHoverLink = styled.a`
+display: block;
+font-weight: 800;
+font-size: var(--3xl);
+margin-bottom: 7px;
 &:hover {
   cursor: pointer;
   color: salmon;
