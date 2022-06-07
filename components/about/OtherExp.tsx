@@ -1,30 +1,13 @@
 import { IExp } from "types/aboutTypes";
-import {Detail, DetailUl, PjContainer, Org, JobDate, OrgHover} from "@styles/aboutStyle"
-import styled from "styled-components";
-import CustomLink from "@components/CustomLink";
-
-export const ChainLink = ({href}: {
-    href: string
-}) => {
-    return (
-        <StyledChainLink href={href} target='blank'>
-            🔗
-        </StyledChainLink>
-    )
-}
-
-const StyledChainLink = styled(CustomLink)`
-margin-left: 5px;
-`
+import {Detail, DetailUl, PjContainer, Org, JobDate, OrgHoverLink} from "@styles/aboutStyle"
 
 const OtherExp = (exp : IExp) => {
     return (
         <PjContainer>
             {exp.link 
-                ? <OrgHover>
-                        {exp.organization}
-                    <ChainLink href={exp.link} />
-                 </OrgHover>
+                ? <OrgHoverLink href={exp.link}>
+                        {exp.organization} 🔗
+                 </OrgHoverLink>
                 : <Org>{exp.organization}</Org>
             }
             <JobDate>{exp.description} | {exp.period}</JobDate>
