@@ -8,7 +8,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { IPost } from "types";
 import { getAllPosts } from "lib/posts-related-api";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-// import rehypeSlug from 'rehype-slug';
 
 const blogDir = path.join(process.cwd(), 'posts', 'blog') // current directory/posts
 

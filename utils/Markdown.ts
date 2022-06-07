@@ -5,7 +5,6 @@ import rehypeKatex from 'rehype-katex'
 import slug from 'remark-slug'
 import {visit} from 'unist-util-visit'
 import { Node } from 'unist'
-// import sizeOf from 'image-size'
 // import remarkGfm from 'remark-gfm' 라는 좋은 것이 있구나...
 // @ts-ignore
 import prism from '@mapbox/rehype-prism'
@@ -101,9 +100,10 @@ function parseCodeSnippet() {
 }
 
 export async function parseMarkdownToMdx(body: string
-  // , path: string
+  
   ) {
   return serialize(body, {
+    // 마크다운에서 html로 제대로 바꿀 수 있도록 도와주는 플러그인들
     mdxOptions: {
       remarkPlugins: [
         remarkMath,

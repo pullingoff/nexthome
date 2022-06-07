@@ -1,4 +1,3 @@
-import { imageType } from "image-size/dist/types"
 
 export interface IFrontMatter {
     title: string

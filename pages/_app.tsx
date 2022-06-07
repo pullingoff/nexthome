@@ -8,7 +8,6 @@ import Loading from 'components/Loading';
 import styled from 'styled-components';
 import { DefaultSeo } from 'next-seo'
 import * as gtag from '../lib/gtag'
-// import { SEO } from '@components/seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
