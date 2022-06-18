@@ -1,6 +1,5 @@
-import { METADATA } from '@config/index'
-import { NextSeo, ArticleJsonLd } from 'next-seo'
-
+import { METADATA } from '@config/index';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 export const SEO = {
   title: METADATA.title,
@@ -12,22 +11,16 @@ export const SEO = {
     title: METADATA.title,
     description: METADATA.description,
   },
-//   additionalMetaTags: [
-//     {
-//       name: 'author',
-//       content: SiteConfig.author.name,
-//     },
-//   ],
-}
+};
 
 export const PageSeo = ({
   title,
   description,
   url,
 }: {
-  title: string
-  description: string
-  url: string
+  title: string;
+  description: string;
+  url: string;
 }) => {
   return (
     <NextSeo
@@ -41,8 +34,8 @@ export const PageSeo = ({
         // images: [{ alt: title, url: '/thumbnail.png' }],
       }}
     />
-  )
-}
+  );
+};
 
 export const BlogSeo = ({
   title,
@@ -53,23 +46,23 @@ export const BlogSeo = ({
   tags,
   images = [],
 }: {
-  title: string
-  summary: string
-  date: string
-  updatedAt: string
-  url: string
-  tags: string[]
-  images: string[]
+  title: string;
+  summary: string;
+  date: string;
+  updatedAt: string;
+  url: string;
+  tags: string[];
+  images: string[];
 }) => {
-  const publishedAt = new Date(date).toISOString()
-  const modifiedAt = new Date(updatedAt || date).toISOString()
+  const publishedAt = new Date(date).toISOString();
+  const modifiedAt = new Date(updatedAt || date).toISOString();
 
-  const featuredImages = images.map((img) => {
+  const featuredImages = images.map(img => {
     return {
       url: img,
       alt: title,
-    }
-  })
+    };
+  });
 
   return (
     <>
@@ -90,12 +83,6 @@ export const BlogSeo = ({
           description: summary,
           images: featuredImages,
         }}
-        // additionalMetaTags={[
-        //   {
-        //     name: 'twitter:image',
-        //     content: images[0],
-        //   },
-        // ]}
       />
       <ArticleJsonLd
         authorName={METADATA.author}
@@ -106,8 +93,7 @@ export const BlogSeo = ({
         publisherName={METADATA.author}
         title={title}
         url={url}
-        // publisherLogo={`${SiteConfig.url}/favicon/favicon-32x32.png`}
       />
     </>
-  )
-}
+  );
+};

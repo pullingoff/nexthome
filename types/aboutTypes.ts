@@ -1,39 +1,38 @@
 export interface IHeaderInfo {
-    name: string,
-    job: string,
-    email: string,
-    github: string,
-    firstSentences: string[]
+  name: string;
+  job: string;
+  email: string;
+  github: string;
+  firstSentences: string[];
 }
 
 export interface IWorkProject {
-    title: string,
-    tech: string[],
-    link?: string,
-    description: string,
-    details: string[]
+  title: string;
+  tech: string[];
+  link?: string;
+  description: string;
+  details: string[];
 }
 
 // workExp, otherExp에서 둘다 쓴다.
-export interface IExp { 
-    organization: string,
-    description: string,
-    link?: string,
-    period: string,
-    projects?: IWorkProject[]
-    details?: string[]
+export interface IExp {
+  organization: string;
+  description: string;
+  link?: string;
+  period: string;
+  projects?: IWorkProject[];
+  details?: string[];
 }
 
-
 export interface ITechStack {
-    type: string
-    skill: string[]
+  type: string;
+  skill: string[];
 }
 
 export interface IEducation {
-    key?: any
-    institute: string
-    course: string
-    period: string
-    details? : string[]
+  key?: any;
+  institute: string;
+  course: string;
+  period: string;
+  details?: string[];
 }

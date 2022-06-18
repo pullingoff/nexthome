@@ -10,8 +10,8 @@
   --theme1-color: #{$theme1-color};
   --theme2-color: #{$theme2-color};
 
-  --bg-yellow: #fef9e2;
-  --bg-yellow--opaque: #fefae9c3;
+  --bg-yellow: #ffffff;
+  --bg-yellow--opaque: #ffffffc3;
   
   --color-pale-bg: #{$color-pale-bg};
   --color-white: white;
@@ -62,7 +62,6 @@ html {
   -webkit-text-size-adjust: 100%;
   font-family : Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
   -webkit-font-smoothing: antialiased;
-  // letter-spacing: -0.95px;
 }
 
 body {
@@ -84,10 +83,6 @@ a {
   color: inherit;
 }
 
-// a, a:visited, a:hover, a:active {
-//   color: inherit;
-// }
-
 article,
 aside,
 details,
@@ -95,7 +90,6 @@ figcaption,
 figure,
 footer,
 header,
-// main,
 menu,
 nav,
 section,
@@ -123,10 +117,6 @@ h2 {
 }
 
 h3 {font-size: 1.2rem;}
-
-// p {
-//   font-weight: 400;
-// }
 
 b,
 strong {

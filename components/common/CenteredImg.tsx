@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
-const CenteredImg = ({ src, alt } : {src: string, alt: string}) => {
-
+const CenteredImg = ({ src, alt }: { src: string; alt: string }) => {
   if (!alt) alt = 'Thumbnail Image';
 
   return (
     <ThumbnailContainer>
       <InnerContainer>
-        <Image src={src} alt="thumbnail" layout='fill' objectFit='contain'/>
+        <Image src={src} alt="thumbnail" layout="fill" objectFit="contain" />
       </InnerContainer>
     </ThumbnailContainer>
   );
@@ -38,4 +37,3 @@ export const InnerContainer = styled.div`
   position: relative;
   height: 100%;
 `;
-

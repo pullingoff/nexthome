@@ -1,27 +1,26 @@
 import '@styles/globals.scss';
-import Layout from '@components/Layout';
+import Layout from '@components/layout/Layout';
 import MetaContainer from '@components/MetaContainer';
 import { AppProps } from 'next/app';
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Loading from 'components/Loading';
 import styled from 'styled-components';
-import { DefaultSeo } from 'next-seo'
-import * as gtag from '../lib/gtag'
+import * as gtag from '../lib/gtag';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  
+
   useEffect(() => {
     const handleStart = (url: string) => {
       url !== router.pathname ? setLoading(true) : setLoading(false);
     };
-    const handleComplete = (url: string) => setLoading(false);
-  
-    router.events.on("routeChangeStart", handleStart);
-    router.events.on("routeChangeComplete", handleComplete);
-    router.events.on("routeChangeError", handleComplete);
+    const handleComplete = () => setLoading(false);
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
   }, [router]);
 
   // next/router를 이용해서 넥스트앱에서 라우팅이 발생됐을 때
@@ -30,24 +29,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     const handleRouteChange = (url: any) => {
       gtag.pageview(url);
     };
-    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
   return (
     <StyledLayout>
       {/* <DefaultSeo {...SEO} /> */}
-      <MetaContainer/>
-      <Loading loading={loading}/>
+      <MetaContainer />
+      <Loading loading={loading} />
       <Component {...pageProps} />
     </StyledLayout>
-  )
+  );
 }
 
 const StyledLayout = styled(Layout)`
-background: var(--bg-yellow);
-`
+  background: var(--bg-yellow);
+`;
 
 export default MyApp;
