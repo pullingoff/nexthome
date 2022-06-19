@@ -2,7 +2,7 @@ import CustomLink from '@components/common/CustomLink';
 import styled from 'styled-components';
 import { IProject } from 'types';
 import path from 'path';
-import ProjectThumb from './ProjectThumb';
+import ProjectView from './ProjectView';
 
 const ProjectList = ({ projects }: { projects: IProject[] }) => {
   // customMeta 넣기
@@ -20,21 +20,30 @@ const ProjectRow = (pj: IProject) => {
 
   return (
     <ContainerLi>
-      <StyledLink href={`/project/${pj.slug}`}>
-        <TitleContainer>
-          <Title>{pj.title}</Title>
-          <ShortDesc>{pj.shortDescription}</ShortDesc>
-        </TitleContainer>
-        <section>
-          <ProjectThumb
-            imgAlt={`${pj.title}의 썸네일`}
-            imgPath={`/${imgPath}-bright.png`}
-          />
-        </section>
-      </StyledLink>
+      <details>
+        <Title>{pj.title}</Title>
+        <DarkBtn href={pj.link}>보러가기</DarkBtn>
+
+        <ProjectView pj={pj} />
+      </details>
     </ContainerLi>
   );
 };
+
+const DarkBtn = styled(CustomLink)`
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: var(--theme1-color);
+  color: white;
+  font-weight: 800;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    color: var(--theme1-color);
+    background-color: initial;
+    box-shadow: 0 0 0 3px var(--theme1-color);
+  }
+`;
 
 const ContainerLi = styled.li`
   padding-left: 1.2vw;
@@ -44,33 +53,16 @@ const ContainerLi = styled.li`
   }
 `;
 
-const StyledLink = styled(CustomLink)`
-  animation: 2s anim-lineUp 0.1s ease-out 1;
-`;
-
-const TitleContainer = styled.section`
-  position: relative;
-  z-index: 2;
-  &:before {
-    content: '';
-    border-top: 1px solid lightgrey;
-  }
-`;
-
-const Title = styled.h1`
-  font-size: var(--9xl);
+const Title = styled.summary`
+  font-size: var(--8xl);
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 1rem;
   &:hover {
     color: salmon;
   }
-`;
-
-const ShortDesc = styled.h5`
-  font-size: 1.15rem;
-  font-weight: 500;
-  margin: 10px 0;
-  display: inline-block;
-  @media (min-width: ${({ theme }) => theme.device.sm}) {
-    position: absolute;
+  ::-webkit-details-marker {
+    display: initial;
   }
 `;
 

@@ -18,8 +18,7 @@ const ProjectView = ({ pj }: { pj: IProject }) => {
 const HeadContainer = ({ pj }: { pj: IProject }) => {
   return (
     <section>
-      <h1 style={{ fontSize: 'var(--9xl)' }}>{capitalize(pj.title)}</h1>
-      <DarkBtn href={pj.link}>보러가기</DarkBtn>
+      {/* <h1 style={{ fontSize: 'var(--9xl)' }}>{capitalize(pj.title)}</h1> */}
     </section>
   );
 };

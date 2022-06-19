@@ -6,7 +6,7 @@ export const ProjectListData: Array<IProject> = [
     isVisible: true,
     slug: 'pjnxblog',
     type: 'Webapp',
-    thumbnail: 'nxth',
+    thumbnail: 'nxth-bright',
     shortDescription: 'SSR을 적극 활용해 Next.js로 하나부터 열까지 만든 블로그',
     longDescription: [
       'React의 프레임워크인 Next.js로 개발해 서버사이드렌더링을 하고, 성능을 최적화했어요. 📹',
@@ -24,7 +24,7 @@ export const ProjectListData: Array<IProject> = [
     isVisible: true,
     slug: 'pjtil',
     type: 'Webapp',
-    thumbnail: 'til',
+    thumbnail: 'til-bright',
     shortDescription: '나만의 백과사전 같은 존재! 매일 배운 것을 기록해둡니다.',
     longDescription: [
       'Today I Learned.',
