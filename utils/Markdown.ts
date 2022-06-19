@@ -4,7 +4,6 @@ import rehypeKatex from 'rehype-katex';
 import slug from 'remark-slug';
 import { visit } from 'unist-util-visit';
 import { Node } from 'unist';
-// import remarkGfm from 'remark-gfm' 라는 좋은 것이 있구나...
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import prism from '@mapbox/rehype-prism';
