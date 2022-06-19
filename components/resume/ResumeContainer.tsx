@@ -12,21 +12,21 @@ import {
 
 export default function ResumeContainer() {
   return (
-    <StyledAboutContainer>
+    <StyleResumeContainer>
       <ResumeHeader />
-      <ProjectContainer title="Work Experiences." list={workExperiences} />
-      <ProjectContainer title="Projects." list={projectExperiences} />
-      <ProjectContainer title="Skills." list={techStacks} />
-      <ProjectContainer title="Other Experiences." list={otherExperiences} />
-      <ProjectContainer title="Education." list={education} />
-    </StyledAboutContainer>
+      <ProjectContainer title="Work Experiences" list={workExperiences} />
+      <ProjectContainer title="Projects" list={projectExperiences} />
+      <ProjectContainer title="Skills" list={techStacks} />
+      <ProjectContainer title="Other Experiences" list={otherExperiences} />
+      <ProjectContainer title="Education" list={education} />
+    </StyleResumeContainer>
   );
 }
 
-const StyledAboutContainer = styled.main`
+const StyleResumeContainer = styled.main`
   margin: 20px 0;
   // desktop view
   @media (min-width: ${({ theme }) => theme.device.sm}) {
-    margin: 50px 30px 0;
+    margin: 15px 30px 0;
   }
 `;

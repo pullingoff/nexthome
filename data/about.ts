@@ -5,7 +5,6 @@ export const headerInfo: IHeaderInfo = {
   job: 'Frontend Engineer',
   email: 'devhaeun@gmail.com',
   github: 'https://github.com/pullingoff',
-  // firstSentences는 문단 형식으로 나뉘게 했으므로 문장 길이보다 문단길이로 쓰는게 좋다.
   firstSentences: [
     '"거미는 자신의 실로써 공간의 자유에 이른다."',
     '자기 주도적으로 성장하는 프론트엔드 개발자 박하은입니다.',
@@ -16,29 +15,42 @@ export const headerInfo: IHeaderInfo = {
 };
 
 export const projectExperiences: IExp[] = [
-  // {
-  //   organization: 'Dev6',
-  //   description: 'Frontend Developer',
-  //   period: '2021.01 ~ 현재',
-  //   projects: [
-  //     {
-  //       title: 'LeadPet: 유기견 ',
-  //       tech: ['React', 'Redux', 'TypeScript', 'Github', 'Figma'],
-  //       description: '유기견...',
-  //       details: ['관리페이지 개발'],
-  //     },
-  //   ],
-  // },
   {
-    organization: '별말, 씀',
-    description: 'Frontend Developer',
-    period: '2021.01 ~ 현재',
+    organization: '개인 블로그',
+    link: 'https://haeun.vercel.app',
+    description: '개발하며 배운 것과 생각들을 기록하는 블로그',
+    period: '2022.02 ~ 05',
     projects: [
       {
-        title: '2022년 8월 서비스 예정인 롤링페이퍼 웹앱',
+        tech: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Sass',
+          'next-mdx-remote',
+          'gray-matter',
+          'Vercel',
+          'Vuepress',
+        ],
+        details: [
+          '별도의 UI 프레임워크 없이 직접 디자인하고 스타일 구현, mobile-first, 반응형, 시맨틱 마크업',
+          'next-mdx-remote로 마크다운을 html로 재구성해 보여주고 frontmatter로 태그, 카테고리별 조회',
+          'TIL 페이지의 경우 vuepress로 정적 사이트를 만들고 github에서 pages 브랜치로 배포',
+        ],
+      },
+    ],
+  },
+  {
+    organization: '별말, 씀',
+    description: '2022년 8월 서비스 예정인 롤링페이퍼 웹앱',
+    period: '2022.05 ~ 현재',
+    projects: [
+      {
         tech: ['React', 'TypeScript', 'React Router', 'Sass', 'GitLab'],
-        description: '메시지...',
-        details: ['Login 개발'],
+        details: [
+          '스타일을 커스터마이징할 수 있는 공통 컴포넌트 개발 (버튼, 텍스트 인풋, 링크 등)',
+          '프론트엔드 개발을 맡았으나 백엔드 DB와 API 설계 과정에도 참여해 RESTful한 API를 설계 ',
+        ],
       },
     ],
   },
@@ -51,15 +63,16 @@ export const workExperiences: IExp[] = [
     period: '2020.12 ~ 현재',
     projects: [
       {
-        title: '국가정보자원관리원 종합관제 보안시스템 모니터링맵 (nMAPS)',
+        title: '국가정보자원관리원 종합관제 보안시스템 (nMAPS)',
         tech: [
           'Python',
           'Neo4j',
           'FastAPI',
           'REST API',
-          'Docker',
           'Django',
-          'Go.js',
+          'Docker',
+          'Vanilla JS',
+          'TypeScript',
         ],
         link: 'https://pullingoff.github.io/til/Projects/nirs.html',
         description:
@@ -71,24 +84,21 @@ export const workExperiences: IExp[] = [
         ],
       },
       {
-        title: '창업진흥원 온라인 창업교육 플랫폼 구축',
-        tech: ['JAVA', 'Spring', 'JSP', 'NAVER API'],
-        description:
-          '유저에게 선택적으로 메일, SMS와 카카오 알림톡으로 알림을 보낸다.',
+        title: '창업진흥원 창업교육 플랫폼',
+        tech: ['JAVA', 'Spring', 'JSP', 'Vanilla JS', 'NAVER API'],
+        // description:
+        //   '유저에게 선택적으로 메일, SMS와 카카오 알림톡으로 알림을 보낸다.',
         details: [
-          'NAVER API를 사용해 메일, SMS, 카카오 알림톡과 웹 사이트 내 알림 전송 기능 구현',
-          '관리자의 웹 알림 전송 및 보낸 알림 조회 페이지 개발',
+          'NAVER API로 관리자가 메일, SMS 알림을 전송하는 기능과 알림 조회 페이지를 개발',
         ],
       },
       {
-        title:
-          '한국과학기술원 딥러닝 기반 약물 상호작용 예측 시스템 구축 및 하이브리드 앱 개발',
-        tech: ['PHP', 'JavaScript'],
-        description:
-          '유저가 선택한 의약품을 기준으로 함께 복용하면 위험한 의약품 (DUR) 조합을 보여준다.',
+        title: 'KAIST 약물 상호작용 예측 시스템 구축 및 하이브리드 앱',
+        tech: ['PHP', 'JavaScript', 'JSP', 'jQuery'],
+        // description:
+        //   '유저가 선택한 의약품을 기준으로 함께 복용하면 위험한 의약품 (DUR) 조합을 보여준다.',
         details: [
-          'JavaScript로 위험 조합 노드 및 엣지를 시각화한 반응형 웹 개발',
-          'PHP로 필요한 데이터를 받아와 가공',
+          'PHP로 데이터를 가져와 위험 조합 그래프를 보여주는 페이지 개발',
         ],
       },
     ],
@@ -97,31 +107,32 @@ export const workExperiences: IExp[] = [
 
 export const otherExperiences: IExp[] = [
   {
-    organization: 'Junction X Seoul',
+    organization: 'JunctionX Seoul',
     description:
       '21개국 187명의 참가자, 50명의 자원봉사자가 참여한 오프라인 해커톤',
     link: 'https://haeun.vercel.app/blog/190513-junctx',
     period: '2019.05',
     details: [
-      '해외 투자자와 국내 개발자 간 스타트업 미팅과 멘토링 세션에서 한-영 통역 담당',
-      '해커톤 행사 준비, 참가자 안내 및 이벤트 기간 전반적인 활동',
+      'VC 투자자와 국내 개발자 간 스타트업 미팅과 멘토링 세션에서 한-영 통역 담당',
+      '해커톤 행사를 준비하고 무박2일 상주하며 영어 통역 및 참가자 안내',
     ],
   },
   {
     organization: 'Humber FYE Peer Mentor',
+    link: 'https://humber.ca/student-life/fye/',
     description: '대학 신입생 대상 멘토링',
     period: '2019.06-2020.07',
     details: [
-      '약 1년간 신입생들의 또래 멘토로서 교내 이벤트 및 정보를 담은 위클리 뉴스레터 발행',
-      '학기당 멘티 10명의 학습 방법부터 개인적인 고민까지 학교 생활의 전반적인 멘토링',
+      '약 1년간 신입생들의 또래 멘토로서 교내 이벤트 및 정보를 담은 주간 뉴스레터 발행',
+      '학기당 멘티 7-8명의 학습 방법부터 개인적인 고민까지 학교 생활의 전반적인 멘토링',
     ],
   },
-  {
-    organization: 'Try! Flutter!',
-    description: 'GDG Korea 주최 Flutter 교육 이벤트',
-    period: '2019.06-2019.07',
-    details: ['이벤트 오거나이저 및 디자이너로서 배너와 로고 디자인 및 제작'],
-  },
+  // {
+  //   organization: 'Try! Flutter!',
+  //   description: 'GDG Korea 주최 Flutter 교육 이벤트',
+  //   period: '2019.06-2019.07',
+  //   details: ['이벤트 오거나이저 및 디자이너로서 배너와 로고 디자인 및 제작'],
+  // },
 ];
 
 export const licenses: string[] = ['SQL Developer', '네트워크 관리사 2급'];
@@ -132,18 +143,17 @@ export const education: IEducation[] = [
     period: '2020.04 ~ 2020.12',
     course: '응용SW 엔지니어링 실무 과정',
     details: [
-      'WIX를 벤치마킹한 노코드 웹빌더 어플리케이션 개발 (JAVA, Spring, JSP)',
-      'Spring의 Quartz로 메일 전송 Batch 구현, Chart.js로 그래프 시각화',
+      //   'WIX를 벤치마킹한 노코드 웹빌더 어플리케이션 개발 (JAVA, Spring, JSP)',
+      //   'Spring의 Quartz로 메일 전송 Batch 구현, Chart.js로 그래프 시각화',
     ],
   },
   {
     institute: 'Humber College',
-    period: '2018.07 ~ 2019.12',
+    period: '2018.06 ~ 2019.12',
     course: 'Marketing Diploma',
     details: [
-      '캐내디언 쥬얼리 브랜드의 CSR 실천 방법을 생각해내어 이메일 마케팅 실시',
-      'Toronto Marlies의 교내 세일즈 단원으로 발탁되어 소셜 미디어 마케팅 진행 및 경기 티켓 판매',
-      '양적 조사의 일환으로 70명의 남성을 대상으로 인터넷 설문조사를 진행하고 포커스그룹을 실행',
+      'Toronto Marlies의 교내 세일즈 단원으로 발탁되어 SNS 마케팅 및 경기 티켓 판매',
+      '양적 조사의 일환으로 70명의 남성에게 설문조사를 진행하고 포커스그룹 인터뷰',
     ],
   },
 ];

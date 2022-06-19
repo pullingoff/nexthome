@@ -10,9 +10,8 @@ const ResumeHeader = () => {
       </StyledTitle>
       <StyledEmail>
         Email: {headerInfo.email} <br />
-        {/* Github: {headerInfo.github} */}
       </StyledEmail>
-      <div>
+      <div style={{ marginTop: '1rem' }}>
         {headerInfo.firstSentences?.map((stc, idx) => (
           <IntroLines key={idx}>{stc}</IntroLines>
         ))}
@@ -25,7 +24,7 @@ export default ResumeHeader;
 
 const IntroLines = styled.span`
   display: block;
-  margin: var(--md) 0;
+  margin: var(--sm) 0;
   font-weight: 500;
 `;
 

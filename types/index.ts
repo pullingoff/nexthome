@@ -11,7 +11,6 @@ export interface IFrontMatter {
 }
 
 export interface IPost {
-  // [x: string]: any;
   category?: string;
   slug: string;
   frontmatter: IFrontMatter;

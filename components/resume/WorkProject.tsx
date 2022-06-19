@@ -5,13 +5,14 @@ import {
   PExplain,
   PjTech,
   PjTitleHover,
+  StyledPjContainer,
 } from '@styles/aboutStyle';
 import { IWorkProject } from 'types/aboutTypes';
 import CustomLink from '@components/common/CustomLink';
 
 export default function WorkProject(pj: IWorkProject) {
   return (
-    <>
+    <StyledPjContainer>
       {pj.link ? (
         <CustomLink href={pj.link}>
           <PjTitleHover>{pj.title} 🔗</PjTitleHover>
@@ -30,6 +31,6 @@ export default function WorkProject(pj: IWorkProject) {
           ))}
         </DetailUl>
       )}
-    </>
+    </StyledPjContainer>
   );
 }

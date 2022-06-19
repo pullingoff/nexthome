@@ -7,10 +7,10 @@ export interface IHeaderInfo {
 }
 
 export interface IWorkProject {
-  title: string;
+  title?: string;
   tech: string[];
   link?: string;
-  description: string;
+  description?: string;
   details: string[];
 }
 
@@ -33,5 +33,5 @@ export interface IEducation {
   institute: string;
   course: string;
   period: string;
-  details: string[];
+  details?: string[];
 }

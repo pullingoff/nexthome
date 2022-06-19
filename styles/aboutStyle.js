@@ -19,7 +19,7 @@ export const Org = styled.span`
   margin-bottom: 7px;
 `;
 
-export const OrgHoverLink = styled.a`
+export const OrgHoverLink = styled(Org)`
   display: block;
   font-weight: 800;
   font-size: var(--3xl);
@@ -42,7 +42,7 @@ export const StyledOrgContainer = styled.section`
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 `;
 
 export const Project = styled.section`
@@ -78,14 +78,15 @@ export const PjTech = styled.span`
   }
 `;
 
-export const PjContainer = styled.article`
-  margin-top: var(--lg);
+export const StyledPjContainer = styled.article`
+  // margin-top: var(--lg);
   margin-bottom: var(--md);
   line-height: 150%;
 `;
 
 export const DetailUl = styled.ul`
   margin: 5px;
+  margin-bottom: 1rem;
   list-style: none;
 `;
 
