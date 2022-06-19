@@ -30,18 +30,19 @@ export const OrgHoverLink = styled.a`
   }
 `;
 
-export const SectionHeader = styled.section`
+export const SectionHeader = styled.h2`
   margin: 20px 0 10px;
   font-size: var(--8xl);
   color: var(--theme1-color);
   font-weight: 800;
+  letter-spacing: initial;
 `;
 
 export const StyledOrgContainer = styled.section`
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 `;
 
 export const Project = styled.section`
@@ -77,9 +78,10 @@ export const PjTech = styled.span`
   }
 `;
 
-export const PjContainer = styled.section`
+export const PjContainer = styled.article`
   margin-top: var(--lg);
   margin-bottom: var(--md);
+  line-height: 150%;
 `;
 
 export const DetailUl = styled.ul`
@@ -99,4 +101,11 @@ export const Detail = styled.li`
 
 export const JobDate = styled.span`
   font-weight: 400;
+`;
+
+export const SkillSpan = styled.span`
+  font-weight: initial;
+  &:not(:last-child):after {
+    content: ',';
+  }
 `;

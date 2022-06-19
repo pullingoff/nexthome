@@ -8,36 +8,35 @@ export const headerInfo: IHeaderInfo = {
   // firstSentences는 문단 형식으로 나뉘게 했으므로 문장 길이보다 문단길이로 쓰는게 좋다.
   firstSentences: [
     '"거미는 자신의 실로써 공간의 자유에 이른다."',
-    '새로운 언어와 기술에 관심이 많고, 질문을 통해 지식을 하나로 엮는 걸 좋아합니다.',
+    '자기 주도적으로 성장하는 프론트엔드 개발자 박하은입니다.',
+    '질문을 통해 지식을 하나로 엮는 걸 좋아하고, 새로운 언어와 기술에 관심이 많습니다.',
+    '문제 해결을 위한 라이브러리나 프레임워크, 언어가 있다면 언제든 배울 준비가 되어있습니다.',
     '사람들에게서 동기와 에너지를 주로 얻으며 협업과 소통에 능합니다.',
-    // '새로운 무언가에 파고들어 내 것으로 만드는 걸 좋아합니다. 개발도 그렇게 시작했고, 다양한 질문을 통해 지식을 하나로 엮는 습관이 있습니다. 프론트엔드를 주로 하지만 파이썬의 간결함을 좋아합니다.',
-    // '혼자보단 함께 하는 개발과 공부를 좋아하고, 사람들에게서 동기와 에너지를 얻습니다. 능동적으로 다양한 개발 경험을 쌓고 있습니다.',
-    // '깊게 파고들 개발 분야를 찾기 위해 많은 것을 겪어보려고 하고 있습니다.',
   ],
 };
 
 export const projectExperiences: IExp[] = [
+  // {
+  //   organization: 'Dev6',
+  //   description: 'Frontend Developer',
+  //   period: '2021.01 ~ 현재',
+  //   projects: [
+  //     {
+  //       title: 'LeadPet: 유기견 ',
+  //       tech: ['React', 'Redux', 'TypeScript', 'Github', 'Figma'],
+  //       description: '유기견...',
+  //       details: ['관리페이지 개발'],
+  //     },
+  //   ],
+  // },
   {
-    organization: 'Dev6',
+    organization: '별말, 씀',
     description: 'Frontend Developer',
     period: '2021.01 ~ 현재',
     projects: [
       {
-        title: 'LeadPet: 유기견 ',
-        tech: ['React', 'Redux', 'TypeScript', 'Github', 'Figma'],
-        description: '유기견...',
-        details: ['관리페이지 개발'],
-      },
-    ],
-  },
-  {
-    organization: 'JamToMer',
-    description: 'Frontend Developer',
-    period: '2021.01 ~ 현재',
-    projects: [
-      {
-        title: 'Message To Me',
-        tech: ['React', 'Redux', 'TypeScript', 'GitLab'],
+        title: '2022년 8월 서비스 예정인 롤링페이퍼 웹앱',
+        tech: ['React', 'TypeScript', 'React Router', 'Sass', 'GitLab'],
         description: '메시지...',
         details: ['Login 개발'],
       },
@@ -142,7 +141,7 @@ export const education: IEducation[] = [
     period: '2018.07 ~ 2019.12',
     course: 'Marketing Diploma',
     details: [
-      '캐내디언 쥬얼리 브랜드의 CSR 실천 방법을 생각해내어 디지털 마케팅 플랫폼인 Constant Contact로 이메일 마케팅 실시',
+      '캐내디언 쥬얼리 브랜드의 CSR 실천 방법을 생각해내어 이메일 마케팅 실시',
       'Toronto Marlies의 교내 세일즈 단원으로 발탁되어 소셜 미디어 마케팅 진행 및 경기 티켓 판매',
       '양적 조사의 일환으로 70명의 남성을 대상으로 인터넷 설문조사를 진행하고 포커스그룹을 실행',
     ],
@@ -157,14 +156,14 @@ export const techStacks: ITechStack[] = [
       'TypeScript',
       'React',
       'Next.js',
-      'SASS',
+      'Sass',
       'HTML/CSS',
       'REST API',
     ],
   },
   {
     type: 'Back-End',
-    skill: ['Python', 'Django'],
+    skill: ['Python', 'Django', 'Node.js'],
   },
   {
     type: 'Data',
@@ -172,6 +171,12 @@ export const techStacks: ITechStack[] = [
   },
   {
     type: 'Devops',
-    skill: ['Git', 'Docker'],
+    skill: ['Git', 'Docker', 'Shell script'],
+  },
+  {
+    type: 'English',
+    skill: [
+      '번역기 없이 독해가 가능하며 단어의 뉘앙스 차이를 알고 의견을 자유롭게 표현할 수 있음',
+    ],
   },
 ];

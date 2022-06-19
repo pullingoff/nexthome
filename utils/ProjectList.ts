@@ -9,9 +9,9 @@ export const ProjectListData: Array<IProject> = [
     thumbnail: 'nxth-bright',
     shortDescription: 'SSR을 적극 활용해 Next.js로 하나부터 열까지 만든 블로그',
     longDescription: [
-      'React의 프레임워크인 Next.js로 개발해 서버사이드렌더링을 하고, 성능을 최적화했어요. 📹',
+      'React의 프레임워크인 Next.js로 개발해 서버사이드렌더링을 하고, 성능을 최적화했습니다.',
       '스타일은 Styled-components로 CSS-IN-JS 형식을 적용했습니다.',
-      'MDXRemote로 마크다운 처리를, Vercel로 배포를 했답니다! 🎶',
+      'MDXRemote로 마크다운 처리를, Vercel로 배포를 했습니다!',
       '평소에 궁금하던 기술들을 마음껏 적용해볼 수 있어 어렵지만 즐거웠고요!',
       '리팩토링도 하고 새로운 기능들을 더해가고 있어요.',
     ],

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { headerInfo } from '@data/about';
 
-const GridHeader = () => {
+const ResumeHeader = () => {
   return (
     <StyledHeader>
       <StyledTitle>
@@ -13,16 +13,15 @@ const GridHeader = () => {
         {/* Github: {headerInfo.github} */}
       </StyledEmail>
       <div>
-        {headerInfo.firstSentences &&
-          headerInfo.firstSentences.map((stc, idx) => (
-            <IntroLines key={idx}>{stc}</IntroLines>
-          ))}
+        {headerInfo.firstSentences?.map((stc, idx) => (
+          <IntroLines key={idx}>{stc}</IntroLines>
+        ))}
       </div>
     </StyledHeader>
   );
 };
 
-export default GridHeader;
+export default ResumeHeader;
 
 const IntroLines = styled.span`
   display: block;

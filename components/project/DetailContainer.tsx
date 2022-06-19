@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IProject } from 'types';
 
-const ArticleContainer = ({ pj }: { pj: IProject }) => {
+const DetailContainer = ({ pj }: { pj: IProject }) => {
   return (
     <Container>
       {pj.longDescription.map((p, idx) => (
@@ -14,7 +14,7 @@ const ArticleContainer = ({ pj }: { pj: IProject }) => {
 const Container = styled.section`
   padding: 10px;
   p {
-    line-height: 170%;
+    line-height: 110%;
     white-space: normal;
     margin: 0.5rem 0;
 
@@ -24,4 +24,4 @@ const Container = styled.section`
   }
 `;
 
-export default ArticleContainer;
+export default DetailContainer;

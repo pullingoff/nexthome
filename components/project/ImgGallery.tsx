@@ -36,13 +36,13 @@ const ImgGallery = ({ imgList }: { imgList: string[] }) => {
 const Container = styled.div`
   display: block;
   overflow: visible;
-  margin-bottom: 20px;
+  margin: 10px 0;
   @media (min-width: ${({ theme }) => theme.device.sm}) {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     overflow: initial;
-    margin: 0 10vw 40px;
+    margin: 10px 5vw;
   }
 `;
 const StyledThumb = styled(Image)`

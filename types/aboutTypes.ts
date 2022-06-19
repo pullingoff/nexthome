@@ -30,9 +30,8 @@ export interface ITechStack {
 }
 
 export interface IEducation {
-  key?: any;
   institute: string;
   course: string;
   period: string;
-  details?: string[];
+  details: string[];
 }

@@ -2,7 +2,8 @@ import CustomLink from '@components/common/CustomLink';
 import styled from 'styled-components';
 import { IProject } from 'types';
 import path from 'path';
-import ProjectView from './ProjectView';
+import DetailContainer from './DetailContainer';
+import ImgGallery from './ImgGallery';
 
 const ProjectList = ({ projects }: { projects: IProject[] }) => {
   // customMeta 넣기
@@ -23,10 +24,18 @@ const ProjectRow = (pj: IProject) => {
       <details>
         <Title>{pj.title}</Title>
         <DarkBtn href={pj.link}>보러가기</DarkBtn>
-
         <ProjectView pj={pj} />
       </details>
     </ContainerLi>
+  );
+};
+
+export const ProjectView = ({ pj }: { pj: IProject }) => {
+  return (
+    <>
+      {pj.imgPathList && <ImgGallery imgList={pj.imgPathList} />}
+      <DetailContainer pj={pj} />
+    </>
   );
 };
 

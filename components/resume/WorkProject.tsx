@@ -1,5 +1,4 @@
 import {
-  PjContainer,
   DetailUl,
   Detail,
   PjTitle,
@@ -10,9 +9,9 @@ import {
 import { IWorkProject } from 'types/aboutTypes';
 import CustomLink from '@components/common/CustomLink';
 
-export default function AboutProject(pj: IWorkProject) {
+export default function WorkProject(pj: IWorkProject) {
   return (
-    <PjContainer>
+    <>
       {pj.link ? (
         <CustomLink href={pj.link}>
           <PjTitleHover>{pj.title} 🔗</PjTitleHover>
@@ -31,6 +30,6 @@ export default function AboutProject(pj: IWorkProject) {
           ))}
         </DetailUl>
       )}
-    </PjContainer>
+    </>
   );
 }

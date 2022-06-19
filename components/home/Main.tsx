@@ -2,7 +2,7 @@ import { useState } from 'react';
 import mainImg from '@public/images/main.JPG';
 import CustomLink from '../common/CustomLink';
 import styled from 'styled-components';
-import { HoverZoomImage } from '@components/project/ProjectThumb';
+import Image from 'next/image';
 
 const Main = () => {
   const [isHover, setHover] = useState(false);
@@ -32,6 +32,13 @@ const StyledMain = styled.section`
 const ImgContainer = styled.section`
   position: relative;
   @media (min-width: ${({ theme }) => theme.device.sm}) {
+  }
+`;
+
+const HoverZoomImage = styled(Image)`
+  transition: transform 0.5s ease;
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 

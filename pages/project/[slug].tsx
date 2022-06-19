@@ -1,7 +1,7 @@
 import { IProject } from 'types';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ProjectListData } from 'utils/ProjectList';
-import ProjectView from 'components/project/ProjectView';
+import { ProjectView } from 'components/project/ProjectList';
 
 const visibleProjectList = ProjectListData.filter(pj => pj.isVisible);
 const ProjectPage = ({ project }: { project: IProject }) => {
