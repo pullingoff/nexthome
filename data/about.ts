@@ -93,7 +93,7 @@ export const workExperiences: IExp[] = [
         ],
       },
       {
-        title: 'KAIST 약물 상호작용 예측 시스템 구축 및 하이브리드 앱',
+        title: 'KAIST 약물 상호작용 예측 하이브리드 앱',
         tech: ['PHP', 'JavaScript', 'JSP', 'jQuery'],
         // description:
         //   '유저가 선택한 의약품을 기준으로 함께 복용하면 위험한 의약품 (DUR) 조합을 보여준다.',
