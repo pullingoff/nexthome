@@ -7,8 +7,8 @@ const RecentPost = ({ recentPosts }: { recentPosts: IPost[] }) => {
     <StyledSection>
       <Title>Recent Posts</Title>
       <ul>
-        {recentPosts.map(({ frontmatter }, idx) => (
-          <a key={idx} href={''}>
+        {recentPosts.map(({ frontmatter, slug }, idx) => (
+          <a key={idx} href={`/blog/${slug}`}>
             <StyledPostLi>{frontmatter.title}</StyledPostLi>
           </a>
         ))}
