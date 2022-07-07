@@ -16,10 +16,11 @@ const Post = ({
 }) => {
   const router = useRouter();
 
-  const { title, date, category } = post.frontmatter;
+  const { title, date, category, description } = post.frontmatter;
   const customMeta = {
-    title: `${capitalize(category)}: ${title}`,
+    title: title,
     date: date,
+    description: description,
   };
 
   return (

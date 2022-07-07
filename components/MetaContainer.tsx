@@ -14,13 +14,14 @@ const MetaContainer = ({ customMeta }: { customMeta?: ICustomMeta }) => {
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta name="robots" content="follow, index" />
       <meta content={config.description} name="description" />
-      {/* <meta property="og:url" content={config.url} /> */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content={config.author} />
+      <meta property="og:site_name" content={config.title} />
       <meta property="og:description" content={config.description} />
       <meta property="og:title" content={config.title} />
       {/* <meta property="og:image" content={config.image} /> */}
-      {/* {config.date && <meta property="article:published_time" content={config.date} />} */}
+      {config.date && (
+        <meta property="article:published_time" content={config.date} />
+      )}
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
