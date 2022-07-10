@@ -12,9 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     setLoading(false);
   }, []);
-  console.log(pageProps);
-  // next/router를 이용해서 넥스트앱에서 라우팅이 발생됐을 때
-  // 강제적으로 gtag의 pageview 함수로 구글 애널리틱스에게 다른 페이지도 봤다고 알리는 겁니다.
 
   return (
     <StyledLayout>
