@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import { ICustomMeta, IProject } from 'types';
-import { ProjectListData } from 'utils/ProjectList';
+import { ProjectListData } from '@data/project';
 import ProjectList from '@components/project/ProjectList';
 import MetaContainer from '@components/MetaContainer';
 
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Project = ({ projects }: { projects: Array<IProject> }) => {
+const Project = ({ projects }: { projects: IProject[] }) => {
   return (
     <>
       <MetaContainer customMeta={customMeta} />

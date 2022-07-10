@@ -6,7 +6,7 @@ import { POST_DIRS } from '@config/index';
 import { IFrontMatter, IPost } from 'types';
 import memoize from 'memoizee';
 
-export const retrieveAllPosts = async (): Promise<IPost[]> => {
+const retrieveAllPosts = async (): Promise<IPost[]> => {
   // 모든 Post기 때문에 디렉토리 주소를 포함해야함
   let allFileNames: string[] = [];
   for (const menu of POST_DIRS) {
@@ -37,27 +37,36 @@ export const retrieveAllPosts = async (): Promise<IPost[]> => {
 
 export const getAllPosts: () => Promise<IPost[]> = memoize(retrieveAllPosts);
 
-// async로 할지 다시 한번 생각해보기
+// 최신 글 10개
 export const getRecentPosts = async () => {
-  // getAllPosts()
   const allPostsData = await getAllPosts();
   return {
     recentPosts: allPostsData.sort(sortByDate).slice(0, 9), // prop으로 모든 블로그 포스트 넘겨주기
   };
 };
 
-export const getAllTagsFromPosts = async () => {
-  const tags = (await getAllPosts()).reduce((prev: string[], curr) => {
-    curr.frontmatter.tags.forEach(tag => {
-      prev.push(tag);
-    });
-    return prev;
-  }, []);
+type ITag = {
+  count: number;
+  tag: string;
+};
+
+const retrieveAllTags = async () => {
+  const tags: string[] = (await getAllPosts()).reduce<string[]>(
+    (prev: string[], curr: IPost) => {
+      curr.frontmatter.tags.forEach((tag: string) => {
+        prev.push(tag);
+      });
+      return prev;
+    },
+    []
+  );
 
   const tagWithCount = [...new Set(tags)].map(tag => ({
     tag,
     count: tags.filter(t => t === tag).length,
   }));
-
-  return tagWithCount.sort((a, b) => b.count - a.count);
+  console.log(tagWithCount);
+  return tagWithCount.sort((a: ITag, b: ITag) => b.count - a.count);
 };
+
+export const getAllTags: () => Promise<ITag[]> = memoize(retrieveAllTags);

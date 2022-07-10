@@ -19,7 +19,7 @@ const RecentPost = ({ recentPosts }: { recentPosts: IPost[] }) => {
 
 export default RecentPost;
 
-const StyledSection = styled.section`
+export const StyledSection = styled.section`
   margin-bottom: var(--lg);
   &:before {
     content: ' ';
@@ -28,7 +28,7 @@ const StyledSection = styled.section`
   cursor: pointer;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   font-weight: 800;
   font-size: var(--9xl);
 

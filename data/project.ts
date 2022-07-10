@@ -1,6 +1,6 @@
 import { IProject } from 'types';
 
-export const ProjectListData: Array<IProject> = [
+export const ProjectListData: IProject[] = [
   {
     title: ' 📱 Next.js Blog',
     isVisible: true,

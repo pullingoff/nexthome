@@ -16,7 +16,7 @@ export interface IPost {
   frontmatter: IFrontMatter;
   body: string;
   path?: string;
-  headings?: Array<IHeading>;
+  headings?: IHeading[];
 }
 
 export interface IHeading {

@@ -11,7 +11,7 @@ const Tag = ({ text }: { text: string }) => {
 
 export default Tag;
 
-const StyledTag = styled(CustomLink)`
+export const StyledTag = styled(CustomLink)`
   color: var(--color-white);
   text-transform: uppercase;
   font-weight: 700;

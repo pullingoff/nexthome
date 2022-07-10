@@ -14,7 +14,6 @@ export interface IWorkProject {
   details: string[];
 }
 
-// workExp, otherExp에서 둘다 쓴다.
 export interface IExp {
   organization: string;
   description: string;

@@ -11,6 +11,7 @@ module.exports = {
   ],
   plugins: ['prettier', '@typescript-eslint'],
   rules: {
+    '@typescript-eslint/no-var-requires': 0, // next.config.js
     'prettier/prettier': [
       'error',
       {

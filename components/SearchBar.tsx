@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import SearchBarLogo from "./SearchBarLogo"
 
 const SearchBar = () => {
   return (

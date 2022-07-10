@@ -1,6 +1,6 @@
 import { IProject } from 'types';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { ProjectListData } from 'utils/ProjectList';
+import { ProjectListData } from '@data/project';
 import { ProjectView } from 'components/project/ProjectList';
 
 const visibleProjectList = ProjectListData.filter(pj => pj.isVisible);

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CustomLink from './common/CustomLink';
 import { IPost } from 'types';
 
-export interface IPagination {
+interface IPagination {
   posts?: IPost[];
   category: string;
   pageTotal: number;

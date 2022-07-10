@@ -1,5 +1,5 @@
 import ListLayout from '@components/ListLayout';
-import { getAllTagsFromPosts, getAllPosts } from '@lib/posts-related-api';
+import { getAllTags, getAllPosts } from '@lib/posts-related-api';
 import { POSTS_PER_PAGE } from '@config/index';
 import MetaContainer from '@components/MetaContainer';
 import KeywordTitle from '@components/tag/KeywordTitle';
@@ -7,15 +7,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { IPost } from '../../../../types';
 import { ParsedUrlQuery } from 'querystring';
 
-const Tag = ({
-  posts,
-  tag,
-  pageNo,
-}: {
-  posts: IPost[];
-  tag: string;
-  pageNo: number;
-}) => {
+const Tag = ({ posts, tag }: { posts: IPost[]; tag: string }) => {
   const capitalizedTag: string = tag.toUpperCase();
 
   const customMeta = {
@@ -42,7 +34,7 @@ const Tag = ({
 export default Tag;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allTags = await getAllTagsFromPosts();
+  const allTags = await getAllTags();
   const posts = await getAllPosts();
 
   const paths: { params: { tag: string; keyword: string } }[] = [];
@@ -62,7 +54,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface ITag extends ParsedUrlQuery {
+export interface ITag extends ParsedUrlQuery {
   keyword: string;
   tag: string;
 }
