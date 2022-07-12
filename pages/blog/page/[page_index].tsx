@@ -1,4 +1,4 @@
-import { getAllPosts } from '@lib/posts-related-api';
+import { getAllPosts, getAllTags } from '@lib/posts-related-api';
 import { POSTS_PER_PAGE } from '@config/index';
 import Pagination from '@components/Pagination';
 import ListLayout from '@components/ListLayout';
@@ -6,6 +6,8 @@ import MetaContainer from '@components/MetaContainer';
 import { GetStaticPaths, GetStaticProps, PageConfig } from 'next';
 import { ICustomMeta, IPost } from 'types';
 import { ParsedUrlQuery } from 'querystring';
+import TagContainer from '@components/home/TagContainer';
+import { ITag } from 'pages/tags/[tag]/pages/[keyword]';
 
 const customMeta: ICustomMeta = {
   title: `Blog: 개발자 박하은`,
@@ -52,11 +54,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const orderedPosts = posts.slice(startIndex, endIndex);
   // (처음 시작인덱스 * 보여질 아이템 수), (다음 인덱스 * 다음 보여질 아이템 수)로 배열 자르기
 
+  const allTags = await getAllTags();
   return {
     props: {
       posts: orderedPosts,
       currentPage: page,
       pageTotal: pageTotal,
+      allTags,
     },
   };
 };
@@ -65,14 +69,17 @@ export default function BlogPage({
   posts,
   currentPage,
   pageTotal,
+  allTags,
 }: {
   posts: IPost[];
   currentPage: number;
   pageTotal: number;
+  allTags: ITag[];
 }) {
   return (
     <>
       <MetaContainer customMeta={customMeta} />
+      <TagContainer allTags={allTags} />
       <ListLayout posts={posts} />
       <Pagination
         category="blog"

@@ -29,11 +29,11 @@ const PostCard = ({ href, post }: { href: string; post: IPost }) => {
           <StyledDateTime>{publishedAt}</StyledDateTime>
         </InfoSection>
       </CustomLink>
-      <TagContainer>
+      <StyledTagContainer>
         {tags?.map(t => (
           <Tag key={t} text={t} />
         ))}
-      </TagContainer>
+      </StyledTagContainer>
       {/* Tag 4개 이상이면 안 보이도록 조치 필요 */}
     </CardContainer>
   );
@@ -92,7 +92,7 @@ const StyledDateTime = styled.p`
   margin: 10px 0;
 `;
 
-const TagContainer = styled.div`
+const StyledTagContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto var(--2xl) var(--2xl);
