@@ -1,4 +1,4 @@
-wimport {
+import {
   StyledOrgContainer,
   SectionHeader,
   StyledMain,
