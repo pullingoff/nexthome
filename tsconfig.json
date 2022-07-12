@@ -12,7 +12,7 @@
       "@public/*": ["public/*"],
       "@lib/*": ["lib/*"],
       "@data/*": ["data/*"],
-      "@types/*": ["types/*"],
+      "@type/*": ["type/*"],
     },
     "outDir": "dist",
     "lib": [

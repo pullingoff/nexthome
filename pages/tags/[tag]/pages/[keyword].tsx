@@ -4,7 +4,7 @@ import { POSTS_PER_PAGE } from '@config/index';
 import MetaContainer from '@components/MetaContainer';
 import KeywordTitle from '@components/tag/KeywordTitle';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { IPost } from '@types/post';
+import { IPost } from '@type/post';
 import { ParsedUrlQuery } from 'querystring';
 
 const Tag = ({ posts, tag }: { posts: IPost[]; tag: string }) => {

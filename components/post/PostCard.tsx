@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import CustomLink from '../common/CustomLink';
-import { IPost } from '@types/post';
+import { IPost } from '@type/post';
 import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 import Tag from '@components/tag/Tag';
