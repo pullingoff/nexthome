@@ -14,12 +14,11 @@
 ```
 title: string;
 tags: string[];
-published: boolean;
+published (optional)
 date: string; // 2020-12-25 08:00
 description: string;
 path: string;
 ```
-
 
 ## 사용한 프레임워크, 기술 스택들
 
@@ -34,3 +33,5 @@ path: string;
 - 포스트에 tags 안 넣어도 되도록 하기
 - 방명록 페이지!!!
 - dark mode
+- 이전 버튼 좀 더 귀엽게
+- 코드 블럭 스타일 
