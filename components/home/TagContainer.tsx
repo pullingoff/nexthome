@@ -23,6 +23,9 @@ const StyledTagContainer = styled.div`
   flex-flow: row wrap;
   row-gap: 0.5rem;
   text-align: center;
+  a {
+    margin-bottom: 0;
+  }
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     a:nth-child(n + 12) {
       display: none;

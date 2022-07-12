@@ -18,7 +18,7 @@ export const StyledTag = styled(CustomLink)`
   padding: 0.125rem 0.75rem;
   background-color: var(--theme1-color);
   border-radius: var(--border-radius-sm);
-  margin-right: var(--md);
+  margin: 0 var(--md) var(--md) 0;
   &:hover {
     background-color: salmon;
     color: white;
