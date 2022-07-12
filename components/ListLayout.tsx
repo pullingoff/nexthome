@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IPost } from '@types';
+import { IPost } from '@types/post';
 import PostCard from './post/PostCard';
 
 const ListLayout = ({ posts }: { posts: IPost[] }) => {
