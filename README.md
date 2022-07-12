@@ -10,10 +10,16 @@
 이 블로그에선 제 생각을 담은 글과 이력서 위주로 정리하고 있으며,
 더 가벼운 글들은 TIL에서 만나보실 수 있습니다.
 
-## 사용법
-```shell
-실행: npm run dev
+## frontmatter
 ```
+title: string;
+tags: string[];
+published: boolean;
+date: string; // 2020-12-25 08:00
+description: string;
+path: string;
+```
+
 
 ## 사용한 프레임워크, 기술 스택들
 
@@ -22,10 +28,6 @@
 배포: `Vercel`  
 마크다운 처리: `Markdown`, `MDXRemote`  
 기타: `Git`
-
-## 영감은 여기서 받았어요!
-
-color theme: [Touching the Void](https://www.moma.org/calendar/galleries/5269)
 
 ## To be continued...
 
