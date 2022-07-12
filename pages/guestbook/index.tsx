@@ -1,6 +1,6 @@
 // import Message from "@components/guestbook/message";
 import { useEffect, useState } from 'react';
-import { IIssue, IMsg } from 'types';
+import { IIssue, IMsg } from '@type';
 
 const GuestBook = () => {
   const [msgs, setMsgs] = useState<IMsg[]>([]);

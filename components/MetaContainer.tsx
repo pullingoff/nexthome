@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { METADATA } from '@config/index';
-import { ICustomMeta } from 'types';
+import { ICustomMeta } from '@type';
 
 const MetaContainer = ({ customMeta }: { customMeta?: ICustomMeta }) => {
   const config = {

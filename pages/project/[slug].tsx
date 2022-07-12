@@ -1,4 +1,4 @@
-import { IProject } from 'types';
+import { IProject } from '@type';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ProjectListData } from '@data/project';
 import { ProjectView } from 'components/project/ProjectList';

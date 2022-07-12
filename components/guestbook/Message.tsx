@@ -1,4 +1,4 @@
-import { IMsg } from 'types';
+import { IMsg } from '@type';
 
 const Message = ({ msg }: any) => {
   return (

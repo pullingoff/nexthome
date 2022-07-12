@@ -4,7 +4,7 @@ import Pagination from '@components/Pagination';
 import ListLayout from '@components/ListLayout';
 import MetaContainer from '@components/MetaContainer';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { ICustomMeta } from 'types';
+import { ICustomMeta } from '@type';
 import { ParsedUrlQuery } from 'querystring';
 import TagContainer from '@components/home/TagContainer';
 import { ITag } from 'pages/tags/[tag]/pages/[keyword]';

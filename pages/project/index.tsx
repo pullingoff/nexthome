@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { ICustomMeta, IProject } from 'types';
+import { ICustomMeta, IProject } from '@type';
 import { ProjectListData } from '@data/project';
 import ProjectList from '@components/project/ProjectList';
 import MetaContainer from '@components/MetaContainer';

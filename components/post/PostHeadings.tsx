@@ -1,6 +1,6 @@
 import CustomLink from '../common/CustomLink';
 import styled from 'styled-components';
-import { IHeading } from 'types';
+import { IHeading } from '@type';
 
 const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
   return (

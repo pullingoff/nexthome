@@ -1,6 +1,6 @@
 import CustomLink from '@components/common/CustomLink';
 import styled from 'styled-components';
-import { IProject } from 'types';
+import { IProject } from '@type';
 import path from 'path';
 import DetailContainer from './DetailContainer';
 import ImgGallery from './ImgGallery';

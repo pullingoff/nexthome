@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IProject } from 'types';
+import { IProject } from '@type';
 
 const DetailContainer = ({ pj }: { pj: IProject }) => {
   return (
