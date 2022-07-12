@@ -3,11 +3,12 @@ import { POSTS_PER_PAGE } from '@config/index';
 import Pagination from '@components/Pagination';
 import ListLayout from '@components/ListLayout';
 import MetaContainer from '@components/MetaContainer';
-import { GetStaticPaths, GetStaticProps, PageConfig } from 'next';
-import { ICustomMeta, IPost } from 'types';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ICustomMeta } from 'types';
 import { ParsedUrlQuery } from 'querystring';
 import TagContainer from '@components/home/TagContainer';
 import { ITag } from 'pages/tags/[tag]/pages/[keyword]';
+import { IPost } from 'types/post';
 
 const customMeta: ICustomMeta = {
   title: `Blog: 개발자 박하은`,

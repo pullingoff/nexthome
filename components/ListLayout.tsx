@@ -8,10 +8,7 @@ const ListLayout = ({ posts }: { posts: IPost[] }) => {
       <PostUl>
         {posts.map(post => (
           <li key={post.slug}>
-            <PostCard
-              href={`/${post.frontmatter.category}/${post.slug}`}
-              post={post}
-            />
+            <PostCard href={`/blog/${post.slug}`} post={post} />
           </li>
         ))}
       </PostUl>

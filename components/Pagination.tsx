@@ -9,10 +9,10 @@ interface IPagination {
   currentPage: number;
 }
 
-const Pagination = ({ category, pageTotal, currentPage }: IPagination) => {
+const Pagination = ({ pageTotal, currentPage }: IPagination) => {
   const isFirst = currentPage === 1;
   const isLast = currentPage === pageTotal;
-  const path = category.toLowerCase();
+  const path = 'blog';
 
   return (
     <>
