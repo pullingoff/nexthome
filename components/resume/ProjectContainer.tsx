@@ -1,4 +1,4 @@
-import {
+wimport {
   StyledOrgContainer,
   SectionHeader,
   StyledMain,
@@ -10,7 +10,7 @@ import {
   SkillSpan,
   OrgHoverLink,
 } from '@styles/aboutStyle';
-import { IEducation, IExp, ITechStack } from 'types/aboutTypes';
+import { IEducation, IExp, ITechStack } from '@types/about';
 import CustomEmoji from '@components/common/CustomEmoji';
 import WorkProject from './WorkProject';
 import styled from 'styled-components';

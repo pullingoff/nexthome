@@ -4,7 +4,7 @@ import { POSTS_PER_PAGE } from '@config/index';
 import MetaContainer from '@components/MetaContainer';
 import KeywordTitle from '@components/tag/KeywordTitle';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { IPost } from '../../../../types';
+import { IPost } from '@types/post';
 import { ParsedUrlQuery } from 'querystring';
 
 const Tag = ({ posts, tag }: { posts: IPost[]; tag: string }) => {
@@ -20,13 +20,7 @@ const Tag = ({ posts, tag }: { posts: IPost[]; tag: string }) => {
         pageNm={capitalizedTag}
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
       />
-      <ListLayout
-        posts={posts}
-        // category="blog"
-        // pageNo={pageNo}
-        // nextPath={`/tags/${tag}/pages/${pageNo + 1}`}
-        // prevPath={`/tags/${tag}/pages/${pageNo - 1}`}
-      />
+      <ListLayout posts={posts} />
     </>
   );
 };

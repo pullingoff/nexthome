@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { sortByDate } from '.';
 import { POST_DIRS } from '@config/index';
-import { IFrontMatter, IPost } from 'types';
+import { IFrontMatter, IPost } from 'types/post';
 import memoize from 'memoizee';
 
 const retrieveAllPosts = async (): Promise<IPost[]> => {
@@ -65,7 +65,7 @@ const retrieveAllTags = async () => {
     tag,
     count: tags.filter(t => t === tag).length,
   }));
-  console.log(tagWithCount);
+  // console.log(tagWithCount); //  { tag: 'TDD', count: 1 },
   return tagWithCount.sort((a: ITag, b: ITag) => b.count - a.count);
 };
 

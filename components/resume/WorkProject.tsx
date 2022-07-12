@@ -7,7 +7,7 @@ import {
   PjTitleHover,
   StyledPjContainer,
 } from '@styles/aboutStyle';
-import { IWorkProject } from 'types/aboutTypes';
+import { IWorkProject } from '@types/about';
 import CustomLink from '@components/common/CustomLink';
 
 export default function WorkProject(pj: IWorkProject) {

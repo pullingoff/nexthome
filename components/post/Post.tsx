@@ -1,10 +1,8 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MetaContainer from '../MetaContainer';
-import { capitalize } from '@lib/index';
 import PostHeader from './PostHeader';
 import styled from 'styled-components';
-import PostHeadings from './PostHeadings';
-import { IPost } from 'types';
+import { IPost } from 'types/post';
 import { useRouter } from 'next/router';
 
 const Post = ({
@@ -16,7 +14,7 @@ const Post = ({
 }) => {
   const router = useRouter();
 
-  const { title, date, category, description } = post.frontmatter;
+  const { title, date, description } = post.frontmatter;
   const customMeta = {
     title: title,
     date: date,

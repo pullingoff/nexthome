@@ -1,4 +1,4 @@
-import { IHeaderInfo, ITechStack, IExp, IEducation } from 'types/aboutTypes';
+import { IHeaderInfo, ITechStack, IExp, IEducation } from '@types/about';
 
 export const headerInfo: IHeaderInfo = {
   name: '박하은',

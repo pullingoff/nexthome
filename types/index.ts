@@ -1,29 +1,4 @@
-export interface IFrontMatter {
-  title: string;
-  category: string;
-  tags: string[];
-  published: boolean;
-  date: string;
-  description: string;
-  path: string;
-  socialImageUrl?: string;
-  socialImageCredit?: string;
-}
-
-export interface IPost {
-  category?: string;
-  slug: string;
-  frontmatter: IFrontMatter;
-  body: string;
-  path?: string;
-  headings?: IHeading[];
-}
-
-export interface IHeading {
-  text: string;
-  link: string;
-}
-
+// SEO HTML MetaData
 export interface ICustomMeta {
   title: string;
   url?: string;
@@ -42,6 +17,8 @@ export interface IProject {
   date: string; // 작업 시기
   imgPathList?: string[];
 }
+
+// guestbook
 
 export interface IIssue {
   name: string;
