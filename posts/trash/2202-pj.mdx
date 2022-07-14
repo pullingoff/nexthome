@@ -1,15 +1,11 @@
 ---
 title: "사이드 프로젝트를 하며 배운 것들을 적어보자!"
 date: 2022-02-27 02:00
+published: false
 tags:
-- til
-category: blog
-author: Hailey Park
-description: 
+- git
+description: Devops, 프론트 설계 등
 ---
-
-개인 프로젝트를 하며 느낀 것들로, 계속 추가중!!
-Last updated: 2022/03/11
 
 ## Devops (git)
 
@@ -23,15 +19,12 @@ e.g. 회원가입 개발용 브랜치(feat/Join), 로그인 개발용 브랜치(
 2. 페이지를 나눌 수 없을 때까지 쪼개서 재사용성 극대화 (아토믹 디자인)
 3. 내용물(비즈니스 로직)과 껍데기(UI Component)를 분리하고 상태 주입을 위한 컴포넌트를 이용해 주입
 
-
 ## HTML, CSS 관련
 
 - 크게 들어가는 border가 많아지는 건 자제하자. 원래 메인화면에서 화면 전체를 아우르는 border가 3개 있었는데 이 세개의 길이를 맞추는게 쉽지 않다.
 - width를 반응형 변수로 지정해줄 땐 최대한 max-width를 (px) 함께 넣어주는게 좋은가?
 
-## React 
-
-### 프로젝트 만드는 순서
+## React 프로젝트 만드는 순서
 
 - create-react-app 하고 `components`, `store(for Redux)` 등 필요한 하위 디렉토리 만들기
 - store dir 안에 `index.js`를 만든다. root reducer 역할을 함. 

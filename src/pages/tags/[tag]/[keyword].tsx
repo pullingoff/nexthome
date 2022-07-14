@@ -6,13 +6,25 @@ import KeywordTitle from '#components/tag/KeywordTitle';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { IPost } from '#type/post';
 import { ParsedUrlQuery } from 'querystring';
+import Pagination from '#components/Pagination';
 
-const Tag = ({ posts, tag }: { posts: IPost[]; tag: string }) => {
+const Tag = ({
+  posts,
+  tag,
+  pageNo,
+  pageTotal,
+}: {
+  posts: IPost[];
+  tag: string;
+  pageNo: number;
+  pageTotal: number;
+}) => {
   const capitalizedTag: string = tag.toUpperCase();
 
   const customMeta = {
     title: `${capitalizedTag} : 개발자 박하은`,
   };
+
   return (
     <>
       <MetaContainer customMeta={customMeta} />
@@ -21,6 +33,11 @@ const Tag = ({ posts, tag }: { posts: IPost[]; tag: string }) => {
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
       />
       <ListLayout posts={posts} />
+      <Pagination
+        path={`tags/${tag}`}
+        currentPage={pageNo}
+        pageTotal={pageTotal}
+      />
     </>
   );
 };
@@ -81,6 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       posts: resultPosts.map(post => ({ ...post, path: '' })),
       tag,
       pageNo,
+      pageTotal: postsWithTag.length,
     },
   };
 };

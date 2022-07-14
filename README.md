@@ -13,12 +13,11 @@
 ## frontmatter
 
 ```
-title: string;
-tags: string[];
-published (optional)
-date: string; // 2020-12-25 08:00
-description: string;
-path: string;
+title
+tags
+date // 2020-12-25 08:00
+description
+published // optional
 ```
 
 ## 사용한 프레임워크, 기술 스택들
