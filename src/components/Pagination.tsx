@@ -24,7 +24,11 @@ const Pagination = ({ pageTotal, currentPage }: IPagination) => {
           Array(pageTotal)
             .fill(0)
             .map((_, i) => (
-              <Button key={i + 1} href={`/${path}/page/${i + 1}`}>
+              <Button
+                key={i + 1}
+                href={`/${path}/page/${i + 1}`}
+                data-iscurrent={i === currentPage - 1}
+              >
                 {i + 1}
               </Button>
             ))}
@@ -49,10 +53,15 @@ const Button = styled(CustomLink)`
   padding: 5px 3px;
   margin: 0;
   font-size: var(--4xl);
+  color: var(--theme2-color);
 
   &:hover {
     cursor: pointer;
     transform: translateY(-2px);
+  }
+  &[data-iscurrent='true'] {
+    color: var(--theme1-color);
+    font-weight: bold;
   }
 `;
 
