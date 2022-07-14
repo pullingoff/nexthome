@@ -11,6 +11,7 @@
 더 가벼운 글들은 TIL에서 만나보실 수 있습니다.
 
 ## frontmatter
+
 ```
 title: string;
 tags: string[];
@@ -28,10 +29,8 @@ path: string;
 마크다운 처리: `Markdown`, `MDXRemote`  
 기타: `Git`
 
-## To be continued...
+## To be continued
 
-- 포스트에 tags 안 넣어도 되도록 하기
 - 방명록 페이지!!!
 - dark mode
-- 이전 버튼 좀 더 귀엽게
-- 코드 블럭 스타일 
+- 코드 블럭 스타일
