@@ -28,14 +28,21 @@ const retrieveAllPosts = async (): Promise<IPost[]> => {
     const fileContents = fs.readFileSync(fullPath, 'utf8'); // path에 있는 파일 내용 읽어오기
     const { data: frontmatter, content: body } = matter(fileContents);
     const fm: IFrontMatter = frontmatter as IFrontMatter;
-
+    // if (!fm?.published) {
+    //   fm.published = true;
+    // } else {
+    //   console.log(fm.title);
+    // }
     return { frontmatter: fm, body, slug };
   });
-  return allPostsData
-    .filter(f => {
-      return f.frontmatter?.published != false;
-    })
-    .sort(sortByDate);
+
+  return (
+    allPostsData
+      // .filter(f => {
+      //   return f.frontmatter.published;
+      // })
+      .sort(sortByDate)
+  );
 };
 
 export const getAllPosts: () => Promise<IPost[]> = memoize(retrieveAllPosts);

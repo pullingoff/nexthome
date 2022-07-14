@@ -3,7 +3,7 @@
 export interface IFrontMatter {
   title: string;
   tags: string[];
-  published: boolean;
+  published?: boolean;
   date: string;
   description: string;
   path: string;
@@ -13,7 +13,6 @@ export interface IPost {
   slug: string;
   frontmatter: IFrontMatter;
   body: string;
-  // path?: string;
   headings?: IHeading[];
 }
 
