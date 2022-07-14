@@ -7,7 +7,6 @@ import { IFrontMatter, IPost } from '#type/post';
 import memoize from 'memoizee';
 
 const retrieveAllPosts = async (): Promise<IPost[]> => {
-  // 모든 Post기 때문에 디렉토리 주소를 포함해야함
   let allFileNames: string[] = [];
   for (const menu of POST_DIRS) {
     const fileNames: string[] = fs
@@ -32,7 +31,11 @@ const retrieveAllPosts = async (): Promise<IPost[]> => {
 
     return { frontmatter: fm, body, slug };
   });
-  return allPostsData.sort(sortByDate);
+  return allPostsData
+    .filter(f => {
+      return f.frontmatter?.published != false;
+    })
+    .sort(sortByDate);
 };
 
 export const getAllPosts: () => Promise<IPost[]> = memoize(retrieveAllPosts);
