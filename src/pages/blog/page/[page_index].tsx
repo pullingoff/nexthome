@@ -7,7 +7,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ICustomMeta } from '#type/index';
 import { ParsedUrlQuery } from 'querystring';
 import TagContainer from '#components/home/TagContainer';
-import { ITag } from '#src/pages/tags/[tag]/pages/[keyword]';
+import { ITag } from '#src/pages/tags/[tag]/[keyword]';
 import { IPost } from '#type/post';
 
 const customMeta: ICustomMeta = {
@@ -83,7 +83,7 @@ export default function BlogPage({
       <TagContainer allTags={allTags} />
       <ListLayout posts={posts} />
       <Pagination
-        category="blog"
+        path="blog/page"
         currentPage={currentPage}
         pageTotal={pageTotal}
       />

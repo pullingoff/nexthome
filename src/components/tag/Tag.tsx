@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 const Tag = ({ text }: { text: string }) => {
   return (
-    <StyledTag href={`/tags/${text}/pages/1`}>
-      {text.split(' ').join('-')}
-    </StyledTag>
+    <StyledTag href={`/tags/${text}/1`}>{text.split(' ').join('-')}</StyledTag>
   );
 };
 

@@ -3,39 +3,33 @@ import CustomLink from './common/CustomLink';
 import { IPost } from '#type/post';
 
 interface IPagination {
-  posts?: IPost[];
-  category: string;
+  path: string;
   pageTotal: number;
   currentPage: number;
 }
 
-const Pagination = ({ pageTotal, currentPage }: IPagination) => {
+const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
   const isFirst = currentPage === 1;
   const isLast = currentPage === pageTotal;
-  const path = 'blog';
 
   return (
     <>
       <Nav>
-        {isLast && (
-          <Button href={`/${path}/page/${currentPage - 1}`}>&lt;</Button>
-        )}
+        {isLast && <Button href={`/${path}/${currentPage - 1}`}>&lt;</Button>}
         {pageTotal &&
           Array(pageTotal)
             .fill(0)
             .map((_, i) => (
               <Button
                 key={i + 1}
-                href={`/${path}/page/${i + 1}`}
+                href={`/${path}/${i + 1}`}
                 data-iscurrent={i === currentPage - 1}
               >
                 {i + 1}
               </Button>
             ))}
 
-        {isFirst && (
-          <Button href={`/${path}/page/${currentPage + 1}`}>&gt;</Button>
-        )}
+        {isFirst && <Button href={`/${path}/${currentPage + 1}`}>&gt;</Button>}
       </Nav>
     </>
   );

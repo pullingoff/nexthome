@@ -1,5 +1,5 @@
 import { StyledTag } from '#components/tag/Tag';
-import { ITag } from '#src/pages/tags/[tag]/pages/[keyword]';
+import { ITag } from '#src/pages/tags/[tag]/[keyword]';
 import styled from 'styled-components';
 import { StyledSection, Title } from './RecentPost';
 
@@ -9,7 +9,7 @@ const TagContainer = ({ allTags }: { allTags: ITag[] }) => {
       <Title>Categories</Title>
       <StyledTagContainer>
         {allTags.map(tag => (
-          <StyledTagItem key={tag.tag} href={`/tags/${tag.tag}/pages/1`}>
+          <StyledTagItem key={tag.tag} href={`/tags/${tag.tag}/1`}>
             {tag.tag} ({tag.count})
           </StyledTagItem>
         ))}
