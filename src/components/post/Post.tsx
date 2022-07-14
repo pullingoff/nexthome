@@ -43,7 +43,7 @@ export default Post;
 
 const StyledGoBackBtn = styled.span`
   display: block;
-  margin: 10px 0;
+  margin: calc(2% - 1px);
   color: var(--color-point-blue);
   font-weight: 700;
   &:hover {
