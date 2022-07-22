@@ -2,15 +2,18 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import MetaContainer from '../MetaContainer';
 import PostHeader from './PostHeader';
 import styled from 'styled-components';
-import { IPost } from '#type/post';
+import { IHeading, IPost } from '#type/post';
 import { useRouter } from 'next/router';
+import PostHeadings from "#components/post/PostHeadings";
 
 const Post = ({
   post,
   mdxSource,
+  headings
 }: {
   post: IPost;
   mdxSource: MDXRemoteSerializeResult;
+  headings: IHeading[];
 }) => {
   const router = useRouter();
 
@@ -20,27 +23,31 @@ const Post = ({
     date: date,
     description: description,
   };
-
   return (
     <>
       <MetaContainer customMeta={customMeta} />
-      <article>
-        <PostHeader date={date} title={title} />
-        {/* {post.headings &&
-            <PostHeadings headings={post.headings}/>
-        } */}
-        <PostDiv>
-          <MDXRemote {...mdxSource} />
-        </PostDiv>
-        <StyledGoBackBtn onClick={() => router.back()}>
-          &larr; 이전
-        </StyledGoBackBtn>
-      </article>
+      <PostContainer>
+        <article>
+          <PostHeader date={date} title={title} />
+          <PostDiv>
+            <MDXRemote {...mdxSource} />
+          </PostDiv>
+          <StyledGoBackBtn onClick={() => router.back()}>
+            &larr; 이전
+          </StyledGoBackBtn>
+        </article>
+        {headings && <PostHeadings headings={headings} />}
+      </PostContainer>
     </>
   );
 };
 export default Post;
 
+const PostContainer = styled.div`
+display: flex;
+flex-flow: row nowrap;
+align-items: flex-start;
+`
 const StyledGoBackBtn = styled.span`
   display: block;
   margin: calc(2% - 1px);

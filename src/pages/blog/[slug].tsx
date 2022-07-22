@@ -5,20 +5,18 @@ import { parseMarkdownToMdx } from '#utils/Markdown';
 import Post from '#components/post/Post';
 import { markdownRegex } from '#lib/index';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { IPost } from '#type/post';
+import {IHeading, IPost} from '#type/post';
 import { getAllPosts } from '#lib/posts-related-api';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 const blogDir = path.join(process.cwd(), 'posts', 'blog'); // current directory/posts
 
-const PostPage = ({
-  post,
-  mdxSource,
-}: {
+const PostPage = (props: {
   post: IPost;
   mdxSource: MDXRemoteSerializeResult;
+  headings: IHeading[];
 }) => {
-  return <Post post={post} mdxSource={mdxSource} />;
+  return <Post {...props} />;
 };
 
 export default PostPage;
@@ -51,10 +49,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const posts = await getAllPosts();
   const post = posts.find(p => p?.slug === slug);
-  // const headings = getHeadings(content)
+  const headings = getHeadings(content);
+
   const mdxSource = await parseMarkdownToMdx(content);
 
-  return { props: { post, mdxSource /*, headings*/ } };
+  return { props: { post, mdxSource, headings } };
 };
 
 // post content에서 ## 찾아서 헤딩 구성 (목차용)

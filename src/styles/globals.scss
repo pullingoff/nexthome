@@ -206,21 +206,6 @@ sub {
   bottom: -0.25em;
 }
 
-aside {
-  padding: 1.5em 1.5em 0.5em 1.5em;
-  margin-bottom: 1em;
-  background: darken($color-pale-bg, 8%);
-  border: 2px solid darken($color-pale-bg, 12%);
-  h2, h3, h4 {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid lighten(salmon, 5%);
-  }
-  ul, p {
-    margin-bottom: 0;
-  }
-}
 
 // drag 시 컬러
 ::selection {
