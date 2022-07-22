@@ -33,3 +33,4 @@ published // optional
 - 방명록 페이지!!!
 - dark mode
 - 코드 블럭 스타일
+- post headings: tablet 사이즈 이상에선 포스트 옆쪽에 목차 생기도록
