@@ -1,6 +1,6 @@
-import CustomLink from "../common/CustomLink";
-import styled from "styled-components";
-import { IHeading } from "#type/post";
+import CustomLink from '../common/CustomLink';
+import styled from 'styled-components';
+import { IHeading } from '#type/post';
 
 const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
   return (
@@ -8,7 +8,7 @@ const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
       {headings ? (
         <HeadingContainer>
           <HeadingOl>
-            {headings.map((heading) => (
+            {headings.map(heading => (
               <HeadingLi key={heading.text}>
                 <CustomLink href={heading.link}>{heading.text}</CustomLink>
               </HeadingLi>

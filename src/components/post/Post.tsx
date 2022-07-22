@@ -1,10 +1,10 @@
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import MetaContainer from "../MetaContainer";
-import PostHeader from "./PostHeader";
-import styled from "styled-components";
-import { IHeading, IPost } from "#type/post";
-import { useRouter } from "next/router";
-import PostHeadings from "#components/post/PostHeadings";
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import MetaContainer from '../MetaContainer';
+import PostHeader from './PostHeader';
+import styled from 'styled-components';
+import { IHeading, IPost } from '#type/post';
+import { useRouter } from 'next/router';
+import PostHeadings from '#components/post/PostHeadings';
 
 const Post = ({
   post,
@@ -61,7 +61,7 @@ const StyledGoBackBtn = styled.span`
 
 const PostDiv = styled.div`
   &:before {
-    content: " ";
+    content: ' ';
     display: block;
     margin: 30px 2%;
   }
@@ -89,7 +89,7 @@ const PostDiv = styled.div`
       list-style: none;
       padding-left: 1rem;
       &:before {
-        content: "- ";
+        content: '- ';
       }
     }
   }
@@ -131,11 +131,11 @@ const PostDiv = styled.div`
   h2,
   h3 {
     &:before {
-      content: "# ";
+      content: '# ';
     }
   }
   // h2 바로 아래 p는 margin-top 제거
-  p:where(h2 + *):not(:where([class~="not-p"] *)) {
+  p:where(h2 + *):not(:where([class~='not-p'] *)) {
     margin-top: 0;
   }
   code {
