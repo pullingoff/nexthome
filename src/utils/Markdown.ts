@@ -1,6 +1,7 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import slug from 'remark-slug';
 import { visit } from 'unist-util-visit';
 import { Node } from 'unist';
@@ -52,7 +53,12 @@ export async function parseMarkdownToMdx(body: string) {
     // 마크다운에서 html로 제대로 바꿀 수 있도록 도와주는 플러그인들
     mdxOptions: {
       remarkPlugins: [remarkMath, slug],
-      rehypePlugins: [rehypeKatex, prism, parseCodeSnippet],
+      rehypePlugins: [
+        rehypeKatex,
+        prism,
+        parseCodeSnippet,
+        rehypeAutolinkHeadings,
+      ],
     },
   });
 }

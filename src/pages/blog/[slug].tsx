@@ -5,7 +5,7 @@ import { parseMarkdownToMdx } from '#utils/Markdown';
 import Post from '#components/post/Post';
 import { markdownRegex } from '#lib/index';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import {IHeading, IPost} from '#type/post';
+import { IHeading, IPost } from '#type/post';
 import { getAllPosts } from '#lib/posts-related-api';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
@@ -62,7 +62,8 @@ const getHeadings = (source: string) => {
   if (source.match(regex)) {
     return source.match(regex)?.map(heading => {
       const headingText = heading.replace('## ', '');
-      const link = '#' + headingText.replace(/ /g, '_').toLowerCase();
+      // ?가 있을 경우 무한으로 링크가 붙어 필터링
+      const link= '#' + headingText.replace("?","").replace(/ /g, '-').toLowerCase();
 
       return {
         text: headingText,
