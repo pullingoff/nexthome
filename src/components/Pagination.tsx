@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import CustomLink from './common/CustomLink';
-import { IPost } from '#type/post';
 
 interface IPagination {
   path: string;

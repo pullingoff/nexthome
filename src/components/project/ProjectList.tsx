@@ -17,8 +17,6 @@ const ProjectList = ({ projects }: { projects: IProject[] }) => {
 };
 
 const ProjectRow = (pj: IProject) => {
-  const imgPath = path.join('images', 'pjThumb', pj.thumbnail);
-
   return (
     <ContainerLi>
       <details>
