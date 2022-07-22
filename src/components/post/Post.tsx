@@ -106,10 +106,10 @@ const PostDiv = styled.div`
   }
   h2 {
     font-weight: 800;
-    font-size: var(--7xl);
+    font-size: var(--6xl);
   }
   h3 {
-    font-size: var(--5xl);
+    font-size: var(--4xl);
     font-weight: 700;
   }
   h4 {
@@ -120,6 +120,7 @@ const PostDiv = styled.div`
   h3 {
     margin-top: 2rem;
     margin-bottom: 1rem;
+    line-height: 150%;
   }
 
   h1,

@@ -9,7 +9,9 @@ description:
 지난 번엔 논리 메모리 주소를 물리 주소로 변환하는 것에 대해 배웠는데, 이 작업은 운영체제가 전혀 관여하지 않는다.
 이번엔 운영체제가 관여하는 가상 메모리 시스템의 메모리를 효율적으로 관리하고자 사용하는 페이지 replacement algorithm에 대해 알아본다.
 
-## Demanding Paging: 실제로 필요할때 페이지를 메모리에 올림
+## Demanding Paging
+
+: 실제로 필요할때 페이지를 메모리에 올림
 
 - IO 양 감소, 메모리 사용량 감소(한정된 메모리를 효율적으로 사용 가능), 빠른 응답시간, 더 많은 유저 수용
 
@@ -36,7 +38,7 @@ description:
 - Replacement algorithm: page fault rate을 최대한 낮추는게 목표
 - 위 알고리즘은. 주어진 페이지 레퍼런스 string에서 얼마나 page fault를 내는지로 조사함
 
-## 페이지 Replacement 알고리즘의 종류를 알아보자
+## 페이지 Replacement 알고리즘의 종류
 
 ### Optimal Algorithm
 
@@ -109,7 +111,9 @@ description:
 - 전역: 교체시 다른 프로세스에 할당된 프레임을 뺏어올 수 있음, 프로세스별 할당량 조절하는 방법임, FIFO, LRU, LFU 등의 알고리즘을 전역으로 사용시에 해당
 - 로컬: 자신에게 할당된 프레임 내에서만 교체, 여러 알고리즘을 프로세스 별로 운영시
 
-## Thrashing : 프로세스의 원활한 수행에 필요한 최소한의 페이지 프레임 수를 할당받지 못한 경우 발생
+## Thrashing
+
+: 프로세스의 원활한 수행에 필요한 최소한의 페이지 프레임 수를 할당받지 못한 경우 발생
 
 ![thrashing diagram](/images/os/vm14.png)
 

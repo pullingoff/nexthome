@@ -13,7 +13,7 @@ description: OS와 컴퓨터 하드웨어의 동작에 대해 배운다.
 컴퓨터 시스템구조: 컴퓨터+ IO device
 컴퓨터: CPU+memory
 
-## CPU (일만 함)
+## CPU: 일만 함
 
 - 역할: 메모리에서 instruction 읽어서 실행
 - disk보다 훨배 빠름
@@ -24,14 +24,14 @@ description: OS와 컴퓨터 하드웨어의 동작에 대해 배운다.
   - mode bit: 실행중인게 os인지 유저프로그램인지 구분.
   - interrupt line: cpu는 inst 실행 끝나면 메모리 주소값 증가시켜서 다음 인스트럭션 실행 반복함. 그 사이에 cpu가 다른 일 처리해야하는거 있단걸 알려주는 역할
 
-## OS (CPU 전체적인 통제)
+## OS: CPU 전체적인 통제
 
 - OS는 대부분 사용자 프로그램이 쓴다.
 
 **이때 만약 io 작업없이 CPU 무한루프 도는 프로그램이 있다면? 그 프로그램이 cpu 독점하게 될 수도 있음** <br/>
 **이걸 막기 위해 존재하는 하드웨어가 '타이머'**
 
-## 타이머 (CPU 독점 방지)
+## 타이머: CPU 독점 방지
 
 - 컴 켜면 os가 cpu 가지고 있다가 **타이머 값을 세팅한 후** 사용자프로그램한테 넘겨줌. 프로그램은 그 시간동안만 cpu 사용가능
 - 만약 할당된 시간 끝나면 씨피유한테 타이머가 인터럽트 보냄 + cpu사용권이 사용자프로그램에서 os로 넘어감
@@ -49,7 +49,7 @@ description: OS와 컴퓨터 하드웨어의 동작에 대해 배운다.
 
 <img src='https://user-images.githubusercontent.com/50111853/152990728-1932dd77-8606-4532-8dc0-0c89ced96bf4.png'/>
 
-## 모드빝 ( 사용자가 cpu 악용하는거 제한)
+## 모드빝: 사용자가 cpu 악용하는거 제한
 
 0 모니터모드 커널모드 :  os 코드 수행중. 메모리접근, io 접근 등 다 가능
 1 사용자 프로그램 모드 : 모든 명령은 커널모드에서만 사용가능하므로 사용자 프로그램은 '시스템 콜'로 os에게 IO 요청함. 바로 os에 접근할 수 없으므로 인터럽트를 일으켜 cpu의 제어권을 Os로 보낸다.
@@ -57,14 +57,16 @@ description: OS와 컴퓨터 하드웨어의 동작에 대해 배운다.
 **만약 io device에서 계속 CPU한테 인터럽트를 걸어서 메모리에 있는 데이터 보낸다면?**  
 **cpu가 인터럽트를 너무 많이 당함 -> 비효율적. 그래서 있는게 DMA Controller**
 
-## DMA Controller (Direct Memory Access Controller)
+## DMA Controller
+
+: **Direct Memory Access Controller**
 
 - Memory에 CPU, DMA Ctrl 둘다 접근 가능.
 - CPU 대신 DMA가 io device에게 직접 가서 로컬 버퍼의 데이터를 메모리에 복사해주고 CPU는 최종 인터럽트만 받도록 함
 - DMACtrl 덕분에 CPU는 instruction 메모리 주소를 메모리에서 PC(Program Counter) 형태로 받아와서 실행하는데 집중 가능
 - DMA가 버퍼에 있는 내용을 메모리로 카피, 모아서 block 단위로 직접 메모리로 전송 & CPU에게 인터럽트
 
-## Memory Controller (교통정리)
+## Memory Controller: 교통정리
 
 - DMACtrl과 CPU가 동시에 특정 메모리에 접근하는 것 막는 역할
 
@@ -77,7 +79,7 @@ description: OS와 컴퓨터 하드웨어의 동작에 대해 배운다.
 - 하드웨어. io device의 CPU 역할
 - local buffer 있음
 
-## Program Counter (프로그램 카운터 라는 레지스터)
+## Program Counter: 프로그램 카운터 라는 레지스터
 
 CPU는 메모리 주소를 가리키는 레지스터(프로그램카운터레지스터)가 가리키는 메모리 위치에서 인스트럭션을 읽어와실행함
 그다음 프로그램카운터레지스터는 다음 주소를 가리킨다.
@@ -125,9 +127,11 @@ CPU-register-cache memory-main memory(d ram)-...
 - 어느 부분은 physical memory에 일부는 swap area에 ... 나눠져있기도 함. (virtual memory 기법)
 - swap area: 전원 나오면 다 지워지는 부분임. 메모리 연장 공간으로 사용됨.
 
-## 커널 주소공간(버츄얼 메모리)의 내용
+## 커널 주소공간의 내용
 
 <img src='https://user-images.githubusercontent.com/50111853/152998323-c2a47006-f31c-4006-ad9e-93c00e7f101a.png' width='450px' />
+
+커널 주소공간 = 버츄얼 메모리
 
 - 커널도 하나의 프로그램이므로 주소공간으로 구성돼있음.
 - os는 자원을 효율적으로 관리하는 역할 하므로 관련 된 코드가 code 안에 있음
@@ -146,7 +150,7 @@ CPU-register-cache memory-main memory(d ram)-...
 
 ## 질문
 
-Q. 영상1 9:55에 일을 시킨다고 했는데 cpu-memory까지만 간다. 이떄 cpu->io device에 일을 시키는 과정/연관된 장비는 무엇인가? (line 15 쯤과 관련)
+Q. 영상1 9:55에 일을 시킨다고 했는데 cpu-memory까지만 간다. 이 때 cpu->io device에 일을 시키는 과정/연관된 장비는 무엇인가? (line 15 쯤과 관련)
 a? data는 io local 버퍼에, inst는 io register에 넣는다고함
 
 Q. CPU 안에 레지스터와 다른 요소들이 있는 건가 아니면 그 요소들이 모인 걸 CPU라고 하는 건가? 즉, CPU가 추상적인 개념인지 물리적인 것인지??
