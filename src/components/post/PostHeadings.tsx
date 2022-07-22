@@ -2,12 +2,12 @@ import CustomLink from '../common/CustomLink';
 import styled from 'styled-components';
 import { IHeading } from '#type/post';
 
-const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
+const PostHeadings = ({headings}: {headings:IHeading[]}) => {
+
   return (
-    <>
-      {headings.length > 0 ? (
+      <>
+      {headings ? (
         <HeadingContainer>
-          <StyledSummary>목차</StyledSummary>
           <HeadingOl>
             {headings.map(heading => (
               <HeadingLi key={heading.text}>
@@ -16,39 +16,36 @@ const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
             ))}
           </HeadingOl>
         </HeadingContainer>
-      ) : null}
-    </>
+        ) : null}
+      </>
   );
 };
 
 export default PostHeadings;
 
-const HeadingContainer = styled.details`
-  display: none; // style 고민중...
+const HeadingContainer = styled.aside`
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    display: none;
+  }
+  min-width: 10%;
+  position: sticky;
+  top: 70px;
+  order: 1;
+  overflow-y: scroll;  
+  max-height: 90vh;
 `;
-const HeadingOl = styled.ul``;
-
-const StyledSummary = styled.summary`
-  font-size: 1.25rem;
-  font-weight: bold;
-  line-height: 1.4;
-  color: var(--theme1-color);
-  padding: 4px;
-  background-color: #eeeeee;
-  border: none;
-  cursor: pointer;
+const HeadingOl = styled.ul`
+list-style: none;
+font-size: 0.9rem;
+color: #2c3c55d1;
+border-left: 1px solid #2c3c55d1;
+padding-left: 1rem;
 `;
 
 const HeadingLi = styled.li`
   list-style: none;
-  font-weight: bold;
-  font-size: 1.2rem;
   margin-bottom: 2px;
-  &:before {
-    content: '-';
-    position: relative;
-    left: -10px;
-  }
+  
   &:hover {
   }
 `;
