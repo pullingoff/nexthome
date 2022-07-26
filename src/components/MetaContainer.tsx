@@ -19,6 +19,10 @@ const MetaContainer = ({ customMeta }: { customMeta?: ICustomMeta }) => {
       {config.date && (
         <meta property="article:published_time" content={config.date} />
       )}
+      <meta
+        name="google-site-verification"
+        content="4xDb7fr18GNpr2PVpIj0C201IFwJ1ii-cKKCjDsuHws"
+      />
     </Head>
   );
 };
