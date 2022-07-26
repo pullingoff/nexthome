@@ -5,10 +5,12 @@
 ![사이트 메인](https://user-images.githubusercontent.com/50111853/172634895-6693e000-5494-4af4-87f6-9d5eebaa3f41.png)
 
 `타입스크립트`와 `Next.js`를 사용해 개발한 블로그입니다.
-원래 `Jekyll`을 사용해 정적 블로그를 만들었었는데, 리액트로도 만들어보고 싶어 기왕 할 거, SSR로 해보자! 싶어
-`Next.js`로 만들어봤습니다. ㅎㅎ
-이 블로그에선 제 생각을 담은 글과 이력서 위주로 정리하고 있으며,
-더 가벼운 글들은 TIL에서 만나보실 수 있습니다.
+제 생각을 담은 글과 이력서 위주로 정리하고 있으며,
+더 가벼운 글들은 [TIL](https://pullingoff.github.io)에서 만나보실 수 있습니다.
+
+## 소소한 기능들
+- 게시글의 Tag 별로 조회할 수 있습니다.
+- 데스크탑에선 글의 목차를 보고, 클릭해 해당 문단으로 이동할 수 있습니다.
 
 ## frontmatter
 
@@ -28,9 +30,9 @@ published // optional
 마크다운 처리: `Markdown`, `MDXRemote`  
 기타: `Git`
 
-## To be continued
+## Coming Soon
 
 - 방명록 페이지!!!
 - dark mode
 - 코드 블럭 스타일
-- post headings: tablet 사이즈 이상에선 포스트 옆쪽에 목차 생기도록
+- heading에 특수문자 들어가는 경우 이동 안 되는 것
