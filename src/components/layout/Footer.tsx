@@ -22,7 +22,7 @@ const StyledFooter = styled.footer`
   padding: var(--10xl) 0 var(--xl);
   text-align: center;
   margin: var(--xl) auto;
-  border-top: 1px solid lightgrey;
+  border-top: 1px solid var(--theme1-color);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     margin: var(--md) auto;
