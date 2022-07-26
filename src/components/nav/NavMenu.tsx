@@ -34,7 +34,7 @@ const StyledMenu = styled.li`
   font-weight: 600;
 
   & > a {
-    display: block;
+    display: inline-block;
     position: relative;
     &:after {
       content: '';
