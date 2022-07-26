@@ -26,6 +26,9 @@ const StyledTagContainer = styled.div`
   a {
     margin-bottom: 0;
   }
+  a:nth-child(n + 17) {
+    display: none;
+  }
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     a:nth-child(n + 12) {
       display: none;

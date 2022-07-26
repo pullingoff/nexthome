@@ -19,9 +19,10 @@ const StyledFooter = styled.footer`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: var(--xl);
+  padding: var(--10xl) 0 var(--xl);
   text-align: center;
   margin: var(--xl) auto;
+  border-top: 1px solid lightgrey;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     margin: var(--md) auto;

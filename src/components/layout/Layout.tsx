@@ -17,10 +17,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
 export default Layout;
 
 const Content = styled.main`
-  max-width: calc(var(--breakpoint-desktop) - 100px);
+  max-width: calc(var(--breakpoint-desktop) - 150px);
   margin: auto;
   padding: 25px;
   background: var(--bg-yellow);
-  border-bottom: 1px solid lightgrey;
+  // border-bottom: 1px solid lightgrey;
   min-height: 70vh;
 `;

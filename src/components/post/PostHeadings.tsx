@@ -36,8 +36,8 @@ const HeadingContainer = styled.aside`
 const HeadingOl = styled.ul`
   list-style: none;
   font-size: 0.9rem;
-  color: #2c3c55d1;
-  border-left: 1px solid #2c3c55d1;
+  color: #1e293bd1;
+  border-left: 1px solid #1e293bd1;
   padding-left: 1rem;
 `;
 
