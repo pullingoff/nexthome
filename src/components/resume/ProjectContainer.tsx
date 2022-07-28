@@ -16,7 +16,13 @@ import WorkProject from './WorkProject';
 import styled from 'styled-components';
 import CustomLink from '#components/common/CustomLink';
 
-const ProjectContainer = ({ title, list }: { title: string; list: any }) => {
+const ProjectContainer = ({
+  title,
+  list,
+}: {
+  title: string;
+  list: Project[];
+}) => {
   return (
     <StyledMain>
       <SectionHeader>

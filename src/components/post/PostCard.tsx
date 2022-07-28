@@ -13,7 +13,7 @@ const PostCard = ({ href, post }: { href: string; post: IPost }) => {
   useEffect(() => {
     try {
       setPublishedAt(
-        format(new Date(post.frontmatter.date), 'yyyy년 MM월 dd일')
+        format(new Date(post.frontmatter.date), 'yyyy년 MM월 dd일'),
       );
     } catch (e) {
       setPublishedAt(post.frontmatter.date.toString().split(/(\s+)/)[0]);
