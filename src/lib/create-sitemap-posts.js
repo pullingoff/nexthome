@@ -47,6 +47,6 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
   fs.writeFileSync(
     'public/sitemap/sitemap-posts.xml',
     formattedSitemap,
-    'utf8',
+    'utf8'
   );
 })();

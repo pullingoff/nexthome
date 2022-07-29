@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const markdownToMeta = fs.readFileSync(
     path.join(blogDir, slug + '.mdx'),
-    'utf-8',
+    'utf-8'
   );
   const { content } = matter(markdownToMeta);
 

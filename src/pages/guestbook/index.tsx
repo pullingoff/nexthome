@@ -13,7 +13,7 @@ const GuestBook = () => {
           data
             .filter(
               (issue: IIssue) =>
-                issue.labels[0] && issue?.labels[0].name === 'guestbook',
+                issue.labels[0] && issue?.labels[0].name === 'guestbook'
             )
             .map((msg: IMsg) => {
               return {
@@ -21,7 +21,7 @@ const GuestBook = () => {
                 body: msg.body,
                 labels: msg.labels.map((label: string) => label),
               };
-            }),
+            })
         );
       });
   }, []);
