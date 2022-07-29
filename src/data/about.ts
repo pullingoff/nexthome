@@ -58,9 +58,15 @@ export const projectExperiences: IExp[] = [
 
 export const workExperiences: IExp[] = [
   {
+    organization: '파스토',
+    description: 'Frontend Engineer',
+    period: '2022.07 ~ 현재',
+    projects: [],
+  },
+  {
     organization: '유클리드소프트',
     description: 'Software Engineer',
-    period: '2020.12 ~ 현재',
+    period: '2020.12 ~ 2022. 06',
     projects: [
       {
         title: '국가정보자원관리원 종합관제 보안시스템 (nMAPS)',
@@ -86,8 +92,6 @@ export const workExperiences: IExp[] = [
       {
         title: '창업진흥원 창업교육 플랫폼',
         tech: ['JAVA', 'Spring', 'JSP', 'Vanilla JS', 'NAVER API'],
-        // description:
-        //   '유저에게 선택적으로 메일, SMS와 카카오 알림톡으로 알림을 보낸다.',
         details: [
           'NAVER API로 관리자가 메일, SMS 알림을 전송하는 기능과 알림 조회 페이지를 개발',
         ],
@@ -95,8 +99,6 @@ export const workExperiences: IExp[] = [
       {
         title: 'KAIST 약물 상호작용 예측 하이브리드 앱',
         tech: ['PHP', 'JavaScript', 'JSP', 'jQuery'],
-        // description:
-        //   '유저가 선택한 의약품을 기준으로 함께 복용하면 위험한 의약품 (DUR) 조합을 보여준다.',
         details: [
           'PHP로 데이터를 가져와 위험 조합 그래프를 보여주는 페이지 개발',
         ],
