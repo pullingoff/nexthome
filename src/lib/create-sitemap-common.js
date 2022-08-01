@@ -1,6 +1,9 @@
-import fs from 'fs';
-import { globby } from 'globby';
-import prettier from 'prettier';
+// import fs from 'fs';
+// import { globby } from 'globby';
+// import prettier from 'prettier';
+const fs = require('fs');
+const globby = require('globby');
+const prettier = require('prettier');
 
 const getDate = new Date().toISOString();
 const MY_DOMAIN = 'https://haeun.vercel.app';
@@ -14,6 +17,8 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
     // exclude
     '!../pages/_*.tsx',
   ]);
+  // TODO 수정하기
+  console.log(pages);
 
   const pagesSitemap = `
         ${pages

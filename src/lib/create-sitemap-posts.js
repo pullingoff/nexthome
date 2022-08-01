@@ -1,6 +1,10 @@
-import fs from 'fs';
-import fetch from 'node-fetch';
-import prettier from 'prettier';
+// import fs from 'fs';
+// import fetch from 'node-fetch';
+// import prettier from 'prettier';
+const fs = require('fs');
+const fetch = require('node-fetch');
+const prettier = require('prettier');
+
 // import { getAllPosts } from './posts-related-api.js';
 
 const getDate = new Date().toISOString();
@@ -24,7 +28,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
       .map(id => {
         return `
           <url>
-            <loc>${`${YOUR_AWESOME_DOMAIN}/post/${id}`}</loc>
+            <loc>${`${YOUR_AWESOME_DOMAIN}/blog/${id}`}</loc>
             <lastmod>${getDate}</lastmod>
           </url>`;
       })

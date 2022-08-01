@@ -1,5 +1,7 @@
-import fs from 'fs';
-import zlib from 'zlib';
+// import fs from 'fs';
+// import zlib from 'zlib';
+const fs = require('fs');
+const zlib = require('zlib');
 
 var dirs = ['public/sitemap'];
 
