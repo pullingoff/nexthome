@@ -26,7 +26,7 @@ const HeadingContainer = styled.aside`
   @media (max-width: ${({ theme }) => theme.device.md}) {
     display: none;
   }
-  min-width: 10%;
+  min-width: 15%;
   position: sticky;
   top: 70px;
   order: 1;
