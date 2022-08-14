@@ -7,15 +7,18 @@
   --breakpoint-mobile: #{$breakpoint-mobile};
   --breakpoint-tablet: #{$breakpoint-tablet};
   --breakpoint-desktop: #{$breakpoint-desktop};
+
   --theme1-color: #{$theme1-color};
   --theme2-color: #{$theme2-color};
-
   --bg-yellow: #ffffff;
   --bg-yellow--opaque: #ffffffc3;
-  
   --color-pale-bg: #{$color-pale-bg};
   --color-white: white;
   --color-point-blue: #549dcf;
+  --color-deep-navy: #0e264d;
+  --border-radius-sm: 6px;
+  --border-on-light: darken($color-pale-bg, 5%);
+  --color-text-lighter: salmon;
 
   --sm: 0.25rem;
   --md: 0.5rem;
@@ -28,14 +31,6 @@
   --8xl: 1.8rem;
   --9xl: 1.9rem;
   --10xl: 2rem;
-
-  --color-deep-navy: #0e264d;
-  
-  --border-radius-sm: 6px;
-
-  --border-on-light: darken($color-pale-bg, 5%);
-  --color-text-lighter: salmon;
-
 }
 
 html {
@@ -123,6 +118,7 @@ article {
   padding-top: 0;
   line-height: 170%;
   word-break: break-word;
+  max-width: 90%;
 }
 abbr {
   text-decoration: none;
