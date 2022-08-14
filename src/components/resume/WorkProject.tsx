@@ -1,36 +1,28 @@
-import {
-  DetailUl,
-  Detail,
-  PjTitle,
-  PExplain,
-  PjTech,
-  PjTitleHover,
-  StyledPjContainer,
-} from '#src/styles/aboutStyle';
+import * as S from '#src/styles/aboutStyle';
 import { IWorkProject } from '#src/type/about';
 import CustomLink from '#components/common/CustomLink';
 
 export default function WorkProject(pj: IWorkProject) {
   return (
-    <StyledPjContainer>
+    <S.StyledPjContainer>
       {pj.link ? (
         <CustomLink href={pj.link}>
-          <PjTitleHover>{pj.title} 🔗</PjTitleHover>
+          <S.PjTitleHover>{pj.title} 🔗</S.PjTitleHover>
         </CustomLink>
       ) : (
-        <PjTitle> {pj.title}</PjTitle>
+        <S.PjTitle> {pj.title}</S.PjTitle>
       )}
-      <PExplain>{pj.description}</PExplain>
+      <S.PExplain>{pj.description}</S.PExplain>
       {pj.tech?.map(t => (
-        <PjTech key={t}>{t}</PjTech>
+        <S.PjTech key={t}>{t}</S.PjTech>
       ))}
       {pj.details && (
-        <DetailUl>
+        <S.DetailUl>
           {pj.details.map((det, idx) => (
-            <Detail key={idx}>{det} </Detail>
+            <S.Detail key={idx}>{det} </S.Detail>
           ))}
-        </DetailUl>
+        </S.DetailUl>
       )}
-    </StyledPjContainer>
+    </S.StyledPjContainer>
   );
 }
