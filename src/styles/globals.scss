@@ -17,15 +17,6 @@
   --color-white: white;
   --color-point-blue: #549dcf;
 
-  --width: 900px;
-  --min-width: 350px;
-  --max-width: #{$breakpoint-desktop};
-  --img-max-width: calc(var(--max-width) - 200px);
-
-  --text-md: 1.125rem;
-  --text-title: 1.25rem;
-
-  --xs: 0.125rem;
   --sm: 0.25rem;
   --md: 0.5rem;
   --lg: 0.75rem;
@@ -33,19 +24,14 @@
   --2xl: 1.2rem;
   --3xl: 1.3rem;
   --4xl: 1.4rem;
-  --5xl: 1.5rem;
   --6xl: 1.6rem;
-  --7xl: 1.7rem;
   --8xl: 1.8rem;
   --9xl: 1.9rem;
   --10xl: 2rem;
-  --11xl: 2.5rem;
 
   --color-deep-navy: #0e264d;
   
   --border-radius-sm: 6px;
-  --border-radius-base: 8px;
-  --border-radius-lg: 18px;
 
   --border-on-light: darken($color-pale-bg, 5%);
   --color-text-lighter: salmon;
@@ -106,7 +92,6 @@ h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  // padding-top: 0.5rem;
   line-height: 1.25;
   clear: both;
 }
