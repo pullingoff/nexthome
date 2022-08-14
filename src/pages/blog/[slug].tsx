@@ -46,11 +46,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     'utf-8'
   );
   const { content } = matter(markdownToMeta);
-
   const posts = await getAllPosts();
   const post = posts.find(p => p?.slug === slug);
   const headings = getHeadings(content);
-
   const mdxSource = await parseMarkdownToMdx(content);
 
   return { props: { post, mdxSource, headings } };

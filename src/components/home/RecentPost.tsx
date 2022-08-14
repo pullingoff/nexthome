@@ -61,7 +61,7 @@ const StyledPostLi = styled.li`
     color: salmon;
   }
   @media (min-width: ${({ theme }) => theme.device.sm}) {
-    font-size: var(--text-md);
+    font-size: var(--2xl);
     line-height: var(--text-lg);
   }
 `;

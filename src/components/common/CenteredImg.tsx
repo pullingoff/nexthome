@@ -15,7 +15,7 @@ const CenteredImg = ({ src, alt }: { src: string; alt: string }) => {
 
 export default CenteredImg;
 
-export const ThumbnailContainer = styled.div`
+const ThumbnailContainer = styled.div`
   position: relative;
   width: 100%;
   &:after {
@@ -32,7 +32,7 @@ export const ThumbnailContainer = styled.div`
   }
 `;
 
-export const InnerContainer = styled.div`
+const InnerContainer = styled.div`
   overflow: hidden;
   position: relative;
   height: 100%;
