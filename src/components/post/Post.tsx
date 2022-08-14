@@ -138,11 +138,4 @@ const PostDiv = styled.div`
   p:where(h2 + *):not(:where([class~='not-p'] *)) {
     margin-top: 0;
   }
-  code {
-    background: white;
-    border-radius: 6px;
-    font-weight: 700;
-    padding: 3px 6px;
-    color: var(--theme1-color);
-  }
 `;

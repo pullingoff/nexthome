@@ -5,36 +5,36 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import slug from 'remark-slug';
 import { visit } from 'unist-util-visit';
 import { Node } from 'unist';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import prism from '@mapbox/rehype-prism';
+import prism from 'rehype-prism-plus';
 
 type TokenType =
   | 'tag'
-  | 'attr-name'
-  | 'attr-value'
-  | 'deleted'
-  | 'inserted'
+  | 'operator'
+  | 'method'
+  | 'known-class-name'
+  | 'parameter'
   | 'punctuation'
   | 'keyword'
-  | 'string'
+  | 'number'
   | 'function'
   | 'boolean'
-  | 'comment';
+  | 'comment'
+  | 'arrow';
 
 const tokenClassNames: { [key in TokenType]: string } = {
   tag: 'text-code-red',
-  'attr-name': 'text-code-yellow',
-  'attr-value': 'text-code-green',
-  deleted: 'text-code-red',
-  inserted: 'text-code-green',
-  punctuation: 'text-code-white',
-  keyword: 'text-code-purple',
-  string: 'text-code-green',
-  function: 'text-code-blue',
+  operator: 'text-code-yellow',
+  method: 'text-code-green',
+  'known-class-name': 'text-code-sky',
+  parameter: 'text-code-khaki',
+  punctuation: 'text-code-orange',
+  keyword: 'text-code-pink',
+  number: 'text-code-green',
+  function: 'text-code-sky',
   boolean: 'text-code-red',
+  arrow: 'text-code-pink',
   comment: 'text-gray-400 italic',
-};
+} as const;
 
 function parseCodeSnippet() {
   return (tree: Node) => {
@@ -54,7 +54,7 @@ export async function parseMarkdownToMdx(body: string) {
     mdxOptions: {
       remarkPlugins: [remarkMath, slug],
       rehypePlugins: [
-        rehypeKatex,
+        // rehypeKatex,
         prism,
         parseCodeSnippet,
         rehypeAutolinkHeadings,
