@@ -7,13 +7,13 @@ const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
     <>
       {headings ? (
         <HeadingContainer>
-          <HeadingOl>
+          <ul>
             {headings.map(heading => (
-              <HeadingLi key={heading.text}>
+              <li key={heading.text}>
                 <CustomLink href={heading.link}>{heading.text}</CustomLink>
-              </HeadingLi>
+              </li>
             ))}
-          </HeadingOl>
+          </ul>
         </HeadingContainer>
       ) : null}
     </>
@@ -32,19 +32,20 @@ const HeadingContainer = styled.aside`
   order: 1;
   overflow-y: scroll;
   max-height: 90vh;
-`;
-const HeadingOl = styled.ul`
-  list-style: none;
-  font-size: 0.9rem;
-  color: #1e293bd1;
-  border-left: 1px solid #1e293bd1;
-  padding-left: 1rem;
-`;
 
-const HeadingLi = styled.li`
-  list-style: none;
-  margin-bottom: 2px;
-  &:hover {
-    font-weight: bold;
+  ul {
+    list-style: none;
+    font-size: 0.9rem;
+    color: #1e293bd1;
+    border-left: 1px solid #1e293bd1;
+    padding-left: 1rem;
+    
+    li {
+      list-style: none;
+      margin-bottom: 2px;
+      &:hover {
+        font-weight: bold;
+      }
+    }
   }
 `;

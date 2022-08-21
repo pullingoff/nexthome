@@ -24,7 +24,7 @@ const PostCard = ({ href, post }: { href: string; post: IPost }) => {
     <CardContainer>
       <CustomLink href={href}>
         <InfoSection>
-          <Title>{title}</Title>
+          <h3>{title}</h3>
           <Desc>{description}</Desc>
           <StyledDateTime>{publishedAt}</StyledDateTime>
         </InfoSection>
@@ -68,12 +68,11 @@ const InfoSection = styled.section`
   & > * {
     display: block;
   }
-`;
-
-const Title = styled.h3`
-  margin-top: 3px;
-  font-weight: 700;
-  line-height: 1.3;
+  h3 {
+    margin-top: 3px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
 `;
 
 const Desc = styled.p`
@@ -93,7 +92,7 @@ font-size: 0.8rem;
   margin: 10px 0;
 `;
 
-const StyledTagContainer = styled.div`
+const StyledTagContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto var(--xl) var(--2xl);
