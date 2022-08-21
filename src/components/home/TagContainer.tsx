@@ -23,6 +23,7 @@ const StyledTagContainer = styled.div`
   flex-flow: row wrap;
   row-gap: 0.5rem;
   text-align: center;
+  font-size: 0.9rem;
   a {
     margin-bottom: 0;
   }

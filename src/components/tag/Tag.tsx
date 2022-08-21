@@ -18,7 +18,8 @@ export const StyledTag = styled(CustomLink)`
   border-radius: var(--border-radius-sm);
   margin: 0 var(--md) var(--md) 0;
   &:hover {
-    background-color: salmon;
-    color: white;
+    color: var(--theme1-color);
+    background-color: initial;
+    box-shadow: 0 0 0 3px var(--theme1-color);
   }
 `;
