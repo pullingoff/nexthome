@@ -9,14 +9,5 @@
           "displayName": true, 
           "pure": true }
       ],
-      // [ "module-resolver", 
-      //   {
-      //     "root": ["./"],
-      //     "alias": {
-      //       "@components": "./components",
-      //       "@utils/*": "utils/*"
-      //       }
-      //   }
-      // ]
     ]
   }

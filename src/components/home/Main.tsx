@@ -35,8 +35,6 @@ const StyledMain = styled.section`
 
 const ImgContainer = styled.section`
   position: relative;
-  @media (min-width: ${({ theme }) => theme.device.sm}) {
-  }
 `;
 
 const HoverZoomImage = styled(Image)`
@@ -54,16 +52,3 @@ const HoverZoomImage = styled(Image)`
     transition: all 0.5s ease;
   }
 `;
-
-// const StyledImg = styled(HoverZoomImage)`
-//   cursor: pointer;
-//   -webkit-filter: brightness(100%);
-//   &:hover {
-//     -webkit-filter: brightness(50%);
-//     -webkit-transition: all 0.5s ease;
-//     -moz-transition: all 0.5s ease;
-//     -o-transition: all 0.5s ease;
-//     -ms-transition: all 0.5s ease;
-//     transition: all 0.5s ease;
-//   }
-// `;
