@@ -15,7 +15,7 @@ export const POSTS_PER_PAGE = 8;
 // nav bar에 나타날 메뉴
 export const MENUS = [
   { title: '기록', path: '/blog/page/1', emoji: '📝' },
-  { title: '프로젝트', path: '/project', emoji: '🎞' },
+  // { title: '프로젝트', path: '/project', emoji: '🎞' },
   { title: '이력서', path: '/about', emoji: '🕷' },
   { title: 'TIL', path: 'https://pullingoff.github.io', emoji: '📓' },
 ];
