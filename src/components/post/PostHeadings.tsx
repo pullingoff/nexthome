@@ -39,7 +39,7 @@ const HeadingContainer = styled.aside`
     color: #1e293bd1;
     border-left: 1px solid #1e293bd1;
     padding-left: 1rem;
-    
+
     li {
       list-style: none;
       margin-bottom: 2px;

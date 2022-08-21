@@ -10,8 +10,8 @@ interface IPagination {
 
 const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
   // pagination은 pageTotal이 기준보다 클 때 보여주자.
-  const isFirst = (currentPage === 1) && (pageTotal > POSTS_PER_PAGE);
-  const isLast = (currentPage === pageTotal) && (pageTotal > POSTS_PER_PAGE);
+  const isFirst = currentPage === 1 && pageTotal > POSTS_PER_PAGE;
+  const isLast = currentPage === pageTotal && pageTotal > POSTS_PER_PAGE;
 
   return (
     <>

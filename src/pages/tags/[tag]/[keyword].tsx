@@ -24,7 +24,7 @@ const Tag = ({
   const customMeta = {
     title: `${capitalizedTag} : 개발자 박하은`,
   };
-  console.log(pageTotal)
+  console.log(pageTotal);
   return (
     <>
       <MetaContainer customMeta={customMeta} />
@@ -98,7 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       posts: resultPosts.map(post => ({ ...post, path: '' })),
       tag,
       pageNo,
-      pageTotal: Math.ceil(postsWithTag.length /POSTS_PER_PAGE)
+      pageTotal: Math.ceil(postsWithTag.length / POSTS_PER_PAGE),
     },
   };
 };

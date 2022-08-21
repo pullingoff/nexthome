@@ -139,7 +139,6 @@ const PostDiv = styled.div`
   }
 `;
 
-
 const PostHeader = ({ date, title }: { date: string; title: string }) => {
   return (
     <StyledHeader>

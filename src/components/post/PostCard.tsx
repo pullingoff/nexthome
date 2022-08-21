@@ -88,7 +88,7 @@ const Desc = styled.p`
 `;
 
 const StyledDateTime = styled.p`
-font-size: 0.8rem;
+  font-size: 0.8rem;
   margin: 10px 0;
 `;
 
