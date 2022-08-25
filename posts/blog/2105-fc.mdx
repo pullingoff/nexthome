@@ -1,0 +1,19 @@
+---
+title: "리액트 인풋 포커스가 계속 해제되는 경우 (함수형 컴포넌트)"
+date: 2021-05-29 11:00
+tags:
+- React
+- 함수형
+description: 함수형 컴포넌트를 다른 컴포넌트 안에 넣지 말자
+---
+
+[Input is loosing focus on hooks update](https://stackoverflow.com/questions/56758864/input-is-loosing-focus-on-hooks-update)](https://stackoverflow.com/questions/56758864/input-is-loosing-focus-on-hooks-update)
+
+## 문제 상황
+- 인풋 버튼과 로직이 컴포넌트 밖에 있으면 잘 동작하는데, 
+다른 컴포넌트 안에 넣을 경우 `input`이 클릭돼도 `focus`를 잃는다.
+
+## 이유 (해결법)
+함수형 컴포넌트는 다른 컴포넌트 안에서 정의되면 안된다. 
+A 컴포넌트 안에서 B 컴포넌트를 정의하면 클릭이 일어날 때 **리렌더되는게 아니라 재생성(recreate)되게** 한다. 
+즉 클릭이벤트때마다 DOM이 사라졌다가 다시 생성되는 셈이다.

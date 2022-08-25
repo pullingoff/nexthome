@@ -1,11 +1,6 @@
-// import fs from 'fs';
-// import fetch from 'node-fetch';
-// import prettier from 'prettier';
 const fs = require('fs');
 const fetch = require('node-fetch');
 const prettier = require('prettier');
-
-// import { getAllPosts } from './posts-related-api.js';
 
 const getDate = new Date().toISOString();
 

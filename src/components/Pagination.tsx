@@ -1,3 +1,4 @@
+import { POSTS_PER_PAGE } from '../config/';
 import styled from 'styled-components';
 import CustomLink from './common/CustomLink';
 
@@ -8,13 +9,14 @@ interface IPagination {
 }
 
 const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
-  const isFirst = currentPage === 1;
-  const isLast = currentPage === pageTotal;
+  // pagination은 pageTotal이 기준보다 클 때 보여주자.
+  const isFirst = currentPage === 1 && pageTotal > POSTS_PER_PAGE;
+  const isLast = currentPage === pageTotal && pageTotal > POSTS_PER_PAGE;
 
   return (
     <>
       <Nav>
-        {isLast && <Button href={`/${path}/${currentPage - 1}`}>&lt;</Button>}
+        {isLast && <Button href={`/${path}/1`}>&lt;</Button>}
         {pageTotal &&
           Array(pageTotal)
             .fill(0)
@@ -28,7 +30,7 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
               </Button>
             ))}
 
-        {isFirst && <Button href={`/${path}/${currentPage + 1}`}>&gt;</Button>}
+        {isFirst && <Button href={`/${path}/${pageTotal}`}>&gt;</Button>}
       </Nav>
     </>
   );

@@ -47,7 +47,7 @@ const DarkBtn = styled(CustomLink)`
   &:hover {
     color: var(--theme1-color);
     background-color: initial;
-    box-shadow: 0 0 0 3px var(--theme1-color);
+    box-shadow: 0 0 0 3px var(--theme1-color) inset;
   }
 `;
 

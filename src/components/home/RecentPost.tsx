@@ -30,7 +30,7 @@ export const StyledSection = styled.section`
 
 export const Title = styled.h1`
   font-weight: 800;
-  font-size: var(--9xl);
+  font-size: var(--8xl);
 
   &:hover {
     animation: color-change 3s 2;
@@ -61,7 +61,7 @@ const StyledPostLi = styled.li`
     color: salmon;
   }
   @media (min-width: ${({ theme }) => theme.device.sm}) {
-    font-size: var(--2xl);
+    font-size: var(--xl);
     line-height: var(--text-lg);
   }
 `;

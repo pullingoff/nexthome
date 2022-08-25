@@ -1,5 +1,3 @@
-// import fs from 'fs';
-// import zlib from 'zlib';
 const fs = require('fs');
 const zlib = require('zlib');
 
@@ -8,7 +6,6 @@ var dirs = ['public/sitemap'];
 dirs.forEach(dir => {
   fs.readdirSync(dir).forEach(file => {
     if (file.endsWith('.xml')) {
-      // gzip
       const fileContents = fs.createReadStream(dir + '/' + file);
       const writeStream = fs.createWriteStream(dir + '/' + file + '.gz');
       const zip = zlib.createGzip();
