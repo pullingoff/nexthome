@@ -47,6 +47,7 @@ const PostContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
+  justify-content: center;
 `;
 const StyledGoBackBtn = styled.span`
   display: block;
