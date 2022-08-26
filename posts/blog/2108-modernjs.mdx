@@ -1,9 +1,9 @@
 ---
-title: "모던 자바스크립트 핵심 가이드"
+title: '모던 자바스크립트 핵심 가이드'
 date: 2021-08-29 08:00
 tags:
-- 독서
-- JavaScript
+  - 독서
+  - JavaScript
 description:
 ---
 
@@ -24,20 +24,20 @@ description:
 ## Array 함수
 
 ```javascript
-- Array.from() 객체를 배열로 받아서 변환(html elements 받아오기 유용) 
+- Array.from() 객체를 배열로 받아서 변환(html elements 받아오기 유용)
 - Array.from('apple')하면 [a,p,p,l,e]
 - Array.of() 전달받은 인수로 배열생성
 ```
 
-## 스프레드 문법 
+## 스프레드 문법
 
 : 배열 복사본 만들 때 매우 유용
 
 ```javascript
-const veggie = [1,2]
-const meat = [4,5]
-Const menu = [...veggie, 3, ...meat]
-// menu = [1,2,3,4,5] 됨. 
+const veggie = [1, 2];
+const meat = [4, 5];
+const menu = [...veggie, 3, ...meat];
+// menu = [1,2,3,4,5]
 ```
 
 ## Rest 문법
@@ -45,7 +45,7 @@ Const menu = [...veggie, 3, ...meat]
 : ...로 특정한 놈들만 빼고 압축해줌
 
 ```javascript
-const runners = [1,2,3,4]
-const [first, second, ...losers] = winners
-console.log(losers) // 3,4
+const runners = [1, 2, 3, 4];
+const [first, second, ...losers] = runners;
+console.log(losers); // 3,4
 ```
