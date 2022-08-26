@@ -33,6 +33,8 @@ published // optional
 
 ## Coming Soon
 
-- 방명록 페이지!!!
-- dark mode
-- heading에 특수문자 들어가는 경우 이동 안 되는 것
+- guestbook
+- dark mode, colorful mode
+- heading에 특수문자 들어가는 경우 이동 안 되는 것 fix
+- 개발중인 부분 보는 탭
+- post 검색 기능 (태그분류가 이미 있는데 더 만들 것인가)
