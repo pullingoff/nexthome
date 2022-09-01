@@ -61,7 +61,13 @@ export const workExperiences: IExp[] = [
     organization: '파스토',
     description: 'Frontend Engineer',
     period: '2022.07 ~ 현재',
-    projects: [],
+    projects: [
+      {
+        title: 'NewFMS',
+        tech: ['React', 'TypeScript', 'Material UI'],
+        details: ['통합회원 페이지 공통 컴포넌트 및 스타일 구현'],
+      },
+    ],
   },
   {
     organization: '유클리드소프트',
