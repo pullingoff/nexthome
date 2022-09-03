@@ -32,7 +32,7 @@ const HeadingContainer = styled.aside`
   order: 1;
   overflow-y: scroll;
   max-height: 90vh;
-
+  margin-left: 1rem;
   ul {
     list-style: none;
     font-size: 0.9rem;
@@ -45,6 +45,11 @@ const HeadingContainer = styled.aside`
       margin-bottom: 2px;
       &:hover {
         font-weight: bold;
+      }
+      &:not(:last-child):after {
+        content: '﹒';
+        line-height: 0.5rem;
+        display: block;
       }
     }
   }
