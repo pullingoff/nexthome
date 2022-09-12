@@ -1,0 +1,42 @@
+---
+title: '자바스크립트 함수 실행 이해하기 (콜스택, 이벤트루프, 태스크 등)'
+date: 2021-04-01 09:00
+tags:
+  - JavaScript
+description:
+---
+
+원문 링크: [Understanding Javascript Function Executions — Call Stack, Event Loop, Tasks & more](https://medium.com/@gaurav.pandvia/understanding-javascript-function-executions-tasks-event-loop-call-stack-more-part-1-5683dea1f5ec)
+
+## 자바스크립트 내부 구조를 알아야하는 이유
+
+는 '웹 개발'의 범위가 점점 넓어지고 있기 때문이다.  
+브라우저 안에서 사용자 상호작용을 담당할 뿐 아니라 컴퓨터 게임, 데스크탑 위젯, 크로스플랫폼 모바일 앱,
+이것들을 DB와 연결하기 위해 서버사이드(주로 node.js) 작업까지 포함하곤 한다. (스크립트 언어로서의 거의 모든 것을 수행한다.)
+
+점점 넓어지고, 복잡해지고 있는 JS 생태계 덕분에 자바스크립트 개발자들은
+루트 레벨에서 라이브러리나 프레임워크들이 어떻게 동작하는지 알아야한다.
+
+## JS의 특징
+
+### single threaded single concurrent language
+
+- handles one task at a time or a piece of code at a time.
+- has a single call stack which along with other parts like `heap`
+
+#### Call stack
+
+- 프로그램의 함수 호출을 기록하는 자료구조 (함수를 실행하면 스택에 그 함수를 push, 가장 나중에 넣은 걸 pop)
+- 재귀적으로 한 함수를 여러번 호출하면 무한 루프가 생긴다. 그렇게 되면 `RangeError: Maximum call stack size excedeed` 에러를 던진다.
+  (크롬 브라우저의 경우 스택의 제한은 16000 프레임이다.)
+
+#### Heap
+
+- 객체는 힙(메모리의 unstructured region)에 저장된다. 모든 변수, 객체 메모리 분배는 여기서 일어난다. (힙이 ... 배정을 관리하는거임? 아니면 걔네가 다 여기 저장된다는거임)
+
+#### Queue
+
+- 한 자바스크립트 런타임은 한 메시지큐를 포함한다. 
+메시지큐는 process되어야하는 메시지와 관련되어 실행되어야하는 콜백 함수의 목록이다.
+만약 스택이 충분한 용량을 가지고 있으면 메시지는 큐에서 꺼내져서 실행된다.
+메시지 프로세싱은 스택이 비워지면 끝난다. 
