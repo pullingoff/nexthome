@@ -31,7 +31,6 @@ export const PageSeo = ({
         url,
         title,
         description,
-        // images: [{ alt: title, url: '/thumbnail.png' }],
       }}
     />
   );

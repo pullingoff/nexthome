@@ -1,0 +1,43 @@
+---
+title: "next-mdx-remote로 next.js에 마크다운 적용하기"
+date: 2022-04-01 08:00
+tags:
+- Next.js
+- React
+- Markdown
+description: 리액트 앱에서 마크다운을 띄워줄 수 있는 라이브러리를 찾아야했다. 그래서 찾은 건 MDX Remote!
+---
+
+## MDXRemote를 선택한 이유
+
+블로그를 운영하면서 마크다운 문법에 익숙해졌고, 그동안 써둔 글이 다 마크다운이었기 때문이다. 정적 블로그를 만들거라 포스트를 직접 코드에 넣어야하는데 하나하나 HTML로 바꿔선 넣을 수 없으니까 ㅎㅎ 방안을 찾아보다가 발견한 MDX. Markdown을 JSX로 적을 수 있다니 정확히 내가 찾던 거였다!!! 😘
+
+## next-mdx-remote 사용법
+
+1. Next.js의 `getStaticProps` 함수 안에서 마크다운 파일을 `fs`로 읽어온다.
+2. `gray-matter` 라이브러리의 `matter` 함수로 마크다운의 내용물을 frontmatter와 content로 구분해 추출&파싱한다.
+3. `next-mdx-remote`의 `serialize` 함수로 markdown을 mdx로 변환한다.
+
+```js
+// getStaticProps
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params as SlugInterface;
+
+  // 1
+  const markdownToMeta = fs.readFileSync(
+    path.join(dir, slug + '.mdx'),
+    'utf-8'
+  );
+
+  // 2
+  const { content } = matter(markdownToMeta);
+
+  const posts = await getAllPosts();
+  const post = posts.find(p => p?.slug === slug);
+  
+  // 3 
+  const mdxSource = await parseMarkdownToMdx(content);
+
+  return { props: { post, mdxSource} };
+};
+```

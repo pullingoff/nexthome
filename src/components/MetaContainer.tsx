@@ -7,7 +7,6 @@ const MetaContainer = ({ customMeta }: { customMeta?: ICustomMeta }) => {
     ...METADATA, // 기본값
     ...customMeta, // 커스텀 메타데이터
   };
-  // console.log(customMeta);
   return (
     <Head>
       <meta content="width=device-width, initial-scale=1" name="viewport" />

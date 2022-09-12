@@ -24,7 +24,6 @@ const Tag = ({
   const customMeta = {
     title: `${capitalizedTag} : 개발자 박하은`,
   };
-  console.log(pageTotal);
   return (
     <>
       <MetaContainer customMeta={customMeta} />
