@@ -65,7 +65,7 @@ export const workExperiences: IExp[] = [
       {
         title: 'NewFMS',
         tech: ['React', 'TypeScript', 'Material UI'],
-        details: ['통합회원 페이지 공통 컴포넌트 및 스타일 구현'],
+        details: ['통합회원 페이지 공통 컴포넌트 및 스타일 구현', '통합회원 페이지 API 연동'],
       },
     ],
   },
