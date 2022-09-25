@@ -1,0 +1,145 @@
+---
+title: 'setState 제대로 사용하기 (feat. setState 값이 바로 안 바뀔 때)'
+date: 2022-09-24 09:30
+tags:
+  - React
+description: setState는 비동기적으로 동작한다
+---
+
+*가독성을 위해 문제와 관련없는 부분은 최대한 생략한 코드입니다.*
+
+## 문제 
+아래 코드는 유저가 여러 소셜 로그인 방법 중 **카카오 로그인을 선택**한 경우 동작합니다.
+순서는 이렇습니다. (코드 내 주석 참고)
+
+```javascript
+const [kakaoId, setKakaoId] = useState('');
+
+const snsLogin = (id: string, isChecked: boolean) => {
+    switch (SNS) {
+		case '카카오':
+		    kakaoLogin(() => {
+				// (4)
+		        updateSNS(kakaoId)
+		        .then(resp => (...))
+		        .catch(err => (...))
+		        )
+		      })
+		   }
+		    break;
+		case '네이버':
+		// 생략...
+	}
+};
+
+async const kakaoLogin = (successCallback) => {
+	// (1)
+	await Kakao.Auth.login({
+		success: async function (response: any) {
+			// (2)
+			await Kakao.API.request({
+				success: function (profile: any) {
+				    // (3)
+				    setKakaoId(profile.id);  
+				    successCallback();
+				},
+			});
+		},
+	  });
+}
+
+```
+
+1. `Kakao.Auth.login`로 카카오 소셜 **로그인**을 한다.
+2. 성공시 `Kakao.API.request`로 유저의 카카오 **프로필을 GET한다**.
+3. response에서 `profile.id` 값을 컴포넌트 상태 `kakaoId`에 저장한다.
+4. 저장한 `kakaoId`를 파라미터로, 서버에 POST 요청을 보낸다.
+
+제가 겪은 문제는 `(3)`에서 setState을 하면 결과적으로 state가 바뀌긴 하지만, `(4)`에서는 아직 kakaoId가 변하지 않았다는 거였습니다.
+
+즉, `(3)`에서 setState가 바로 업데이트를 실행하지 않았다는 거죠.  
+왤까요?
+
+## 원인
+
+왜냐면 **setState는 이벤트핸들러 안에서 비동기적으로 호출**되기 때문입니다.
+setState는 컴포넌트를 바로바로 리렌더링하지 않고, 변경 사항을 대기열에 넣어두고 한번에 일괄적으로 갱신합니다. 이 결과 setState을 여러번 호출해도 동일한 키에 대해서는 가장 마지막 값으로만 상태가 갱신되기도 합니다.
+
+### 왜 굳이?
+
+이런 setState의 특징 때문에 아무 생각없이 `setState = 상태 바꿔주는 함수` 로만 알고 있으면 뒤통수를 맞기 쉽상입니다. 왜 리액트는 이벤트핸들러 안에서 setState를 비동기적으로 작동하게 했을까요?
+
+그 이유는 바로 *불필요한* 렌더링을 방지한 성능향상입니다.
+
+하나의 이벤트핸들러에서 setState가 **여러번** 호출되면 이벤트가 끝날 때 **변경이 필요한 상태들을 일괄적으로 업데이트하고 렌더링**합니다.
+그래서 setState를 호출하자마자 state에 접근하면 값이 안 바뀌어있는 겁니다.
+
+## 즉각적으로 state 바꾸는 법
+
+예시와 함께 **리액트에서 상태를 그때그때 바꾸는 방법** 몇가지를 알려드리겠습니다.
+
+### 방법 1. useState: setState의 updater 인자에 함수 사용
+
+```javascript
+add() {
+	setCount((prevState, prevProps) => {
+		return {count: prevState +1}
+	})
+}
+```
+
+첫째로, prevState를 사용해 새로운 객체를 return하면 됩니다.
+
+아래 예시에서 저는 ` fruits 배열의 원소가 객체의 key로 담긴 fruitState 객체`를 만들고 싶었습니다. 
+그래서 이런 코드를 짰어요.
+
+```javascript
+const [fruitState, setFruitState] = useState({});
+const fruits = ['orange', 'apple'];
+
+fruits.map((val, idx) => {    
+	setFruitState({ ...fruitState, [val]: true });
+
+```
+
+fruits 배열의 map() 메서드를 써서 setState를 하도록 했습니다. 
+하지만 이 코드를 실행하니 예상한 결과물은 `{orange: true, apple: true}`이었는데, 실제 결과물은 `{apple: true}`였습니다.  
+
+처음 `orange`가 `[val]`이었을 때 `fruitState`가 변하지 않은 상태에서 setFruitState를 한번 더 실행했기 때문에 마지막 setState만 빼고 이전의 setState 실행은 다 무시되어버린겁니다!!!
+
+그래서 updater 인자에 prevState를 사용한 함수를 직접 넣어주었습니다.
+
+```javascript
+fruits.map((val, idx) => {    
+    setFruitState(prevState => ({ ...prevState, [val]: true }));  
+});
+```
+
+이렇게 고치면  `{orange: true, apple: true}`가 나옵니다.
+
+### 방법 2. 클래스형 컴포넌트: setState 콜백 사용
+
+```javascript
+const [count, setCount] = useState(0);
+
+add() {
+	this.setState({ count : this.state.count+1 },  // arg1
+	() => {	console.log(this.state.count)})   // arg2
+}
+
+handleClick() {
+  this.add();
+}
+```
+
+두번째 방법은 useState 훅을 사용하지 않고, 클래스형 컴포넌트의 setState를 사용하는 방법입니다.  
+클래스형 컴포넌트의 setState은 **두번째 인자(`arg2`)로 콜백함수**를 받아서 setState가 실행된 이후 콜백 함수를 실행합니다.
+
+0인 count를 1씩 더해주는 예시입니다. 원래 값에 1씩 더해준다기보다 1을 더한 새로운 값을 count로 지정해주고 있습니다.
+`arg1`인 setState가 실행되면, `arg2`가 새로운 count를 콘솔에 표시합니다.
+
+
+이 두 방법 중 저는 첫번째 방법을 주로 씁니다.  
+또 이외에도 useCallback 안에 setState을 넣어 처리할 수도 있습니다.
+
+[setState Thumbnail](/images/blog/2209/setstate_thumbnail.png)
