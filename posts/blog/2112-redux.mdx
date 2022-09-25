@@ -1,0 +1,74 @@
+---
+title: "리덕스란 무엇인가, 리액트의 작동 순서"
+date: 2021-12-15 08:00
+tags:
+- React
+- Redux
+description: 
+---
+
+## 리덕스란
+
+리덕스란 **상태를 관리해주는 JS 라이브러리**다. 지금은 Redux toolkit으로 표준화됐다.  
+상태를 연쇄적으로 변화시키며, 리액트하고 사용할땐 react-redux를 깔아서 함께 쓴다.  
+컴포넌트의 상태 변경 로직을 다른 파일로 분리해 효율적으로 관리할 수 있다.
+
+**상태관리가 왜 필요할까?**  
+리액트의 경우 컴포넌트에서 원래는 useState 등을 사용했는데, 각 컴포넌트가 아니라 **앱 전체에서 상태를 관리해야하는 경우**가 많다.
+
+그럴 때 **앱 전역에서 사용되는 상태를 관리**하는게 리덕스!
+
+```js
+// 만약 todolist를 만드는데 투두와 완료, 삭제리스트를 이렇게 관리하면 한 js에서 관리할 게 너무나 많음
+const state = {
+      todolist:[],
+      donelist:[]
+}
+```
+
+그럴 때 리덕스를 사용하면 **상태를 앱 최상위에서 관리하기 때문에 그 하위 컴포넌트 어디서든 상태값을 가져와** 사용할 수 있다.
+
+## 리덕스의 작동 순서
+
+![리덕스 작동순서](https://images.velog.io/images/hailey99/post/1c7d4cad-f918-429c-b039-d65573c0a4af/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-11%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%204.41.49.png)
+
+리덕스는 사용자 Action이 발생했을때, Store로 가기까지 무조건 한 방향으로 움직인다.
+
+1. Dispatch 함수를 실행하면
+2. Action이 발생한다.
+3. 이를 리듀서(reducer)가 전달하면
+4. 최종적으로 상태(state)를 바꾼다.
+
+### Action: 무조건 타입을 전달한다
+
+```javascript
+{
+type:'some text'
+}
+```
+
+### Reducer: param으로 상태와 액션을 받고 상태를 변화시키는 함수
+
+```javascript
+function reducer(state, action) {
+ return changeState;
+```
+
+### Store: 앱 전체에서 사용되는 상태 저장소
+
+### Distatch: 액션을 발생시키는 함수
+
+e.g. dispatch(action)
+
+참고: Fastcampus '한 번에 끝내는 Node.js 웹 프로그래밍 초격차 패키지 Online' 강의
+
+## Redux의 장점과 단점
+
+### 장점
+
+1. 데이터 관리하는 부분이 분리되어있어 테스트가 쉬움
+2. 모든 구성요소는 Store의 모든 양식 상태에 액세스 가능
+
+### 단점
+
+1. Action type, selector, action 생성자, reducer 등 중복 코드가 많음

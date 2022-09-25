@@ -1,0 +1,48 @@
+---
+title: "블로그 만들면서 헷갈렸던, 만났던 에러 모아보기"
+date: 2022-02-12 08:00
+tags:
+- Firebase
+description: 파이어베이스, VuePress
+---
+
+## 파이어베이스 연결할 때 에러
+
+![암호화된 채 오는 데이터](https://images.velog.io/images/hailey99/post/de623ef7-2118-4909-8f86-ff9fcaec4ab6/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-11%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%208.30.46.png)
+
+1. 위 사진은 아무 생각없이 구글만 보고 개발했을 때 응답으로 왔던 데이터. 
+암호화되어있고 내가 원하는 데이터가 아니었다.
+파이어베이스를 V9 썼는데 이전거랑 함수명도 바뀌고 사용법도 달라져서였다.
+-> 아무생각없이 구글링하지말고 공식문서를 읽자. **해답은 모두 공식문서에 있었다.** 
+아무래도 직접 만든 사람이 적어둔 문서다보니, 명확했다.
+
+![lite 안 쓰면 에러](https://images.velog.io/images/hailey99/post/ed9547a9-a46d-4d57-85d1-23b13782fbd9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-11%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.34.27.png)
+2. firestore import 할 때 "...firebase/lite" 에서 lite 안 쓰면 에러 뜸!!!
+
+![FirebaseError](https://images.velog.io/images/hailey99/post/4320da84-fe75-4476-a7a0-34f88c31cf8a/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-11%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2010.34.52.png)
+
+**FirebaseError: Expected first argument to collection() to be a CollectionReference, a DocumentReference of FirebaseFirestore**
+
+3. 이 에러 진짜ㅜㅜ 내 속을 제일 뒤집어놨던 놈. 
+파이어스토어에서 주는 데이터 그대로 리액트에 못 쓴다. 
+`{data.name}` 이런식으로 렌더링할때 넣어주려고 했는데 객체는 안되고 배열로 바꿔서 넣어줘야한다고함.
+
+### 3번 에러 해결법
+
+1. 다른 변수 선언해서 거기다 넣어서 쓴다
+2. **(완전 중요)** timestamp 형식의 시간,날짜 데이터 가져올 경우 객체타입이라 변환해서 가져와야한다.
+
+## Vuepress 깃허브에 배포하니 사이드바만 안보이는 현상
+
+![로컬](/images/blog/2202/local.png)
+![배포 후](/images/blog/2202/deploy.png)
+
+vuepress로 TIL을 만드는데 로컬에서는 보이는 사이드바가 배포 후에는 안 보이는 경우가 있었다. 
+config.js에서 디렉토리와 파일 이름으로 사이드바를 직접 만드는데 디렉토리에 파일이 없는게 아니라,
+ **사이드바 자체가 아예 안보여서** 뭐지싶었다.
+
+알고 보니 배포 전용 브랜치인 `gh-pages`를 빌드된 디렉토리(dist)랑 연결해야했는데, 
+실제 개발 디렉토리랑 연결해서 그런거였다.
+
+github pages 문서 읽어보니까 `gh-pages`를 쓰는 건 예전 방법이래서 
+난 docs 구조를 쓰고 있으니까 main 브랜치랑 연결하면 되는건가 했는데 아니었다.

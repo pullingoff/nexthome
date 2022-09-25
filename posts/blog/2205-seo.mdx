@@ -25,3 +25,40 @@ description: 내 블로그 글을 구글에 뜨게 하려면 필수인 바로 �
 4. 랭킹: 사용자 검색어와 관련된 페이지들을 엮어 순서대로 보여준다. 이때 각 검색엔진의 기준(알고리즘)대로 순위가 정해진다.
 
 ![구글 봇의 작동 순서](https://nextjs.org/_next/image?url=%2Fstatic%2Fimages%2Flearn%2Fseo%2Fgooglebot.png&w=3840&q=75)
+
+## 구글의 페이지 처리 프로세스
+
+React의 SEO 이슈와 대처 방안을 알아보자. 
+(출처: Geek news Weekly)
+
+1. SSR/SSG 적용 필수: 최초 렌더링 빠르게 & 검색 크롤러의 렌더링에 의존하지 않기
+2. HTTP 상태코드 제대로 사용
+3. Hashed URL 피하기
+4. 링크는 꼭 `<a href>`로, div나 버튼 말고
+5. 주요 HTML의 lazy loading 피하기
+6. 기본 요소들은 다 챙길 것
+    - Canonicalization
+    - Structured data
+    - XML sitemaps
+    - Mobile-first
+    - Website Structure
+    - HTTPS
+    - Title tags
+    - Semantic HTML
+
+## 링크 주스란?
+
+1. 웹 페이지를 타고 흐르는 링크의 가치 (링크를 받고 있는 개수X링크 원본 사이트의 품질과 관련성)
+2. 검색 순위를 결정하는 요소
+
+- `rel="noopener"`: 새로 열린 페이지에 `window.opener` 객체가 존재하지 않음
+- `rel="noreferer"`: `window.opener` 객체를 조작하지 못 하게 함 
+(하지만 직접 트래픽으로 파악돼서 분석 및 추적 소프트웨어 수치 왜곡)
+- `rel="nofollow"`: 페이지의 내부 링크주스를 전달하고 싶지 않을 때 씀
+
+=> 구글 및 기타 검색엔진을 사용하려면 모든 스폰서 링크 및 광고에서 `rel="nofollow"`를 사용해야함.
+
+## 웹 접근성을 위한 요소 'role'
+
+HTML 코드 보면 `ul`, `ol`에 `role='list'`를 주고 `li` 태그에 `role='listitem'`을 주는 경우가 있다.
+ 웹 접근성을 위한 것으로, 스크린 리더나 보조 기기가 그 컴포넌트의 역할 등 정보를 더 잘 알게 하기 이다.

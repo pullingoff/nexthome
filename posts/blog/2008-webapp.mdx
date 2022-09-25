@@ -1,0 +1,65 @@
+---
+title: "웹 프로그래밍이란? (웹, http 프로토콜, IPv4, IPv6)"
+date: 2020-08-26 18:00
+tags:
+- Web
+- HTTP
+description: 
+---
+
+## 웹 프로그래밍이란?
+
+- 애플리케이션 개발 순서: 설계 -> 개발 -> 테스트 -> 배포(포장해서 사용자들에게 나눠주는 것)
+- 요리 주문(요구사항 분석) - 재료 준비 (db의 raw data) - 레시피(로직)대로 가공해 information으로 만듦 -요리를 보냄
+**웹프로그래밍: 클라이언트 사이드 모듈 / 서버 사이드 모듈 두개가 한 공간에서 유기적으로 돌아가게 하는 것**
+
+Application(context): 명령어의 집합. e.g. was는 자기 컨텍스트에서 그 요청에 답할수있는 컨텍스트를 찾음. 클라이언트가 응답 받아서 브라우저로 렌더링함
+
+## 일괄 처리가 필요한 상황
+
+![일괄 처리가 필요한 상황](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRCHAs%2FbtqHgqcVOWW%2FmpA3cQVhK7kgDIpwpiVxuk%2Fimg.png)
+
+처음 세개는 real time(실시간 처리)하고 배치 프로그램은 일괄처리다.
+
+**일괄 처리 예시**: 네이버에서 탈퇴할 때 나의 회원정보가 탈퇴 일주일 후에 삭제되는 것.
+
+하지만 일괄처리/ 실시간 처리 애들이 서로 영향을 주면 안됨. 절대로 별개여야함  
+=> 멀티 쓰레드를 쓴다.
+
+또 중요한 것. 일괄 처리할 때 만약 일주일이면 그 시간을 재야함. time check를 해줄 수 있는 것 필요
+=> 스케줄러
+
+## WEB: 논리적인 의미의 공간
+
+인터넷(International Network): 웹을 실제로 구현한 게 인터넷/ 클라이언트의 요청과 서버의 응답이 오고가는 매체  
+네트워크: 정보를 주고받기위한 물리적 매체/ data server and client  
+
+## HTTP protocol
+
+- 클라이언트가 요청하고 서버가 응답할 때 웹이 구현된 기술 방식을 사용해야함 ==> http protocol 사용 (하이퍼텍스트를 전송하기위한 프로토콜) / -> 즉, HTML(HyperText Markup Language)을 사용한다.
+- HTML은 클라이언트, 서버의 공통 언어체계이기도 하다.
+- 광케이블로 주고받을수있는건 0 1 집합 뿐임 (data stream) => 전송규칙 (protocol 필요) 그 프로토콜 중 html 전송 제일 잘하는게 http
+
+IP: 정보 요청이나 응답 전송하려면 클라, 서버 서로 식별해야함. 네트워크의 peer들을 어케 식별할 때 사용하는 주소
+
+![ipconfig](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmN4SH%2FbtqG9A8wo6V%2F5uuCBMm4kkK1SdOxXUwk7K%2Fimg.png)
+
+## IPv4, IPv6 비교
+
+- IPv4: 최대값 255씩 4섹터 -> 2의8승(8비트 ) * 4 = 32bit/ 2의 32제곱..  
+- Ipv6: 영어f까지만있음 16진수 = 16진수는 4비트 필요..... -> 16* 8세트 = 128비트
+
+근데 누가 네이버 ip 주소 외우고 다니냐 -> 걍 domain name 씀
+네이버라는 하나의 peer 식별하는 법: ip(for 기계) or Domain ( for 인간)
+
+## 웹에서 client란?
+
+클라이언트 -> 한국의 모든 도메인네임은 KISA에서 관리. 도메인 네임 서버 (DNS) 에서 특정 도메인에 매핑되어있는 사이트 찾음
+NIC(network information centre) 나라마다 있음. 우리나라로는 KISA로 이름이바뀜 -> ICANN에서 관리(미국). 미국은 이런 정보를 관리하기 때문에 최강대국이다. + 우리나라에서 북한 사이트 못 들어감 - 그런 정보를 읽고 막는 게 미국임
+
+## HTML과 JavaScript 비교
+
+html: 정적static (시계 구현 불가능)  
+자바스크립트: 동적  
+
+BUT 자바스크립트 단점: 브라우저에서만 돌아간다. (due to 브라우저 엔진) 즉, 클라이언트가 실행한다) => 서버 사이드의 데이터를 가져올 수 없다.(=사용할수있는 데이터가 클라이언트 사이드로 한정되어있다.) -> 서버사이드 애플리케이션 needed
