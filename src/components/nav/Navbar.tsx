@@ -2,8 +2,11 @@ import styles from './navbar.module.scss';
 import { useState } from 'react';
 import { MENUS } from '#config/index';
 import NavMenu from './NavMenu';
-import SpiderLogo from './SpiderLogo';
+import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
+import CustomLink from '#components/common/CustomLink';
+import styled from 'styled-components';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -49,5 +52,28 @@ const textStyle: React.CSSProperties = {
   position: 'relative',
   bottom: '-5px',
 };
+
+
+const SpiderLogo = () => {
+  return (
+    <NavLogo>
+      <CustomLink href="/">
+        <Image alt="spider" width="45px" src={spiderLogo} />
+      </CustomLink>
+    </NavLogo>
+  );
+};
+
+const NavLogo = styled.div`
+  display: inline;
+  width: 4rem;
+  margin: 1rem;
+  &:hover {
+    & span img {
+      transform: rotate(360deg);
+      transition: transform 0.25s ease-in-out;
+    }
+  }
+`;
 
 export default Navbar;

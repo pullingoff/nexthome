@@ -3,7 +3,7 @@ import MetaContainer from '../MetaContainer';
 import styled from 'styled-components';
 import { IHeading, IPost } from '#type/post';
 import { useRouter } from 'next/router';
-import PostHeadings from '#components/post/PostHeadings';
+import CustomLink from '#components/common/CustomLink';
 
 const Post = ({
   post,
@@ -166,6 +166,57 @@ const StyledHeader = styled.header`
     color: var(--theme1-color);
     @media (min-width: ${({ theme }) => theme.device.sm}) {
       font-size: var(--8xl);
+    }
+  }
+`;
+
+const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
+  return (
+    <>
+      {headings ? (
+        <HeadingContainer>
+          <ul>
+            {headings.map(heading => (
+              <li key={heading.text}>
+                <CustomLink href={heading.link}>{heading.text}</CustomLink>
+              </li>
+            ))}
+          </ul>
+        </HeadingContainer>
+      ) : null}
+    </>
+  );
+};
+
+const HeadingContainer = styled.aside`
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    display: none;
+  }
+  min-width: 15%;
+  position: sticky;
+  top: 70px;
+  order: 1;
+  overflow-y: scroll;
+  max-height: 90vh;
+  margin-left: 1rem;
+  ul {
+    list-style: none;
+    font-size: 0.9rem;
+    color: #1e293bd1;
+    border-left: 1px solid #1e293bd1;
+    padding-left: 1rem;
+
+    li {
+      list-style: none;
+      margin-bottom: 2px;
+      &:hover {
+        font-weight: bold;
+      }
+      &:not(:last-child):after {
+        content: '﹒';
+        line-height: 0.5rem;
+        display: block;
+      }
     }
   }
 `;

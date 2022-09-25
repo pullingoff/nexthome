@@ -1,7 +1,6 @@
 import * as S from '#src/styles/aboutStyle';
-import { IEducation, IExp, ITechStack } from '#type/about';
+import { IEducation, IExp, ITechStack, IWorkProject } from '#type/about';
 import CustomEmoji from '#components/common/CustomEmoji';
-import WorkProject from './WorkProject';
 import styled from 'styled-components';
 import CustomLink from '#components/common/CustomLink';
 
@@ -44,6 +43,32 @@ const ProjectContainer = ({ title, list }: { title: string; list: any[] }) => {
     </S.StyledMain>
   );
 };
+
+function WorkProject(pj: IWorkProject) {
+  return (
+    <S.StyledPjContainer>
+      {pj.link ? (
+        <CustomLink href={pj.link}>
+          <S.PjTitleHover>{pj.title} 🔗</S.PjTitleHover>
+        </CustomLink>
+      ) : (
+        <S.PjTitle> {pj.title}</S.PjTitle>
+      )}
+      <S.PExplain>{pj.description}</S.PExplain>
+      {pj.tech?.map(t => (
+        <S.PjTech key={t}>{t}</S.PjTech>
+      ))}
+      {pj.details && (
+        <S.DetailUl>
+          {pj.details.map((det, idx) => (
+            <S.Detail key={idx}>{det} </S.Detail>
+          ))}
+        </S.DetailUl>
+      )}
+    </S.StyledPjContainer>
+  );
+}
+
 
 const Education = (edu: IEducation) => {
   return (
