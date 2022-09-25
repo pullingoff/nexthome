@@ -53,7 +53,6 @@ const textStyle: React.CSSProperties = {
   bottom: '-5px',
 };
 
-
 const SpiderLogo = () => {
   return (
     <NavLogo>

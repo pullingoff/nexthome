@@ -31,7 +31,6 @@ const StyleResumeContainer = styled.main`
   }
 `;
 
-
 const ResumeHeader = () => {
   return (
     <StyledHeader>

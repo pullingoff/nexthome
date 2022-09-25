@@ -69,7 +69,6 @@ function WorkProject(pj: IWorkProject) {
   );
 }
 
-
 const Education = (edu: IEducation) => {
   return (
     <>
