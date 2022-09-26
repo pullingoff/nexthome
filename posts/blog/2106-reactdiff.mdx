@@ -1,5 +1,5 @@
 ---
-title: "리액트 함수형, 클래스형 컴포넌트의 차이와 리액트 개발 시 주의할 점"
+title: "리액트 함수, 클래스 컴포넌트의 차이와 리액트 개발 시 주의할 점"
 date: 2021-06-15 08:00
 tags:
 - React
@@ -28,19 +28,19 @@ description:
 3. `render()`
 4. `componentDidMount()`
 
-## 클래스형 컴포넌트
+## 클래스 컴포넌트
 
 - 옛날 문법
 - render() 안에서 return
 
-## 함수형 컴포넌트
+## 함수 컴포넌트
 
 - 함수(function)를 기반으로 작성
 
 ## 비교
 
-- 함수형에서 props 접근할 때는 {props.text} vs class에서는 this.props.text
-- class 형에서 componentDidMount 는 함수형의 useEffect로 대체 가능
+- 함수 컴포넌트에서 props 접근할 때는 {props.text} vs class에서는 this.props.text
+- class 형에서 componentDidMount 는 함수 컴포넌트의 useEffect로 대체 가능
 
 ## 리액트 개발 시 주의할 점
 
@@ -52,7 +52,7 @@ description:
 ## 리액트 최적화 방법
 
 1. `useMemo`로 복잡한 연산이 필요한 함수는 캐싱. 함수의 디펜던시(파라미터)가 같을 경우 이전에 리턴했던 참조값을 재사용함.
-2. 클래스형 컴포넌트에서는 `React.memo`로 메모이제이션 (useMemo와 같음)
+2. 클래스 컴포넌트에서는 `React.memo`로 메모이제이션 (useMemo와 같음)
 3. `useCallback`으로 함수 선언을 메모이제이션
 4. 자식 컴포넌트에게 props를 전달할 때, 새로 객체를 생성해 보내지 말고 state 그대로 넘기고, 필요한 데이터 가공은 자식 컴포넌트 안에서 하기. props 값이 변경될 때마다 컴포넌트를 렌더링하므로 state만 전달해주고 자세한 연산은 자식 컴포넌트 안에서 하도록 하는게 좋다.
 5. `map()` 함수 사용시 컴포넌트의 key값으로 인덱스 값 넣지 않기. 배열 중간에 요소가 삽입 또는 수정, 삭제될 경우 그 이후의 요소들은 전부 인덱스가 변경되기 때문이다.

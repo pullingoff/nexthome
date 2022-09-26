@@ -10,8 +10,9 @@ description:
 ## useEffect
 
 - useEffect: componentDidMount, componentDidUpdate 이후에 발생하는 코드를 넣음
+- 순수 함수는 참조 투명성을 가지는데 (부작용이 없음) useEffect는 이름에서 드러나듯 [함수 컴포넌트가 부작용을 이용하는 도구](https://gyuwon.github.io/blog/2020/07/24/react-has-no-functional-components.html)다.
 - 계속 마운트되는 부분의 라이프사이클을 관리
-- 클래스형에서는 componentDidMount() 등의 함수를 썼었는데 넘 번거로워서 생김
+- 클래스 컴포넌트에서는 componentDidMount() 등의 함수를 썼었는데 넘 번거로워서 생김
 
 ## useEffect()를 쓰는 경우
 

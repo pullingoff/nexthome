@@ -64,11 +64,13 @@ async const kakaoLogin = (successCallback) => {
 ## 원인
 
 왜냐면 **setState는 이벤트핸들러 안에서 비동기적으로 호출**되기 때문입니다.
-setState는 컴포넌트를 바로바로 리렌더링하지 않고, 변경 사항을 대기열에 넣어두고 한번에 일괄적으로 갱신합니다. 이 결과 setState을 여러번 호출해도 동일한 키에 대해서는 가장 마지막 값으로만 상태가 갱신되기도 합니다.
+setState는 컴포넌트를 바로바로 리렌더링하지 않고, 변경 사항을 대기열에 넣어두고 한번에 일괄적으로 갱신합니다. 
+이 결과 setState을 여러번 호출해도 동일한 키에 대해서는 가장 마지막 값으로만 상태가 갱신되기도 합니다.
 
 ### 왜 굳이?
 
-이런 setState의 특징 때문에 아무 생각없이 `setState = 상태 바꿔주는 함수` 로만 알고 있으면 뒤통수를 맞기 쉽상입니다. 왜 리액트는 이벤트핸들러 안에서 setState를 비동기적으로 작동하게 했을까요?
+비동기 객체라는 setState의 특징 때문에 아무 생각없이 `setState = 상태 바꿔주는 함수` 로만 알고 있으면 뒤통수를 맞기 쉽상입니다.  
+왜 setState는 `XMLHttpRequest`, `콜백`, `setTimeOut`처럼 비동기 객체로 만들어졌을까요?
 
 그 이유는 바로 *불필요한* 렌더링을 방지한 성능향상입니다.
 
@@ -118,7 +120,7 @@ fruits.map((val, idx) => {
 
 이렇게 고치면  `{orange: true, apple: true}`가 나옵니다.
 
-### 방법 2. 클래스형 컴포넌트: setState 콜백 사용
+### 방법 2. 클래스 컴포넌트: setState 콜백 사용
 
 ```javascript
 const [count, setCount] = useState(0);
@@ -133,8 +135,8 @@ handleClick() {
 }
 ```
 
-두번째 방법은 useState 훅을 사용하지 않고, 클래스형 컴포넌트의 setState를 사용하는 방법입니다.  
-클래스형 컴포넌트의 setState은 **두번째 인자(`arg2`)로 콜백함수**를 받아서 setState가 실행된 이후 콜백 함수를 실행합니다.
+두번째 방법은 useState 훅을 사용하지 않고, 클래스 컴포넌트의 setState를 사용하는 방법입니다.  
+클래스 컴포넌트의 setState은 **두번째 인자(`arg2`)로 콜백함수**를 받아서 setState가 실행된 이후 콜백 함수를 실행합니다.
 
 0인 count를 1씩 더해주는 예시입니다. 원래 값에 1씩 더해준다기보다 1을 더한 새로운 값을 count로 지정해주고 있습니다.
 `arg1`인 setState가 실행되면, `arg2`가 새로운 count를 콘솔에 표시합니다.
