@@ -33,8 +33,9 @@ published // optional
 
 ## Coming Soon
 
+- markdown table 제대로 안 나오는 에러 
+- search bar
 - guestbook
 - dark mode, colorful mode
-- heading에 특수문자 들어가는 경우 이동 안 되는 것 fix
+- ToC heading에 특수문자 들어가는 경우 이동 안 되는 것 fix
 - 개발중인 부분 보는 탭
-- post 검색 기능 (태그분류가 이미 있는데 더 만들 것인가)
