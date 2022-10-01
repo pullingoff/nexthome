@@ -1,4 +1,4 @@
-import { getAllPosts, getAllTags } from '#lib/posts-related-api';
+import { getAllPosts, getAllSlugs, getAllTags } from '#lib/posts-related-api';
 import { POSTS_PER_PAGE } from '#config/index';
 import Pagination from '#components/Pagination';
 import ListLayout from '#components/ListLayout';
@@ -62,6 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       currentPage: page,
       pageTotal: pageTotal,
       allTags,
+      allSlugs: await getAllSlugs(),
     },
   };
 };
@@ -71,16 +72,25 @@ export default function BlogPage({
   currentPage,
   pageTotal,
   allTags,
+  allSlugs,
 }: {
   posts: IPost[];
   currentPage: number;
   pageTotal: number;
   allTags: ITag[];
+  allSlugs: string[];
 }) {
+  const moveToRandomPost = () => {
+    window.location.href = `/blog/${
+      allSlugs[Math.round(Math.random() * allSlugs.length)]
+    }`;
+    console.log('Thank you! Emoji credited by emoji.supply/kitchen');
+  };
+
   return (
     <>
       <MetaContainer customMeta={customMeta} />
-      <TagContainer allTags={allTags} />
+      <TagContainer allTags={allTags} moveToRandomPost={moveToRandomPost} />
       <ListLayout posts={posts} />
       <Pagination
         path="blog/page"

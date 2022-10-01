@@ -80,3 +80,13 @@ const retrieveAllTags = async () => {
 };
 
 export const getAllTags: () => Promise<ITag[]> = memoize(retrieveAllTags);
+
+const retrieveAllSlugs = async () => {
+  const slugs: string[] = (await getAllPosts()).map((post, idx) => {
+    return post.slug;
+  });
+
+  return slugs;
+};
+
+export const getAllSlugs: () => Promise<string[]> = memoize(retrieveAllSlugs);
