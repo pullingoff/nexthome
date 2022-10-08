@@ -1,5 +1,3 @@
-// post related
-
 export interface IFrontMatter {
   title: string;
   tags: string[];

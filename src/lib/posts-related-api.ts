@@ -75,14 +75,13 @@ const retrieveAllTags = async () => {
     tag,
     count: tags.filter(t => t === tag).length,
   }));
-  // console.log(tagWithCount); //  { tag: 'TDD', count: 1 },
   return tagWithCount.sort((a: ITag, b: ITag) => b.count - a.count);
 };
 
 export const getAllTags: () => Promise<ITag[]> = memoize(retrieveAllTags);
 
 const retrieveAllSlugs = async () => {
-  const slugs: string[] = (await getAllPosts()).map((post, idx) => {
+  const slugs: string[] = (await getAllPosts()).map(post => {
     return post.slug;
   });
 

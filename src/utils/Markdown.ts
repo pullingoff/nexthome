@@ -1,7 +1,6 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import remarkGfm from 'remark-gfm'
+import remarkGfm from 'remark-gfm';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import slug from 'remark-slug';
 import { visit } from 'unist-util-visit';
@@ -47,9 +46,9 @@ const parseCodeSnippet = () => {
       }
     });
   };
-}
+};
 
-export async function parseMarkdownToMdx(body: string) {
+export const parseMarkdownToMdx = async (body: string) => {
   return serialize(body, {
     // 마크다운에서 html로 제대로 바꿀 수 있도록 도와주는 플러그인들
     mdxOptions: {
@@ -62,4 +61,4 @@ export async function parseMarkdownToMdx(body: string) {
       ],
     },
   });
-}
+};
