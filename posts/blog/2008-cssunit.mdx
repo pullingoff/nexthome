@@ -9,11 +9,10 @@ description:
 ## CSS Units
 
 - 부모 요소 기준: %, em
-- 브라우저 기준: v*, rem(root elem)
-
+- 브라우저 기준: vw, vh, rem(root elem)
 - 요소의 width, height을 따름: %, v*
 - font를 따름: em, rem
 
 ## em: 중첩될 수록 직관적인 계산이 어려워짐
 
-e.g. 기본 폰트 사이즈를 12px로 하고, nested로 2em, 2em하면 12->24->48 되므로 헷갈림.
+e.g. 기본 폰트 사이즈를 12px로 하고, nested로 2em, 2em하면 `12px` -> `24px` -> `48px` 되므로 헷갈림.
