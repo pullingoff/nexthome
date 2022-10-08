@@ -15,7 +15,7 @@
 
 ## frontmatter
 
-```
+```markdown
 title
 tags
 date // 2020-12-25 08:00
@@ -28,14 +28,12 @@ published // optional
 개발: `React`, `Next.js`, `TypeScript`  
 스타일: `Styled-components`, `SCSS`  
 배포: `Vercel`  
-마크다운 처리: `Markdown`, `MDXRemote`  
+마크다운 처리: `Markdown`, `MDXRemote`, `remark`  
 기타: `Git`
 
 ## Coming Soon
 
-- markdown table 제대로 안 나오는 에러 
 - search bar
 - guestbook
 - dark mode, colorful mode
-- ToC heading에 특수문자 들어가는 경우 이동 안 되는 것 fix
 - 개발중인 부분 보는 탭
