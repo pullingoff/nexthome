@@ -1,5 +1,5 @@
 ---
-title: "자바의 예외(exception)와 처리 방법"
+title: "자바의 예외(Exception)와 처리 방법"
 date: 2020-09-02 08:00
 tags:
 - JAVA
@@ -10,33 +10,36 @@ description:
 
 설계 당시에 예상하지 못했던 모든 상황을 Throwable로 캡슐화한 것
 
-- Error: 개발자가 직접 처리할 수 없는 예외
-- Exception: 개발자가 처리할 수 있는 예외
+- `Error`: 개발자가 직접 처리할 수 없는 예외
+- `Exception`: 개발자가 처리할 수 있는 예외
 
 ### checked Exception
 
-- 최상위 객체: Exception
-- 반드시 처리해야함
+- 최상위 객체: `Exception`, 반드시 처리해야함
 
-e.g. IOException. SQLException, ServletException
+e.g. `IOException`, `SQLException`, `ServletException`
 
 ### unchecked Exception
 
-- 최상위 객체: RuntimeException
+- 최상위 객체: `RuntimeException`
 - 처리하지 않아도 VM에게 예외 제어권이 전달됨
 
--> (UserNotFoundException 나중에 스프링에서 쓰는데, 걔가 여기 속함)  
+-> (`UserNotFoundException`이 여기 속함)  
 
-e.g. NullPointerExcpetion, IllegalArgumentException, ArithmeticException, IndexOutOfBound
+e.g. `NullPointerExcpetion`, `IllegalArgumentException`, `ArithmeticException`, `IndexOutOfBound`
 
-## 자바 예외 처리방법
+## JAVA 예외 처리방법
 
-try - catch - finally
-try(closable객체 선언) : try with resource 구문 (since JAVA 1.7)
+- `try` - `catch` - `finally`
+- try( `closable` 객체 선언) : try with resource 구문 (since JAVA 1.7)
 
-- throws : 예외를 호출한 곳으로 보냄. 거기에 try catch있으면 try catch 됨
-- throw: 예외 객체를 생성하고, 해당 예외를 메소드 호출구조 상에 올릴 때 (exception을 일부러 내가 만든다)
+### throws와 throw의 차이
+
+- `throws`: 예외를 호출한 곳으로 보냄. 거기에 try catch 구문이 있으면 try catch 된다.
+- `throw`: 예외 객체를 생성하고, 해당 예외를 메소드 호출구조 상에 올릴 때 사용한다. (exception을 일부러 만든다.)
   
 ![예외](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FKDZWN%2FbtqHT0Rh34b%2FfFzTP3wlubaRfBwUqkoL7K%2Fimg.png)
 
-1번에서 ArithmeticException이 발생 -> 2번에서 catch로 무언가 해주고 나면 해결됨 -> 3번에서 정상 작동 => value가 sysout 된다.
+위 이미지 1번에서 `ArithmeticException`이 발생한다 -> 
+2번에서 `catch`로 예외에 대한 처리를 해준다. -> 
+3번 아래 코드를 이어 실행한다 (value가 콘솔에 프린트된다.)
