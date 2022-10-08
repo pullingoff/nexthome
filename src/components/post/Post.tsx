@@ -171,6 +171,10 @@ const StyledHeader = styled.header`
   }
 `;
 
+const filterSpecialChars = (str: string) => {
+  return str.replace(':', '');
+};
+
 const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
   return (
     <>
@@ -179,7 +183,9 @@ const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
           <ul>
             {headings.map(heading => (
               <li key={heading.text}>
-                <CustomLink href={heading.link}>{heading.text}</CustomLink>
+                <CustomLink href={filterSpecialChars(heading.link)}>
+                  {heading.text}
+                </CustomLink>
               </li>
             ))}
           </ul>
