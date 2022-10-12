@@ -1,0 +1,100 @@
+---
+title: 'Effective Component 지속 가능한 성장과 컴포넌트 (작성중)'
+date: 2022-10-11 19:30
+tags:
+  - React
+  - 컴포넌트
+description: Toss Slash 2022 한재엽 님 발표를 들으며 정리한 것
+---
+
+Toss Slash 2022 를 들으며 적은 것들.  
+실제로 나의 개발에 적용할 수 있는게 많아 여러번 반복해 들었다.  
+더 나은 코드를 짜고 싶은 개발자라면 꼭 한번씩 보시길 추천해요.
+이 글에 나오는 모든 코드/이미지의 권리는 Toss Slash 2022에 있습니다.
+
+[한재엽 님 발표](https://www.youtube.com/watch?v=fR8tsJ2r7Eg)
+
+## 서론 
+
+제품은 변화를 겪으면서 **성장**한다. 변경이 필요하다는 건 고객의 니즈를 발견했다는 것. 우리는 사용자를 잘 모르기 때문에 변경을 예측하지 말고, 대응해야한다.
+
+아래 코드의 문제점은 뭘까?
+
+```jsx
+<Item
+	item={{
+	data...
+	}}
+/>
+```
+
+문제점
+1. Item 컴포넌트가 정확히 어떤 아이템을 의미하는지 알기 힘들다.
+2. Item 컴포넌트 안에 item 속성이 또 있다.
+
+이런 컴포넌트는 만들다보니 페이지가 커졌고, 적당히 덜어내며 만들어졌을 것이다. 이런 문제점을 발견한 이후 잘 변경할 수 있는 컴포넌트를 만들어야한다.
+
+### 변경에 유연하게 대응할 수 있는 컴포넌트의 특징
+
+1. Headless 기반의 추상화하기
+: 변하는 것 vs. 상대적으로 변하지 않는 것
+2. 한가지 역할만 하기
+: 또는 한가지 역할만 하는 컴포넌트의 조합으로 구성하기
+3. 도메인 분리하기
+: 도메인을 포함하는 컴포넌트와 그렇지 않은 컴포넌트 분리하기
+
+## Headless 기반의 추상화하기
+
+### 컴포넌트가 하는 일
+
+1. 데이터 관리: 외부에서 주입받은 데이터 & 내부 데이터(상태)
+2. UI: 데이터가 사용자에게 어떻게 보여질지를 정의 (e.g. `HTML`)
+3. 사용자와 어떻게 상호작용할 지 정의 (e.g. `onClick`)
+
+이 중 UI는 디자인에 의존한다. 그러면 컴포넌트의 데이터와 분리하는 게 좋다.
+
+### Headless한 달력 컴포넌트
+
+달력 컴포넌트의 경우 달력을 구성하는 데이터는 달라지지 않지만, 달력의 UI는 언제든 바뀔 수 있다.
+
+headless한 컴포넌트를 만들기 위해선
+1. 달력을 2x2 배열의 데이터로 추상화 (년, 월, 일), 배열의 요소는 `Date` 객체로 관리한다.
+2. 현재 날짜값을 추상화한다.
+
+```js
+const {headers, body, view} = useCalendar()
+```
+
+**달력에 필요한 데이터 계산을 useCalendar hooks에 위임**한 셈이다. 
+이렇게 UI를 관심사에서 제외하고 데이터에만 집중해 모듈화할 수 있다. (=headless)  
+그 결과, 한가지 문제에만 집중하고 더 많은 곳에서 사용하고, 다른 변경으로부터 격리할 수 있다.
+
+### 동작(상호작용) 추상화
+
+```js
+// useLongPress hook
+
+interface Props extends ComponentProps<typeof Button>{
+	onLongPress?: (event: LongPressEvent) => void;
+}
+
+export function PressButton(props: Props) {
+	const longPressProps = useLongPress();
+	// 생략...
+}
+```
+컴포넌트에서는 hooks의 리턴값을 UI에 적용만 하고, 어떻게 보일지에만 집중할 수 있다. 다른 컴포넌트에서도 hook만 가져다 사용할 수 있다.
+
+**변경에 유연해지려면 각 모듈이 한가지 역할만 하는게 중요하다.**
+
+## Composition
+
+작은 컴포넌트들을 조합해 구성해야하는 컴포넌트가 있다.   
+예를 들어 `Selector`의 경우
+
+![한가지 역할만 하기 발표자료](/images/blog/2210/one-role.png)
+
+1. Selector가 열린 경우 `isOpen` -> `Dropdown` 컴포넌트로 관리
+2. `isOpen` 상태를 바꾸기 위한 상호작용 -> `Dropdown.Trigger`
+3. Menu -> `Dropdown.Menu`
+4. Menu 내부 Item -> `Dropdowm.Item`
