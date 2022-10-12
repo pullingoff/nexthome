@@ -36,4 +36,4 @@ published // optional
 - search bar
 - guestbook
 - dark mode, colorful mode
-- 개발중인 부분 보는 탭
+- 사진 클릭 시 확대 가능하게 
