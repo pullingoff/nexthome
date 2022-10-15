@@ -36,4 +36,5 @@ published // optional
 - search bar
 - guestbook
 - dark mode, colorful mode
-- 사진 클릭 시 확대 가능하게 
+- 사진 클릭 시 확대 가능하게
+- lint fix 성공시 run 하도록 package.json 수정 
