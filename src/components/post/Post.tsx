@@ -172,7 +172,7 @@ const StyledHeader = styled.header`
 `;
 
 const filterSpecialChars = (str: string) => {
-  return str.replaceAll(':', '').replaceAll('(', '').replaceAll(')', '');
+  return str.replace(':', '').replace('(', '').replace(')', '');
 };
 
 const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
