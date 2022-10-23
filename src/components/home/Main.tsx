@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import mainImg from '#public/images/main.JPG';
 import CustomLink from '../common/CustomLink';
 import styled from 'styled-components';
