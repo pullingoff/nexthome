@@ -2,7 +2,7 @@ const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
 
-// 이게 최종 sitemap 결과물임
+// 이 파일이 최종 sitemap 결과물을 만듦
 
 const getDate = new Date().toISOString();
 

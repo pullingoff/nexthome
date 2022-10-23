@@ -1,6 +1,3 @@
-// import fs from 'fs';
-// import { globby } from 'globby';
-// import prettier from 'prettier';
 const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
