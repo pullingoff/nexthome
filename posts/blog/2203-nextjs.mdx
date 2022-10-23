@@ -1,10 +1,10 @@
 ---
-title: "Next.js 써보기 1"
+title: "Next.js 튜토리얼 직접 따라해보기"
 date: 2022-03-03 08:00
 tags:
 - Next.js
 - React
-description: 더 쉬워진 라우팅, 클라이언트사이드 네비게이션...
+description: SSR 첫걸음, 더 쉬워진 라우팅, 클라이언트사이드 네비게이션...
 ---
 
 요즘 핫한 리액트 프레임워크 `next.js`!!  
@@ -19,16 +19,16 @@ documentation을 좀 읽어보는데 쉽게 따라할 수 있는 튜토리얼이
 
 리액트 프레임워크로 위 사진 속에 보이듯 routing, data fetching 등을 도와준다.  
 리액트를 쓸 때 라우팅을 하려면 `react-router-dom`을 따로 쓰고 설정을 해줘야했는데, next.js를 쓰면 얘가 알아서 해준다.  
-여러모로 개발자가 리액트로 개발하는데 아주 큰 도움을 준다!!!!! (잠깐 써보고 벌써 체감했다.)
+여러모로 개발자가 리액트로 개발하는데 아주 큰 도움을 준다! (잠깐 써보고 벌써 체감했다.)
 
-## Next.js의 라우팅
+## 짱편한 라우팅
 
 바로 위에서 언급한 next.js의 라우팅에 대해 이야기해보겠다. Next.js에서 한 페이지는 'pages' 폴더 안에 있는 한 파일 속 리액트 컴포넌트다.  
 그래서 그 파일 이름으로 라우팅이 된다.  
 
 ```pages/posts/first-post.js``` 파일이 있으면 저절로 ```posts/first-post``` 로 경로가 설정된다.
 
-다른 라우팅 라이브러리가 필요하지 않아서 진짜... 너무너무너무너무너무 편하다!!!!
+다른 라우팅 라이브러리가 필요하지 않아서 진짜... 너무너무너무너무너무 편하다!!!
 
 ## Link
 
@@ -39,10 +39,11 @@ Next.js에서 다른 컴포넌트로 이동할땐 ```<a>``` 태그 대신 ```<Li
 
 ![client side nav](https://nextjs.org/static/images/learn/navigate-between-pages/client-side.gif)
 
-client-side navigation이란 자바스크립트를 이용해 페이지를 전환하기 때문에 브라우저의 기본 navigation보다 더 빠르다.  
-위 이미지를 보면 페이지 전환이 일어나도 노란 CSS 설정이 계속 남아있다.  
-브라우저가 페이지 전체를 다시 로드하지 않고, client-side에서 navigation을 하기 때문에 일어나는 현상이다.  
+위 이미지를 보면 페이지 전환이 일어나도 노란 CSS 설정이 계속 남아있다. 
+브라우저가 페이지 전체를 다시 로드하지 않고, client-side에서 navigation을 하기 때문에 일어나는 현상이다. 
 next.js의 ```<Link>```가 아니라 기본 html tag인 ```<a>```를 쓰면 브라우저가 전체 페이지를 새로고침하기 때문에 노란 CSS가 사라질 것이다.
+
+그 외에도, client-side navigation은 자바스크립트를 이용해 페이지를 전환하기 때문에 브라우저의 기본 navigation보다 더 빠르다.  
 
 ```javascript
 export default function FirstPost() {
@@ -65,20 +66,169 @@ export default function FirstPost() {
 
 **Next.js does code splitting automatically, so each page only loads what’s necessary for that page.**
 
-Next.js는 자동으로 코드를 분리해줘서 페이지별로 로드된다.  
-처음에 홈페이지가 렌더될 때 다른 코드들은 같이 로드되지 않는다.  
-또한 한 페이지에서 에러가 나도 다른 페이지들은 작동한다.  
+Next.js는 자동으로 코드를 분리해줘서 페이지별로 로드된다. 
+처음에 홈페이지가 렌더될 때 다른 코드들은 같이 로드되지 않는다. 
+그렇기에 한 페이지에서 에러가 나도 다른 페이지들은 작동한다. 
+
 또 Link 태그가 브라우저의 viewport 안에 나타날 경우, Next.js가 자동으로 그 목적지 페이지의 코드를 미리 가져와둔다(prefetch).  
 그래서 그 페이지로 좀 더 빠르게 이동할 수 있다.
 
-## Layout Component
+## Static asset
+
+- public 디렉토리 아래에 저장
+- ```import Image from 'next/image'``` 컴포넌트를 쓰자.
+
+### Nextjs의 ```<Image/>``` 를 쓰면 좋은 점
+
+- 이미지 최적화해줌. WebP 지원되는 브라우저면 저절로 이미지 resizing을 도와준다.
+- 심지어 외부 이미지 링크에서 가져오더라도 최적화가 가능하다. 그저 빛 ⭐️
+
+### on-demand 최적화
+
+- 빌드 시가 아니라 사용자 요청이 들어올때 이미지를 최적화한다. 이미지가 많아도 빌드 성능에 영향을 끼치지 않는다.
+- lazy loaded! viewport에 들어올 때 이미지를 load한다.
+
+## Third-Party JavaScript
+
+- site의 부가적인 기능 (analytics, ads, widgets)을 위한 스크립트들을 추가할 땐 `next/script`를 사용하자.
+
+```js
+<Script
+src="https://connect.facebook.net/en_US/sdk.js"
+strategy="lazyOnload"
+onLoad={() =>
+    console.log(`script loaded correctly, window.FB has been populated`)
+}
+/>
+``` 
+- strategy: 언제 그 script가 로드될지
+
+## CSS Styling
+
+styled-jsx: CSS-in-JS / 리액트 컴포넌트 안에서 CSS를 쓸 수 있고, CSS 스타일의 **범위가 제한된다(=scoped)**  
+Next.js에는 styled-jsx가 빌트인 내장되어있음. (styled-components를 써봤으니 더 쉬울듯!)
+
+### Layout Component
 
 Next.js에서는 CSS 설정을 할 때도 도움을 준다. className을 설정하면 뒤에 랜덤한 문자열을 붙여 자동적으로 고유한 클래스네임을 만들어준다.  
 CSS 이름이 겹칠 걱정은 하지 않아도 된다!
 
-## 느낀 점
+`components/layout.js`에 `components/layout.module.css`를 적용하면 된다.  
+[module.css](https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css)는 unique한 클래스 이름을 만들어 충돌을 방지해준다.
+
+## Pre-rendering
+
+![pre-rendering](https://nextjs.org/static/images/learn/data-fetching/pre-rendering.png)
+
+Nextjs는 모든 페이지를 pre-render한다. 클라이언트 쪽의 JS에서 다 만들어놓지 않고, 
+Next.js가 모든 HTML 페이지를 미리 만들어놓는다. 성능과 SEO 결과가 더 좋아진다. 
+각각의 만들어진 HTML은 그 페이지에서 필요한 최소한의 JS 코드를 포함한다. 
+브라우저에서 그 페이지가 load되면 그때 그 JS 코드가 실행되어 페이지를 더 인터랙티브하게 한다. (이 과정을 **hydration**이라고 한다.)  
+```<Link/>```같은 인터랙티브 컴포넌트는 js가 로드된 후 사용가능하다.
+
+브라우저에서 자바스크립트를 꺼두고 Next.js로 만든 페이지에 들어가보면 더 확실히 알 수 있다.  
+Next.js가 우리의 웹앱을 정적 HTML로 만들어놓았다는 것을!
+만약 그냥 리액트 웹앱이면 자바스크립트 없이 동작하지 않았을 것이다.  
+
+### Pre-rendering의 2가지 방법 (정적 생성 & 서버사이드 렌더링)
+
+Next.js에선 이 두 방법 중 뭐를 쓸지 내가 직접 고를 수 있고, 섞어서도 개발할 수 있다.
+Static generation과 server-side rendering의 차이는 **언제 페이지의 HTML을 생성하느냐**다.  
+(개발 모드에서는 무조건 매 요청마다 pre-render된다.)
+
+#### Static Generation: 빌드 시에 HTML 생성
+
+![빌드 시 HTML 생성](https://nextjs.org/static/images/learn/data-fetching/static-generation.png)
+
+- 왠만하면 이게 좋다. 왜냐면 한번 빌드된 페이지를 쓰면 되니까 서버가 매 요청마다 페이지를 렌더링하는 것보다 훨 속도가 빠르다.
+
+#### Server-side Rendering: 매 요청 시에 HTML 생성
+
+![매 요청시 HTML 생성](https://nextjs.org/static/images/learn/data-fetching/server-side-rendering.png)
+
+- 만약 자주 업데이트되는 데이터가 있거나 매 요청마다 페이지의 내용이 달라져야한다면 서버 사이드 렌더링을 쓰는게 좋다.
+- 정적 생성 방식보다는 느릴지 몰라도 항상 up-to-date!
+
+## getStaticProps로 데이터가 들어간 Static Generation하기
+
+Next.js에선 페이지 컴포넌트를 export할 때 getStaticProps라는 비동기 함수를 같이 export할 수 있다.
+
+### getStaticProps
+
+- 프로덕션 시 빌드 타임에 실행됨
+- 파일 시스템, API, DB 등의 외부 데이터를 fetch해와 페이지의 props로 return할 수 있다.
+
+#### 사용법
+
+lib 디렉토리를 만들고 `gray-matter`를 사용해서 데이터를 내보낸다.  
+참고로 그냥 `await.fetch()`를 해서 API로 가져온 데이터도 사용할 수 있다.  
+`getStaticProps`는 **page에서 export된 파일만 가능하다.**
+
+```js
+// lib/posts.js
+
+import fs, { readdirSync } from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+
+const postsDirectory = path.join(process.cwd(), 'posts') // current directory/posts
+
+export function getSortedPostsData() {
+    const fileNames = fs/readdirSync(postsDirectory)
+    const allPostsData = fileNames.map(fileName => {
+        const id = fileName.replace(/\.md&/, '') // .md 지우고 id로 설정
+
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, 'utf8') // path에 있는 파일 내용 읽어오기
+
+        const matterResult = matter(fileContents) // post의 metadata(frontmatter)
+        
+        return {
+            id,
+            ...matterResult.data
+        }
+    })
+    
+    // 날짜별로 sort
+    return allPostsData.sort(({ data: a}, {data: b}) => {
+        if (a < b) {
+            return 1
+        } else if (a > b) {
+            return -1
+        } else {
+            return 0
+        }
+    })
+}
+```
+
+```js
+// pages/index.js  
+import { getSortedPostsData } from '../lib/posts'
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData  // prop으로 모든 블로그 포스트 넘겨주기
+    }
+  }
+}
+
+export default function Home({ allPostsData }) {
+// ...
+}
+```
+
+### API 등 서버와 소통하는 함수는 루트 디렉토리에
+
+블로그 메인에서 recent posts (최근 글 목록)을 보여주고 싶었다. 
+이럴 경우, 내 블로그는 SSR이라 **최근 글 목록을 가져오는 함수**를 컴포넌트에 넣으면 안 된다. 
+그래서 루트 디렉토리에 Api 폴더를 만들고 거기다가 API 역할을 해줄 함수들을 작성해주는 게 좋다.
+
+## Next.js 튜토리얼을 따라하며 느낀 점
 
 튜토리얼이 친절하고 너~~~무 유용한 프레임워크라 그런가 배우면서 즐거웠다. 
 리액트로 프로젝트를 할 때 추가로 불러와 쓰는 라이브러리가 많았다. 
-그에 따라 설정할 것도 많아서 헷갈리곤 했는데 Next.js가 내게 도움을 주니 정말 마음에 드는 리액트 프레임워크다. 
-앞으로 많은 프로젝트를 Next.js로 하게 될 것 같단 생각이 든다. ㅎㅎㅎ 
+그에 따라 설정할 것도 많아서 헷갈리곤 했는데 Next.js가 내게 도움을 주니 정말 마음에 든다. 
+앞으로 많은 프로젝트를 Next.js로 하게 될 것 같다.
