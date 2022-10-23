@@ -11,9 +11,9 @@ import Image from 'next/image';
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
 
-  function onToggleNav() {
+  const onToggleNav = () => {
     setNavOpened(!isNavOpen);
-  }
+  };
 
   return (
     <header

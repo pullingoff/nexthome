@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import hifiImg from '#public/hifi.png';
 import Image from 'next/image';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CoffeeChat />
     </StyledLayout>
   );
-}
+};
 
 const CoffeeChat = () => {
   return (

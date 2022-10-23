@@ -50,10 +50,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const startIndex = (page - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
-
-  // 배열 index는 0으로 시작 하기 때문에
-  const orderedPosts = posts.slice(startIndex, endIndex);
   // (처음 시작인덱스 * 보여질 아이템 수), (다음 인덱스 * 다음 보여질 아이템 수)로 배열 자르기
+  const orderedPosts = posts.slice(startIndex, endIndex);
 
   const allTags = await getAllTags();
   return {

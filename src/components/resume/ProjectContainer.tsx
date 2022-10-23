@@ -72,7 +72,7 @@ export interface IEducation {
   details?: string[];
 }
 
-function WorkProject(pj: IWorkProject) {
+const WorkProject = (pj: IWorkProject) => {
   return (
     <S.StyledPjContainer>
       {pj.link ? (
@@ -95,7 +95,7 @@ function WorkProject(pj: IWorkProject) {
       )}
     </S.StyledPjContainer>
   );
-}
+};
 
 const Education = (edu: IEducation) => {
   return (
