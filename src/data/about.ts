@@ -65,7 +65,7 @@ export const workExperiences: IExp[] = [
       {
         title: 'NewFMS',
         tech: ['React', 'TypeScript', 'Material UI'],
-        details: ['통합회원 페이지 공통 컴포넌트 및 스타일 구현', '통합회원 페이지 API 연동'],
+        details: ['통합회원 ERP 공통 컴포넌트 및 스타일 구현', '통합회원 ERP API 연동'],
       },
     ],
   },
@@ -79,14 +79,12 @@ export const workExperiences: IExp[] = [
         tech: [
           'Python',
           'Neo4j',
-          'FastAPI',
           'REST API',
           'Django',
-          'Docker',
           'Vanilla JS',
           'TypeScript',
         ],
-        link: 'https://pullingoff.github.io/til/Projects/nirs.html',
+        // link: 'https://pullingoff.github.io/til/Projects/nirs.html',
         description:
           '해당 기관 산하 호스트간의 관계를 시각화해 연결 상태 및 문제를 바로 관제할 수 있도록 한다.',
         details: [
@@ -97,7 +95,7 @@ export const workExperiences: IExp[] = [
       },
       {
         title: '창업진흥원 창업교육 플랫폼',
-        tech: ['JAVA', 'Spring', 'JSP', 'Vanilla JS', 'NAVER API'],
+        tech: ['JAVA', 'Spring', 'JSP', 'Vanilla JS'],
         details: [
           'NAVER API로 관리자가 메일, SMS 알림을 전송하는 기능과 알림 조회 페이지를 개발',
         ],
@@ -118,7 +116,7 @@ export const otherExperiences: IExp[] = [
     organization: 'JunctionX Seoul',
     description:
       '21개국 187명의 참가자, 50명의 자원봉사자가 참여한 오프라인 해커톤',
-    link: 'https://haeun.vercel.app/blog/190513-junctx',
+    link: 'https://haeun.vercel.app/blog/1905-junctx',
     period: '2019.05',
     details: [
       'VC 투자자와 국내 개발자 간 스타트업 미팅과 멘토링 세션에서 한-영 통역 담당',

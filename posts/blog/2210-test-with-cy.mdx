@@ -1,0 +1,96 @@
+---
+title: 'POM 방식과 Cypress로 프론트엔드 테스트하기 (작성중)'
+date: 2022-10-21 12:30
+tags:
+  - 테스트 자동화
+  - 디자인 패턴
+description: Cypress로 웹앱 테스트 자동화 + POM 패턴
+---
+
+## 서론 
+
+프론트엔드 테스트시 사용할 수 있는 Cypress는 오픈소스 **모던 웹 앱 테스팅 툴**이고, 
+리액트/뷰 등 상관없이 **웹앱 브라우저에서 돌아가는 거면 뭐든 테스트가 가능**합니다.
+
+## Cypress 기능
+
+- 시간 여행: Cypress는 **모든 액션 하나하나가 행해질때마다 DOM 스냅샷을 찍어, 그때그때 상황과 결과를 다시 볼 수 있습니다.**
+- 디버깅
+
+## Cypress 사용하기
+
+`cy.<command>`
+
+```javascript
+cy.visit(firstUrl)
+cy.get(nameTextInput).type('hailey')
+cy.location(redirectedUrl)
+```
+
+위 코드로 firstUrl에 방문해서, nameTextInput에 'hailey'라는 값을 입력하고,
+이후 redirect된 location이 redirectedUrl이 맞나 확인합니다.
+
+```javascript
+cy.task
+```
+- js를 시스템 레벨에서 실행할 수 있습니다.
+
+```javascript
+const userSeed = 유저정보;
+
+context('User setup', ()=> {
+	beforeEach(()=> {
+		cy.task('clear:db')
+		cy.task('seed:db', userSeed.data)
+	})
+
+	it('login user', () => {
+		cy.visit('localhost:8080/login')
+		cy.login('hailey@cypress.io', '1234')
+		cy.location('pathname').should('eq', '/board')
+	})
+})
+```
+
+위 코드는 cy.task를 사용해 모든 login user 테스트 전에 `clear:db`, `seed:db`를 수행합니다.
+
+## 커스텀 커맨드
+
+*Cypress has direct programmatic access to my app*.
+
+Cypress 커스텀 커맨드를 사용하면 프로그램적으로 앱에 접근할 수 있습니다. 
+UI를 통하지 않고, 프로그램 자체에서 액션을 실행하게 하는 겁니다.
+예를 들자면 **로그인 버튼을 눌러** 로그인 함수가 실행되게 하는게 아니라, 
+프로그램 내 **login() 함수를 직접 실행**시키는 거죠!
+예시 코드는 이렇습니다.
+
+```javascript
+Cypress.Commands.add('login', (email, password) => {
+	return cy.window().then(win => {
+		return win.app.$store.dispatch('login', {
+			email: 'hailey.cypress.io',
+			password: '1234'
+		})
+	})`
+})
+```
+
+이 방법을 사용하면 내가 작성한 **코드**를 직접 **테스트에서 사용**하기 때문에 end-to-end(E2E) 테스트를 좀 더 신뢰할 수 있게 됩니다. 
+
+저는 테스트 코드를 좀 더 쉽게 작성하고 관리하기 위해 POM 디자인 패턴을 사용했습니다.
+
+## POM
+
+POM이란 **Page Object Model**의 약자로, 테스트 자동화를 위해 사용하면 좋은 디자인 패턴입니다. 
+이 패턴에서 Page 객체는 객체 지향형 클래스입니다.
+
+POM에서는 테스트와 요소 로케이터를 분리합니다. 
+한 페이지의 UI가 바뀐다고 해서 그 부분을 사용하는 모든 테스트를 바꿀 필요 없이, 
+페이지 객체 안의 코드만 바꾸면 됩니다. 또 POM 클래스들을 상속하는 등의 방법으로 테스트 케이스의 길이를 줄일 수 있습니다.
+
+또 중요한 점은 페이지 객체 저장소(Page Object Repository)가 테스트로부터 독립적이라는 겁니다. 
+페이지 객체들을 담아두는 저장소를 분리함으로써 사용자가 원하는 툴/프레임워크와 함께 사용할 수 있습니다.
+
+POM은 여러 페이지가 있는 앱에서 사용하면 제일 좋습니다.
+
+[참고 링크](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b)

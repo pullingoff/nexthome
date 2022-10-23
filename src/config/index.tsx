@@ -17,7 +17,7 @@ export const MENUS = [
   { title: '기록', path: '/blog/page/1', emoji: '📝' },
   // { title: '프로젝트', path: '/project', emoji: '🎞' },
   { title: '이력서', path: '/about', emoji: '🕷' },
-  { title: 'TIL', path: 'https://pullingoff.github.io', emoji: '📓' },
+  // { title: 'TIL', path: 'https://pullingoff.github.io', emoji: '📓' },
 ];
 
 // posts 폴더 안의 subdirectories

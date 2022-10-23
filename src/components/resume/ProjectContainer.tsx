@@ -48,7 +48,7 @@ function WorkProject(pj: IWorkProject) {
   return (
     <S.StyledPjContainer>
       {pj.link ? (
-        <CustomLink href={pj.link}>
+        <CustomLink href={pj.link} target="_blank">
           <S.PjTitleHover>{pj.title} 🔗</S.PjTitleHover>
         </CustomLink>
       ) : (
@@ -83,7 +83,7 @@ const Project = (exp: IExp) => {
   return (
     <>
       {exp.link ? (
-        <CustomLink href={exp.link}>
+        <CustomLink href={exp.link} target="_blank">
           <S.OrgHoverLink>{exp.organization} 🔗</S.OrgHoverLink>
         </CustomLink>
       ) : (

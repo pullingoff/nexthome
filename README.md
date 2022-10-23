@@ -36,4 +36,6 @@ published // optional
 - search bar
 - guestbook
 - dark mode, colorful mode
-- 개발중인 부분 보는 탭
+- 사진 클릭 시 확대 가능하게
+- lint fix 성공시 run 하도록 package.json 수정 
+- 랜덤 post slug 최적화

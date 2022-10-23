@@ -99,7 +99,7 @@ const PostDiv = styled.div`
   }
   p img {
     margin: 15px 0;
-    max-width: 300px;
+    max-width: 400px;
   }
 
   h1 {
@@ -172,7 +172,7 @@ const StyledHeader = styled.header`
 `;
 
 const filterSpecialChars = (str: string) => {
-  return str.replace(':', '');
+  return str.replace(':', '').replace('(', '').replace(')', '');
 };
 
 const PostHeadings = ({ headings }: { headings: IHeading[] }) => {
