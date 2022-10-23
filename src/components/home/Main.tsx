@@ -5,15 +5,9 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 const Main = () => {
-  const [isHover, setHover] = useState(false);
-
   return (
     <StyledMain>
-      <CustomLink
-        href="/about"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
+      <CustomLink href="/about">
         {' '}
         <ImgContainer>
           <HoverZoomImage
