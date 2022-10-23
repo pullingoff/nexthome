@@ -3,8 +3,17 @@ import path from 'path';
 import matter from 'gray-matter';
 import { sortByDate } from '.';
 import { POST_DIRS } from '#config/index';
-import { IFrontMatter, IPost } from '#type/post';
+import { IPost } from '#type/post';
 import memoize from 'memoizee';
+
+export interface IFrontMatter {
+  title: string;
+  tags: string[];
+  published?: boolean;
+  date: string;
+  description: string;
+  path: string;
+}
 
 const retrieveAllPosts = async (): Promise<IPost[]> => {
   let allFileNames: string[] = [];

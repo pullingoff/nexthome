@@ -19,7 +19,6 @@ export interface IProject {
 }
 
 // guestbook
-
 export interface IIssue {
   name: string;
   labels: any;

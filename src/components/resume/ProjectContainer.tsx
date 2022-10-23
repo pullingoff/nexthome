@@ -1,5 +1,4 @@
 import * as S from '#src/styles/aboutStyle';
-import { IEducation, IExp, ITechStack, IWorkProject } from '#type/about';
 import CustomEmoji from '#components/common/CustomEmoji';
 import styled from 'styled-components';
 import CustomLink from '#components/common/CustomLink';
@@ -43,6 +42,35 @@ const ProjectContainer = ({ title, list }: { title: string; list: any[] }) => {
     </S.StyledMain>
   );
 };
+
+interface IWorkProject {
+  title?: string;
+  tech: string[];
+  link?: string;
+  description?: string;
+  details: string[];
+}
+
+export interface IExp {
+  organization: string;
+  description: string;
+  link?: string;
+  period: string;
+  projects?: IWorkProject[];
+  details?: string[];
+}
+
+export interface ITechStack {
+  type: string;
+  skill: string[];
+}
+
+export interface IEducation {
+  institute: string;
+  course: string;
+  period: string;
+  details?: string[];
+}
 
 function WorkProject(pj: IWorkProject) {
   return (

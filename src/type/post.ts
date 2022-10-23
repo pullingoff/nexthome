@@ -1,11 +1,4 @@
-export interface IFrontMatter {
-  title: string;
-  tags: string[];
-  published?: boolean;
-  date: string;
-  description: string;
-  path: string;
-}
+import { IFrontMatter } from '#lib/posts-related-api';
 
 export interface IPost {
   slug: string;

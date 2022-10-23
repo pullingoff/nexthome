@@ -1,4 +1,16 @@
-import { IHeaderInfo, ITechStack, IExp, IEducation } from '#type/about';
+import {
+  IExp,
+  ITechStack,
+  IEducation,
+} from '#components/resume/ProjectContainer';
+
+interface IHeaderInfo {
+  name: string;
+  job: string;
+  email: string;
+  github: string;
+  firstSentences: string[];
+}
 
 export const headerInfo: IHeaderInfo = {
   name: '박하은',
@@ -65,7 +77,10 @@ export const workExperiences: IExp[] = [
       {
         title: 'NewFMS',
         tech: ['React', 'TypeScript', 'Material UI'],
-        details: ['통합회원 ERP 공통 컴포넌트 및 스타일 구현', '통합회원 ERP API 연동'],
+        details: [
+          '통합회원 ERP 공통 컴포넌트 및 스타일 구현',
+          '통합회원 ERP API 연동',
+        ],
       },
     ],
   },
