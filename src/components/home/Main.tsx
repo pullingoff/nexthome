@@ -2,7 +2,6 @@ import mainImg from '#public/images/main.JPG';
 import CustomLink from '../common/CustomLink';
 import styled from 'styled-components';
 import Image from 'next/image';
-
 const Main = () => {
   return (
     <StyledMain>
