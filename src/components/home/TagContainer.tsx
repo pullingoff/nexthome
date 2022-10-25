@@ -1,9 +1,9 @@
-import { StyledTag } from '#components/tag/Tag';
-import { ITag } from '#src/pages/tags/[tag]/[keyword]';
-import styled from 'styled-components';
-import { StyledSection, Title } from './RecentPost';
-import blueHeart from '#public/images/blueheart.png';
-import Image from 'next/image';
+import { ITag } from "#src/pages/tags/[tag]/[keyword]";
+import styled from "styled-components";
+import { StyledSection, Title } from "./RecentPost";
+import blueHeart from "#public/images/blueheart.png";
+import Image from "next/image";
+import { StyledTag } from "#components/post/PostCard";
 
 const TagContainer = ({
   allTags,
@@ -25,7 +25,7 @@ const TagContainer = ({
         />
       </TopContainer>
       <StyledTagContainer>
-        {allTags.map(tag => (
+        {allTags.map((tag) => (
           <StyledTagItem key={tag.tag} href={`/tags/${tag.tag}/1`}>
             {tag.tag} ({tag.count})
           </StyledTagItem>
@@ -57,7 +57,7 @@ const StyledTagContainer = styled.div`
   a {
     margin-bottom: 0;
   }
-  a:nth-child(n + 17) {
+  a:nth-child(n + 16) {
     display: none;
   }
   @media (max-width: ${({ theme }) => theme.device.sm}) {
