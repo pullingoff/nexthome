@@ -1,18 +1,18 @@
-import styled from "styled-components";
-import CustomLink from "../common/CustomLink";
-import { IPost } from "#type/post";
-import { useEffect, useState } from "react";
-import format from "date-fns/format";
+import styled from 'styled-components';
+import CustomLink from '../common/CustomLink';
+import { IPost } from '#type/post';
+import { useEffect, useState } from 'react';
+import format from 'date-fns/format';
 
 const PostCard = ({ href, post }: { href: string; post: IPost }) => {
-  const [publishedAt, setPublishedAt] = useState<string>("");
+  const [publishedAt, setPublishedAt] = useState<string>('');
   const { title, description, tags } = post.frontmatter;
 
   // 사파리용 split 서버, 클라이언트 다른 경우가 있음
   useEffect(() => {
     try {
       setPublishedAt(
-        format(new Date(post.frontmatter.date), "yyyy년 MM월 dd일")
+        format(new Date(post.frontmatter.date), 'yyyy년 MM월 dd일')
       );
     } catch (e) {
       setPublishedAt(post.frontmatter.date.toString().split(/(\s+)/)[0]);
@@ -40,7 +40,7 @@ const PostCard = ({ href, post }: { href: string; post: IPost }) => {
 
 const Tag = ({ text }: { text: string }) => {
   return (
-    <StyledTag href={`/tags/${text}/1`}>{text.split(" ").join("-")}</StyledTag>
+    <StyledTag href={`/tags/${text}/1`}>{text.split(' ').join('-')}</StyledTag>
   );
 };
 
