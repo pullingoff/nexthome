@@ -78,7 +78,7 @@ UI를 통하지 않고, 프로그램 자체에서 액션을 실행하게 하는 
 Cypress.Commands.add('login', (email, password) => {
 	return cy.window().then(win => {
 		return win.app.$store.dispatch('login', {
-			email: 'hailey.cypress.io',
+			email: 'hailey@cypress.io',
 			password: '1234'
 		})
 	})`
@@ -86,7 +86,8 @@ Cypress.Commands.add('login', (email, password) => {
 ```
 
 웹앱을 테스트할때, 로그인 이후의 페이지를 테스트하려면 테스트할때마다 로그인을 계속 거쳐야합니다.
-위 코드처럼 로그인을 하는 커스텀 커맨드를 만들면 로그인처럼 반복되는 액션을 UI를 거치지 않고 더 빠르고, 덜 번거롭게 원하는 페이지를 테스트할 수 있습니다.
+위 코드처럼 로그인을 하는 커스텀 커맨드를 만들면 로그인처럼 반복되는 액션을 
+UI를 거치지 않고 더 빠르고, 덜 번거롭게 원하는 페이지를 테스트할 수 있습니다.
 
 저는 테스트 코드를 좀 더 쉽게 작성하고 관리하기 위해 POM 디자인 패턴을 사용했습니다.
 
@@ -102,6 +103,71 @@ POM에서는 테스트와 DOM 요소를 찾는 Element Locator를 분리합니�
 페이지 객체 안의 Element Locator만 바꾸면 됩니다. 
 
 또 중요한 점은 페이지 객체 저장소(Page Object Repository)가 테스트로부터 독립적이라는 겁니다. 
-페이지 객체들을 담아두는 저장소를 분리함으로써 사용자가 원하는 툴/프레임워크와 함께 사용할 수 있습니다.
+페이지 객체들을 담아두는 저장소를 분리함으로써 사용자가 원하는 툴, 프레임워크와 함께 사용할 수 있습니다.
+
+## Page 객체를 사용한 테스트 예시
+
+**Best Practice: Use `data-*` attributes to provide context 
+to your selectors and isolate them from CSS or JS changes.**
+
+[Cypress에서 제공하는 Best Practice](https://docs.cypress.io/guides/references/best-practices)
+중 하나가 테스트할 HTML 요소를 지정할 때 `data-cy` 속성을 사용하는 겁니다.
+동적 ID나 클래스, CSS 속성처럼 자주 변하는 값 말고 테스트할 HTML 태그에 `data-cy` 값을 넣어두는 거죠.
+아래 예시를 보면 됩니다. (가독성을 위해 `data-cy` 속성을 제외하곤 생략합니다.)
+
+```HTML
+<article data-cy='post'>
+	<h1 data-cy='title'>페이지 객체를 만드는 방법<h1>
+	<article>
+		<p>내용</p>
+	</article>
+</article>
+<button data-cy='write-new'>새 글 쓰기</button>
+```
+
+이 페이지는 렌더링 후 결과물이 위와 같이 만들어집니다. 
+글 하나를 상세조회할 수 있는 페이지고, 아래에는 '새 글 쓰기' 버튼이 있다고 합시다.
+그러면 아래와 같이 `PostPage` 클래스를 만들 수 있습니다.
+
+```javascript
+// PostPage.js
+class PostPage {
+  constructor() {}
+
+  // 글의 제목 요소를 가져온다.
+  getPostTitle() {
+	return cy.get('[data-cy="title"]')
+  }
+
+  // 새로 글쓰기 버튼 요소를 가져온다.
+  getWriteNewButton() {
+	return cy.get('[data-cy="write-new"]')
+  }
+}
+export const postPage = new PostPage();
+```
+
+`PostPage` 클래스로 만든 인스턴스 `postPage`를 cypress 테스트 코드인 `post.cy.js`에서 사용합니다.
+
+```javascript
+// post.cy.js
+describe('게시글 상세조회 테스트', () => {
+	context('게시글 상세조회', () => {
+		it('새 글 쓰기 버튼을 클릭하면 글쓰기 페이지로 이동한다.', () => {
+			postPage.getWriteNewButton().click();
+			cy.location('pathname').should('eq', '/new')
+		})
+	})
+})
+```
+
+이렇게 글쓰기 버튼을 클릭하고, `cy.location()`으로 이동한 페이지가 
+글쓰기 페이지의 pathname과 동일한지 테스트할 수 있습니다.
+
+짜잔~ 이렇게 POM 패턴으로 코드를 구성하면 이후에 로그인 버튼 마크업이 바뀌어도
+모든 테스트코드에서 수정할 필요 없이 `PostPage.js`에서만 수정하면 됩니다.
+어렵지 않죠?
+
+끝!
 
 [참고 링크](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b)
