@@ -14,7 +14,7 @@ interface IHeaderInfo {
 
 export const headerInfo: IHeaderInfo = {
   name: '박하은',
-  job: 'Frontend Engineer',
+  job: '프론트엔드 엔지니어', //'Frontend Engineer',
   email: 'devhaeun@gmail.com',
   github: 'https://github.com/pullingoff',
   firstSentences: [
@@ -22,7 +22,8 @@ export const headerInfo: IHeaderInfo = {
     '자기 주도적으로 성장하는 프론트엔드 개발자 박하은입니다.',
     '질문을 통해 지식을 하나로 엮는 걸 좋아하고, 새로운 언어와 기술에 관심이 많습니다.',
     '문제 해결을 위한 라이브러리나 프레임워크, 언어가 있다면 언제든 배울 준비가 되어있습니다.',
-    '사람들에게서 동기와 에너지를 주로 얻으며 협업과 소통에 능합니다.',
+    '사람들에게서 동기와 에너지, 인사이트를 주로 얻으며 협업과 소통에 능합니다.',
+    // js 언급하기
   ],
 };
 
@@ -46,22 +47,24 @@ export const projectExperiences: IExp[] = [
         ],
         details: [
           '별도의 UI 프레임워크 없이 직접 디자인하고 스타일 구현, mobile-first, 반응형, 시맨틱 마크업',
-          'next-mdx-remote로 마크다운을 html로 재구성해 보여주고 frontmatter로 태그, 카테고리별 조회',
-          'TIL 페이지의 경우 vuepress로 정적 사이트를 만들고 github에서 pages 브랜치로 배포',
+          'next-mdx-remote로 마크다운을 HTML로 재구성해 보여주고 frontmatter로 태그, 카테고리별 조회',
+          'cypress로 테스트 자동화, 모든 테스트를 통과해야만 배포가 되도록 CI/CD 적용'
+          //'TIL 페이지의 경우 vuepress로 정적 사이트를 만들고 github에서 pages 브랜치로 배포',
         ],
       },
     ],
   },
   {
     organization: '별말, 씀',
-    description: '2022년 8월 서비스 예정인 롤링페이퍼 웹앱',
-    period: '2022.05 ~ 현재',
+    description: '롤링페이퍼 웹앱',
+    period: '2022.05 ~ 09',
     projects: [
       {
-        tech: ['React', 'TypeScript', 'React Router', 'Sass', 'GitLab'],
+        tech: ['React', 'TypeScript', 'styled-components'],
         details: [
           '스타일을 커스터마이징할 수 있는 공통 컴포넌트 개발 (버튼, 텍스트 인풋, 링크 등)',
-          '프론트엔드 개발을 맡았으나 백엔드 DB와 API 설계 과정에도 참여해 RESTful한 API를 설계 ',
+          '프론트엔드 개발을 맡았으나 백엔드 DB와 API 설계 과정에도 참여해 RESTful한 API를 설계',
+          '서비스 기획부터 개발, 이후 3주간 운영을 하며 유저의 피드백을 실시간으로 적용 및 배포'
         ],
       },
     ],
@@ -75,11 +78,11 @@ export const workExperiences: IExp[] = [
     period: '2022.07 ~ 현재',
     projects: [
       {
-        title: 'NewFMS',
-        tech: ['React', 'TypeScript', 'Material UI'],
+        title: 'NewFMS 2.0',
+        tech: ['React', 'TypeScript', 'Material UI', 'Cypress', 'GIT'],
         details: [
-          '통합회원 ERP 공통 컴포넌트 및 스타일 구현',
-          '통합회원 ERP API 연동',
+          '통합회원 ERP 공통 리액트 컴포넌트(CSS-in-JS) 신규 개발 및 API 연동',
+          '레거시 홈페이지 테스트 시나리오 수립 및 자동화 테스트 적용', // 테스트 커버리지 nn%
         ],
       },
     ],
@@ -87,7 +90,7 @@ export const workExperiences: IExp[] = [
   {
     organization: '유클리드소프트',
     description: 'Software Engineer',
-    period: '2020.12 ~ 2022. 06',
+    period: '2020.12 ~ 2022.06',
     projects: [
       {
         title: '국가정보자원관리원 종합관제 보안시스템 (nMAPS)',
@@ -189,7 +192,7 @@ export const techStacks: ITechStack[] = [
       'Next.js',
       'Sass',
       'HTML/CSS',
-      'REST API',
+      //'REST API',
     ],
   },
   {
