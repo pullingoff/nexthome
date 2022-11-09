@@ -7,62 +7,74 @@ tags:
 description: 
 ---
 
-Array.something() - Array 클래스에서만 작동
-Array.prototype.something() - Array 인스턴스에서만 작동
+## 서론 
+
+아래 두 `doSomething()` 메서드의 차이가 뭘까?
 
 ```javascript
- let arr = [1,2,3,4]; // arr is an instance of Array
-    // = same as
-    let arr = new Array(1,2,3,4);
+Array.doSomething()
+Array.prototype.doSomething()
 ```
 
-OOP에서 클래스라는 틀을 기반으로 인스턴스(하나의 예시)들을 만들기 때문에 array 하나를 만들때 new Array를 사용해서 만들어주면 됨
+여기서 위의 `doSomething()` 메서드는 Array 클래스에서만 작동하고,
+아래 메서드는 Array 인스턴스에서만 작동한다.
 
-## 자바스크립트의 프로토타입이란?
-
-![meaning of prototype](https://images.velog.io/post-images/hailey99/1fef5170-3cbb-11ea-ba44-090a8d9d9ea5/Screen-Shot-2020-01-22-at-11.01.36-AM.png)
-
-- 인스턴스는 원형(original form, prototype)의 모양을 따라 생성됨(instantiation).
-- 인스턴스의 method는 Object.prototype.something으로 표현한다.
-
-## 클래스란?
-
-- JavaScript는 prototype 기반 언어
-- prototype을 기반으로 OOP를 흉내낸다.
-- Grammar의 convenience를 위해 class라는 키워드를 도입 (ES6)
-  
 ```javascript
-    function Car(model, brand) {
-        this.model = model;
-        this.brand = brand;
-        }
-        
-    let spark = new Car("spark", "chevrolet");
-    let avante = new Car("avante", "hyundai");
+let arr = [1,2,3,4]; // arr is an instance of Array
+let arr = new Array(1,2,3,4);
+```
+
+위 코드에서 `arr`은 자바스크립트 배열의 인스턴스다. 위 아래 똑같다.  
+객체지향 프로그래밍에서는 클래스라는 틀을 기반으로 인스턴스(하나의 예시)들을 만들기 때문에
+배열 하나를 만들때는 `new Array()`를 사용해서 만들어주면 된다.
+
+## 자바스크립트 프로토타입
+
+자바스크립트는 프로토타입 기반 언어다. 프로토타입을 사용해 객체지향 프로그래밍을 흉내낸다. 이 때
+프로토타입은 원형을 뜻한다. 인스턴스는 원형의 **모양대로** 만들어진다. 
+`인스턴스 === 원형`이 아님에 주의하도록 하자. 
+자바스크립트에서 인스턴스의 메서드는 `Object.prototype.doSomething()`으로 표현한다.
+ES6 문법에서는 문법을 좀 더 편리하게 하기 위해 'class'라는 키워드를 도입하였다.
+
+## 클래스
+
+```javascript
+function Car(model, brand) {
+    this.model = model;
+    this.brand = brand;
+}
     
-    Car.prototype.ride = function() {
-        console.log("Vroooom! " + this.model )
-        };
+let spark = new Car("스파크", "쉐보레");
+let avante = new Car("아반떼", "현대");
+
+Car.prototype.ride = function() {
+    console.log(`${this.model}이 달립니다`)
+};
 ```
 
-## 클래스와 객체의 차이는?
+클래스와 객체의 차이는 뭘까?
 
 ### 클래스
 
-- 조금 더 연관있는 데이터를 한 데 묶어놓는 컨테이너, 붕어빵 틀. (반죽은 들어있지 않다)
-- template, declare once, no data in
-- 데이터(fields), 행동(methods)를 담아 encapsulation함으로써 상속과 다형성 등의 특성 가짐
+- 조금 더 연관있는 데이터를 한 데 묶어놓는 컨테이너이자 템플릿, 즉 붕어빵 틀이다.
+- 처음 한번만 선언하고 데이터(붕어빵 반죽, 팥)는 들어있지 않다.
+- 데이터(fields)와 행동(methods)를 담아 캡슐화를 해 상속과 다형성 등의 특성을 가진다.
 
 ### 객체
 
-- 클래스에 데이터를 넣어 만든 instance가 obj. (팥붕어빵)
-- instance of a class, data in
-
+- 클래스에 데이터를 넣어 만든 인스턴스를 객체라고 한다. 붕어빵 틀에 반죽을 넣고 만든 팥붕 슈붕이 객체인 셈이다.
   
-![extending prototype](https://images.velog.io/post-images/hailey99/34c2a0b0-3cbc-11ea-b99d-39928e6a7743/Screen-Shot-2020-01-22-at-11.09.04-AM.png)
+## 프로토타입 확장하기
 
-![javascript class](https://images.velog.io/post-images/hailey99/3abfd4b0-3cbc-11ea-b99d-39928e6a7743/Screen-Shot-2020-01-22-at-11.09.28-AM.png)
+```javascript
+Number.prototype.multiplyTen = function() {
+    return this * 10
+}
 
-**직접 객체(class)를 작성할 때에만, prototype method를 써라**
+let num = 5;
+num.multiplyTen(); // 10
+```
 
-![class keyword](https://images.velog.io/post-images/hailey99/60f8ae90-3cbc-11ea-b99d-39928e6a7743/Screen-Shot-2020-01-22-at-11.10.22-AM.png)
+위 방식으로 자바스크립트에서 기본으로 제공하는 객체에 사용자 정의 메소드를 개발자가 직접 추가할 수 있다.
+그러나 좋은 방식은 아니다. 메서드를 확장할 경우 다른 코드와 충돌을 일으킬 수 있다.
+직접 클래스를 작성할 때에만 프로토타입 메서드를 정의하는게 좋다.
