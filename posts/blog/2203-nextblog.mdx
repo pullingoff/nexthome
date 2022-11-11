@@ -35,7 +35,7 @@ description:
 
 블로그 메인에 최근 글 목록(recent posts)도 몇개 띄우는데 이것도 비슷하게 root에 아예 api 폴더를 만들어놓고 거기서 최근 글 목록을 보내주도록 구성하였다.
 
-## 고민! Module CSS, tailwind, styled-components... 뭘 써야할까?
+## Module CSS, tailwind, styled-components 중 뭘 쓸까
 
 고민 중이다. Next.js의 module css를 쓰면 클래스명을 겹치지 않도록 해준다. 적용할 스타일이 많은 부분엔 module css를 쓰고 있다. 대신 Tailwind가 커버할 수 있는 건 tailwind로 하고 있다. 
 
@@ -43,7 +43,7 @@ description:
 일회성 컴포넌트에선 module.css 말고 styled-components를 쓰고 싶은데 SCSS가 길어지면 가독성이 별로가 된다.  
 각 컴포넌트별로 최적의 방법을 고민하는데에 시간을 많이 쓰고 있다.ㅋㅋㅋ
 
-## Module CSS의 className
+### Module CSS의 className
 
 ```js
 <div 
@@ -58,7 +58,7 @@ description:
 `isNavOpen`이라는 state에 따라 다른 클래스네임을 반환하는 코드다.  
 Module CSS에서 복수의 클래스를 쓰려면 저런 식으로 적어줘야한다.
 
-## SASS
+### SASS
 
 ```css
 .threeBarNav {
@@ -74,7 +74,7 @@ Module CSS에서 복수의 클래스를 쓰려면 저런 식으로 적어줘야�
 이건 오늘 처음 사용해본 SASS의 규칙 `@at-root`다. `@at-root`를 사용하면 중첩 안에서 root로 돌아간 효과를 준다.  
 .navMenuUl이 .threeBarNav 밖에 있어도 중첩문 안에서 사용할 수 있다.
 
-## 사파리 dateformat 문제
+## 사파리 dateformat 이슈
 
 `date-fns`로 Date 포맷을 바꾸고자 `format()`을 하면 오류가 나는 경우가 있다.  
 나도 크롬을 보면서 개발해서 몰랐다가, 아이폰 사파리 브라우저로 접속했다가 이런 에러가 나고 있는 걸 인지했다.   
