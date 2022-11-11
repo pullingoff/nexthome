@@ -1,8 +1,9 @@
 ---
-title: "리액트 함수, 클래스 컴포넌트의 차이와 개발 시 주의할 점"
+title: "리액트 함수, 클래스 컴포넌트의 차이와 컴포넌트 리렌더링"
 date: 2021-06-15 08:00
 tags:
 - React
+- Hooks
 description: 
 ---
 
@@ -55,3 +56,153 @@ description:
 `props` 값이 변경될 때마다 컴포넌트를 렌더링하므로 `state`만 전달해주고 자세한 연산은 자식 컴포넌트 안에서 하도록 하는게 좋다.
 5. `map()` 함수 사용시 컴포넌트의 `key`값으로 인덱스 값 넣지 않기. 
 배열 중간에 요소가 삽입 또는 수정, 삭제될 경우 그 이후의 요소들은 전부 인덱스가 변경되기 때문이다.
+
+
+## 리액트 컴포넌트가 리렌더링하는 상황
+
+1. 전달받은 **props가 변경**될 때
+2. 자신의 **state가 바뀔** 때
+3. **부모 컴포넌트가 리렌더링**될 때
+4. **forceUpdate 함수가 실행**될 때
+
+
+## 컴포넌트 리렌더링 방지법
+
+1. class 형 컴포넌트: shouldComponentUpdate라는 라이프사이클 메서드 사용
+
+2. **함수** 컴포넌트: export 할 때 React.memo() 사용해 컴포넌트의 props가 바뀌지 않은 경우 리렌더링하지 않도록 설정
+
+3. setter 함수에 새로운 상태를 파라미터로 넣지 말고 상태 업데이트('->')를 어떻게 할지 정의하는 업데이트 함수를 넣기 
+
+### [업데이트 전]
+![상태 업데이트 전](https://images.velog.io/images/hailey99/post/f986c062-ee23-4aba-a6ce-dc507468da6b/image.png)
+
+### [업데이트 후]
+![상태 업데이트 후](https://images.velog.io/images/hailey99/post/13ecc8c4-1296-4339-8390-710aa358305e/image.png)
+
+4. **useReducer 사용**
+App.js 내(& 컴포넌트 밖)에 상태 업데이트 로직을 모아둘 수 있음.
+
+### [상태 업데이트 로직]
+
+![상태 업데이트 로직](https://images.velog.io/images/hailey99/post/04dea2b3-57f4-4d45-8627-1c0a1c20112e/image.png)
+
+## useState 써보기
+
+![usestate 예시](/images/blog/192021/usestate.gif)
+
+```javascript
+function App() {
+    const [text, setText] = useState('감추기');
+    // 1
+
+    const buttonClick = () => {
+        text==='감추기'? setText("보이기") : setText("감추기")
+    }
+    // 2
+
+    return (
+        <div className="App">
+            {text==='보이기' && <MainHeader text='hello'></MainHeader>}  
+            <button onClick={buttonClick}>{text}</button>    
+        </div>
+    );
+    //3
+}
+```
+
+1. useState(초기값), 리턴값은 배열로 [상태데이터, 상태 세터함수]
+2. 간결하게 쓴 if문이다!
+3. text==='보이기'에 and 연산을 함으로써 해당 조건에 맞으면 ```<MainHeader>``` 컴포넌트를 표시하도록 하였다.
+
+## 변수 객체화
+
+![변수 간단하게 쓰기](/images/blog/192021/rct1.png)
+
+이름의 성(lastname), 이름(first name)과 같이 거의 따로 쓰는 게 없을 때, 위의 코드보단  
+객체화해서 아래처럼 쓰는게 좋다.
+
+```javascript
+const [name, setName] = useState({
+    first: '하은',
+    last: '박'
+});
+```
+
+## useRef()
+
+- input 관리할 때 유용한 함수다.
+
+```javascript
+ return (
+    <div className="App">
+      <h1>{name.last}{name.first}</h1>
+      <input name='성' placeholder='성'></input>
+      <input name='이름' placeholder='이름'></input>
+      <button onClick={confirm}>확인</button>
+    </div>
+  );
+```
+
+위와 같은 코드가 있다고 할때, input에 입력된 값을 저장하거나 받는 함수가 없다.  
+그럴 때 쓸 수 있는게 useRef() 함수다!
+
+```javascript
+  const firstNameRef = useRef()
+  const lastNameRef = useRef()
+
+  const confirm = () => {
+    // setName();
+    console.log(firstNameRef.current.value)
+  }
+
+  return (
+    <div className="App">
+      <h1>{name.last}{name.first}</h1>
+      <input name='성' placeholder='성' ref={lastNameRef}></input>
+      <input name='이름' placeholder='이름' ref={firstNameRef}></input>
+      <button onClick={confirm}>확인</button>
+    </div>
+  );
+```
+
+이런 식으로 ```<input>``` 태그 ref 속성에 useRef 함수를 넣어주면 그 안에 들어온 인풋값을 참조해올 수 있다.  
+
+![useRef console](/images/blog/192021/rct2.png)
+
+confirm()함수에서 ```firstNameRef.current.value``` 를 콘솔 찍어보니 input으로 받은 값이 나온다!
+이벤트 함수에서 e.target.value와 비슷한 원리인 듯 하다.
+
+## useRef를 사용해 인풋 값을 화면에 띄우는 코드
+
+```javascript
+function App() {
+  const [name, setName] = useState({
+    first: '하은',
+    last: '박'
+  });
+
+  const firstNameRef = useRef()
+  const lastNameRef = useRef()
+
+  const confirm = () => {
+    setName({
+      first: firstNameRef.current.value,
+      last: lastNameRef.current.value
+    })
+  }
+
+  return (
+    <div className="App">
+      <h1>{name.last}{name.first}</h1>
+      <input name='성' placeholder='성' ref={lastNameRef}></input>
+      <input name='이름' placeholder='이름' ref={firstNameRef}></input>
+      <button onClick={confirm}>확인</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+useRef 함수로 참조해온 값을 setter 함수(setName)에서 바꿔주면 간단하게 완성된다!!

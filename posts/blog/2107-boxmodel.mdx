@@ -14,14 +14,14 @@ description: Learn Css! Box Model 한국어 해석
 
 ## 내부 요소(contents)가 박스의 사이즈에 영향을 끼치는 경우
 
-`css
+```css
 p {
   width: 100px;
   height: 50px;
   padding: 20px;
   border: 1px solid;
 }
-`
+```
 
 이 코드를 작성하면 해당 태그는 width로 입력해준 100px가 아니라 142px의 너비를 가지게 된다.
 
@@ -30,7 +30,7 @@ p {
 ## extrinsic sizing
 
 - 사이즈(width)를 직접 정해주는 경우
-- extrinsic sizing을 사용하면 내용이 박스의 범위를 넘어버림(overflow)
+- extrinsic sizing을 사용하면 내용이 박스의 범위를 넘어버림( = overflow)
 
 ## intrinsic sizing
 
@@ -42,18 +42,19 @@ p {
 box model은 이렇게 4개로 구분된다.
 
 1. **content box**: content(내용물)이 자리하는 곳. 이 내용물이 그 부모(box)의 크기를 결정.
-2. **padding box**: content box를 둘러쌈. 이때 padding이란 box의 내부를 의미. 
-만약 박스가 overflow: auto나 scroll로 돼있으면 이 부분에도 스크롤 바가 생긴다.
+2. **padding box**: content box를 둘러쌈. 이때 `padding`이란 box의 내부를 의미. 
+만약 박스가 `overflow: auto`나 `scroll`로 돼있으면 이 부분에도 스크롤 바가 생긴다.
 3. **border box**: padding box를 둘러쌈. border edge가 우리가 볼 수 있는 box의 가장 큰 범위.
 4. **margin box**: box 겉부분. outline, box-shadow 와 같은 속성이 이부분에서 사용됨. 이 요소들은 box의 사이즈에 영향을 미치지 않음.
 
 Box model을 잘 사용하기 위해선 브라우저에서 일어나는 일을 이해해야함.
 
-- 태그 별로 브라우저에 내장된 스타일이 있는데, `<div>`의 경우 display 값이 block, `<li>`는 list-item, `<span>`은 inline 등이다.
-- inline 요소는 block margin을 가지나 다른 요소들이 그렇게 고려하지 않음. 
-inline-block을 사용하면 inline요소의 대부분의 특징을 갖지만 다른 요소들이 block margin을 고려해줌. **inline, inline-block 요소는 내용물 만큼의 크기**를 가진다.
-- block 요소는 남은 inline space를 다 채운다.
+- 태그 별로 브라우저에 내장된 스타일이 있는데, `<div>`의 경우 `display` 값이 `block`, `<li>`는 `list-item`, `<span>`은 `inline`이다.
+- 인라인 요소는 `block margin`을 가지지만 다른 요소들이 그렇게 고려하지 않음. 
+`inline-block`을 사용하면 인라인 요소의 대부분의 특징을 갖지만 다른 요소들이 block margin을 고려해줌.
+ **inline, inline-block 요소는 내용물 만큼의 크기**를 가진다.
+- block 요소는 남은 인라인 공간을 다 채운다.
 - 디폴트로 모든 요소는 **box-sizing: content-box** 이다. 
 이 값은 **width와 height을 정할 때 그 값들이 content-box**에 적용된다는 뜻이다. 
-padding이나 border값은 별개로 붙는다.(실제 border edge까지의 박스 너비는 정해진 값보다 커진다.)
-- box-sizing: border-box를 하면 css width가 border, padding을 포함하는 border-box에 적용된다.
+`padding`이나 `border`값은 별개로 붙는다.(실제 border edge까지의 박스 너비는 정해진 값보다 커진다.)
+- box-sizing: `border-box`를 하면 css `width` 값이 `border`, `padding`을 포함하는 `border-box`에 적용된다.

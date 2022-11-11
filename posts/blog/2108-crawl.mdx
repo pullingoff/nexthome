@@ -11,14 +11,14 @@ description:
 
 ## axios와 cheerio
 
-- axios:  브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리
-- cheerio: HTML parser, jqery 와 문법 거의 비슷
-console.dir 을 보면 객체도 편하게 다 볼 수 있음
+- axios: 브라우저, `Node.js`를 위한 `Promise API`를 활용하는 HTTP 비동기 통신 라이브러리
+- cheerio: HTML parser, jQuery와 문법 거의 비슷
+`console.dir()`을 보면 객체도 편하게 다 볼 수 있음
 로딩중 이후로 오는 서비스(딜레이로딩 되는 놈)를 획득하려면? 브라우저 컨트롤이 필요. 그럴때 puppeteer를 사용가능.
 
 ## puppeteer
 
-1. node.js 를 통해 크롬 브라우저 실행
+1. `node.js`로 크롬 브라우저 실행
 2. 사용자가 원하는 뷰포트, 네트워크 환경 등 설정 가능
 3. 마우스, 키보드, 터치 스크린 등 코드를 통해 사람이 사용하는 것처럼 구현 가능 
 4. 타임라인 트레이싱(네트워크에서 시간에 따라 어떤 요청이 오는지 볼수 있음), 스샷, 확장프로그램 테스트, 자동화 등 가능
@@ -36,4 +36,4 @@ console.dir 을 보면 객체도 편하게 다 볼 수 있음
 - 웹 API 중 하나인 Console API! js가 제공하는게 아니라 브라우저 제공 함수.
 - parsing HTML -> blocked(그동안 fetching js&executing js) -> 다시 parsing HTML
 
-- HTML을 쭉 파싱하다가 script태그 나오면 '오 이 js를 다운받아야하네'하고 파싱을 잠시 멈추고 필요한 js를 서버에서 다운.
+- HTML을 쭉 파싱하다가 script 태그가 나오면 '오 이 js를 다운받아야하네'하고 파싱을 잠시 멈추고 필요한 js를 서버에서 다운.
