@@ -103,6 +103,7 @@ const PostDiv = styled.div`
   p img {
     margin: 15px 0;
     max-width: 400px;
+    width: -webkit-fill-available;
   }
 
   h1 {
