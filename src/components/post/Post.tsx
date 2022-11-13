@@ -47,6 +47,9 @@ const PostContainer = styled.div`
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: center;
+  article {
+    max-width: 90vw;
+  }
 `;
 const StyledGoBackBtn = styled.span`
   display: block;
