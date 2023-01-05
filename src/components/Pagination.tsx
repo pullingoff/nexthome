@@ -1,6 +1,6 @@
-import { POSTS_PER_PAGE } from "../config/";
-import styled from "styled-components";
-import CustomLink from "./common/CustomLink";
+import { POSTS_PER_PAGE } from '../config/';
+import styled from 'styled-components';
+import CustomLink from './common/CustomLink';
 
 interface IPagination {
   path: string;
@@ -53,7 +53,7 @@ const Button = styled(CustomLink)`
     transform: translateY(-2px);
   }
 
-  &[data-iscurrent="true"] {
+  &[data-iscurrent='true'] {
     color: var(--theme1-color);
     font-weight: bold;
   }
