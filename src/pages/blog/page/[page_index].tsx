@@ -4,10 +4,9 @@ import Pagination from '#components/Pagination';
 import ListLayout from '#components/ListLayout';
 import MetadataBox from '#components/MetadataBox';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { Metadata } from '#src/type';
+import { ITag, Metadata } from '#src/type';
 import { ParsedUrlQuery } from 'querystring';
 import TagBox from '#components/posts/TagBox';
-import { ITag } from '#src/pages/tags/[tag]/[keyword]';
 import { Post } from '#src/type';
 
 const customMeta: Metadata = {
