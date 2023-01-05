@@ -1,9 +1,9 @@
-import { ITag } from '#src/pages/tags/[tag]/[keyword]';
 import styled from 'styled-components';
 import blueHeart from '#public/images/blueheart.png';
 import Image from 'next/image';
 import { StyledTag } from '#components/posts/PostCardItem';
 import S from '#styles/Common.styled';
+import { ITag } from '#src/type';
 
 const TagBox = ({
   allTags,
