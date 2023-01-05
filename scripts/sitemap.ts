@@ -1,5 +1,5 @@
 import { getAllPosts } from '#lib/posts-related-api';
-import { IPost } from '#type/post';
+import { Post } from '#src/type';
 import fs from 'fs';
 
 const getPostPriority = () => {
@@ -31,8 +31,8 @@ const wrapSiteMap = (body: string[]) => {
   const posts = await getAllPosts();
   const post_priority = getPostPriority();
   // 해당 정보를 기준으로 사이트맵 형식으로 convert 해주도록 합니다.
-  const newPostsSiteMap = posts.map((post: IPost) =>
-    makeSiteMapItemXml(` /blog/${post.slug}`, post_priority),
+  const newPostsSiteMap = posts.map((post: Post) =>
+    makeSiteMapItemXml(` /blog/${post.slug}`, post_priority)
   );
 
   // 최종적으로 xml 형식으로 wrap 시켜주도록 합니다.
