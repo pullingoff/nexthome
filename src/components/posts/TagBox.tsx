@@ -1,11 +1,11 @@
 import { ITag } from '#src/pages/tags/[tag]/[keyword]';
 import styled from 'styled-components';
-import { StyledSection, Title } from './RecentPost';
 import blueHeart from '#public/images/blueheart.png';
 import Image from 'next/image';
-import { StyledTag } from '#components/post/PostCard';
+import { StyledTag } from '#components/posts/PostCardItem';
+import S from '#styles/Common.styled';
 
-const TagContainer = ({
+const TagBox = ({
   allTags,
   moveToRandomPost,
 }: {
@@ -13,9 +13,9 @@ const TagContainer = ({
   moveToRandomPost: any;
 }) => {
   return (
-    <StyledSection>
+    <>
       <TopContainer>
-        <Title>Categories</Title>
+        <S.PageTitle>Categories</S.PageTitle>
         <GetRandomIcon
           alt="get random post"
           width="35px"
@@ -24,19 +24,21 @@ const TagContainer = ({
           onClick={moveToRandomPost}
         />
       </TopContainer>
-      <StyledTagContainer>
+      <TagList>
         {allTags.map(tag => (
-          <StyledTagItem key={tag.tag} href={`/tags/${tag.tag}/1`}>
+          <TagItem key={tag.tag} href={`/tags/${tag.tag}/1`}>
             {tag.tag} ({tag.count})
-          </StyledTagItem>
+          </TagItem>
         ))}
-      </StyledTagContainer>
-    </StyledSection>
+      </TagList>
+    </>
   );
 };
 
 const GetRandomIcon = styled(Image)`
   margin: 0.25rem;
+  cursor: pointer;
+
   &:hover {
     transform: translateX(-2px);
   }
@@ -48,18 +50,21 @@ const TopContainer = styled.section`
   align-items: center;
 `;
 
-const StyledTagContainer = styled.div`
+const TagList = styled.ul`
   display: flex;
   flex-flow: row wrap;
   row-gap: 0.5rem;
   text-align: center;
   font-size: 0.9rem;
+
   a {
     margin-bottom: 0;
+
+    &:nth-child(n + 16) {
+      display: none;
+    }
   }
-  a:nth-child(n + 16) {
-    display: none;
-  }
+
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     a:nth-child(n + 12) {
       display: none;
@@ -67,8 +72,8 @@ const StyledTagContainer = styled.div`
   }
 `;
 
-const StyledTagItem = styled(StyledTag)`
+const TagItem = styled(StyledTag)`
   flex-grow: 1;
 `;
 
-export default TagContainer;
+export default TagBox;

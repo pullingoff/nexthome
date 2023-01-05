@@ -1,18 +1,6 @@
-import {
-  IExp,
-  ITechStack,
-  IEducation,
-} from '#components/resume/ProjectContainer';
+import { Education, Experience, MyInfo, TechStack } from '#src/type';
 
-interface IHeaderInfo {
-  name: string;
-  job: string;
-  email: string;
-  github: string;
-  firstSentences: string[];
-}
-
-export const headerInfo: IHeaderInfo = {
+export const headerInfo: MyInfo = {
   name: '박하은',
   job: '프론트엔드 엔지니어', //'Frontend Engineer',
   email: 'devhaeun@gmail.com',
@@ -27,7 +15,7 @@ export const headerInfo: IHeaderInfo = {
   ],
 };
 
-export const projectExperiences: IExp[] = [
+export const projectExperiences: Experience[] = [
   {
     organization: '개인 블로그',
     link: 'https://haeun.vercel.app',
@@ -48,7 +36,7 @@ export const projectExperiences: IExp[] = [
         details: [
           '별도의 UI 프레임워크 없이 직접 디자인하고 스타일 구현, mobile-first, 반응형, 시맨틱 마크업',
           'next-mdx-remote로 마크다운을 HTML로 재구성해 보여주고 frontmatter로 태그, 카테고리별 조회',
-          'cypress로 테스트 자동화, 모든 테스트를 통과해야만 배포가 되도록 CI/CD 적용'
+          'cypress로 테스트 자동화, 모든 테스트를 통과해야만 배포가 되도록 CI/CD 적용',
           //'TIL 페이지의 경우 vuepress로 정적 사이트를 만들고 github에서 pages 브랜치로 배포',
         ],
       },
@@ -64,14 +52,14 @@ export const projectExperiences: IExp[] = [
         details: [
           '스타일을 커스터마이징할 수 있는 공통 컴포넌트 개발 (버튼, 텍스트 인풋, 링크 등)',
           '프론트엔드 개발을 맡았으나 백엔드 DB와 API 설계 과정에도 참여해 RESTful한 API를 설계',
-          '서비스 기획부터 개발, 이후 3주간 운영을 하며 유저의 피드백을 실시간으로 적용 및 배포'
+          '서비스 기획부터 개발, 이후 3주간 운영을 하며 유저의 피드백을 실시간으로 적용 및 배포',
         ],
       },
     ],
   },
 ];
 
-export const workExperiences: IExp[] = [
+export const workExperiences: Experience[] = [
   {
     organization: '파스토',
     description: 'Frontend Engineer',
@@ -129,7 +117,7 @@ export const workExperiences: IExp[] = [
   },
 ];
 
-export const otherExperiences: IExp[] = [
+export const otherExperiences: Experience[] = [
   {
     organization: 'JunctionX Seoul',
     description:
@@ -159,9 +147,7 @@ export const otherExperiences: IExp[] = [
   // },
 ];
 
-export const licenses: string[] = ['SQL Developer', '네트워크 관리사 2급'];
-
-export const education: IEducation[] = [
+export const education: Education[] = [
   {
     institute: '대덕인재개발원',
     period: '2020.04 ~ 2020.12',
@@ -182,7 +168,7 @@ export const education: IEducation[] = [
   },
 ];
 
-export const techStacks: ITechStack[] = [
+export const techStacks: TechStack[] = [
   {
     type: 'Front-End',
     skill: [

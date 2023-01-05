@@ -1,7 +1,7 @@
-import ResumeContainer from '#components/resume/ResumeContainer';
+import Resume from '#components/resume/Resume';
 
-const Resume = () => {
-  return <ResumeContainer />;
+const About = () => {
+  return <Resume />;
 };
 
-export default Resume;
+export default About;

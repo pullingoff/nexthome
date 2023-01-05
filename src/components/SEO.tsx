@@ -1,4 +1,4 @@
-import { METADATA } from '#config/index';
+import { METADATA } from '#src/config';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 export const SEO = {

@@ -1,31 +1,71 @@
-// SEO HTML MetaData
-export interface ICustomMeta {
+import { ParsedUrlQuery } from 'querystring';
+
+export interface Metadata {
   title: string;
   url?: string;
   date?: string;
 }
 
-export interface IProject {
-  title: string;
-  isVisible: boolean;
-  slug: string; // path (query string)
-  type: string; // 어떤 앱인지
-  thumbnail: string; // 이미지 파일명
-  shortDescription: string;
-  longDescription: string[];
-  link: string; // 관련 링크
-  date: string; // 작업 시기
-  imgPathList?: string[];
+export interface WorkProject {
+  title?: string;
+  tech: string[];
+  link?: string;
+  description?: string;
+  details: string[];
 }
 
-// guestbook
-export interface IIssue {
-  name: string;
-  labels: any;
+export interface Experience {
+  organization: string;
+  description: string;
+  link?: string;
+  period: string;
+  projects?: WorkProject[];
+  details?: string[];
 }
 
-export interface IMsg {
+export interface TechStack {
+  type: string;
+  skill: string[];
+}
+
+export interface Education {
+  institute: string;
+  course: string;
+  period: string;
+  details?: string[];
+}
+
+export interface FrontMatter {
   title: string;
+  tags: string[];
+  published?: boolean;
+  date: string;
+  description: string;
+  path: string;
+}
+
+export interface Post {
+  slug: string;
+  frontmatter: FrontMatter;
   body: string;
-  labels: string[];
+  headings?: Heading[];
+}
+
+export interface ITag extends ParsedUrlQuery {
+  keyword: string;
+  tag: string;
+}
+
+export interface MyInfo {
+  name: string;
+  job: string;
+  email: string;
+  github: string;
+  firstSentences: string[];
+}
+
+// 글의 목차 (Table of Contents)
+export interface Heading {
+  text: string;
+  link: string;
 }

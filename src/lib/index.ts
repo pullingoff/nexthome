@@ -1,8 +1,8 @@
-import { IPost } from '#type/post';
+import { Post } from '#src/type';
 
 export const markdownRegex = /(\.mdx$)|(\.md$)|(\.markdown$)/;
 
-export const sortByDate = (a: IPost, b: IPost) => {
+export const sortByDate = (a: Post, b: Post) => {
   return (
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()

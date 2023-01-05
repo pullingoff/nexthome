@@ -1,11 +1,10 @@
 import ListLayout from '#components/ListLayout';
 import { getAllTags, getAllPosts } from '#lib/posts-related-api';
-import { POSTS_PER_PAGE } from '#config/index';
-import MetaContainer from '#components/MetaContainer';
-import KeywordTitle from '#components/tag/KeywordTitle';
+import { POSTS_PER_PAGE } from '#src/config';
+import MetadataBox from '#components/MetadataBox';
+import KeywordBox from '#components/posts/KeywordBox';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { IPost } from '#type/post';
-import { ParsedUrlQuery } from 'querystring';
+import { Post, ITag } from '#src/type';
 import Pagination from '#components/Pagination';
 
 const Tag = ({
@@ -14,7 +13,7 @@ const Tag = ({
   pageNo,
   pageTotal,
 }: {
-  posts: IPost[];
+  posts: Post[];
   tag: string;
   pageNo: number;
   pageTotal: number;
@@ -26,8 +25,8 @@ const Tag = ({
   };
   return (
     <>
-      <MetaContainer customMeta={customMeta} />
-      <KeywordTitle
+      <MetadataBox customMetadata={customMeta} />
+      <KeywordBox
         pageNm={capitalizedTag}
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
       />
@@ -63,11 +62,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking',
   };
 };
-
-export interface ITag extends ParsedUrlQuery {
-  keyword: string;
-  tag: string;
-}
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = await getAllPosts();

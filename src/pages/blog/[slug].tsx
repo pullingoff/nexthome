@@ -2,21 +2,21 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { parseMarkdownToMdx } from '#utils/Markdown';
-import Post from '#components/post/Post';
-import { markdownRegex } from '#lib/index';
+import PostArticle from '#components/posts/PostArticle';
+import { markdownRegex } from '#src/lib';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { IHeading, IPost } from '#type/post';
+import { Heading, Post } from '#src/type';
 import { getAllPosts } from '#lib/posts-related-api';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 const blogDir = path.join(process.cwd(), 'posts', 'blog'); // current directory/posts
 
 const PostPage = (props: {
-  post: IPost;
+  post: Post;
   mdxSource: MDXRemoteSerializeResult;
-  headings: IHeading[];
+  headings: Heading[];
 }) => {
-  return <Post {...props} />;
+  return <PostArticle {...props} />;
 };
 
 export default PostPage;

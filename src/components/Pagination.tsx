@@ -1,6 +1,6 @@
-import { POSTS_PER_PAGE } from '../config/';
-import styled from 'styled-components';
-import CustomLink from './common/CustomLink';
+import { POSTS_PER_PAGE } from "../config/";
+import styled from "styled-components";
+import CustomLink from "./common/CustomLink";
 
 interface IPagination {
   path: string;
@@ -14,25 +14,23 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
   const isLast = currentPage === pageTotal && pageTotal > POSTS_PER_PAGE;
 
   return (
-    <>
-      <Nav>
-        {isLast && <Button href={`/${path}/1`}>&lt;</Button>}
-        {pageTotal &&
-          Array(pageTotal)
-            .fill(0)
-            .map((_, i) => (
-              <Button
-                key={i + 1}
-                href={`/${path}/${i + 1}`}
-                data-iscurrent={i === currentPage - 1}
-              >
-                {i + 1}
-              </Button>
-            ))}
+    <Nav>
+      {isLast && <Button href={`/${path}/1`}>&lt;</Button>}
+      {pageTotal &&
+        Array(pageTotal)
+          .fill(0)
+          .map((_, i) => (
+            <Button
+              key={i + 1}
+              href={`/${path}/${i + 1}`}
+              data-iscurrent={i === currentPage - 1}
+            >
+              {i + 1}
+            </Button>
+          ))}
 
-        {isFirst && <Button href={`/${path}/${pageTotal}`}>&gt;</Button>}
-      </Nav>
-    </>
+      {isFirst && <Button href={`/${path}/${pageTotal}`}>&gt;</Button>}
+    </Nav>
   );
 };
 
@@ -54,7 +52,8 @@ const Button = styled(CustomLink)`
     cursor: pointer;
     transform: translateY(-2px);
   }
-  &[data-iscurrent='true'] {
+
+  &[data-iscurrent="true"] {
     color: var(--theme1-color);
     font-weight: bold;
   }

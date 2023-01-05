@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-// about에서 공통되는 부분만 여기에 적음. 공통 아닌 것은 각 컴포넌트 안에 있음.
+const S: any = {};
 
-export const StyledMain = styled.main`
+S.StyledMain = styled.main`
   &:before {
     content: ' ';
     border-top: 1px dashed lightgrey;
@@ -12,25 +12,26 @@ export const StyledMain = styled.main`
     display: block;
   }
 `;
-export const Org = styled.span`
+S.Org = styled.span`
   display: block;
   font-weight: 800;
   font-size: var(--3xl);
   margin-bottom: 7px;
 `;
 
-export const OrgHoverLink = styled(Org)`
+S.OrgHoverLink = styled(S.Org)`
   display: block;
   font-weight: 800;
   font-size: var(--3xl);
   margin-bottom: 7px;
+
   &:hover {
     cursor: pointer;
     color: salmon;
   }
 `;
 
-export const SectionHeader = styled.h2`
+S.SectionHeader = styled.h2`
   margin: 20px 0 10px;
   font-size: var(--8xl);
   color: var(--theme1-color);
@@ -38,61 +39,57 @@ export const SectionHeader = styled.h2`
   letter-spacing: initial;
 `;
 
-export const StyledOrgContainer = styled.section`
+S.OrgContainer = styled.section`
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
   margin-bottom: 15px;
 `;
 
-export const Project = styled.section`
-  border: 2px solid violet;
-  align-items: center;
-  margin: 5px 0;
-`;
-
-export const PjTitle = styled.h3`
+S.PjTitle = styled.h3`
   margin: 10px 0;
 `;
 
-export const PjTitleHover = styled(PjTitle)`
+S.PjTitleWithLink = styled(S.PjTitle)`
   &:hover {
     cursor: pointer;
     color: salmon;
   }
 `;
 
-export const PExplain = styled.p`
+S.ExplainP = styled.p`
   font-weight: 500;
   margin-top: 1px;
   margin-bottom: 7px;
   padding-left: 5px;
 `;
 
-export const PjTech = styled.span`
+S.PjTech = styled.span`
   font-weight: 300;
   padding-left: 5px;
+
   & + &:before {
     content: '|';
     margin-right: 5px;
   }
 `;
 
-export const StyledPjContainer = styled.article`
+S.PjArticle = styled.article`
   // margin-top: var(--lg);
   margin-bottom: var(--md);
   line-height: 150%;
 `;
 
-export const DetailUl = styled.ul`
+S.DetailList = styled.ul`
   margin: 5px;
   margin-bottom: 1rem;
   list-style: none;
 `;
 
-export const Detail = styled.li`
+S.DetailItem = styled.li`
   margin: 4px 0;
   padding-left: 5px;
+
   &:before {
     content: '-';
     position: relative;
@@ -100,13 +97,16 @@ export const Detail = styled.li`
   }
 `;
 
-export const JobDate = styled.span`
+S.JobDate = styled.span`
   font-weight: 400;
 `;
 
-export const SkillSpan = styled.span`
+S.SkillSpan = styled.span`
   font-weight: initial;
+
   &:not(:last-child):after {
     content: ',';
   }
 `;
+
+export default S;

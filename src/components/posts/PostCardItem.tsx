@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import CustomLink from '../common/CustomLink';
-import { IPost } from '#type/post';
+import { Post } from '#src/type';
 import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 
-const PostCard = ({ href, post }: { href: string; post: IPost }) => {
+const S: any = {};
+const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
   const [publishedAt, setPublishedAt] = useState<string>('');
   const { title, description, tags } = post.frontmatter;
 
@@ -20,25 +21,25 @@ const PostCard = ({ href, post }: { href: string; post: IPost }) => {
   }, [post.frontmatter.date]);
 
   return (
-    <CardContainer>
+    <S.CardBox>
       <CustomLink href={href}>
-        <InfoSection>
+        <S.InfoSection>
           <h3>{title}</h3>
-          <Desc>{description}</Desc>
-          <StyledDateTime>{publishedAt}</StyledDateTime>
-        </InfoSection>
+          <S.Desc>{description}</S.Desc>
+          <S.DateTime>{publishedAt}</S.DateTime>
+        </S.InfoSection>
       </CustomLink>
-      <StyledTagContainer>
+      <S.TagList>
         {tags?.map((t: string) => (
-          <Tag key={t} text={t} />
+          <TagItem key={t} text={t} />
         ))}
-      </StyledTagContainer>
-      {/* Tag 4개 이상이면 안 보이도록 조치 필요 */}
-    </CardContainer>
+      </S.TagList>
+      {/* todo Tag 4개 이상이면 안 보이도록 조치 필요 */}
+    </S.CardBox>
   );
 };
 
-const Tag = ({ text }: { text: string }) => {
+const TagItem = ({ text }: { text: string }) => {
   return (
     <StyledTag href={`/tags/${text}/1`}>{text.split(' ').join('-')}</StyledTag>
   );
@@ -52,6 +53,7 @@ export const StyledTag = styled(CustomLink)`
   background-color: var(--theme1-color);
   border-radius: var(--border-radius-sm);
   margin: 0 var(--md) var(--md) 0;
+
   &:hover {
     color: var(--theme1-color);
     background-color: initial;
@@ -59,7 +61,7 @@ export const StyledTag = styled(CustomLink)`
   }
 `;
 
-const CardContainer = styled.div`
+S.CardBox = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -71,15 +73,15 @@ const CardContainer = styled.div`
 
   /* Fix Safari overflow:hidden with border radius not working error */
   z-index: 0;
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 10px 10px lightgray;
-    transition: box-shadow 0.2s ease 0.1s, transform 0.2s ease 0.1s
+    transition: box-shadow 0.2s ease 0.1s, transform 0.2s ease 0.1s;
   }
-}
 `;
 
-const InfoSection = styled.section`
+S.InfoSection = styled.section`
   display: flex;
   flex-direction: column;
   padding: var(--3xl);
@@ -88,6 +90,7 @@ const InfoSection = styled.section`
   & > * {
     display: block;
   }
+
   h3 {
     margin-top: 3px;
     font-weight: 700;
@@ -95,7 +98,7 @@ const InfoSection = styled.section`
   }
 `;
 
-const Desc = styled.p`
+S.Desc = styled.p`
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 6px 0;
@@ -107,15 +110,15 @@ const Desc = styled.p`
   text-overflow: ellipsis;
 `;
 
-const StyledDateTime = styled.p`
+S.DateTime = styled.p`
   font-size: 0.8rem;
   margin: 10px 0;
 `;
 
-const StyledTagContainer = styled.section`
+S.TagList = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto var(--xl) var(--2xl);
 `;
 
-export default PostCard;
+export default PostCardItem;

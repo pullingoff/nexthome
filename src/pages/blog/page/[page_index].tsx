@@ -1,16 +1,16 @@
 import { getAllPosts, getAllSlugs, getAllTags } from '#lib/posts-related-api';
-import { POSTS_PER_PAGE } from '#config/index';
+import { POSTS_PER_PAGE } from '#src/config';
 import Pagination from '#components/Pagination';
 import ListLayout from '#components/ListLayout';
-import MetaContainer from '#components/MetaContainer';
+import MetadataBox from '#components/MetadataBox';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { ICustomMeta } from '#type/index';
+import { Metadata } from '#src/type';
 import { ParsedUrlQuery } from 'querystring';
-import TagContainer from '#components/home/TagContainer';
+import TagBox from '#components/posts/TagBox';
 import { ITag } from '#src/pages/tags/[tag]/[keyword]';
-import { IPost } from '#type/post';
+import { Post } from '#src/type';
 
-const customMeta: ICustomMeta = {
+const customMeta: Metadata = {
   title: `Blog: 개발자 박하은`,
 };
 
@@ -72,7 +72,7 @@ export default function BlogPage({
   allTags,
   allSlugs,
 }: {
-  posts: IPost[];
+  posts: Post[];
   currentPage: number;
   pageTotal: number;
   allTags: ITag[];
@@ -87,8 +87,8 @@ export default function BlogPage({
 
   return (
     <>
-      <MetaContainer customMeta={customMeta} />
-      <TagContainer allTags={allTags} moveToRandomPost={moveToRandomPost} />
+      <MetadataBox customMetadata={customMeta} />
+      <TagBox allTags={allTags} moveToRandomPost={moveToRandomPost} />
       <ListLayout posts={posts} />
       <Pagination
         path="blog/page"

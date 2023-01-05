@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import CustomLink from '../common/CustomLink';
-import { METADATA } from '#config/index';
+import { METADATA } from '#src/config';
 import { GithubLogo, LinkedInLogo, TwitterLogo } from 'public/logos';
 
 const SocialMediaLogos = () => {
@@ -10,7 +10,7 @@ const SocialMediaLogos = () => {
   const twitterLink = `https://twitter.com/${twitter}`;
 
   return (
-    <StyledLogos>
+    <LogoBox>
       <CustomLink aria-label="github" href={githubLink}>
         <GithubLogo />
       </CustomLink>
@@ -20,13 +20,13 @@ const SocialMediaLogos = () => {
       <CustomLink aria-label="linkedin" href={linkedinLink}>
         <LinkedInLogo />
       </CustomLink>
-    </StyledLogos>
+    </LogoBox>
   );
 };
 
 export default SocialMediaLogos;
 
-const StyledLogos = styled.div`
+const LogoBox = styled.div`
   display: flex;
   flex-flow: row nowrap;
   gap: 3px;

@@ -1,24 +1,25 @@
 import styled from 'styled-components';
-import { IPost } from '#type/post';
-import PostCard from './post/PostCard';
+import { Post } from '#src/type';
+import PostCardItem from './posts/PostCardItem';
 
-const ListLayout = ({ posts }: { posts: IPost[] }) => {
+const S: any = {};
+const ListLayout = ({ posts }: { posts: Post[] }) => {
   return (
     <main>
-      <PostUl>
+      <S.PostList>
         {posts.map(post => (
           <li key={post.slug}>
-            <PostCard href={`/blog/${post.slug}`} post={post} />
+            <PostCardItem href={`/blog/${post.slug}`} post={post} />
           </li>
         ))}
-      </PostUl>
+      </S.PostList>
     </main>
   );
 };
 
 export default ListLayout;
 
-const PostUl = styled.ul`
+S.PostList = styled.ul`
   margin: 30px auto;
   display: grid;
   grid-gap: 24px;

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-const SearchBar = () => {
+const S: any = {};
+const Search = () => {
   return (
-    <StyledSearchBar>
-      <StyledInput placeholder="무엇을 찾고 계십니까!? 🧞‍♂️" />
+    <S.SearchBox>
+      <S.Input placeholder="무엇을 찾고 계십니까!? 🧞‍♂️" />
       <SearchBarLogo />
-    </StyledSearchBar>
+    </S.SearchBox>
   );
 };
 
@@ -36,14 +37,14 @@ const StyledSvg = styled.svg`
   position: absolute;
 `;
 
-const StyledSearchBar = styled.div`
+S.SearchBox = styled.div`
   position: relative;
   height: 3rem;
   align-items: center;
   margin-top: var(--lg);
 `;
 
-const StyledInput = styled.input`
+S.Input = styled.input`
   display: block;
   width: 100%;
   color: salmon;
@@ -54,4 +55,4 @@ const StyledInput = styled.input`
   line-height: 1.5rem;
 `;
 
-export default SearchBar;
+export default Search;

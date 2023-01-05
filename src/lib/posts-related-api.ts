@@ -2,20 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { sortByDate } from '.';
-import { POST_DIRS } from '#config/index';
-import { IPost } from '#type/post';
+import { POST_DIRS } from '#src/config';
+import { FrontMatter, Post } from '#src/type';
 import memoize from 'memoizee';
 
-export interface IFrontMatter {
-  title: string;
-  tags: string[];
-  published?: boolean;
-  date: string;
-  description: string;
-  path: string;
-}
-
-const retrieveAllPosts = async (): Promise<IPost[]> => {
+const retrieveAllPosts = async (): Promise<Post[]> => {
   let allFileNames: string[] = [];
   for (const menu of POST_DIRS) {
     const fileNames: string[] = fs
@@ -30,13 +21,13 @@ const retrieveAllPosts = async (): Promise<IPost[]> => {
     allFileNames = [...allFileNames, ...filesInDir];
   }
 
-  const allPostsData: IPost[] = allFileNames.map(fileName => {
+  const allPostsData: Post[] = allFileNames.map(fileName => {
     const slug = fileName.split('/')[1].split('.mdx')[0];
     const fullPath = path.join(process.cwd(), 'posts', fileName);
 
     const fileContents = fs.readFileSync(fullPath, 'utf8'); // path에 있는 파일 내용 읽어오기
     const { data: frontmatter, content: body } = matter(fileContents);
-    const fm: IFrontMatter = frontmatter as IFrontMatter;
+    const fm: FrontMatter = frontmatter as FrontMatter;
     // if (!fm?.published) {
     //   fm.published = true;
     // } else {
@@ -54,7 +45,7 @@ const retrieveAllPosts = async (): Promise<IPost[]> => {
   );
 };
 
-export const getAllPosts: () => Promise<IPost[]> = memoize(retrieveAllPosts);
+export const getAllPosts: () => Promise<Post[]> = memoize(retrieveAllPosts);
 
 // 최신 글 10개
 export const getRecentPosts = async () => {
@@ -71,7 +62,7 @@ type ITag = {
 
 const retrieveAllTags = async () => {
   const tags: string[] = (await getAllPosts()).reduce<string[]>(
-    (prev: string[], curr: IPost) => {
+    (prev: string[], curr: Post) => {
       curr.frontmatter.tags.forEach((tag: string) => {
         prev.push(tag);
       });

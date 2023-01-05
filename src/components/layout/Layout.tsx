@@ -21,6 +21,5 @@ const Content = styled.main`
   margin: auto;
   padding: 25px;
   background: var(--bg-yellow);
-  // border-bottom: 1px solid lightgrey;
   min-height: 70vh;
 `;

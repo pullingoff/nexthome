@@ -1,6 +1,6 @@
 import styles from './navbar.module.scss';
 import { useState } from 'react';
-import { MENUS } from '#config/index';
+import { MENUS } from '#src/config';
 import NavMenu from './NavMenu';
 import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
@@ -67,6 +67,7 @@ const NavLogo = styled.div`
   display: inline;
   width: 4rem;
   margin: 1rem;
+
   &:hover {
     & span img {
       transform: rotate(360deg);

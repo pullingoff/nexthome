@@ -1,103 +1,75 @@
-import * as S from '#src/styles/aboutStyle';
+import S from '#styles/About.styled';
 import CustomEmoji from '#components/common/CustomEmoji';
 import styled from 'styled-components';
 import CustomLink from '#components/common/CustomLink';
+import { Education, Experience, TechStack, WorkProject } from '#src/type';
 
-const ProjectContainer = ({ title, list }: { title: string; list: any[] }) => {
+const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
     <S.StyledMain>
       <S.SectionHeader>
         <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
         {title}
       </S.SectionHeader>
-      <S.StyledOrgContainer>
+      <S.OrgContainer>
         {title.includes('Education') &&
-          list.map((edu: IEducation) => (
-            <S.StyledPjContainer key={edu.course}>
-              <Education {...edu} />
-            </S.StyledPjContainer>
+          list.map((edu: Education) => (
+            <S.PjArticle key={edu.course}>
+              <EducationBox {...edu} />
+            </S.PjArticle>
           ))}
         {title.includes('Experiences') &&
-          list.map((exp: IExp) => (
-            <S.StyledPjContainer key={exp.organization}>
-              <Project {...exp} />
-            </S.StyledPjContainer>
+          list.map((exp: Experience) => (
+            <S.PjArticle key={exp.organization}>
+              <ProjectBox {...exp} />
+            </S.PjArticle>
           ))}
         {title.includes('Projects') &&
-          list.map((exp: IExp) => (
-            <S.StyledPjContainer key={exp.organization}>
-              <Project {...exp} />
-            </S.StyledPjContainer>
+          list.map((exp: Experience) => (
+            <S.PjArticle key={exp.organization}>
+              <ProjectBox {...exp} />
+            </S.PjArticle>
           ))}
         {title.includes('Skills') &&
-          list.map((skill: ITechStack) => (
-            <SkillP key={skill.type}>
+          list.map((skill: TechStack) => (
+            <SkillSpan key={skill.type}>
               - {skill.type}:
               {skill?.skill.map(sk => (
                 <S.SkillSpan key={sk}> {sk}</S.SkillSpan>
               ))}
-            </SkillP>
+            </SkillSpan>
           ))}
-      </S.StyledOrgContainer>
+      </S.OrgContainer>
     </S.StyledMain>
   );
 };
 
-interface IWorkProject {
-  title?: string;
-  tech: string[];
-  link?: string;
-  description?: string;
-  details: string[];
-}
-
-export interface IExp {
-  organization: string;
-  description: string;
-  link?: string;
-  period: string;
-  projects?: IWorkProject[];
-  details?: string[];
-}
-
-export interface ITechStack {
-  type: string;
-  skill: string[];
-}
-
-export interface IEducation {
-  institute: string;
-  course: string;
-  period: string;
-  details?: string[];
-}
-
-const WorkProject = (pj: IWorkProject) => {
+const WorkProjectBox = (pj: WorkProject) => {
   return (
-    <S.StyledPjContainer>
+    <S.PjArticle>
       {pj.link ? (
         <CustomLink href={pj.link} target="_blank">
-          <S.PjTitleHover>{pj.title} 🔗</S.PjTitleHover>
+          <S.PjTitleWithLink>{pj.title} 🔗</S.PjTitleWithLink>
         </CustomLink>
       ) : (
         <S.PjTitle> {pj.title}</S.PjTitle>
       )}
-      <S.PExplain>{pj.description}</S.PExplain>
+      <S.ExplainP>{pj.description}</S.ExplainP>
       {pj.tech?.map(t => (
         <S.PjTech key={t}>{t}</S.PjTech>
       ))}
       {pj.details && (
-        <S.DetailUl>
+        <S.DetailList>
           {pj.details.map((det, idx) => (
-            <S.Detail key={idx}>{det} </S.Detail>
+            <S.DetailItem key={idx}>{det} </S.DetailItem>
           ))}
-        </S.DetailUl>
+        </S.DetailList>
       )}
-    </S.StyledPjContainer>
+    </S.PjArticle>
   );
 };
 
-const Education = (edu: IEducation) => {
+const EducationBox = (edu: Education) => {
   return (
     <>
       <S.Org>{edu.institute}</S.Org>
@@ -107,7 +79,7 @@ const Education = (edu: IEducation) => {
   );
 };
 
-const Project = (exp: IExp) => {
+const ProjectBox = (exp: Experience) => {
   return (
     <>
       {exp.link ? (
@@ -120,7 +92,7 @@ const Project = (exp: IExp) => {
       <DateSection first={exp.description} last={exp.period} />
       {exp.projects?.map((pj, idx) => (
         <div key={pj.title || idx}>
-          <WorkProject {...pj} />
+          <WorkProjectBox {...pj} />
         </div>
       ))}
       {exp.details && <DetailSection list={exp.details} />}
@@ -138,18 +110,18 @@ const DateSection = ({ first, last }: { first: string; last: string }) => {
 
 const DetailSection = ({ list }: { list: string[] }) => {
   return (
-    <S.DetailUl>
+    <S.DetailList>
       {list.map((det, idx) => (
-        <S.Detail key={idx}>{det} </S.Detail>
+        <S.DetailItem key={idx}>{det} </S.DetailItem>
       ))}
-    </S.DetailUl>
+    </S.DetailList>
   );
 };
 
-const SkillP = styled.span`
+const SkillSpan = styled.span`
   line-height: 160%;
   font-weight: bold;
-  font-size: 1.05srem;
+  font-size: 1.05rem;
 `;
 
-export default ProjectContainer;
+export default ProjectSection;

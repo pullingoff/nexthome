@@ -1,6 +1,6 @@
 import '#styles/globals.scss';
 import Layout from '#components/layout/Layout';
-import MetaContainer from '#components/MetaContainer';
+import MetadataBox from '#components/MetadataBox';
 import { AppProps } from 'next/app';
 import { useState, useEffect } from 'react';
 import Loading from '#components/Loading';
@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <StyledLayout>
-      <MetaContainer />
+      <MetadataBox />
       <Loading loading={loading} />
       <Component {...pageProps} />
       <CoffeeChat />
