@@ -7,12 +7,10 @@
     "paths": {   // @로 하니까 typescript랑 헷갈려함
       "#components/*": ["src/components/*"],
       "#utils/*": ["src/utils/*"],
-      "#config/*": ["src/config/*"],
       "#styles/*": ["src/styles/*"],
       "#public/*": ["public/*"],
       "#lib/*": ["src/lib/*"],
       "#data/*": ["src/data/*"],
-      "#type/*": ["src/type/*"],
       "#src/*": ["src/*"],
     },
     "outDir": "dist",
