@@ -1,20 +1,21 @@
 import CustomLink from '#components/common/CustomLink';
-import SocialMediaLogos from '#components/layout/SocialMediaLogos';
-import { METADATA } from '#src/config/index';
+import SnsLogoBox from '#components/layout/SnsLogoBox';
+import { METADATA } from '#src/config';
 import styled from 'styled-components';
 
+const S: any = {};
 const Footer = () => {
   return (
-    <StyledFooter>
-      <SocialMediaLogos />
-      <Mail href={`mailto:${METADATA.email}`}>Email: {METADATA.email}</Mail>
-    </StyledFooter>
+    <S.Footer>
+      <SnsLogoBox />
+      <S.Mail href={`mailto:${METADATA.email}`}>Email: {METADATA.email}</S.Mail>
+    </S.Footer>
   );
 };
 
 export default Footer;
 
-const StyledFooter = styled.footer`
+S.Footer = styled.footer`
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -29,7 +30,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Mail = styled(CustomLink)`
+S.MailLink = styled(CustomLink)`
   &:hover {
     font-weight: bold;
   }

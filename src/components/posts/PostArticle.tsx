@@ -179,7 +179,6 @@ const StyledHeader = styled.header`
 
   h1 {
     font-size: var(--10xl);
-    // line-height: var(--4xl);
     font-weight: 800;
     color: var(--theme1-color);
     @media (min-width: ${({ theme }) => theme.device.sm}) {
@@ -219,7 +218,7 @@ S.HeadingBox = styled.aside`
   min-width: 15%;
   position: sticky;
   top: 70px;
-  order: 1;
+  // order: 1;
   overflow-y: scroll;
   max-height: 90vh;
   margin-left: 1rem;

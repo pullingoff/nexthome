@@ -28,7 +28,6 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
               {i + 1}
             </Button>
           ))}
-
       {isFirst && <Button href={`/${path}/${pageTotal}`}>&gt;</Button>}
     </Nav>
   );
