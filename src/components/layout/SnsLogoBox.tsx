@@ -3,7 +3,7 @@ import CustomLink from '../common/CustomLink';
 import { METADATA } from '#src/config';
 import { GithubLogo, LinkedInLogo, TwitterLogo } from 'public/logos';
 
-const SocialMediaLogos = () => {
+const SnsLogoBox = () => {
   const { github, twitter, linkedinLink } = METADATA;
 
   const githubLink = `https://github.com/${github}`;
@@ -24,7 +24,7 @@ const SocialMediaLogos = () => {
   );
 };
 
-export default SocialMediaLogos;
+export default SnsLogoBox;
 
 const LogoBox = styled.div`
   display: flex;
