@@ -219,7 +219,7 @@ S.HeadingBox = styled.aside`
   position: sticky;
   top: 70px;
   // order: 1;
-  overflow-y: scroll;
+  // overflow-y: scroll; 있으면 스크롤바 생김
   max-height: 90vh;
   margin-left: 1rem;
 
