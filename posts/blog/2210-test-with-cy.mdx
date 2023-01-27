@@ -4,7 +4,7 @@ date: 2022-10-21 12:30
 tags:
   - 테스트 자동화
   - 디자인패턴
-description: Cypress와 POM 패턴으로 E2E 테스트를 자동화한 경험을 공유합니다. (작성중)
+description: Cypress와 POM 패턴으로 E2E 테스트를 자동화한 경험과 주의해야할 점을 공유합니다. (작성중)
 --- 
 
 ## 프론트엔드 테스트의 종류
@@ -167,8 +167,25 @@ describe('게시글 상세조회 테스트', () => {
 
 짜잔~ 이렇게 POM 패턴으로 코드를 구성하면 이후에 로그인 버튼 마크업이 바뀌어도
 모든 테스트코드에서 수정할 필요 없이 `PostPage.js`에서만 수정하면 됩니다.
-어렵지 않죠?
 
-끝!
+POM 패턴에 대한 자세한 설명은 [이 글](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b)을 
+참고하세요.
 
-[참고 링크](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b)
+## Cypress 테스트 구현 시 주의할 점
+
+### 화살표함수와 this
+
+테스트 코드에서 반복적으로 사용되는 데이터를 변수로 지정할 때 테스트 케이스 it(this)의 프로퍼티(`this.data`)로 넣을 경우
+화살표 함수를 사용하면 `this`를 갖지 않는 화살표 함수의 특성상 `An outer value of 'this' is shadowed by this container.`라는
+타입스크립트 에러가 뜰 수 있습니다.
+
+이러한 에러 메시지를 만날 경우 화살표 함수를 function 함수로 바꿔주면 됩니다.
+
+### 쿠키 초기화
+
+Cypress는 **각 테스트마다 브라우저의 상태를 초기화**합니다. 모든 `it()`마다 쿠키가 깨끗히 지워집니다. 
+테스트중인 앱이 인증 토큰을 저장하는데 쿠키를 사용한다면 로그아웃이 되어버립니다. 
+
+이럴 땐 맨 처음 로그인을 하면서 `SESSIONID` 또는 기억해야할 데이터 값을 전역 변수에 할당해두고, `beforeEach`로 쿠키에 해당 데이터를 넣어주도록 하면 됩니다.
+
+끝 🔎
