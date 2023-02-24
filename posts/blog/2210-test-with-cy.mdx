@@ -2,7 +2,8 @@
 title: 'POM 방식과 Cypress로 프론트엔드 E2E 테스트하기'
 date: 2022-10-21 12:30
 tags:
-  - 테스트 자동화
+  - 자동화 테스트
+  - cypress
   - 디자인패턴
 description: Cypress와 POM 패턴으로 E2E 테스트를 자동화한 경험과 주의해야할 점을 공유합니다. (작성중)
 --- 
@@ -15,10 +16,10 @@ description: Cypress와 POM 패턴으로 E2E 테스트를 자동화한 경험과
 어플리케이션의 여러 부분을 통합해 올바른 상호작용을 하는지 테스트하는 통합 테스트(Jest, RTL, Enzyme),  
 API 서버, DB 등 모두 연결된 실제 사용자의 조건에서 전체 서비스(시스템)를 검증하는 E2E 테스트(Cypress, Selenium)가 있습니다.
 
-## Cypress 소개 
+## Cypress 소개
 
 오늘 글에서 다룰 테스트는 종단간 테스트라고도 불리는 End-to-End(E2E) 테스트입니다.
-프론트엔드 E2E 테스트시 사용할 수 있는 [Cypress](https://docs.cypress.io/)는 오픈소스 **모던 웹 앱 테스팅 툴**이고, 
+프론트엔드 E2E 테스트시 사용할 수 있는 [Cypress](https://docs.cypress.io/)는 오픈소스 **모던 웹 앱 테스팅 툴**이고,
 리액트/뷰 등 상관없이 **웹앱 브라우저에서 돌아가는 거면 뭐든 테스트가 가능**합니다.
 개발자가 테스트 코드를 작성해두면 Cypress가 자동으로 테스트를 진행합니다.
 
@@ -31,7 +32,7 @@ API 서버, DB 등 모두 연결된 실제 사용자의 조건에서 전체 서�
 ## 명령어 사용하기
 
 [Cypress가 제공하는 명령어들](https://docs.cypress.io/api/commands/and)은 다양합니다.
-`and`나 `should`로 DOM 요소의 클래스나 스타일을 확인(assertion)할 수도 있고, 브라우저 쿠키를 지우거나(`clearCookie`) 
+`and`나 `should`로 DOM 요소의 클래스나 스타일을 확인(assertion)할 수도 있고, 브라우저 쿠키를 지우거나(`clearCookie`)
 마우스 우클릭(`rightClick`)을 할 수도 있습니다.  
 예시 코드입니다.
 
@@ -69,9 +70,9 @@ context('User setup', ()=> {
 
 *Cypress has direct programmatic access to my app*.
 
-Cypress 커스텀 커맨드를 사용하면 프로그램적으로 앱에 접근할 수 있습니다. 
+Cypress 커스텀 커맨드를 사용하면 프로그램적으로 앱에 접근할 수 있습니다.
 UI를 통하지 않고, 프로그램 자체에서 액션을 실행하게 하는 겁니다.
-예를 들자면 **로그인 버튼을 눌러** 로그인 함수가 실행되게 하는게 아니라, 
+예를 들자면 **로그인 버튼을 눌러** 로그인 함수가 실행되게 하는게 아니라,
 프로그램 내 **login() 함수를 직접 실행**시키는 거죠!
 예시 코드는 이렇습니다.
 
@@ -87,28 +88,28 @@ Cypress.Commands.add('login', (email, password) => {
 ```
 
 웹앱을 테스트할때, 로그인 이후의 페이지를 테스트하려면 테스트할때마다 로그인을 계속 거쳐야합니다.
-위 코드처럼 로그인을 하는 커스텀 커맨드를 만들면 로그인처럼 반복되는 액션을 
+위 코드처럼 로그인을 하는 커스텀 커맨드를 만들면 로그인처럼 반복되는 액션을
 UI를 거치지 않고 더 빠르고, 덜 번거롭게 원하는 페이지를 테스트할 수 있습니다.
 
 저는 테스트 코드를 좀 더 쉽게 작성하고 관리하기 위해 POM 디자인 패턴을 사용했습니다.
 
 ## POM
 
-POM이란 **Page Object Model**의 약자로, 테스트 자동화를 위해 사용하면 좋은 디자인 패턴입니다. 
-이 패턴에서 Page 객체는 객체 지향형 클래스고, 테스트하려는 페이지 하나가 한 Page 객체가 됩니다. 
+POM이란 **Page Object Model**의 약자로, 테스트 자동화를 위해 사용하면 좋은 디자인 패턴입니다.
+이 패턴에서 Page 객체는 객체 지향형 클래스고, 테스트하려는 페이지 하나가 한 Page 객체가 됩니다.
 또 POM 클래스를 상속해 테스트 케이스의 길이를 줄일 수 있습니다.
 그렇기에 POM은 여러 페이지가 있는 앱에서 사용하면 제일 좋습니다.
 
-POM에서는 테스트와 DOM 요소를 찾는 Element Locator를 분리합니다. 
-한 페이지의 UI가 바뀐다고 해서 그 부분을 사용하는 모든 테스트를 바꿀 필요 없이, 
-페이지 객체 안의 Element Locator만 바꾸면 됩니다. 
+POM에서는 테스트와 DOM 요소를 찾는 Element Locator를 분리합니다.
+한 페이지의 UI가 바뀐다고 해서 그 부분을 사용하는 모든 테스트를 바꿀 필요 없이,
+페이지 객체 안의 Element Locator만 바꾸면 됩니다.
 
-또 중요한 점은 페이지 객체 저장소(Page Object Repository)가 테스트로부터 독립적이라는 겁니다. 
+또 중요한 점은 페이지 객체 저장소(Page Object Repository)가 테스트로부터 독립적이라는 겁니다.
 페이지 객체들을 담아두는 저장소를 분리함으로써 사용자가 원하는 툴, 프레임워크와 함께 사용할 수 있습니다.
 
 ## Page 객체를 사용한 테스트 예시
 
-**Best Practice: Use `data-*` attributes to provide context 
+**Best Practice: Use `data-*` attributes to provide context
 to your selectors and isolate them from CSS or JS changes.**
 
 [Cypress에서 제공하는 Best Practice](https://docs.cypress.io/guides/references/best-practices)
@@ -126,7 +127,7 @@ to your selectors and isolate them from CSS or JS changes.**
 <button data-cy='write-new'>새 글 쓰기</button>
 ```
 
-이 페이지는 렌더링 후 결과물이 위와 같이 만들어집니다. 
+이 페이지는 렌더링 후 결과물이 위와 같이 만들어집니다.
 글 하나를 상세조회할 수 있는 페이지고, 아래에는 '새 글 쓰기' 버튼이 있다고 합시다.
 그러면 아래와 같이 `PostPage` 클래스를 만들 수 있습니다.
 
@@ -162,7 +163,7 @@ describe('게시글 상세조회 테스트', () => {
 })
 ```
 
-이렇게 글쓰기 버튼을 클릭하고, `cy.location()`으로 이동한 페이지가 
+이렇게 글쓰기 버튼을 클릭하고, `cy.location()`으로 이동한 페이지가
 글쓰기 페이지의 pathname과 동일한지 테스트할 수 있습니다.
 
 짜잔~ 이렇게 POM 패턴으로 코드를 구성하면 이후에 로그인 버튼 마크업이 바뀌어도

@@ -1,0 +1,46 @@
+---
+title: "리욜드: 인증 관련 미스 커뮤니케이션 회고"
+date: 2022-12-30 9:30
+tags:
+  - 인증
+  - 커뮤니케이션
+description: 서버 클라이언트 도메인이 다른 cross-site 요청시 꼭 해줘야할 http 설정들 (withCredentials, Allowed origin)
+--- 
+
+2023년 2월 MVP 오픈을 목표로 하고 있는 사이드 프로젝트 리욜드(RE:jord)를 개발하면서 상호간 커뮤니케이션을 잘 못해 있었던 일을 정리해보았다.
+
+## 상황
+
+![세션을 이용한 인증 방식](/images/blog/2212/auth-session.png)
+
+나와 백엔드 개발자 플뎁님은 위 이미지처럼 세션ID를 httpOnly 쿠키에 저장하는 방식으로 사용자 인증을 구현하고 있었다.
+로그인 요청을 클라이언트에서 서버로 보내면, 유효한 사용자(로그인 요청)일 경우 서버에서 SessionID를 발급해 응답 헤더로 돌려주는 방식이었다.
+이때 헤더에 바로 넣어서 보내주는게 아니라, 응답 헤더에 `set-cookie:JSESSIONID=세션ID`를 넣어 보내주면 브라우저가 자동으로 JSESSIONID 데이터를
+쿠키에 저장해준다.
+
+그렇게 개발하던 중, 서버와 클라이언트의 도메인이 다를 경우 `set-cookie`가 동작하지 않는다는 것을 발견했다.
+API 응답은 제대로 오지만 브라우저에서 쿠키를 저장하지 못했다.
+
+## set-cookie
+
+그 이유는 서버와 클라이언트 도메인이 다를 때 쿠키를 주고받으려면 서버, 클라이언트 양쪽에서
+http의 `withCredentials` 설정을 `true`로 하고, `Allowed Origin`을 와일드카드(*)가 아니라 클라이언트, 서버의 도메인으로 지정해야했는데
+우리 앱은 이 두 설정을 안 해놨기 때문이었다. (`Allowed Origin`이 와일드카드로 되어있으면 서버에 credential=true로 요청한 모든 사이트의
+credential 정보를 서버가 맘대로 바꿀 수 있다.)
+
+![withCredential should be true between two different domains](/images/blog/2212/mdn-credentials.png)
+
+[mdn](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)에서도 이렇게 언급하고 있다.
+
+그런데 현재 웹 뿐 아니라 앱에서 동일한 API를 사용하고 있었기 때문에 앱의 특성상 `Allowed Origin`에 특정 도메인을 제한해두는 게 불가능하다고 생각했다.
+그래서 앱 분들은 이 오류가 안 나나? 하고 물어보니
+
+쿠키가 브라우저 자체 기능인 만큼 앱 개발을 맡은 뿌요님과 데브님은 당연하게 아직 서버에서 인증 구현을 안 했다고 알고 있던 거였고,
+oAuth 또는 JWT 방식으로 토큰이 구현되기를 기다리고 있던 거였다.
+
+## 결과
+
+
+## 참고
+
+axios에서 요청마다 header에 withCredentials=true 설정을 해주거나, axios-interceptor에서 모든 요청에 이 값을 넣도록 설정할 수 있습니다.
