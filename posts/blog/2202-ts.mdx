@@ -1,0 +1,53 @@
+---
+title: "내가 보려고 정리하는 타입스크립트 (작성중)"
+date: 2022-02-11 18:00
+tags:
+- Typescript
+description: 타입 내로잉, Union
+---
+
+### Type narrowing
+
+```typescript
+function foo(x: string | number) {
+  if (typeof x === 'string') {
+    // 이 부분에서 x의 타입은 string일 수밖에 없다. (narrowed type)
+    x = 1; // 그러나 이런식으로 할당을 하면 선언한 타입이 된다.
+  }
+}
+```
+
+이렇게 제어 흐름에 따라 타입이 좁혀지는 것을 `type narrowing`이라고 한다.
+
+### 다형성 타입 집합을 정의할 때는 Union 활용
+
+```typescript
+// as-is
+type Animal = {
+  kind: 'bird' | 'fish';
+  isSwimming?: boolean;
+  isFlying?: boolean;
+}
+
+// to-be
+type Bird = {kind: 'bird', isSwimming: boolean};
+type Fish = {kind: 'fish', isFlying: boolean};
+type Animal = Bird | Fish;
+```
+
+위 예시의 `Animal`은 `kind`가 `bird`인 데이터를 위한 `isSwimming`과 `fish` 데이터를 위한 `isFlying` 속성을 함께 가진다.
+이런 경우엔 `Bird` 타입과 `Fish` 타입으로 분리하고 `Union`을 사용해 `Animal` 타입으로 묶어주는 게 낫다.
+
+여기서 더 개선하고 싶다면, 아래대로 `isBird`와 `isFish` 함수가 타입명제를 반환하도록 변경하고 `filter`를 사용하면 된다. 
+
+```typescript
+function isBird(animal: Animal): animal is Bird {
+  return animal.kind === 'bird';
+}
+
+function isFish(animal: Animal): animal is Fish {
+  return animal.kind === 'Fish';
+}
+
+const birds = animals.filter(isBird);
+```
