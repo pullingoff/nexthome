@@ -1,10 +1,97 @@
 ---
-title: "내가 보려고 정리하는 타입스크립트 (작성중)"
+title: "내가 보려고 정리하는 타입스크립트"
 date: 2022-02-11 18:00
 tags:
 - Typescript
-description: 타입 내로잉, Union
+description: 타입스크립트 개념, 활용법, 타입 내로잉, 다형성, 인터페이스
 ---
+
+JS 런타임은 코드가 실행될 때 자신이 무엇을 해야할지 결정하기 위해 값의 타입, 즉 해당 값이 어떤 동작과 능력을 가지고 있는지 확인한다.
+`string`이나 `number`와 같은 원시형 데이터는 `typeof` 연산자를 써서 각 값의 타입을 실행전에 알 수 있으나, 함수가 인자로 오는 경우엔 코드 실행 전에 타입을 예측할 수 없다.
+즉, 자바스크립트는 **동적 타입**만 제공한다. 그래서 순수 자바스크립트에선 `argument`가 2개 필요한 함수의 파라미터로 1개만 넣어도 실행 전까지는 오류가 나지 않는다.
+그렇게 많은 `runtime error`를 마주치게 되고, 이에 대한 대안으로 등장한 것이 **정적 타입 시스템을 사용해 코드 실행 전에 코드를 예측하는 것**이다.
+코드 실행 전에 에러를 잡고 우리가 사용할 수 있는 프로퍼티를 제안하고자 TS가 등장하게 되었다.
+ 
+## Strongly-typed
+
+타입스크립트를 설치하면 타입스크립트의 컴파일러인 `tsc`도 함께 설치된다. 타입스크립트 코드를 작성하면 자바스크립트 코드로 컴파일하는데, 이때 타입 에러가 있으면 아예 자바스크립트로 컴파일되지 않는다.
+`tsc --target` 명령어로 타입스크립트 코드를 어떤 ECMAScript 버전으로 변환할지 지정할 수 있다.
+
+타입스크립트 설정으로 `noImplicitAny`, 타입이 암묵적으로 `any`로 추론되는 변수(묵시적 타입)에 대해 오류를 발생시키게 하거나
+`strictNullChecks`로 `null`이나 `undefined`를 명시적으로 처리하도록 제한할 수도 있다.
+
+타입을 `any`로 지정하면 TS의 모든 보호장치가 해제된다고 보면 되고 `readonly`로 지정하면 말 그대로 데이터 읽기만 가능해진다. (이 때 readonly 여부를 JS로 변환하진 않는다.)
+타입을 `unknown`으로 설정하면 어떤 작업 전 이 변수의 타입을 먼저 체크하도록 하도록 강제한다. 변수의 타입을 미리 알지 못할 때 사용한다.
+
+```typescript
+const player: readonly [string, number, boolean] = ['hail', 1, true];
+player[0] = 'hi' // TSError: readonly입니다.
+
+let a: unknown;
+let b = a+1; // TSError: 타입 명시되지 않음
+
+if (typeof a==='number') {
+	let b= a+1;   // 이 구역에서는 a의 타입이 number
+}
+```
+
+그래서 위 코드에서는 readonly 데이터인 `player[0]`에 값을 지정하려고 해 타입스크립트 에러가 발생한다.
+
+## 사용법
+
+`type alias`로 아래처럼 타입에 이름을 지정해주자.
+
+```typescript
+type Age = number;
+type Player = {
+	age?: Age
+}
+```
+
+`Call Signature`로 함수 인자와 리턴값의 타입을 알려주자.
+
+```typescript 
+type Add = (a: number, b: number) => number;
+const add: Add = (a,b) => a+b
+```
+
+`void`는 함수가 아무것도 리턴하지 않을 때,
+`never`는 함수가 절대 리턴하지 않을 때, 즉 `exception`이 발생할 때나 절대 실행될 일이 없을 때의 타입이다.
+
+```typescript
+function hello(): never {
+	return 'x'  // TSError: 이 함수는 리턴값이 없어야 한다.
+}
+
+function hello(): never {
+	throw new Error('x') // O
+}
+
+function hello(name: string| number) {
+	if (typeof name==='string') {
+	} else if (typeof name ==='number') {
+	} else {
+		name // 절대 실행될 일 없다
+	}
+}
+```
+
+오버로딩을 해 함수가 서로다른 여러개의 콜 시그니처를 가지게 할 수도 있다.
+
+```typescript
+type Push = {
+(path: string): void
+    (config: Config): void
+}
+
+const push:  Push = (config) => {
+    if(typeof config === 'string') {
+        console.log(config)
+    } else {
+        console.log(config.path)
+    }
+}
+```
 
 ### Type narrowing
 
@@ -23,6 +110,45 @@ function foo(x: string | number) {
 ```
 
 이렇게 제어 흐름에 따라 타입이 좁혀지는 것을 `type narrowing`이라고 한다. Type narrowing을 해서 **코드 구조를 바탕으로 TS가 더 구체적인 타입 추론을 할 수 있게** 해야한다.
+
+## 다형성 적용하기
+
+Generic
+```typescript
+type SuperPrint = {
+	<TypePlaceholder>(arr: TypePlaceholder[]): void
+}
+
+type SuperPrint = <T>(a: T[]) => T;
+
+// a
+const superPrint: SuperPrint = (a) => a[0]
+
+// b
+function superPrint<V>(a: V[]) {
+    return a[0]
+}
+```
+
+위 코드의 a와 b 코드는 생김새만 다를 뿐 동일하다.  
+`<>` 기호로 확정된 타입 대산 `placeholder`를 지정할 수 있다. 이렇게 제너릭을 쓰면 타입스크립트가 `placeholder`로 타입을 알아내 그 자리를 대체해준다.
+코드를 자바스크립트로 변환할 때 타입스크립트가 placeholder 자리의 타입을 적절한 타입으로 변환한다.
+
+```typescript
+type Player<E> = {
+    name: string
+    extraInfo: E
+}
+
+const nico: Player<{age: number}> = {
+    name: 'nico',
+    extraInfo: {
+        age: 29
+    }
+}
+```
+
+위 코드처럼 사용할 수도 있다.
 
 ### 다형성 타입 집합을 정의할 때는 Union 활용
 
@@ -56,3 +182,66 @@ function isFish(animal: Animal): animal is Fish {
 
 const birds = animals.filter(isBird);
 ```
+
+## interface
+
+타입스크립트의 `interface`는 객체지향 프로그래밍의 개념을 활용해 디자인되었다.
+자바스크립트에서 추상클래스는 상속받는 클래스의 청사진이다. 상속받는 클래스가 가져야할 프로퍼티, 메서드를 알려준다. (상속받는 클래스에게 *어떻게 구현할지* 말고 *뭘 구현해야할지*를 알려준다.)
+추상클래스는 인스턴스를 만드는 걸 허용하지 않는다. 아래 코드에서 `extends User`는 할 수 있으나 `new User()`는 할 수 없다.
+
+타입스크립트에서 추상클래스를 만들면 JS로 변환시 그냥 일반 클래스로 변환한다. 그렇기에 추상클래스 대신 인터페이스를 쓰면 좋다.
+더욱이, `interface`는 컴파일하면 자바스크립트로 바뀌지 않고 사라지므로 가볍다!
+
+```typescript
+// js. 추상클래스
+abstract class User { 
+	constructor(
+		protected firstName: string,
+		protected lastName: string
+	){}
+	
+	abstract sayHi(name: string): string;
+	abstract getFullName(): string;
+}
+
+class Player extends User {
+	getFullName() {
+		return `${this.lastName}${this.firstName}`
+	}
+	sayHi(name: string) {
+		return `Hello ${name}, I'm ${this.firstName}`
+	}
+}
+
+// ts. interface를 사용하자
+interface User {
+	firstName: string
+	lastName: string
+	sayHi(name: string): string
+	getFullName(): string
+}
+```
+
+객체의 모양을 선언하는 목적으로 쓰는데, `type`은 정해진 문자열 값이라던가 특정한 값을 타입으로 제한 가능하지만
+`interface`는 `type`만 타입으로 정해줄 수 있다. 
+
+`type`은 새 프로퍼티를 추가하도록 개방될 수 없지만 `interface`는 타입을 상속 받아 프로퍼티를 확장할 수 있다. 아래 코드를 보자.
+다만 `interface`를 상속할때에는 프로퍼티를 `private`으로 만들 수 없다.
+
+```typescript
+type User = { 
+	name: string	
+}
+
+type Player = User & {
+    // a
+}
+
+// User를 interface로 하면
+interface Player extends User {
+    // b
+} 
+```
+
+
+
