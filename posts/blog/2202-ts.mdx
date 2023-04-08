@@ -14,10 +14,15 @@ function foo(x: string | number) {
     // 이 부분에서 x의 타입은 string일 수밖에 없다. (narrowed type)
     x = 1; // 그러나 이런식으로 할당을 하면 선언한 타입이 된다.
   }
+  
+  // 또는
+  if (Array.isArray(x)) {
+      // 
+  }
 }
 ```
 
-이렇게 제어 흐름에 따라 타입이 좁혀지는 것을 `type narrowing`이라고 한다.
+이렇게 제어 흐름에 따라 타입이 좁혀지는 것을 `type narrowing`이라고 한다. Type narrowing을 해서 **코드 구조를 바탕으로 TS가 더 구체적인 타입 추론을 할 수 있게** 해야한다.
 
 ### 다형성 타입 집합을 정의할 때는 Union 활용
 
@@ -36,7 +41,7 @@ type Animal = Bird | Fish;
 ```
 
 위 예시의 `Animal`은 `kind`가 `bird`인 데이터를 위한 `isSwimming`과 `fish` 데이터를 위한 `isFlying` 속성을 함께 가진다.
-이런 경우엔 `Bird` 타입과 `Fish` 타입으로 분리하고 `Union`을 사용해 `Animal` 타입으로 묶어주는 게 낫다.
+이런 경우엔 `Bird` 타입과 `Fish` 타입으로 분리하고 `Union`을 사용해 `Animal` 타입으로 묶어주는 게 낫다. 이 때 Union 타입의 조합에 사용된 각 타입(`bird`, `fish`)을 '멤버'라고 한다.
 
 여기서 더 개선하고 싶다면, 아래대로 `isBird`와 `isFish` 함수가 타입명제를 반환하도록 변경하고 `filter`를 사용하면 된다. 
 
