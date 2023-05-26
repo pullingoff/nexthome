@@ -66,11 +66,26 @@ export const workExperiences: Experience[] = [
     period: '2022.07 ~ 현재',
     projects: [
       {
-        title: 'NewFMS 2.0',
-        tech: ['React', 'TypeScript', 'Material UI', 'Cypress', 'GIT'],
+        title: '파스토셀프 2.0',
+        tech: ['React', 'TypeScript', 'Redux', 'TanStack Query', 'MUI v5'],
         details: [
-          '통합회원 ERP 공통 리액트 컴포넌트(CSS-in-JS) 신규 개발 및 API 연동',
-          '레거시 홈페이지 테스트 시나리오 수립 및 자동화 테스트 적용', // 테스트 커버리지 nn%
+          'Compound Components 패턴을 활용한 공통 디자인 컴포넌트 개발',
+        ],
+      },
+      {
+        title: '홈페이지 테스트 자동화',
+        tech: ['Cypress', 'JavaScript', 'POM 패턴'],
+        details: [
+          'Cypress로 E2E 테스트 자동화, 테스트를 위한 공통 클래스와 커맨드 개발',
+        ],
+      },
+      {
+        title: 'NewFMS 2.0 / 정산 백오피스 개발',
+        tech: ['React', 'TypeScript', 'TanStack Query', 'MUI v4', 'GIT'],
+        details: [
+          'MUI 기반 리액트 공통 컴포넌트 개발 (Select, Text input, Header 등)',
+          '디자인 없이 관리자의 사용성을 고려해 정산 백오피스 최초 개발 및 유지보수', // 테스트 커버리지 nn%
+          '통합회원 서비스 구현 (회원가입, 마이페이지, 아이디/비밀번호 찾기 등)',
         ],
       },
     ],
@@ -160,7 +175,7 @@ export const education: Education[] = [
   {
     institute: 'Humber College',
     period: '2018.06 ~ 2019.12',
-    course: 'Marketing Diploma',
+    course: 'Marketing Diploma, 졸업',
     details: [
       'Toronto Marlies의 교내 세일즈 단원으로 발탁되어 SNS 마케팅 및 경기 티켓 판매',
       '양적 조사의 일환으로 70명의 남성에게 설문조사를 진행하고 포커스그룹 인터뷰',
@@ -170,31 +185,15 @@ export const education: Education[] = [
 
 export const techStacks: TechStack[] = [
   {
-    type: 'Front-End',
-    skill: [
-      'JavaScript',
-      'TypeScript',
-      'React',
-      'Next.js',
-      'Sass',
-      'HTML/CSS',
-      //'REST API',
-    ],
+    type: '프론트엔드',
+    skill: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Sass', 'HTML/CSS'],
   },
   {
-    type: 'Back-End',
-    skill: ['Python', 'Django', 'Node.js'],
+    type: '실무에 활용할 수 있습니다',
+    skill: ['Python', 'Django', 'SQL', 'Neo4j', 'Git', 'Shell script'],
   },
   {
-    type: 'Data',
-    skill: ['SQL', 'Neo4j'],
-  },
-  {
-    type: 'Devops',
-    skill: ['Git', 'Docker', 'Shell script'],
-  },
-  {
-    type: 'English',
+    type: '영어',
     skill: [
       '번역기 없이 독해가 가능하며 단어의 뉘앙스 차이를 알고 의견을 자유롭게 표현할 수 있음',
     ],
