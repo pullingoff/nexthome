@@ -1,0 +1,197 @@
+---
+title: "react-hook-form으로 리액트 폼 개선하기"
+date: 2023-05-23 09:30
+tags:
+- React
+- react-hook-form
+description: 리액트로 폼 구현할 때 onChange, value, 상태의 props drilling을 줄여봅시다.
+---
+
+## 요약
+
+짧게 요약한 내용입니다.
+
+<img width="700" alt='회원가입 as-is' src='/images/blog/2305/ex-asis.png' />
+
+이랬던 코드를 
+
+<img width="700" alt='회원가입 to-be' src='/images/blog/2305/ex-tobe.png' />
+
+이렇게 바꾸었습니다.
+
+## 도입 계기
+
+```typescript
+    const [status, setStatus] = useState<{
+        idMsg: string,
+        idOk: boolean,
+        isIdChecked: boolean,
+        passwordMsg: string,
+        passwordOk: boolean,
+        confirmPasswordMsg: string,
+        confirmPasswordOk: boolean,
+      }>({
+        idMsg: '',
+        idOk: false,
+        isIdChecked: false,
+        passwordMsg: '',
+        passwordOk: false,
+        confirmPasswordMsg: '',
+        confirmPasswordOk: false,
+    });
+```
+
+원래는 비밀번호, 비밀번호 재입력 필드가 validate한지 여부를 담는 불린값(`passwordOk`)과 
+그 상태에 따른 에러 또는 성공 메시지(`passwordMsg`)을 상태로 가지고 있었습니다.
+원래 상태를 관리할 때 상태(`password`) 외에 그 상태에 따라 결정되는 값(`passwordMsg`, `passwordOk`)은 상태에 담지 않는게 맞는데요.
+
+```js
+    if (!values.password || !PW_REGEX.test(values.password)) {
+      _errors.passwordOk = false;
+      _errors.passwordMsg = MSG.RULE_PW;
+    }
+
+    if (!values.confirmPassword || values.password !== values.confirmPassword) {
+      _errors.confirmPasswordOk = false;
+      _errors.confirmPasswordMsg = MSG.WRONG_PW;
+    }
+    setStatus(_errors);
+```
+
+기존 코드를 저렇게 작성했던 이유는 필드 간의 의존성 때문이었습니다.
+비밀번호가 바뀔 때마다 정규 표현식에 맞는지 확인하고 바로바로 에러메시지를 표시해줘야 했고, 비밀번호 확인 필드가 그 비밀번호와 일치하는지 다시 밸리데이션해야했습니다. 
+이런 값들을 JSX 내부에서 그때그때 밸리데이션하게 하기보단 state로 분리해서 `onChange` 내에서 검사 후 `setStatus`를 한번에 하도록 했었어요.  
+
+이 방법이 베스트가 아니라는 걸 알면서도 구현했던 거지만
+밸리데이션 내용이 너무 길어졌고, 코드가 복잡해져 어떤 코드를 수정할 때 다른 부분에도 영향이 갈까봐 찝찝해지기 시작했습니다.
+
+그래서 <a href='https://react-hook-form.com' target='blank'> **react-hook-form**</a>을 적용해보았고, 아주 만족 중입니다!
+
+## react-hook-form이란?
+
+react-hook-form, 줄여서 rhf는 폼을 관리하고 활용할 수 있는 커스텀 훅들을 제공해줍니다. 사용가능한 훅들은 이런 것들이 있습니다.
+
+- `useForm`: 폼을 간단하게 관리할 수 있는 커스텀 훅.
+- `useController`: MUI처럼 외부에서 제어하는 컴포넌트들의 input을 제어하고 싶을 때 사용합니다. 컴포넌트별로 `useController`를 만들고, `useForm`과 따로 씁니다.
+- `useFormContext`: `formContext`에 접근할 수 있고 `useForm`의 메서드를 사용할 수 있습니다. 폼 컨텍스트를 prop으로 넘기기 불편한, 깊게 nested 된 구조에 쓰면 좋습니다.
+- `useFormState`: 각 폼 상태를 구독하고, 커스텀 훅 레벨에서 리렌더링을 분리하고 싶을때 사용합니다.
+- `useFieldArray`: 필드들을 배열로 관리해 다이나믹하게 필드를 추가하거나 삭제, 순서를 바꾸고 싶을 때 사용합니다.
+
+그 중에서도 저는 가장 기본적인 <a href='https://react-hook-form.com/docs/useform'>`useForm`</a>을 사용하였습니다. 예시코드를 보겠습니다.
+
+## useForm 연동
+
+```jsx
+    import { SubmitHandler, useForm } from 'react-hook-form';
+    
+    const 회원가입 = () => {
+        const {
+            register,
+            handleSubmit,
+            formState: { errors },
+        } = useForm<FormValues>({
+            mode: 'onChange',       // validation을 언제 할지
+            defaultValues: {        // input들의 기본값 설정
+                userId: '',
+                password: '',
+                confirmPassword: '',
+            },
+        });
+        return (
+            // 생략
+        )
+    }
+```
+
+가장 먼저, `useForm`을 세팅했습니다. `mode` 속성으로 `onChange`마다 validation 하도록 변경해주었습니다.
+기본 설정은 `onSubmit`으로, 폼이 submit될 때에만 밸리데이션 처리를 합니다. 
+위 폼에선 회원가입에 필요한 `userId`, `password`, `confirmPassword` 필드를 관리합니다.
+`useState`와 비슷한 구조로 `defaultValues`를 지정해줍니다.
+
+```jsx
+    // 비밀번호 인풋
+     <PasswordInput
+         // name='password'
+         // value={values.password}
+         // onChange={handleChange}
+        {...register('password', {
+            deps: ['confirmPassword'],   // 의존성 연결
+            pattern: {                   // 정규표현식 패턴
+                value: PW_REGEX,
+                message: '비밀번호는 숫자와 영어, 특수문자를 포함해주세요.',
+            },
+        })}
+    />
+```
+
+그 다음은 `register` 메서드를 사용해 인풋과 연동합니다. 이 코드의 비즈니스 로직 중 하나가
+'*비밀번호 입력값이 변경될때마다 비밀번호 확인 필드도 다시 확인해 바로바로 에러메시지를 띄운다.*'입니다.
+
+그렇기에 `register`의 두번째 파라미터인 `options` 객체의 `deps` 배열에 `confirmPassword`를 넣어줍니다.
+
+또 비밀번호를 위한 정규표현식과 그 정규표현식에 맞지 않을 때 뜰 에러메시지도 지정해줍니다.
+기존에 `prop`으로 넘겨주었던 `name`, `value`, `onChange`를 넘겨줄 필요가 없게 되었습니다!
+
+```jsx
+// 비밀번호 확인 실패 에러메시지
+<p>{errors?.confirmPassword}</p>
+```
+
+그리고 그 에러메시지는 `formState.errors.인풋name` 으로 사용하면 됩니다.
+
+## 커스텀 밸리데이션
+
+```jsx
+    // 비밀번호 확인 인풋
+    <PasswordInput
+        // name='confirmPassword'
+        // value={values.confirmPassword}
+        // onChange={handleChange}
+        {...register('confirmPassword', {
+            validate: {
+                sameAsPw: (v, formValues) => {
+                    return formValues.password === v || '비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다';
+                },
+                // 다른 커스텀 밸리데이션 규칙도 추가 가능!
+            },
+        })}
+    />
+```
+
+정규표현식 말고도 커스텀 validation 규칙을 추가할 수 있습니다. 
+위 코드에선 `sameAsPw`라는 이름의 validation 규칙이 있고, 폼의 `password`와 값 `v`가 같은지 확인합니다. 같지 않을 경우'*비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다*'라는 에러 메시지가 표시됩니다. 
+
+참고로 저는 이 에러메시지들을 상수화해놓고 따로 구현하였으나, 예시 코드의 가독성을 위해 직접 넣어주었습니다.
+
+## 온클릭 submit 연동
+
+마지막으로 아이디 중복확인 버튼을 클릭했을 때, 서버로 아이디 중복확인 요청을 날려 그 응답을 받아와야 합니다.
+하지만 이런 경우 아이디 중복확인 버튼에 `type=submit`을 넣을 수는 없습니다. 폼의 최종 submit은 회원가입하기 버튼을 눌렀을 때 이뤄져야 하기 때문입니다.
+
+```jsx
+    // 아이디 중복확인 버튼
+    <CheckIdBtn 
+        onClick={handleSubmit(checkId)} // handleSubmit으로 연동
+    >
+        중복확인
+    </CheckIdBtn>
+```
+
+```typescript
+    const checkId: SubmitHandler<FormValues> = (data) => {
+        console.log('입력한 id:' + data.userId) 
+    }
+```
+
+이럴 때엔 `useForm`의 `handleSubmit` 메서드에 중복확인을 하는 함수 `checkId`를 인자로 넘겨주면 됩니다.
+이렇게 하면 `checkId`는 `MouseEvent`가 아니라 react-hook-form에서 정의한 타입 `SubmitHandler`을 리턴하며 해당 폼에서 관리하는 `data`를 받아 사용할 수 있습니다.
+
+이런 식으로 react-hook-form을 사용해 리액트에서 폼과 인풋을 간단하게 구현하고 관리할 수 있습니다.
+직접 리액트 `state`로 폼 인풋의 `value`를 계속 추적하고 `onChange` 핸들러를 전해줄 필요가 없게 되었습니다. 
+
+이렇게 react-hook-form을 직접 써보니 너무 좋아서 회사 프로젝트에도 도입을 했는데요! 
+그 프로젝트에선 MUI의 `TextField` 컴포넌트를 공통화해 사용하고 있었는데요. 그 컴포넌트와 react-hook-form의 `FormContextProvider`, `useController`를 함께 사용하였습니다.
+인풋을 동적으로 추가해야하는 부분에서는 `useFieldArray`를 유용하게 사용했구요!
+
+그럼 이만 다들 react-hook-form을 사용해 즐거운 코딩하시길 바라겠습니다!
+😁
