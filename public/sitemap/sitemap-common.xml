@@ -4,4 +4,13 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
+  <url>
+    <loc>https://haeun.vercel.app/</loc>
+    <lastmod>2023-05-30T11:07:46.355Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://haeun.vercel.app/about</loc>
+    <lastmod>2023-05-30T11:07:46.355Z</lastmod>
+  </url>
 </urlset>
