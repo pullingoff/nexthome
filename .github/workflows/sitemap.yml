@@ -1,0 +1,13 @@
+name: Submit Sitemap
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run yarn sitemap
+        run: yarn run sitemap

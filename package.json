@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "sitemap": "sh scripts/submit-sitemap.sh",
     "start": "tsc-watch --onSuccess 'node dist/app.js' ",
     "lint": "next lint --fix",
     "export": "next export"

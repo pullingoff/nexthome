@@ -1,30 +1,30 @@
-const fs = require('fs');
-const globby = require('globby');
-const prettier = require('prettier');
+const fs = require("fs");
+const globby = require("globby");
+const prettier = require("prettier");
+const path = require("path");
 
 const getDate = new Date().toISOString();
-const MY_DOMAIN = 'https://haeun.vercel.app';
-const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
+const MY_DOMAIN = "https://haeun.vercel.app";
+const formatted = (sitemap) => prettier.format(sitemap, { parser: "html" });
 
 (async () => {
   const pages = await globby([
     // include
-    '../pages/**/*.tsx',
-    '../pages/*.tsx',
+    "../src/pages/**/*.tsx",
+    "../src/pages/*.tsx",
     // exclude
-    '!../pages/_*.tsx',
+    "!../src/pages/_*.tsx",
   ]);
-  // TODO 수정하기
-  console.log(pages);
 
   const pagesSitemap = `
         ${pages
-          .map(page => {
+          .filter((page) => !page.includes("["))
+          .map((page) => {
             const path = page
-              .replace('../pages/', '')
-              .replace('.tsx', '')
-              .replace(/\/index/g, '');
-            const routePath = path === 'index' ? '' : path;
+              .replace("../src/pages/", "")
+              .replace(".tsx", "")
+              .replace(/\/index/g, "");
+            const routePath = path === "index" ? "" : path;
             return `
                 <url>
                     <loc>${MY_DOMAIN}/${routePath}</loc>
@@ -32,7 +32,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
                 </url>
             `;
           })
-          .join('')}
+          .join("")}
     `;
 
   const generatedSitemap = `
@@ -47,10 +47,10 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
     `;
 
   const formattedSitemap = [formatted(generatedSitemap)].toString();
+  const filePath = "../public/sitemap/sitemap-common.xml";
 
-  fs.writeFileSync(
-    'public/sitemap/sitemap-common.xml',
-    formattedSitemap,
-    'utf8'
-  );
+  const dirname = path.dirname(filePath);
+  fs.mkdirSync(dirname, { recursive: true });
+
+  fs.writeFileSync(filePath, formattedSitemap, "utf8");
 })();

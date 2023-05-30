@@ -1,33 +1,34 @@
-const fs = require('fs');
-const fetch = require('node-fetch');
-const prettier = require('prettier');
+const fs = require("fs");
+const fetch = require("node-fetch");
+const prettier = require("prettier");
+const path = require("path");
 
 const getDate = new Date().toISOString();
 
 const fetchUrl =
-  'https://api.github.com/repos/pullingoff/nexthome/contents/posts/blog';
-const YOUR_AWESOME_DOMAIN = 'https://haeun.vercel.app';
+  "https://api.github.com/repos/pullingoff/nexthome/contents/posts/blog";
+const YOUR_AWESOME_DOMAIN = "https://haeun.vercel.app";
 
-const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
+const formatted = (sitemap) => prettier.format(sitemap, { parser: "html" });
 
 (async () => {
   const fetchPosts = await fetch(fetchUrl)
-    .then(res => res.json())
-    .catch(err => console.log(err));
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 
   const postList = [];
-  fetchPosts.forEach(post => postList.push(post.name.split('.mdx')[0]));
+  fetchPosts.forEach((post) => postList.push(post.name.split(".mdx")[0]));
 
   const postListSitemap = `
     ${postList
-      .map(id => {
+      .map((id) => {
         return `
           <url>
             <loc>${`${YOUR_AWESOME_DOMAIN}/blog/${id}`}</loc>
             <lastmod>${getDate}</lastmod>
           </url>`;
       })
-      .join('')}
+      .join("")}
   `;
 
   const generatedSitemap = `
@@ -42,10 +43,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
   `;
 
   const formattedSitemap = [formatted(generatedSitemap)].toString();
+  const filePath = "../public/sitemap/sitemap-posts.xml";
 
-  fs.writeFileSync(
-    'public/sitemap/sitemap-posts.xml',
-    formattedSitemap,
-    'utf8'
-  );
+  fs.writeFileSync(filePath, formattedSitemap, "utf8");
 })();
