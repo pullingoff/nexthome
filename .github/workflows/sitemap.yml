@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run yarn sitemap
-        run: yarn run sitemap
+      - run: yarn run sitemap
