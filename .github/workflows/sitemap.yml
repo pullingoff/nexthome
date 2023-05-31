@@ -1,8 +1,9 @@
 name: Submit Sitemap
 
 on:
-  push:
-    branches: [ main ]
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,8 +14,8 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@main
-        with:
-          node-version: 14.x
 
-      - name: Run yarn sitemap
+      - name: Install dependencies
+        run: yarn install
+
       - run: yarn run sitemap
