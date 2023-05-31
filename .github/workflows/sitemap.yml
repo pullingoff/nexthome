@@ -17,4 +17,4 @@ jobs:
           node-version: 14.x
 
       - name: Run yarn sitemap
-        run: yarn run sitemap
+      - run: yarn run sitemap
