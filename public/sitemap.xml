@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://haeun.vercel.app/sitemap/sitemap-common.xml.gz</loc>
-    <lastmod>2022-10-23T07:26:15.799Z</lastmod>
+    <loc>https://haeun.vercel.app/../sitemap/sitemap-common.xml.gz</loc>
+    <lastmod>2023-05-30T11:07:47.053Z</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://haeun.vercel.app/sitemap/sitemap-posts.xml.gz</loc>
-    <lastmod>2022-10-23T07:26:15.799Z</lastmod>
+    <loc>https://haeun.vercel.app/../sitemap/sitemap-posts.xml.gz</loc>
+    <lastmod>2023-05-30T11:07:47.053Z</lastmod>
   </sitemap>
 </sitemapindex>
