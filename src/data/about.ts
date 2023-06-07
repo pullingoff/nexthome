@@ -8,9 +8,9 @@ export const headerInfo: MyInfo = {
   firstSentences: [
     '"거미는 자신의 실로써 공간의 자유에 이른다."',
     '자기 주도적으로 성장하는 프론트엔드 개발자 박하은입니다.',
-    '질문을 통해 지식을 하나로 엮는 걸 좋아하고, 새로운 언어와 기술에 관심이 많습니다.',
+    '질문을 통해 지식을 하나로 엮는 걸 좋아하고, 문제의 핵심을 파악하고 해결하는 과정을 즐깁니다.',
     '문제 해결을 위한 라이브러리나 프레임워크, 언어가 있다면 언제든 배울 준비가 되어있습니다.',
-    '사람들에게서 동기와 에너지, 인사이트를 주로 얻으며 협업과 소통에 능합니다.',
+    '사람들에게서 동기와 에너지, 인사이트를 주로 얻으며 좋은 동료가 되는 게 목표입니다.',
     // js 언급하기
   ],
 };
@@ -69,7 +69,9 @@ export const workExperiences: Experience[] = [
         title: '파스토셀프 2.0',
         tech: ['React', 'TypeScript', 'Redux', 'TanStack Query', 'MUI v5'],
         details: [
+          'Thymeleaf로 개발되었던 서비스를 Next.js로 요구사항에 맞춰 재개발',
           'Compound Components 패턴을 활용한 공통 디자인 컴포넌트 개발',
+          'react-hook-form을 사용해 추가, 수정, 삭제가 자유로운 Input 컴포넌트 공통화',
         ],
       },
       {
@@ -86,6 +88,13 @@ export const workExperiences: Experience[] = [
           'MUI 기반 리액트 공통 컴포넌트 개발 (Select, Text input, Header 등)',
           '디자인 없이 관리자의 사용성을 고려해 정산 백오피스 최초 개발 및 유지보수', // 테스트 커버리지 nn%
           '통합회원 서비스 구현 (회원가입, 마이페이지, 아이디/비밀번호 찾기 등)',
+        ],
+      },
+      {
+        title: '팀 문화',
+        tech: [],
+        details: [
+          '프론트 팀 과반수가 참여하는 스터디 2개 개설 및 6개월 이상 주도',
         ],
       },
     ],
