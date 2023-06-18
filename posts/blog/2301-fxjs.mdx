@@ -1,0 +1,64 @@
+---
+title: "자바스크립트 함수형 프로그래밍: 함수형 자바스크립트 기본기"
+date: 2023-01-02 09:20
+tags:
+  - JAVASCRIPT
+  - 함수형프로그래밍
+description:
+---
+
+2023년을 맞아 유인동 님의 인프런 [함수형 프로그래밍과 Javascript ES6+](https://www.inflearn.com/course/functional-es6) 강의를 듣기 시작했습니다.
+자바스크립트 ES6가 나오면서 함수형 프로그래밍 스타일로 코딩을 더 간편하게 할 수 있게 도와주는 규약이나 기능이 추가되었는데요.
+한번 배워보겠습니다!
+
+## 평가와 일급
+
+- 평가: **evaluate**, 값을 계산하는 것
+(e.g. `1`을 평가하면 `1`, `2+3`을 평가하면 `5`, `10/2`를 평가하면 `5`가 된다.)
+- 일급: 값으로 다룰 수 있다, 변수에 담을 수 있다, 함수의 파라미터로 사용될 수 있다, 결과로 사용될 수 있다.
+
+### 일급 함수
+
+- **함수를 값으로** 다룰 수 있는 함수
+- 함수가 일급 함수다 = 조합성과 추상화의 도구로 함수를 사용할 수 있다는 뜻
+- **함수의 파라미터로 함수를 제공**하거나 **함수가 함수를 반환**할 수 있다.
+
+```js
+function greet(helloFunc, name) {
+	console.log(helloFunc()+ name);
+}
+
+greet(console.log('hi!'), 'haeun')
+```
+
+위 코드를 보면 `greet` 함수의 파라미터로 함수인 `console.log('hi')`를 넣을 수 있다. 이 경우 `greet` 함수는 일급 함수이다.
+
+## 고차 함수
+
+고차 함수란 **함수를 값으로 다루는 함수**를 말한다. 아래 예시의 `reduce`, `apply1`, `times`가 고차 함수다.
+
+```js
+const apply1 = f => f(1)
+const add2 = a => a+2
+
+apply1(add2); // apply1(a=> a+2)은 곧 a가 1이 되므로 3
+
+const times = (f, n) => {
+    let i = -1;
+    while (++i < n) f(i)
+}
+
+times(a => log(a+10), 3) // a=>log(a+10)을 3번 반복한다. 이때 a는 i이므로 10,11,12가 결과가 됨
+```
+
+고차 함수는 함수를 만들어 리턴하며, 이때 클로저를 만들어 리턴하는 함수기도 하다.
+아래의 예시에서 `addMaker` 함수는 함수이자 `a`를 기억하는 클로저다.
+함수가 만들어지던 때의 환경인 `a`와 그 자체의 객체 `b => a+b`를 기억한다.
+
+```js
+const addMaker = a => b => a+b;
+const add10 = addMaker(10)
+
+console.log(add10) // b => a+b
+console.log(add10(5)) // 15
+```
