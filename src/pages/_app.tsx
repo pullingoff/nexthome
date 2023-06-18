@@ -7,6 +7,7 @@ import Loading from '#components/Loading';
 import styled from 'styled-components';
 import hifiImg from '#public/hifi.png';
 import Image from 'next/image';
+import Script from 'next/script';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,24 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <StyledLayout>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.GA_KEY}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
       <MetadataBox />
       <Loading loading={loading} />
       <Component {...pageProps} />
