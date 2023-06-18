@@ -1,0 +1,81 @@
+---
+title: "자바스크립트 함수형 프로그래밍: 이터레이터 프로토콜"
+date: 2023-01-20 09:20
+tags:
+  - JavaScript
+  - 함수형프로그래밍
+description: for of는 Array, Map, Set과 같은 이터러블 객체의 이터레이터를 활용해 동작한다.
+---
+
+ES6에는 이전 방식에 없던 새로운 리스트 순회법이 생겼다.
+
+## for...of의 등장
+
+자바스크립트의 Array, Map, Set 자료구조는 `for of`로 내용물을 순회할 수 있다.
+
+```js
+const str = '12345'
+const arr = [1,2,3]
+const map = new Map([['first', 1], ['second', 2], ['third', 3]]);
+const set = new Set([1,2,3])
+
+for (const a of arr) {
+	console.log(a)
+}
+```
+
+그러나 인덱스로 원소에 접근할 수 있는 배열과 달리 Map과 Set 데이터는 `map[1]`, `set[2]` 이런 식으로 인덱스를 활용해 요소를 호출할 수 없다.
+즉, `for of` 내부 문법이 자료구조별로 다르다는 것을 추측할 수 있다. `for of`의 내부 동작은 `Symbol.iterator`로 알아볼 수 있다.
+
+## JS 자료구조로 알아보는 이터레이터 프로토콜
+
+**JS의 배열, Map, Set는 이터러블/이터레이터 프로토콜을 따른다.** 이 자료구조들은 `[Symbol.iterator]` 메서드를 모두 가지고 있다.
+각각 콘솔에 프린트해보면 아래와 같은 결과가 나온다.
+
+```js
+set[Symbol.iterator]() // SetIterator {1,2,3}
+map[Symbol.iterator]() // MapIterator {'first'=>1, 'second'=>2, 'third'=>3}
+arr[Symbol.iterator]() // Array Iterator {}
+```
+
+- Iterable: 이터레이터를 리턴하는 `[Symbol.iterator]()`를 갖는 값
+- Iterator: `{value, done}` 객체를 리턴하는 `next()`를 갖는 값
+- **이터러블/이터레이터 프로토콜: 이터러블을 for…of, spread(전개 연산자)와 함께 동작하도록 한 규약**
+
+```js
+let setIterator = set[Symbol.iterator]();
+setIterator.next(); // {value: 1, done: false}
+setIterator.next(); // {value: 2, done: false}
+setIterator.next(); // {value: 3, done: false}
+setIterator.next(); // {done: true}
+```
+
+즉, **for of 구문을 실행하면 그 이터레이터를 순회하며** 값을 보여준다!
+`map.keys()` 도 맵의 키만 담긴 MapIterator를 반환한다.
+
+## 사용자 정의 이터러블
+
+아래의 코드로 이터러블을 커스텀할 수 있다.
+
+```js
+const myIterable = {
+	[Symbol.iterator]() {
+		let i = 4;
+		return {
+			next() {
+				return i == 0 ? {done: true} : { value: i--, done: false}
+			},
+			[Symbol.iterator]() {
+				return this;
+			} // next()외에도 자기 자신을 리턴함으로써 언제든 이어서 iterate하게
+		}
+	}
+}
+let myIterator = myIterable[Symbol.iterator]()
+```
+
+위와 같이 자기 자신을 리턴하는 이터레이터를 잘 만들어진 이터레이터(well-formed iterator)라고 한다.
+잘 만들어진 이터레이터를 받아 이어서 iterate할 수 있다.
+JS의 순회가 가능한 대부분 라이브러리나 브라우저 web api들은 이 이터러블/이터레이터 프로토콜을 따른다.
+
+*참고: 인프런 [함수형 프로그래밍과 Javascript ES6+](https://www.inflearn.com/course/functional-es6)*

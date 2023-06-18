@@ -1,0 +1,83 @@
+---
+title: "자바스크립트 함수형 프로그래밍: 제너레이터와 이터레이터"
+date: 2023-02-01 11:20
+tags:
+  - JavaScript
+  - 함수형프로그래밍
+description: 이터레이터를 생성하는 제너레이터를 잘 활용하면 조합성 높은 코드를 짤 수 있다.
+---
+
+## 제너레이터와 이터레이터
+
+자바스크립트에서는 **어떤 값이든 이터러블이면 순회할 수 있다**. 제너레이터로는 어떤 상태, 값이든 이터러블하게 만들 수 있다(다형성).
+
+제너레이터란 이터레이터이자 이터러블을 생성하는 함수, **이터레이러를 리턴하는 함수**다.
+일반 함수 앞에 *를 붙여 만들 수 있다.
+
+```js
+function *gen() {
+	yield 1;
+	yield 2;
+	yield 3;
+	return 100; // done: true일때 undefined 대신 value가 되는 값. 순회되진 않는다.
+}
+let iter = gen();
+log(iter.next());
+
+for (const a of gen()) // 도 가능
+    console.log(a)
+```
+
+`iter[Symbol.iterator]() == iter)`의 값은 true다. 제너레이터는 잘 만들어진 이터레이터를 리턴하기 때문이다.
+
+## odds: 주어진 이터러블에서 홀수만 뽑아내기
+
+```js
+// 무한하긴 하지만 내가 제너레이터를 평가할때만 돌아가므로 브라우저가 뻗지 않는다.
+function *infinity(start=0) {
+	while (true) yield start++;
+}
+```
+
+주어진 `start`에서부터 무한대의 값을 담은 이터레이터를 반환하는 제너레이터 `infinity`는 위처럼 구현할 수 있다.
+만약 제너레이터 없이 1부터 무한대의 값을 담은 배열을 만드려고 했다면 브라우저가 멈췄을 것이다.
+그러나 위 코드처럼 제너레이터로 만들면 값은 무한하지만 값을 평가할때만 돌아가므로 브라우저가 뻗지 않는다.
+
+이터러블을 순회하며 주어진 `l`에서 멈추는 제너레이터 `limit`과 `l`까지의 홀수를 담은 이터레이터를 반환하는 제너레이터
+`odds`는 아래와 같이 구현할 수 있다.
+
+```js
+// iter를 받아서 iter를 돌다가 l을 만나면 멈춘다.
+function *limit(l, iter) {
+	for (const a of iter) {
+		yield a;
+	}
+	if (a==l) return;
+}
+limit(4, [1,2,3,4]);
+
+function *odds(l) {
+	for (const a of limit(l, infinity(1))) {
+		if (a % 2) yield a;
+	}
+}
+
+let oddIter = odds(10) // max 값
+```
+
+`odds`는 위에서 만든 `limit`과 `infinity`를 활용해 구현하였다.
+
+## 조합성 있는 코드 만들기
+
+이터러블 프로토콜을 따르면 조합성 있는 코드를 작성할 수 있다.
+이전 장에서 본 `for…of`외에도 전개 연산자, 구조 분해, 나머지 연산자 등등을 활용하기 좋다.
+
+```js
+log([...odds(10)]) // 스프레드해 바로 배열로 만들기: [1 3 5 7 9]
+
+const [head, ...tail] = odds(5); // 구조분해, 나머지 연산자 활용
+console.log(head) // 1,
+console.log(tail) // [3, 5]
+```
+
+*참고: 인프런 [함수형 프로그래밍과 Javascript ES6+](https://www.inflearn.com/course/functional-es6)*
