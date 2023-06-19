@@ -2,7 +2,7 @@
 title: "자바스크립트 함수형 프로그래밍: 제너레이터와 이터레이터"
 date: 2023-02-01 11:20
 tags:
-  - JAVASCRIPT
+  - JavaScript
   - 함수형프로그래밍
 description: 이터레이터를 생성하는 제너레이터를 잘 활용하면 조합성 높은 코드를 짤 수 있다.
 ---
@@ -51,8 +51,8 @@ function *infinity(start=0) {
 function *limit(l, iter) {
 	for (const a of iter) {
 		yield a;
+        if (a==l) return;
 	}
-	if (a==l) return;
 }
 limit(4, [1,2,3,4]);
 
