@@ -51,8 +51,8 @@ function *infinity(start=0) {
 function *limit(l, iter) {
 	for (const a of iter) {
 		yield a;
+        if (a==l) return;
 	}
-	if (a==l) return;
 }
 limit(4, [1,2,3,4]);
 
