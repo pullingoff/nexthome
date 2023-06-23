@@ -109,7 +109,7 @@ S.ContentBox = styled.div`
 
   p img {
     margin: 15px 0;
-    max-width: 400px;
+    max-width: 700px;
     width: -webkit-fill-available;
   }
 
