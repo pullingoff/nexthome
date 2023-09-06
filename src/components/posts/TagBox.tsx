@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import blueHeart from '#public/images/blueheart.png';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { StyledTag } from '#components/posts/PostCardItem';
 import S from '#styles/Common.styled';
 import { ITag } from '#src/type';

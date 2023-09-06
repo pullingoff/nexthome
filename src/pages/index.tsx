@@ -6,7 +6,7 @@ import { getRecentPosts } from '#lib/posts-related-api';
 import CustomLink from '#components/common/CustomLink';
 import mainImg from '#public/images/main.JPG';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export const getStaticProps: GetStaticProps = async () => {
   const { recentPosts } = await getRecentPosts();

@@ -6,7 +6,7 @@ import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
 import CustomLink from '#components/common/CustomLink';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
