@@ -12,10 +12,8 @@ type LinkProps = {
 
 const CustomLink = ({ href, children, target, ...rest }: LinkProps) => {
   return (
-    <Link href={href} passHref>
-      <a {...rest} target={target}>
-        {children}
-      </a>
+    <Link href={href} passHref target={target} {...rest}>
+      {children}
     </Link>
   );
 };
