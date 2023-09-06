@@ -6,7 +6,7 @@ import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
 import CustomLink from '#components/common/CustomLink';
 import styled from 'styled-components';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -57,7 +57,14 @@ const SpiderLogo = () => {
   return (
     <NavLogo>
       <CustomLink href="/">
-        <Image alt="spider" width="45px" src={spiderLogo} />
+        <Image
+          alt="spider"
+          width="40"
+          src={spiderLogo}
+          style={{
+            margin: '0.5rem 0 0.25rem 0',
+          }}
+        />
       </CustomLink>
     </NavLogo>
   );
@@ -69,7 +76,7 @@ const NavLogo = styled.div`
   margin: 1rem;
 
   &:hover {
-    & span img {
+    & img {
       transform: rotate(360deg);
       transition: transform 0.25s ease-in-out;
     }

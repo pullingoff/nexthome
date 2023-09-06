@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import Loading from '#components/Loading';
 import styled from 'styled-components';
 import hifiImg from '#public/hifi.png';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import Script from 'next/script';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

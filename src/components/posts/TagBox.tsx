@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import blueHeart from '#public/images/blueheart.png';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import { StyledTag } from '#components/posts/PostCardItem';
 import S from '#styles/Common.styled';
 import { ITag } from '#src/type';
@@ -18,8 +18,8 @@ const TagBox = ({
         <S.PageTitle>Categories</S.PageTitle>
         <GetRandomIcon
           alt="get random post"
-          width="35px"
-          height="35px"
+          width="35"
+          height="35"
           src={blueHeart}
           onClick={moveToRandomPost}
         />
