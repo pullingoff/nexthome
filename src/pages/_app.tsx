@@ -51,8 +51,8 @@ const CoffeeChat = () => {
         <Image
           src={hifiImg}
           alt="Hifi 3D Illustration by Welson Hendra"
-          width={'50px'}
-          height={'50px'}
+          width={'50'}
+          height={'50'}
         />
       </a>
     </StyledCoffeeChatContainer>
@@ -68,6 +68,7 @@ const StyledCoffeeChatContainer = styled.div`
   background: white;
   border-radius: 50%;
   padding: 0.3rem;
+
   &:hover {
     transform: scale(1.2, 1.1);
     box-shadow: 0 30px 45px -15px var(--theme1-color);
