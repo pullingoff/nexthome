@@ -1,0 +1,45 @@
+---
+title: "리액트 톺아보기 "
+date: 2023-09-10 22:30
+tags:
+- React
+description:
+---
+
+## Fiber 아키텍처
+
+리액트 V16 전에는 Stack architecture를 사용했으나, V16으로 넘어오면서 Fiber Architecture를 사용하게 되었다.
+Stack 아키텍처를 사용할 경우 스택의 LIFO 특성상 렌더링 순서를 조정할 수 없는데, Fiber 아키텍처를 도입하면서, 순서 조정이 가능해져
+유연한 렌더링을 할 수 있게 되었다.
+
+### Fiber
+
+위에서 Fiber 아키텍처를 말했다. fiber란 VDOM의 노드 객체인데, react element의 내용이 DOM에 반영되기 위해서는 먼저 VDOM에 추가되어야한다.
+이를 위해 확장한 객체가 바로 fiber다. fiber는 컴포넌트의 상태, 라이프사이클, 훅 등을 관리한다.
+
+## 컴포넌트를 호출하면 일어나는 일
+
+JSX로 만들어진 컴포넌트를 호출하면 babel이 React.createElement()를 해 리액트 엘리먼트를 반환한다.
+이 React element는 type, key, props, ref 등을 가진다. 이후 변화가 있는 부분을 VDOM에 새로 적용(reconcile)하는 과정까지를 렌더링이라고 한다.
+이후 renderer가 컴포넌트 정보를 DOM에 삽입하는데, 이것을 mount된다고 한다.
+이후 브라우저가 DOM을 페인트한다.
+
+## Hook을 호출하면 일어나는 일
+
+Hook을 호출하면 Scheduler와도 상호작용을 한 후 reconciler와 상호작용을 한다.
+
+리액트는 Task를 비동기적으로 실행한다. 스케줄러(Scheduler)가 그 Task들의 실행 타이밍을 아는 패키지이다.
+
+Reconciler는 Fiber architecture에서 VDOM 재조정을 담당한다.
+
+### React hook은 어디서 오는가
+
+우리가 useState, useEffect를 사용할때 react 패키지에서 가져온다. 그 코어 패키지 안으로 들어가면
+ReactHooks.js로 들어가게 된다. 이 파일 안에선 resolveDispatcher()를 호출해 dispatcher 변수를 만든다.
+dispatcher는 ReactCurrentDispatcher.current인데 ReactCurrentDispatcher를 보면 훅 관련해 구현되어있는 내용이 없다.
+즉, react 코어 패키지는 React element 관련 정보만 알고, hook에 대한 정보를 갖고 있지 않는다.
+훅에 관련된 내용은 외부로부터 주입(DI) 받으며, 리액트 엘리먼트가 reconciler에 의해 fiber로 확장되어야 hook을 포함한다는 걸 알 수 있다.
+
+훅은 shared 패키지에서 import 해오는데, shared 패키지는 모든 패키지가 공유하는 공유 패키지이다.
+shared 패키지를 타고, ReactSharedInternals.js 파일의 renderWithHooks 함수를 통해 주입받는다.
+renderWithHooks 함수는 훅을 주입하며 컴포넌트를 호출하는 역할을 한다.
