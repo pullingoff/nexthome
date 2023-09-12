@@ -1,21 +1,49 @@
 ---
-title: "리액트 톺아보기 "
+title: "리액트 톺아보기 (작성중)"
 date: 2023-09-10 22:30
 tags:
 - React
 description:
 ---
 
-## Fiber 아키텍처
+[goidle 님의 리액트 톺아보기](https://goidle.github.io/react/in-depth-react-intro/), [보아즈 님의 리액트 까보기 시리즈](https://youtu.be/JadWu4Ygnyc?si=bb149nca5g9dV1Nw)를 참고하여 공부하며 정리한 글입니다. 아직 작성중입니다!
 
-리액트 V16 전에는 Stack architecture를 사용했으나, V16으로 넘어오면서 Fiber Architecture를 사용하게 되었다.
-Stack 아키텍처를 사용할 경우 스택의 LIFO 특성상 렌더링 순서를 조정할 수 없는데, Fiber 아키텍처를 도입하면서, 순서 조정이 가능해져
-유연한 렌더링을 할 수 있게 되었다.
+## VDOM
 
-### Fiber
+Virtual DOM은 일종의 programming concept다.
+메모리 안에 저장되어있으며 ReactDOM 등의 라이브러리에 의해 실제 DOM과 동기화된다.
 
-위에서 Fiber 아키텍처를 말했다. fiber란 VDOM의 노드 객체인데, react element의 내용이 DOM에 반영되기 위해서는 먼저 VDOM에 추가되어야한다.
+![Virtual dom](/images/blog/23/vdom.png)
+
+VDOM은 fiber 노드들로 구성된 트리 형태로 구현되어있고, 더블 버퍼링 구조로
+DOM에 마운트된 fiber를 의미하는 current 트리와 render phase에서 작업중인 fiber인 workInProgress를 가진다.
+workInProgress에 있는 fiber는 commit phase를 지나서 current 트리에 속하게 된다.
+각 노드는 하나의 child를 가지고, 부모는 return으로 참조한다.
+
+위 이미지에서 보듯 workInProgress 트리의 노드는 current 트리에서 자기복제를 해서 만들어지고, 이 노드들은 서로를 alternate으로 참조한다.
+
+### fiber
+
+fiber란 VDOM의 노드 객체인데, react element의 내용이 DOM에 반영되기 위해서는 먼저 VDOM에 추가되어야한다.
 이를 위해 확장한 객체가 바로 fiber다. fiber는 컴포넌트의 상태, 라이프사이클, 훅 등을 관리한다.
+
+## 리액트 라이프사이클
+
+### render phase
+
+VDOM을 재조정(reconciliation)하는 단계로, element(Fiber)가 추가/수정/삭제되면 reconciler가 work를 스케줄러에 등록한다.
+이때 말하는 work란 reconciler가 컴포넌트의 수정사항을 DOM에 적용하기 위해 수행하는 일을 말한다.
+스케줄러는 등록된 work를 타이밍에 맞춰 수행한다.
+
+이때 reconciler의 설계가 리액트 V16부터는 stack에서 fiber architecture로 바뀌었다.
+Stack 아키텍처를 사용할 경우 스택의 LIFO 특성상 렌더링 순서를 조정할 수 없는데, Fiber 아키텍처를 도입하면서, 순서 조정이 가능해져
+순서가 유연한 렌더링을 할 수 있게 되었다.
+
+### commit phase
+
+재조정한 VDOM을 동기적으로 DOM에 적용(동기화)하고 라이프사이클을 실행하는 단계다.
+DOM에 적용을 일괄 처리한 후 리액트가 콜 스택을 비우고 브라우저가 paint한다.
+브라우저가 paint를 하기 위해선 리액트 DOM 조작이 완전히 끝난 상태여야한다.
 
 ## 컴포넌트를 호출하면 일어나는 일
 
@@ -34,12 +62,38 @@ Reconciler는 Fiber architecture에서 VDOM 재조정을 담당한다.
 
 ### React hook은 어디서 오는가
 
+코드에서 hook 호출 -> react/React -> react/ReactHooks ->
+react/ReactCurrentDispatcher -> react/ReactSharedInternals ->
+shared/ReactSharedInternals -> reconciler
+
 우리가 useState, useEffect를 사용할때 react 패키지에서 가져온다. 그 코어 패키지 안으로 들어가면
-ReactHooks.js로 들어가게 된다. 이 파일 안에선 resolveDispatcher()를 호출해 dispatcher 변수를 만든다.
-dispatcher는 ReactCurrentDispatcher.current인데 ReactCurrentDispatcher를 보면 훅 관련해 구현되어있는 내용이 없다.
+ReactHooks.js에서 hook들을 import하고 있다. 이 파일 안에선 ReactCurrentDispatcher.current를 반환하는 resolveDispatcher()를 갖고 있다.
+그래서 또 ReactCurrentDispatcher.current를 따라가보면 훅 관련해 구현되어있는 내용이 없다.
+
 즉, react 코어 패키지는 React element 관련 정보만 알고, hook에 대한 정보를 갖고 있지 않는다.
-훅에 관련된 내용은 외부로부터 주입(DI) 받으며, 리액트 엘리먼트가 reconciler에 의해 fiber로 확장되어야 hook을 포함한다는 걸 알 수 있다.
+훅은 react element라는 클래스가 인스턴스화된 후, 그 객체의 상태를 관리하는 것이기에 hook과 관련된 세부 내용은 react 패키지에선 알지 못하는 것이 맞다.
+훅은 ReactCurrentDispatcher.current을 통해 외부로부터 주입(DI) 받으며, 리액트 엘리먼트가 reconciler에 의해 fiber로 확장되어야 hook을 포함한다는 걸 알 수 있다.
 
 훅은 shared 패키지에서 import 해오는데, shared 패키지는 모든 패키지가 공유하는 공유 패키지이다.
-shared 패키지를 타고, ReactSharedInternals.js 파일의 renderWithHooks 함수를 통해 주입받는다.
-renderWithHooks 함수는 훅을 주입하며 컴포넌트를 호출하는 역할을 한다.
+[reconciler의 ReactFiberHooks.js에서 renderWithHooks 함수](https://github.com/facebook/react/blob/b53ea6ca05d2ccb9950b40b33f74dfee0421d872/packages/react-reconciler/src/ReactFiberHooks.js#L375)를 통해 hook을 주입한다.
+훅은 reconciler/ReactFiberHooks.js이 주입하는데, 이 파일의 renderWithHooks 함수가 훅을 주입하며 컴포넌트를 호출하는 역할을 한다.
+
+위 함수가 하는 일들은 아주 많지만 이런 것들이 있다. 아래의 VDOM 구조 이미지와 함께 보면 좋다.
+
+![Virtual dom](/images/blog/23/vdom.png)
+
+1. `currentlyRenderingFiber = workInProgress;`: 현재 작업중인 fiber를 전역으로 잡아둠
+2. current가 존재하면 current.memoizedState을 nextCurrentHook에 할당하고, 없으면 null을 할당한다.
+위 VDOM 그림에서 Current 노드는 current 트리 안에 존재한다.
+즉 이미 마운트되어 dom에 정보가 반영된 파이버(current)가 있으면 nextCurrentHook에 current.memoizedState을 할당한다.
+기존에 들어있던 current.memoizedState가 hook일 거라고도 예상할 수 있다.
+3. nextCurrentHook이 있으면 ReactCurrentDispatcher.current에 HooksDispatcherOnMount를 할당하고, 없으면 HooksDispatcherOnUpdate를 할당한다.
+4. nextCurrentHook, firstWorkInProgressHook과 같은 전역변수를 현재 작업중인 컴포넌트에서만 사용할 수 있도록
+작업이 끝날 경우 초기화시킨다
+5. `let children = Component(props, refOrContext);`: 컴포넌트 호출.
+이때 이 컴포넌트가 마운트되어야하면 전역변수 firstWorkInProgressHook에 훅 리스트가 생성되어 저장된다.
+그 후 이 변수를 fiber의 memoizedState에 저장해 훅을 컴포넌트와 매핑시킨다.
+
+5번을 통해 2번을 이해할 수 있다. current.memoizedState가 존재하면 그 컴포넌트는 첫 생성(mount)가 아니라
+update되는 것이고, 훅 리스트 또한 이미 존재한다는 거다. 그렇게 3번에서도 mount/update 여부를 구분해
+그에 맞는 훅 구현체(HooksDispatcherOnMount, HooksDispatcherOnUpdate, etc)를 사용한다.
