@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
 import CustomLink from '#components/common/CustomLink';
+import Comments from '#components/posts/Comments';
 
 const S: any = {};
 const PostArticle = ({
@@ -36,6 +37,7 @@ const PostArticle = ({
         </article>
         {headings && <PostHeadings headings={headings} />}
       </S.PostBox>
+      <Comments />
     </>
   );
 };
