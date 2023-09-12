@@ -19,5 +19,5 @@ useEffect는 fetch와 같은 비동기 동작들을 위한 훅이 맞습니다.
 상태 변화에 따른 사이드이펙트를 수행하기 위한 훅입니다.
 
 그러나 useQuery는 비동기 함수가 아니고 바로 결과를 리턴하기 때문입니다.
-데이터가 없을 땐 {loading: true, data: null}을 반환합니다. 이후 데이터가 준비됐을 때 결과를 다시 리턴합니다.
+데이터가 없을 땐 `{loading: true, data: null}`을 반환합니다. 이후 데이터가 준비됐을 때 결과를 다시 리턴합니다.
 그렇기 때문에 useEffect 안에 useQuery를 쓰면 invalid hook이라는 에러가 뜨게 됩니다.
