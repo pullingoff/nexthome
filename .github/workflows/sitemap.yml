@@ -15,5 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@main
 
-      - name: Run yarn sitemap
-        run: yarn run sitemap
+      - name: Install dependencies
+        run: yarn install
+
+      - run: yarn run sitemap
