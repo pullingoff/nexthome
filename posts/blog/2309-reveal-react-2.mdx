@@ -1,0 +1,33 @@
+---
+title: "리액트 톺아보기 - Work 스케줄링"
+date: 2023-09-18 18:00
+tags:
+- React
+description:
+---
+
+이 글은 [goidle 님의 리액트 톺아보기](https://goidle.github.io/react/in-depth-react-intro/), [보아즈 님의 리액트 까보기 시리즈](https://youtu.be/JadWu4Ygnyc?si=bb149nca5g9dV1Nw)를 참고하여 공부하며 정리한 글입니다.
+소중한 배움을 나눠주신 두분께 진심으로 감사드립니다.
+이 장은 특히 goidle 님의 [리액트 톺아보기](https://goidle.github.io/react/in-depth-react-hooks_2)를 주제로 합니다.
+work 스케줄링을 위해 reconciler가 처리하는 사전 작업들과
+scheduler가 어떻게 Work를 우선순위대로 스케줄링하고 적절한 타이밍에 실행하는지를 다룹니다.
+
+## Work 스케줄링을 위한 사전작업
+
+지난 장의 idle update 문단에서 리액트는 update를 적용하고자 scheduleWork 함수를 통해 Work를 스케줄링한다고 했다.
+이 함수를 호출하는 reconciler는 `fiber.expirationTime` 속성을 통해 scheduler에게 Work의 스케줄을 알려준다.
+`scheduleWork(fiber, expirationTime)` 함수는 아래의 일들을 한다.
+
+1. 이벤트 발생을 알려주는 expirationTime 할당
+2. 이벤트 발생 컴포넌트의 VDOM root를 가져옴
+3. root에 스케줄링 정보를 기록
+
+`react-reconciler/src/ReactFiberWorkLoop.js` 코드를 살펴보자.
+
+![markUpdateTime 소스](markUpdateTime.png)
+
+scheduleWork (scheduleUpdateOnFiber) 함수 내 markUpdateTimeFromFiberToRoot 함수를 보면
+위 사전 작업들을 행하는 로직을 볼 수 있다. 이때 expirationTime을 fiber가 아니라 VDOM의 root에 기록하는 이유는
+모든 컴포넌트에서 우선순위를 공유할 수 있게 하기 위해서다.
+
+## expirationTime
