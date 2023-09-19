@@ -1,14 +1,15 @@
 ---
-title: "리액트 톺아보기 - Work 스케줄링"
+title: "리액트 톺아보기 - Scheduler"
 date: 2023-09-18 18:00
 tags:
-- React
+  - React
 description:
 ---
 
-이 글은 [goidle 님의 리액트 톺아보기](https://goidle.github.io/react/in-depth-react-intro/), [보아즈 님의 리액트 까보기 시리즈](https://youtu.be/JadWu4Ygnyc?si=bb149nca5g9dV1Nw)를 참고하여 공부하며 정리한 글입니다.
+이 글은 [goidle 님의 리액트 톺아보기](https://goidle.github.io/react/in-depth-react-intro/), [보아즈 님의 리액트 까보기 시리즈](https://youtu.be/JadWu4Ygnyc?si=bb149nca5g9dV1Nw)
+를 참고하여 공부하며 정리한 글입니다.
 소중한 배움을 나눠주신 두분께 진심으로 감사드립니다.
-이 장은 특히 goidle 님의 [리액트 톺아보기](https://goidle.github.io/react/in-depth-react-hooks_2)를 주제로 합니다.
+이 장은 특히 goidle 님의 [리액트 톺아보기](https://goidle.github.io/react/in-depth-react-scheduler_1)를 주제로 합니다.
 work 스케줄링을 위해 reconciler가 처리하는 사전 작업들과
 scheduler가 어떻게 Work를 우선순위대로 스케줄링하고 적절한 타이밍에 실행하는지를 다룹니다.
 
@@ -24,10 +25,35 @@ scheduler가 어떻게 Work를 우선순위대로 스케줄링하고 적절한 �
 
 `react-reconciler/src/ReactFiberWorkLoop.js` 코드를 살펴보자.
 
-![markUpdateTime 소스](markUpdateTime.png)
+![markUpdateTime 소스](/images/blog/23/markUpdateTime.png)
 
-scheduleWork (scheduleUpdateOnFiber) 함수 내 markUpdateTimeFromFiberToRoot 함수를 보면
-위 사전 작업들을 행하는 로직을 볼 수 있다. 이때 expirationTime을 fiber가 아니라 VDOM의 root에 기록하는 이유는
-모든 컴포넌트에서 우선순위를 공유할 수 있게 하기 위해서다.
+scheduleWork(`scheduleUpdateOnFiber`) 함수 내 `markUpdateTimeFromFiberToRoot` 함수를 보면
+위 사전 작업들을 행하는 로직을 볼 수 있다.
 
-## expirationTime
+### root
+
+`ReactDOM.render()`로 컴포넌트를 삽입하는 부모 태그가 root이다. (`<div id='root'></>`)
+한 root엔 한 VDOM이 있으며 root는 VDOM을 대표하는 변하지 않는 객체이다.
+root는 한번에 Work 하나씩을 처리하는데,
+그렇기에 여러 update가 발생해 여러 work를 스케줄링해야할 때, 작업의 우선순위 판단을 위해
+스케줄링 정보(expirationTime)을 VDOM의 root에 기록해둔다.
+
+### expirationTime
+
+코드를 보면 expirationTime이 클수록 먼저 발생한 이벤트이고, 우선순위가 높다.
+위 이미지 452번째 줄에서도 `fiber.expirationTime`과 인자 `expirationTime`을 비교해
+만약 `expirationTime`이 더 크다면 그 값으로 할당(교체)한다.
+먼저 발생한 이벤트를 먼저 처리할 수 있도록 값을 업데이트하는 것이다.
+또 while 문 안에서 root 노드가 아닌 경우 `node.childExpirationTime` 속성을 사용하는데, 이 속성은
+리액트 18의 concurrent 모드에서 유용히 사용된다.
+
+또 `expirationTime`은 주어진 work가 없는 경우 `NoWork`, 동기로 처리되어야하는 work인 경우 `Sync`라는 상수로 표현된다.
+
+## 버전16에서 대부분의 update를 처리하는 방법
+
+![scheduleUpdateOnFiber 소스](/images/blog/23/scheduleUpdateOnFiber.png)
+
+root까지 마킹이 끝난 후, reconciler는 expirationTime의 값으로 분기를 해 `ensureRootIsScheduled`를 실행한다.
+동기적으로 호출해야하는 Work인 경우 VDOM을 처음 생성하는 시기가 아닐 때,
+비동기적으로 호출해야하는 Work인 경우 바로 ensureRootIsScheduled를 실행한다.
+
