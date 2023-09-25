@@ -1,4 +1,6 @@
 import '#styles/globals.scss';
+import '#styles/trace.scss';
+
 import Layout from '#components/layout/Layout';
 import MetadataBox from '#components/MetadataBox';
 import { AppProps } from 'next/app';
@@ -68,6 +70,7 @@ const StyledCoffeeChatContainer = styled.div`
   background: white;
   border-radius: 50%;
   padding: 0.3rem;
+
   &:hover {
     transform: scale(1.2, 1.1);
     box-shadow: 0 30px 45px -15px var(--theme1-color);
