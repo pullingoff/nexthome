@@ -24,7 +24,7 @@ const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
       <CustomLink href={href}>
         <section className="flex flex-col pb-2.5 p-5 [&>*]:block">
           <h3 className="font-bold mt-1">{title}</h3>
-          <p className="text-[0.95rem] leading-normal overflow-hidden text-ellipsis mx-0 my-1.5">
+          <p className="text-[0.95rem] leading-normal overflow-hidden text-ellipsis mx-0 my-2.5">
             {description}
           </p>
           <p className="text-[0.8rem] mx-0 my-1">{publishedAt}</p>

@@ -15,7 +15,7 @@ const NavMenu = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <StyledMenu>
+    <StyledMenu className="inline-block text-[color:var(--theme1-color)] text-2xl font-semibold ml-6">
       <CustomLink href={menu.path}>
         {menu.title}
         {children}
@@ -27,15 +27,10 @@ const NavMenu = ({
 export default NavMenu;
 
 const StyledMenu = styled.li`
-  display: inline-block;
-  margin-left: 1.5rem;
-  color: var(--theme1-color);
-  font-size: 25px;
-  font-weight: 600;
-
   & > a {
     display: inline-block;
     position: relative;
+
     &:after {
       content: '';
       position: absolute;
@@ -49,8 +44,10 @@ const StyledMenu = styled.li`
       transform: scale(0);
       transform-origin: center;
     }
+
     &:hover {
       color: salmon;
+
       &:after {
         opacity: 1;
         transform: translate3d(0, 0.2em, 0);

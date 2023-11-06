@@ -2,7 +2,6 @@ import ListLayout from '#components/ListLayout';
 import { getAllTags, getAllPosts } from '#lib/posts-related-api';
 import { POSTS_PER_PAGE } from '#src/config';
 import MetadataBox from '#components/MetadataBox';
-import KeywordBox from '#components/posts/KeywordBox';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Post, ITag } from '#src/type';
 import Pagination from '#components/Pagination';
@@ -94,4 +93,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       pageTotal: Math.ceil(postsWithTag.length / POSTS_PER_PAGE),
     },
   };
+};
+
+const KeywordBox = ({ pageNm, desc }: { pageNm: string; desc: string }) => {
+  return (
+    <div className="px-0 py-2">
+      <h1 className="text-[2rem] font-extrabold mt-0 mb-1">{pageNm}</h1>
+      <h3 className="font-normal">{desc}</h3>
+    </div>
+  );
 };
