@@ -14,7 +14,7 @@ const TagBox = ({
 }) => {
   return (
     <>
-      <TopContainer>
+      <section className="flex justify-between items-center">
         <S.PageTitle>Categories</S.PageTitle>
         <GetRandomIcon
           alt="get random post"
@@ -23,12 +23,12 @@ const TagBox = ({
           src={blueHeart}
           onClick={moveToRandomPost}
         />
-      </TopContainer>
-      <TagList>
+      </section>
+      <TagList className="flex flex-row flex-wrap gap-y-1 text-center text-sm">
         {allTags.map(tag => (
-          <TagItem key={tag.tag} href={`/tags/${tag.tag}/1`}>
+          <StyledTag className="grow" key={tag.tag} href={`/tags/${tag.tag}/1`}>
             {tag.tag} ({tag.count})
-          </TagItem>
+          </StyledTag>
         ))}
       </TagList>
     </>
@@ -44,19 +44,7 @@ const GetRandomIcon = styled(Image)`
   }
 `;
 
-const TopContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 const TagList = styled.ul`
-  display: flex;
-  flex-flow: row wrap;
-  row-gap: 0.5rem;
-  text-align: center;
-  font-size: 0.9rem;
-
   a {
     margin-bottom: 0;
 
@@ -70,10 +58,6 @@ const TagList = styled.ul`
       display: none;
     }
   }
-`;
-
-const TagItem = styled(StyledTag)`
-  flex-grow: 1;
 `;
 
 export default TagBox;
