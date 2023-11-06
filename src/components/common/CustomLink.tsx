@@ -5,6 +5,7 @@ type LinkProps = {
   href: string;
   children: React.ReactNode;
   target?: string;
+  className?: string;
   rest?: HTMLProps<HTMLAnchorElement>;
   onMouseEnter?: React.MouseEventHandler<HTMLAnchorElement>;
   onMouseLeave?: React.MouseEventHandler<HTMLAnchorElement>;

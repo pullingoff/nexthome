@@ -6,8 +6,6 @@ import { METADATA } from '#src/config';
 import CustomLink from '#components/common/CustomLink';
 import SnsLogoBox from '#components/layout/SnsLogoBox';
 
-const S: any = {};
-
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <ThemeProvider theme={styledTheme}>
@@ -30,32 +28,11 @@ const Content = styled.main`
 
 const Footer = () => {
   return (
-    <S.Footer>
+    <footer className="flex flex-col justify-center items-center text-center pt-8 pb-4 my-2 md:my-4 border-t border-[color:var(--theme1-color)]">
       <SnsLogoBox />
-      <S.MailLink href={`mailto:${METADATA.email}`}>
+      <CustomLink href={`mailto:${METADATA.email}`} className="hover:font-bold">
         Email: {METADATA.email}
-      </S.MailLink>
-    </S.Footer>
+      </CustomLink>
+    </footer>
   );
 };
-
-S.Footer = styled.footer`
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  padding: var(--10xl) 0 var(--xl);
-  text-align: center;
-  margin: var(--xl) auto;
-  border-top: 1px solid var(--theme1-color);
-
-  @media (max-width: ${({ theme }) => theme.device.sm}) {
-    margin: var(--md) auto;
-  }
-`;
-
-S.MailLink = styled(CustomLink)`
-  &:hover {
-    font-weight: bold;
-  }
-`;
