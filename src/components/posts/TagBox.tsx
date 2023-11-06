@@ -10,7 +10,7 @@ const TagBox = ({
   moveToRandomPost,
 }: {
   allTags: ITag[];
-  moveToRandomPost: any;
+  moveToRandomPost?: any;
 }) => {
   return (
     <>
@@ -18,8 +18,8 @@ const TagBox = ({
         <S.PageTitle>Categories</S.PageTitle>
         <GetRandomIcon
           alt="get random post"
-          width="35px"
-          height="35px"
+          width={35}
+          height={35}
           src={blueHeart}
           onClick={moveToRandomPost}
         />

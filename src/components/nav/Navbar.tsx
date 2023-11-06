@@ -56,8 +56,8 @@ const textStyle: React.CSSProperties = {
 const SpiderLogo = () => {
   return (
     <NavLogo>
-      <CustomLink href="/">
-        <Image alt="spider" width="45px" src={spiderLogo} />
+      <CustomLink className="inline-block" href="/">
+        <Image alt="spider" width={45} src={spiderLogo} />
       </CustomLink>
     </NavLogo>
   );
