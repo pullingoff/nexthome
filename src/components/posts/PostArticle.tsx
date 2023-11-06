@@ -3,8 +3,8 @@ import MetadataBox from '../MetadataBox';
 import styled from 'styled-components';
 import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
-import CustomLink from '#components/common/CustomLink';
 import Comments from '#components/posts/Comments';
+import Link from 'next/link';
 
 const S: any = {};
 const PostArticle = ({
@@ -201,9 +201,9 @@ const PostHeadings = ({ headings }: { headings: Heading[] }) => {
           <ul>
             {headings.map(heading => (
               <li key={heading.text}>
-                <CustomLink href={filterSpecialChars(heading.link)}>
+                <Link href={filterSpecialChars(heading.link)}>
                   {heading.text}
-                </CustomLink>
+                </Link>
               </li>
             ))}
           </ul>

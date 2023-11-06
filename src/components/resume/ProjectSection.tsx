@@ -1,8 +1,8 @@
 import S from '#styles/About.styled';
 import CustomEmoji from '#components/common/CustomEmoji';
-import CustomLink from '#components/common/CustomLink';
 import { Education, Experience, TechStack, WorkProject } from '#src/type';
 import { Fragment } from 'react';
+import Link from 'next/link';
 
 const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
@@ -54,11 +54,11 @@ const WorkProjectBox = (pj: WorkProject) => {
   return (
     <>
       {pj.link ? (
-        <CustomLink href={pj.link} target="_blank">
+        <Link href={pj.link} target="_blank">
           <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-[salmon]">
             {pj.title} 🔗
           </h3>
-        </CustomLink>
+        </Link>
       ) : (
         <h3 className="mx-0 my-2"> {pj.title}</h3>
       )}
@@ -91,11 +91,11 @@ const ProjectBox = (exp: Experience) => {
   return (
     <>
       {exp.link ? (
-        <CustomLink href={exp.link} target="_blank">
+        <Link href={exp.link} target="_blank">
           <S.Org className="hover:cursor-pointer hover:text-[salmon]">
             {exp.organization} 🔗
           </S.Org>
-        </CustomLink>
+        </Link>
       ) : (
         <S.Org>{exp.organization}</S.Org>
       )}

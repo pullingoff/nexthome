@@ -1,5 +1,5 @@
-import CustomLink from '../common/CustomLink';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 type MenuType = {
   title: string;
@@ -16,10 +16,10 @@ const NavMenu = ({
 }) => {
   return (
     <StyledMenu className="inline-block text-[color:var(--theme1-color)] text-2xl font-semibold ml-6">
-      <CustomLink href={menu.path}>
+      <Link href={menu.path}>
         {menu.title}
-        {children}
-      </CustomLink>
+        {/*{children}*/}
+      </Link>
     </StyledMenu>
   );
 };

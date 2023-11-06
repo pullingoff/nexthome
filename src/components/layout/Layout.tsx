@@ -3,8 +3,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import styledTheme from '#src/styles/theme';
 import { ReactNode } from 'react';
 import { METADATA } from '#src/config';
-import CustomLink from '#components/common/CustomLink';
 import SnsLogoBox from '#components/layout/SnsLogoBox';
+import Link from 'next/link';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -30,9 +30,9 @@ const Footer = () => {
   return (
     <footer className="flex flex-col justify-center items-center text-center pt-8 pb-4 my-2 md:my-4 border-t border-[color:var(--theme1-color)]">
       <SnsLogoBox />
-      <CustomLink href={`mailto:${METADATA.email}`} className="hover:font-bold">
+      <Link href={`mailto:${METADATA.email}`} className="hover:font-bold">
         Email: {METADATA.email}
-      </CustomLink>
+      </Link>
     </footer>
   );
 };

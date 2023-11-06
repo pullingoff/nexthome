@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import CustomLink from '../common/CustomLink';
 import { Post } from '#src/type';
 import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
+import Link from 'next/link';
 
 const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
   const [publishedAt, setPublishedAt] = useState<string>('');
@@ -21,7 +21,7 @@ const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
 
   return (
     <div className="relative flex flex-col overflow-hidden h-full border border-[color:var(--theme2-color)] z-0 rounded-lg hover:-translate-y-2 hover:shadow-[10px_10px_lightgray] hover:duration-200">
-      <CustomLink href={href}>
+      <Link href={href}>
         <section className="flex flex-col pb-2.5 p-5 [&>*]:block">
           <h3 className="font-bold mt-1">{title}</h3>
           <p className="text-[0.95rem] leading-normal overflow-hidden text-ellipsis mx-0 my-2.5">
@@ -29,7 +29,7 @@ const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
           </p>
           <p className="text-[0.8rem] mx-0 my-1">{publishedAt}</p>
         </section>
-      </CustomLink>
+      </Link>
       <section className="flex flex-wrap ml-5 mr-auto mt-0 mb-4">
         {tags?.map((t: string) => (
           <TagItem key={t} text={t} />
@@ -46,7 +46,7 @@ const TagItem = ({ text }: { text: string }) => {
   );
 };
 
-export const StyledTag = styled(CustomLink)`
+export const StyledTag = styled(Link)`
   color: var(--color-white);
   text-transform: uppercase;
   font-size: 0.85rem;

@@ -3,9 +3,9 @@ import React from 'react';
 import { Post } from '#src/type';
 import RecentPost from '#components/home/RecentPost';
 import { getRecentPosts } from '#lib/posts-related-api';
-import CustomLink from '#components/common/CustomLink';
 import mainImg from '#public/images/main.JPG';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const getStaticProps: GetStaticProps = async () => {
   const { recentPosts } = await getRecentPosts();
@@ -29,7 +29,7 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
 const Main = () => {
   return (
     <section className="mt-3">
-      <CustomLink href="/about">
+      <Link href="/about">
         <section className="relative">
           <Image
             className="cursor-pointer brightness-100 transition ease-linear delay-75 hover:scale-110 hover:brightness-50 duration-150"
@@ -38,7 +38,7 @@ const Main = () => {
             priority
           />
         </section>
-      </CustomLink>
+      </Link>
     </section>
   );
 };

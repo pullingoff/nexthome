@@ -1,6 +1,6 @@
 import { POSTS_PER_PAGE } from '../config/';
 import styled from 'styled-components';
-import CustomLink from './common/CustomLink';
+import Link from 'next/link';
 
 interface IPagination {
   path: string;
@@ -41,7 +41,7 @@ const Nav = styled.nav`
   margin: 16px;
 `;
 
-const Button = styled(CustomLink)`
+const Button = styled(Link)`
   padding: 5px 3px;
   margin: 0;
   font-size: var(--4xl);

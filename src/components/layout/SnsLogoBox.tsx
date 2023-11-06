@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import CustomLink from '../common/CustomLink';
 import { METADATA } from '#src/config';
 import { GithubLogo, LinkedInLogo, TwitterLogo } from 'public/logos';
+import Link from 'next/link';
 
 const SnsLogoBox = () => {
   const { github, twitter, linkedinLink } = METADATA;
@@ -11,15 +11,15 @@ const SnsLogoBox = () => {
 
   return (
     <LogoBox>
-      <CustomLink aria-label="github" href={githubLink}>
+      <Link aria-label="github" href={githubLink}>
         <GithubLogo />
-      </CustomLink>
-      <CustomLink aria-label="twitter" href={twitterLink}>
+      </Link>
+      <Link aria-label="twitter" href={twitterLink}>
         <TwitterLogo />
-      </CustomLink>
-      <CustomLink aria-label="linkedin" href={linkedinLink}>
+      </Link>
+      <Link aria-label="linkedin" href={linkedinLink}>
         <LinkedInLogo />
-      </CustomLink>
+      </Link>
     </LogoBox>
   );
 };

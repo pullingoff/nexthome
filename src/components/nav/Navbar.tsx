@@ -4,9 +4,9 @@ import { MENUS } from '#src/config';
 import NavMenu from './NavMenu';
 import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
-import CustomLink from '#components/common/CustomLink';
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -56,9 +56,9 @@ const textStyle: React.CSSProperties = {
 const SpiderLogo = () => {
   return (
     <NavLogo>
-      <CustomLink className="inline-block" href="/">
+      <Link className="inline-block" href="/">
         <Image alt="spider" width={45} src={spiderLogo} />
-      </CustomLink>
+      </Link>
     </NavLogo>
   );
 };
