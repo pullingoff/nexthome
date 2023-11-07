@@ -4,7 +4,6 @@ import { MENUS } from '#src/config';
 import NavMenu from './NavMenu';
 import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
-import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -55,25 +54,15 @@ const textStyle: React.CSSProperties = {
 
 const SpiderLogo = () => {
   return (
-    <NavLogo>
-      <Link className="inline-block" href="/">
-        <Image alt="spider" width={45} src={spiderLogo} />
-      </Link>
-    </NavLogo>
+    <Link className="inline-block w-16 m-2" href="/">
+      <Image
+        className="hover:rotate-[360deg] transition-transform duration-[0.3s]"
+        alt="spider"
+        width={45}
+        src={spiderLogo}
+      />
+    </Link>
   );
 };
-
-const NavLogo = styled.div`
-  display: inline;
-  width: 4rem;
-  margin: 1rem;
-
-  &:hover {
-    & span img {
-      transform: rotate(360deg);
-      transition: transform 0.25s ease-in-out;
-    }
-  }
-`;
 
 export default Navbar;

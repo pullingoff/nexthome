@@ -1,7 +1,5 @@
 import { GetStaticProps } from 'next';
-import React from 'react';
 import { Post } from '#src/type';
-import RecentPost from '#components/home/RecentPost';
 import { getRecentPosts } from '#lib/posts-related-api';
 import mainImg from '#public/images/main.JPG';
 import Image from 'next/image';
@@ -21,7 +19,17 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
   return (
     <>
       <Main />
-      <RecentPost recentPosts={recentPosts} />
+      <h1 className="font-extrabold text-3xl">Recent Posts</h1>
+      <ul>
+        {recentPosts.map(({ frontmatter, slug }, idx) => (
+          <li
+            key={idx}
+            className="font-medium text-base mb-1 before:content-['-'] before:mr-2 hover:text-[salmon]"
+          >
+            <Link href={`/blog/${slug}`}>{frontmatter.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
