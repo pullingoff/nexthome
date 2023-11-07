@@ -3,7 +3,6 @@ export const METADATA = {
   title: '개발자 박하은',
   author: '박하은',
   description: '개발자 박하은의 블로그입니다.',
-  twitter: 'devpullingoff',
   email: 'devhaeun@gmail.com',
   github: 'pullingoff',
   linkedinLink: 'https://www.linkedin.com/in/hailey-park/',

@@ -38,18 +38,16 @@ const Navbar = () => {
           {MENUS.map((menu, idx) => (
             <NavMenu key={idx} menu={menu} />
           ))}
-          <NavMenu menu={{ title: '', path: 'https://github.com/pullingoff' }}>
-            <GithubLogo style={textStyle} />
+          <NavMenu
+            menu={{ title: '', path: 'https://github.com/pullingoff' }}
+            className="bottom-[-5px] hover:fill-[salmon]"
+          >
+            <GithubLogo />
           </NavMenu>
         </div>
       </nav>
     </header>
   );
-};
-
-const textStyle: React.CSSProperties = {
-  position: 'relative',
-  bottom: '-5px',
 };
 
 const SpiderLogo = () => {
