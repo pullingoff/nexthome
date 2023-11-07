@@ -36,16 +36,14 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
 
 const Main = () => {
   return (
-    <section className="mt-3">
+    <section className="mt-3 relative overflow-hidden">
       <Link href="/about">
-        <section className="relative">
-          <Image
-            className="cursor-pointer brightness-100 transition ease-linear delay-75 hover:scale-110 hover:brightness-50 duration-150"
-            alt="박하은의 이력서 보러가기"
-            src={mainImg}
-            priority
-          />
-        </section>
+        <Image
+          className="cursor-pointer brightness-100 transition ease-linear delay-75 hover:scale-110 hover:brightness-75 duration-150"
+          alt="박하은의 이력서 보러가기"
+          src={mainImg}
+          priority
+        />
       </Link>
     </section>
   );
