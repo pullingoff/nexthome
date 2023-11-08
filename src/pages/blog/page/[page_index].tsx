@@ -51,14 +51,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const endIndex = startIndex + POSTS_PER_PAGE;
   // (처음 시작인덱스 * 보여질 아이템 수), (다음 인덱스 * 다음 보여질 아이템 수)로 배열 자르기
   const orderedPosts = posts.slice(startIndex, endIndex);
-
+  // TODO: 제너레이터 등으로 개선
   const allTags = await getAllTags();
+
   return {
     props: {
       posts: orderedPosts,
       currentPage: page,
       pageTotal: pageTotal,
-      allTags,
+      tags: allTags.slice(0, 12), // 상위 n개만
       allSlugs: await getAllSlugs(),
     },
   };
@@ -68,19 +69,19 @@ export default function BlogPage({
   posts,
   currentPage,
   pageTotal,
-  allTags,
+  tags,
   allSlugs,
 }: {
   posts: Post[];
   currentPage: number;
   pageTotal: number;
-  allTags: ITag[];
+  tags: ITag[];
   allSlugs: string[];
 }) {
   return (
     <>
       <MetadataBox customMetadata={customMeta} />
-      <TagBox allTags={allTags} />
+      <TagBox tags={tags} />
       <ListLayout posts={posts} />
       <Pagination
         path="blog/page"

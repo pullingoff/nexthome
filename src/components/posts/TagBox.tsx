@@ -1,33 +1,20 @@
-import styled from 'styled-components';
-import { StyledTag } from '#components/posts/PostCardItem';
 import { ITag } from '#src/type';
+import Link from 'next/link';
 
-const TagBox = ({ allTags }: { allTags: ITag[] }) => {
+const TagBox = ({ tags }: { tags: ITag[] }) => {
   return (
-    <TagList className="flex flex-row flex-wrap gap-y-1 text-center text-sm">
-      {allTags.map(tag => (
-        <StyledTag className="grow" key={tag.tag} href={`/tags/${tag.tag}/1`}>
+    <ul className="flex flex-row flex-wrap text-center text-sm">
+      {tags.map(tag => (
+        <Link
+          className="grow text-[white] uppercase text-[0.85rem] font-semibold bg-[color:var(--theme1-color)] rounded-[var(--border-radius-sm)] ml-0 mr-2 mt-0 mb-2 px-2 py-0.5 hover:text-[color:var(--theme1-color)] hover:bg-[initial] hover:shadow-[0_0_0_2px_var(--theme1-color)_inset]"
+          key={tag.tag}
+          href={`/tags/${tag.tag}/1`}
+        >
           {tag.tag} ({tag.count})
-        </StyledTag>
+        </Link>
       ))}
-    </TagList>
+    </ul>
   );
 };
-
-const TagList = styled.ul`
-  a {
-    margin-bottom: 0;
-
-    &:nth-child(n + 16) {
-      display: none;
-    }
-  }
-
-  @media (max-width: ${({ theme }) => theme.device.sm}) {
-    a:nth-child(n + 12) {
-      display: none;
-    }
-  }
-`;
 
 export default TagBox;

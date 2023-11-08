@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Post } from '#src/type';
 import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
@@ -31,36 +30,19 @@ const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
         </section>
       </Link>
       <section className="flex flex-wrap ml-5 mr-auto mt-0 mb-4">
-        {tags?.map((t: string) => (
-          <TagItem key={t} text={t} />
+        {tags?.map((text: string) => (
+          <Link
+            className="text-[white] uppercase text-[0.85rem] font-semibold bg-[color:var(--theme1-color)] rounded-[var(--border-radius-sm)] ml-0 mr-2 mt-0 mb-2 px-2 py-0.5 hover:text-[color:var(--theme1-color)] hover:bg-[initial] hover:shadow-[0_0_0_2px_var(--theme1-color)_inset]"
+            key={text}
+            href={`/tags/${text}/1`}
+          >
+            {text.split(' ').join('-')}
+          </Link>
         ))}
       </section>
       {/* todo Tag 4개 이상이면 안 보이도록 조치 필요 */}
     </div>
   );
 };
-
-const TagItem = ({ text }: { text: string }) => {
-  return (
-    <StyledTag href={`/tags/${text}/1`}>{text.split(' ').join('-')}</StyledTag>
-  );
-};
-
-export const StyledTag = styled(Link)`
-  color: var(--color-white);
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.125rem 0.75rem;
-  background-color: var(--theme1-color);
-  border-radius: var(--border-radius-sm);
-  margin: 0 var(--md) var(--md) 0;
-
-  &:hover {
-    color: var(--theme1-color);
-    background-color: initial;
-    box-shadow: 0 0 0 2px var(--theme1-color) inset;
-  }
-`;
 
 export default PostCardItem;
