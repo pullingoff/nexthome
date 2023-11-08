@@ -77,17 +77,10 @@ export default function BlogPage({
   allTags: ITag[];
   allSlugs: string[];
 }) {
-  const moveToRandomPost = () => {
-    window.location.href = `/blog/${
-      allSlugs[Math.round(Math.random() * allSlugs.length)]
-    }`;
-    console.log('Thank you! Emoji credited by emoji.supply/kitchen');
-  };
-
   return (
     <>
       <MetadataBox customMetadata={customMeta} />
-      <TagBox allTags={allTags} moveToRandomPost={moveToRandomPost} />
+      <TagBox allTags={allTags} />
       <ListLayout posts={posts} />
       <Pagination
         path="blog/page"
