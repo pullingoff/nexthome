@@ -3,8 +3,8 @@ import MetadataBox from '../MetadataBox';
 import styled from 'styled-components';
 import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
-import CustomLink from '#components/common/CustomLink';
 import Comments from '#components/posts/Comments';
+import Link from 'next/link';
 
 const S: any = {};
 const PostArticle = ({
@@ -162,32 +162,16 @@ S.ContentBox = styled.div`
 
 const PostHeader = ({ date, title }: { date: string; title: string }) => {
   return (
-    <StyledHeader>
-      <time>{date}</time>
-      <h1>{title}</h1>
-    </StyledHeader>
+    <header className="text-center animate-[1s_anim-lineUp_0.1s_ease-out_1] pt-3">
+      <time className="font-medium text-[color:var(--theme1-color)]">
+        {date}
+      </time>
+      <h1 className="md:text-3xl font-extrabold text-[color:var(--theme1-color)]">
+        {title}
+      </h1>
+    </header>
   );
 };
-
-const StyledHeader = styled.header`
-  padding-top: var(--lg);
-  text-align: center;
-  animation: 1s anim-lineUp 0.1s ease-out 1;
-
-  time {
-    font-weight: 500;
-    color: var(--theme1-color);
-  }
-
-  h1 {
-    font-size: var(--10xl);
-    font-weight: 800;
-    color: var(--theme1-color);
-    @media (min-width: ${({ theme }) => theme.device.sm}) {
-      font-size: var(--8xl);
-    }
-  }
-`;
 
 const filterSpecialChars = (str: string) => {
   return str.replace(':', '').replace('(', '').replace(')', '');
@@ -197,54 +181,21 @@ const PostHeadings = ({ headings }: { headings: Heading[] }) => {
   return (
     <>
       {headings ? (
-        <S.HeadingBox>
-          <ul>
+        <aside className="sticky min-w-[15%] max-h-[90vh] ml-4 top-[70px] hidden md:block">
+          <ul className="text-sm text-[#1e293bd1] pl-4 border-l-[#1e293bd1] border-l border-solid">
             {headings.map(heading => (
-              <li key={heading.text}>
-                <CustomLink href={filterSpecialChars(heading.link)}>
+              <li
+                key={heading.text}
+                className="mb-0.5 hover:font-bold list-none [&:not(:last-child):after]:content-['﹒'] [&:not(:last-child):after]:block [&:not(:last-child):after]:leading-[0.5rem]"
+              >
+                <Link href={filterSpecialChars(heading.link)}>
                   {heading.text}
-                </CustomLink>
+                </Link>
               </li>
             ))}
           </ul>
-        </S.HeadingBox>
+        </aside>
       ) : null}
     </>
   );
 };
-
-S.HeadingBox = styled.aside`
-  @media (max-width: ${({ theme }) => theme.device.md}) {
-    display: none;
-  }
-  min-width: 15%;
-  position: sticky;
-  top: 70px;
-  // order: 1;
-  // overflow-y: scroll; 있으면 스크롤바 생김
-  max-height: 90vh;
-  margin-left: 1rem;
-
-  ul {
-    list-style: none;
-    font-size: 0.9rem;
-    color: #1e293bd1;
-    border-left: 1px solid #1e293bd1;
-    padding-left: 1rem;
-
-    li {
-      list-style: none;
-      margin-bottom: 2px;
-
-      &:hover {
-        font-weight: bold;
-      }
-
-      &:not(:last-child):after {
-        content: '﹒';
-        line-height: 0.5rem;
-        display: block;
-      }
-    }
-  }
-`;

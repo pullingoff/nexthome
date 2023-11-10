@@ -20,23 +20,23 @@ export const projectExperiences: Experience[] = [
     organization: '개인 블로그',
     link: 'https://haeun.vercel.app',
     description: '개발하며 배운 것과 생각들을 기록하는 블로그',
-    period: '2022.02 ~ 05',
+    period: '2022.02 ~ 현재',
     projects: [
       {
         tech: [
+          'Next.js (Page Router)',
           'React',
-          'Next.js',
           'TypeScript',
-          'Sass',
+          'styled-components',
           'next-mdx-remote',
           'gray-matter',
           'Vercel',
-          'Vuepress',
         ],
         details: [
           '별도의 UI 프레임워크 없이 직접 디자인하고 스타일 구현, mobile-first, 반응형, 시맨틱 마크업',
           'next-mdx-remote로 마크다운을 HTML로 재구성해 보여주고 frontmatter로 태그, 카테고리별 조회',
-          'cypress로 테스트 자동화, 모든 테스트를 통과해야만 배포가 되도록 CI/CD 적용',
+          '사이트맵과 페이지별 OG 메타 태그를 사용해 SEO를 적용했고 Git action을 사용해 배포 시마다 자동 사이트맵을 생성해 구글 검색 엔진에 등록되도록 자동화',
+          'Husky로 깃 커밋 컨벤션을 지정해 일관성 있는 커밋 메시지를 작성하고자 노력함',
           //'TIL 페이지의 경우 vuepress로 정적 사이트를 만들고 github에서 pages 브랜치로 배포',
         ],
       },
@@ -63,38 +63,48 @@ export const workExperiences: Experience[] = [
   {
     organization: '파스토',
     description: 'Frontend Engineer',
-    period: '2022.07 ~ 현재',
+    period: '2022.07 ~ 2023.08',
     projects: [
       {
         title: '파스토셀프 2.0',
-        tech: ['React', 'TypeScript', 'Redux', 'TanStack Query', 'MUI v5'],
+        tech: [
+          'React',
+          'TypeScript',
+          'Redux',
+          'TanStack Query',
+          'MUI',
+          'Cypress',
+        ],
         details: [
-          'Thymeleaf로 개발되었던 서비스를 Next.js로 요구사항에 맞춰 재개발',
-          'Compound Components 패턴을 활용한 공통 디자인 컴포넌트 개발',
+          '아토믹 디자인과 Compound Components 패턴을 활용한 공통 Input, Textarea, Accordion 컴포넌트를 설계 및 개발하여 사내 여러 프로젝트에서 사용할 수 있도록 함',
           'react-hook-form을 사용해 추가, 수정, 삭제가 자유로운 Input 컴포넌트 공통화',
+          'Thymeleaf로 개발되었던 서비스를 Next.js로 요구사항에 맞춰 재개발',
+        ],
+      },
+      {
+        title: '정산 백오피스 신규 개발 및 유지보수',
+        tech: ['React', 'TypeScript', 'TanStack Query', 'MUI v4'],
+        details: [
+          '재사용을 위한 공통 리액트 컴포넌트 개발 (Select, Text input, Modal, Header 등)',
+          '디자인 없이 백오피스 관리자의 사용성을 고려해 정산 백오피스 개발 및 유지보수', // 테스트 커버리지 nn%
+          '통합회원 서비스의 회원가입, 마이페이지, 소셜로그인 연동, 아이디/비밀번호 찾기 등의 기능 구현',
         ],
       },
       {
         title: '홈페이지 테스트 자동화',
         tech: ['Cypress', 'JavaScript', 'POM 패턴'],
         details: [
-          'Cypress로 E2E 테스트 자동화, 테스트를 위한 공통 클래스와 커맨드 개발',
+          '홈페이지 개선을 위한 테스트 시나리오를 작성하고 버그 목록을 문서화',
+          'Cypress로 홈페이지 내 견적 문의 페이지 E2E 자동화 테스트 구현',
+          '테스트 구현시 재사용하기 좋은 공통 클래스와 로그인, 로그아웃 등의 커스텀 커맨드 개발',
         ],
       },
-      {
-        title: 'NewFMS 2.0 / 정산 백오피스 개발',
-        tech: ['React', 'TypeScript', 'TanStack Query', 'MUI v4', 'GIT'],
-        details: [
-          'MUI 기반 리액트 공통 컴포넌트 개발 (Select, Text input, Header 등)',
-          '디자인 없이 관리자의 사용성을 고려해 정산 백오피스 최초 개발 및 유지보수', // 테스트 커버리지 nn%
-          '통합회원 서비스 구현 (회원가입, 마이페이지, 아이디/비밀번호 찾기 등)',
-        ],
-      },
+
       {
         title: '팀 문화',
         tech: [],
         details: [
-          '프론트 팀 과반수가 참여하는 스터디 2개 개설 및 6개월 이상 주도',
+          '동료와 함께 성장하고자 스터디를 조직해 6개월 이상 진행/주도하고 여러 온보딩 가이드를 작성함',
         ],
       },
     ],
@@ -142,6 +152,14 @@ export const workExperiences: Experience[] = [
 ];
 
 export const otherExperiences: Experience[] = [
+  {
+    organization: '펜지니어 컨퍼런스',
+    description: '',
+    period: '2023.09',
+    details: [
+      `'회사에서 작은 공 쏘아올리기'라는 제목으로 사내 스터디를 주도했던 경험 발표`,
+    ],
+  },
   {
     organization: 'JunctionX Seoul',
     description:
@@ -195,7 +213,15 @@ export const education: Education[] = [
 export const techStacks: TechStack[] = [
   {
     type: '프론트엔드',
-    skill: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Sass', 'HTML/CSS'],
+    skill: [
+      'React',
+      'JavaScript',
+      'Next.js',
+      'TypeScript',
+      'MUI',
+      'styled-components',
+      'HTML/CSS',
+    ],
   },
   {
     type: '실무에 활용할 수 있습니다',
