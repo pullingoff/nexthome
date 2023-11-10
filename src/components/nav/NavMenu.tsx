@@ -1,5 +1,4 @@
-import CustomLink from '../common/CustomLink';
-import styled from 'styled-components';
+import Link from 'next/link';
 
 type MenuType = {
   title: string;
@@ -9,53 +8,23 @@ type MenuType = {
 
 const NavMenu = ({
   menu,
+  className,
   children,
 }: {
   menu: MenuType;
-  children?: React.ReactNode;
+  className?: string;
+  children?: React.ReactNode; // 메뉴 이름이 아닌 깃허브 로고 같은 경우
 }) => {
   return (
-    <StyledMenu>
-      <CustomLink href={menu.path}>
-        {menu.title}
-        {children}
-      </CustomLink>
-    </StyledMenu>
+    <li className="inline-block text-[color:var(--theme1-color)] text-2xl font-semibold ml-6">
+      <Link
+        href={menu.path}
+        className={`inline-block relative hover:text-[salmon] after:content-[''] after:absolute after:w-full after:h-[0.1rem] after:bg-[salmon] after:opacity-0 after:transition-opacity after:origin-center after:scale-0 after:left-0 after:bottom-0 hover:after:opacity-100 hover:after:scale-100 ${className}`}
+      >
+        {children ? children : menu.title}
+      </Link>
+    </li>
   );
 };
 
 export default NavMenu;
-
-const StyledMenu = styled.li`
-  display: inline-block;
-  margin-left: 1.5rem;
-  color: var(--theme1-color);
-  font-size: 25px;
-  font-weight: 600;
-
-  & > a {
-    display: inline-block;
-    position: relative;
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 0.1rem;
-      background-color: salmon;
-      opacity: 0;
-      transition: opacity 300ms, transform 300ms;
-      transform: scale(0);
-      transform-origin: center;
-    }
-    &:hover {
-      color: salmon;
-      &:after {
-        opacity: 1;
-        transform: translate3d(0, 0.2em, 0);
-        transform: scale(1);
-      }
-    }
-  }
-`;

@@ -1,6 +1,6 @@
 import { POSTS_PER_PAGE } from '../config/';
 import styled from 'styled-components';
-import CustomLink from './common/CustomLink';
+import Link from 'next/link';
 
 interface IPagination {
   path: string;
@@ -14,7 +14,7 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
   const isLast = currentPage === pageTotal && pageTotal > POSTS_PER_PAGE;
 
   return (
-    <Nav>
+    <nav className="flex justify-center items-center gap-1.5 m-4">
       {isLast && <Button href={`/${path}/1`}>&lt;</Button>}
       {pageTotal &&
         Array(pageTotal)
@@ -29,19 +29,11 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
             </Button>
           ))}
       {isFirst && <Button href={`/${path}/${pageTotal}`}>&gt;</Button>}
-    </Nav>
+    </nav>
   );
 };
 
-const Nav = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  margin: 16px;
-`;
-
-const Button = styled(CustomLink)`
+const Button = styled(Link)`
   padding: 5px 3px;
   margin: 0;
   font-size: var(--4xl);

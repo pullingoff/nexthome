@@ -4,10 +4,10 @@ import MetadataBox from '#components/MetadataBox';
 import { AppProps } from 'next/app';
 import { useState, useEffect } from 'react';
 import Loading from '#components/Loading';
-import styled from 'styled-components';
 import hifiImg from '#public/hifi.png';
 import Image from 'next/image';
 import Script from 'next/script';
+import Link from 'next/link';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <StyledLayout>
+    <Layout>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}`}
@@ -40,42 +40,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Loading loading={loading} />
       <Component {...pageProps} />
       <CoffeeChat />
-    </StyledLayout>
+    </Layout>
   );
 };
 
 const CoffeeChat = () => {
   return (
-    <StyledCoffeeChatContainer>
-      <a href="https://whattime.co.kr/haeun" target="_blank">
+    <div className="fixed cursor-pointer border border-[color:var(--theme1-color)] p-1 rounded-[50%] border-solid right-[3%] bottom-[4%] hover:shadow-[0_30px_45px_-15px_var(--theme1-color)] hover:scale-110">
+      <Link href="https://whattime.co.kr/haeun" target="_blank">
         <Image
           src={hifiImg}
           alt="Hifi 3D Illustration by Welson Hendra"
-          width={'50px'}
-          height={'50px'}
+          width={50}
+          height={50}
         />
-      </a>
-    </StyledCoffeeChatContainer>
+      </Link>
+    </div>
   );
 };
-
-const StyledCoffeeChatContainer = styled.div`
-  position: fixed;
-  right: 3%;
-  bottom: 4%;
-  cursor: pointer;
-  border: 1px solid var(--theme1-color);
-  background: white;
-  border-radius: 50%;
-  padding: 0.3rem;
-  &:hover {
-    transform: scale(1.2, 1.1);
-    box-shadow: 0 30px 45px -15px var(--theme1-color);
-  }
-`;
-
-const StyledLayout = styled(Layout)`
-  background: var(--bg-yellow);
-`;
 
 export default MyApp;

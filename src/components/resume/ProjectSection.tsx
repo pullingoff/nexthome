@@ -1,12 +1,12 @@
 import S from '#styles/About.styled';
 import CustomEmoji from '#components/common/CustomEmoji';
-import styled from 'styled-components';
-import CustomLink from '#components/common/CustomLink';
 import { Education, Experience, TechStack, WorkProject } from '#src/type';
+import { Fragment } from 'react';
+import Link from 'next/link';
 
 const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
-    <S.StyledMain>
+    <main className="before:content-['_'] before:relative before:block before:mt-4 before:border-t-[lightgrey] before:border-t before:border-dashed before:top-px">
       <S.SectionHeader>
         <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
         {title}
@@ -14,47 +14,55 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
       <S.OrgContainer>
         {title.includes('Education') &&
           list.map((edu: Education) => (
-            <S.PjArticle key={edu.course}>
+            <Fragment key={edu.course}>
               <EducationBox {...edu} />
-            </S.PjArticle>
+            </Fragment>
           ))}
         {title.includes('Experiences') &&
           list.map((exp: Experience) => (
-            <S.PjArticle key={exp.organization}>
+            <Fragment key={exp.organization}>
               <ProjectBox {...exp} />
-            </S.PjArticle>
+            </Fragment>
           ))}
         {title.includes('Projects') &&
           list.map((exp: Experience) => (
-            <S.PjArticle key={exp.organization}>
+            <Fragment key={exp.organization}>
               <ProjectBox {...exp} />
-            </S.PjArticle>
+            </Fragment>
           ))}
         {title.includes('Skills') &&
           list.map((skill: TechStack) => (
-            <SkillSpan key={skill.type}>
+            <span className="leading-6 font-bold" key={skill.type}>
               - {skill.type}:
               {skill?.skill.map(sk => (
-                <S.SkillSpan key={sk}> {sk}</S.SkillSpan>
+                <span
+                  className="font-normal [&:not(:last-child):after]:content-[',']"
+                  key={sk}
+                >
+                  {' '}
+                  {sk}
+                </span>
               ))}
-            </SkillSpan>
+            </span>
           ))}
       </S.OrgContainer>
-    </S.StyledMain>
+    </main>
   );
 };
 
 const WorkProjectBox = (pj: WorkProject) => {
   return (
-    <S.PjArticle>
+    <>
       {pj.link ? (
-        <CustomLink href={pj.link} target="_blank">
-          <S.PjTitleWithLink>{pj.title} 🔗</S.PjTitleWithLink>
-        </CustomLink>
+        <Link href={pj.link} target="_blank">
+          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-[salmon]">
+            {pj.title} 🔗
+          </h3>
+        </Link>
       ) : (
-        <S.PjTitle> {pj.title}</S.PjTitle>
+        <h3 className="mx-0 my-2"> {pj.title}</h3>
       )}
-      <S.ExplainP>{pj.description}</S.ExplainP>
+      <p className="font-medium mb-2 pl-1">{pj.description}</p>
       {pj.tech?.map(t => (
         <S.PjTech key={t}>{t}</S.PjTech>
       ))}
@@ -65,7 +73,7 @@ const WorkProjectBox = (pj: WorkProject) => {
           ))}
         </S.DetailList>
       )}
-    </S.PjArticle>
+    </>
   );
 };
 
@@ -83,9 +91,11 @@ const ProjectBox = (exp: Experience) => {
   return (
     <>
       {exp.link ? (
-        <CustomLink href={exp.link} target="_blank">
-          <S.OrgHoverLink>{exp.organization} 🔗</S.OrgHoverLink>
-        </CustomLink>
+        <Link href={exp.link} target="_blank">
+          <S.Org className="hover:cursor-pointer hover:text-[salmon]">
+            {exp.organization} 🔗
+          </S.Org>
+        </Link>
       ) : (
         <S.Org>{exp.organization}</S.Org>
       )}
@@ -102,9 +112,9 @@ const ProjectBox = (exp: Experience) => {
 
 const DateSection = ({ first, last }: { first: string; last: string }) => {
   return (
-    <S.JobDate>
+    <span className="font-normal">
       {first} | {last}
-    </S.JobDate>
+    </span>
   );
 };
 
@@ -117,11 +127,5 @@ const DetailSection = ({ list }: { list: string[] }) => {
     </S.DetailList>
   );
 };
-
-const SkillSpan = styled.span`
-  line-height: 160%;
-  font-weight: bold;
-  font-size: 1.05rem;
-`;
 
 export default ProjectSection;

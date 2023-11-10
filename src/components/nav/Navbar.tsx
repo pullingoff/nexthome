@@ -4,9 +4,8 @@ import { MENUS } from '#src/config';
 import NavMenu from './NavMenu';
 import spiderLogo from '#public/logo.svg';
 import { GithubLogo } from 'public/logos';
-import CustomLink from '#components/common/CustomLink';
-import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -39,8 +38,11 @@ const Navbar = () => {
           {MENUS.map((menu, idx) => (
             <NavMenu key={idx} menu={menu} />
           ))}
-          <NavMenu menu={{ title: '', path: 'https://github.com/pullingoff' }}>
-            <GithubLogo style={textStyle} />
+          <NavMenu
+            menu={{ title: '', path: 'https://github.com/pullingoff' }}
+            className="bottom-[-5px] hover:fill-[salmon]"
+          >
+            <GithubLogo />
           </NavMenu>
         </div>
       </nav>
@@ -48,32 +50,17 @@ const Navbar = () => {
   );
 };
 
-const textStyle: React.CSSProperties = {
-  position: 'relative',
-  bottom: '-5px',
-};
-
 const SpiderLogo = () => {
   return (
-    <NavLogo>
-      <CustomLink href="/">
-        <Image alt="spider" width="45px" src={spiderLogo} />
-      </CustomLink>
-    </NavLogo>
+    <Link className="inline-block w-16 m-2" href="/">
+      <Image
+        className="hover:rotate-[360deg] transition-transform duration-[0.3s]"
+        alt="spider"
+        width={45}
+        src={spiderLogo}
+      />
+    </Link>
   );
 };
-
-const NavLogo = styled.div`
-  display: inline;
-  width: 4rem;
-  margin: 1rem;
-
-  &:hover {
-    & span img {
-      transform: rotate(360deg);
-      transition: transform 0.25s ease-in-out;
-    }
-  }
-`;
 
 export default Navbar;

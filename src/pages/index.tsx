@@ -1,12 +1,9 @@
 import { GetStaticProps } from 'next';
-import React from 'react';
 import { Post } from '#src/type';
-import RecentPost from '#components/home/RecentPost';
 import { getRecentPosts } from '#lib/posts-related-api';
-import CustomLink from '#components/common/CustomLink';
 import mainImg from '#public/images/main.JPG';
-import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const getStaticProps: GetStaticProps = async () => {
   const { recentPosts } = await getRecentPosts();
@@ -22,47 +19,34 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
   return (
     <>
       <Main />
-      <RecentPost recentPosts={recentPosts} />
+      <h1 className="font-extrabold text-3xl">Recent Posts</h1>
+      <ul>
+        {recentPosts.map(({ frontmatter, slug }, idx) => (
+          <li
+            key={idx}
+            className="font-medium text-base mb-1 before:content-['-'] before:mr-2 hover:text-[salmon]"
+          >
+            <Link href={`/blog/${slug}`}>{frontmatter.title}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
 
-const S: any = {};
 const Main = () => {
   return (
-    <S.StyledMain>
-      <CustomLink href="/about">
-        {' '}
-        <S.ImgBox>
-          <S.HomeImage alt="박하은의 이력서 보러가기" src={mainImg} priority />
-        </S.ImgBox>
-      </CustomLink>
-    </S.StyledMain>
+    <section className="mt-3 relative overflow-hidden">
+      <Link href="/about">
+        <Image
+          className="cursor-pointer brightness-100 transition ease-linear delay-75 hover:scale-110 hover:brightness-75 duration-150"
+          alt="박하은의 이력서 보러가기"
+          src={mainImg}
+          priority
+        />
+      </Link>
+    </section>
   );
 };
-
-S.StyledMain = styled.section`
-  margin-top: var(--lg);
-`;
-
-S.ImgBox = styled.section`
-  position: relative;
-`;
-
-S.HomeImage = styled(Image)`
-  transition: transform 0.5s ease;
-  cursor: pointer;
-  -webkit-filter: brightness(100%);
-
-  &:hover {
-    transform: scale(1.1);
-    -webkit-filter: brightness(50%);
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-`;
 
 export default Home;
