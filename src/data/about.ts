@@ -200,12 +200,20 @@ export const education: Education[] = [
     ],
   },
   {
+    institute: 'SQLD 자격증',
+    period: '2020.10',
+    course: 'SQL 개발자',
+    details: [
+      '데이터 모델링과 DB 설계부터 SQL 작성, 성능 최적화를 수행할 수 있음',
+    ],
+  },
+  {
     institute: 'Humber College',
     period: '2018.06 ~ 2019.12',
-    course: 'Marketing Diploma, 졸업',
+    course: 'Marketing Diploma, 우등 졸업',
     details: [
-      'Toronto Marlies의 교내 세일즈 단원으로 발탁되어 SNS 마케팅 및 경기 티켓 판매',
-      '양적 조사의 일환으로 70명의 남성에게 설문조사를 진행하고 포커스그룹 인터뷰',
+      'Toronto Marlies의 교내 세일즈 단원으로 발탁되어 디지털 마케팅 및 경기 티켓 판매',
+      '양적 조사의 일환으로 70명의 남성에게 설문조사를 진행하고 포커스 그룹 인터뷰',
     ],
   },
 ];
