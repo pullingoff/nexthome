@@ -24,7 +24,7 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
         {recentPosts.map(({ frontmatter, slug }, idx) => (
           <li
             key={idx}
-            className="font-medium text-base mb-1 before:content-['-'] before:mr-2 hover:text-[salmon]"
+            className="font-medium text-base md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-[salmon]"
           >
             <Link href={`/blog/${slug}`}>{frontmatter.title}</Link>
           </li>
@@ -43,6 +43,8 @@ const Main = () => {
           alt="박하은의 이력서 보러가기"
           src={mainImg}
           priority
+          sizes="800px"
+          layout="fixed"
         />
       </Link>
     </section>
