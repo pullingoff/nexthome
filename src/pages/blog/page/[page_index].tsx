@@ -34,10 +34,6 @@ interface IPage extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { page_index } = (params as IPage) || {};
   const page: number = parseInt(page_index || '1');
-
-  // blog/index.js에서 BlogPage function을 export default 시킬 꺼임.
-  //그때의 url 의 params가 없기 때문에 params 가 없을 때는 1로 지정하는 조건문을 걸어줌.
-
   const posts = await getAllPosts();
   const pageTotal = Math.ceil(posts.length / POSTS_PER_PAGE);
 

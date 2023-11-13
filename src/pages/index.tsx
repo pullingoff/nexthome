@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { Post } from '#src/type';
 import { getRecentPosts } from '#lib/posts-related-api';
-import mainImg from '#public/images/main.JPG';
+import mainImg from '#public/images/main.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -44,7 +44,7 @@ const Main = () => {
           src={mainImg}
           priority
           sizes="800px"
-          layout="fixed"
+          placeholder="blur"
         />
       </Link>
     </section>

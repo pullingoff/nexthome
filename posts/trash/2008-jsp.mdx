@@ -5,6 +5,7 @@ tags:
 - JAVA
 - JSP
 description: 국비지원 과정에서 배웠던 레거시 기술
+unpublished: true
 ---
 
 ## 서블릿
@@ -16,16 +17,16 @@ description: 국비지원 과정에서 배웠던 레거시 기술
 - HttpServlet의 구현체 (=`extends HttpServlet`) 작성
 - compile, 현재 컨텍스트의 classpath에 배포
 - WAS에 서블렛을 등록
-  - `web.xml` : servlet 먼저 쓰고-> servlet name, servlet-class, init-param, load-on-startup
-  - `@webServlet`
+- `web.xml` : servlet 먼저 쓰고-> servlet name, servlet-class, init-param, load-on-startup
+- `@webServlet`
 - 매핑: 클라이언트가 브라우저라는 에이전트를 통해 주소체계를 이용해 요청할 때, 해당 서블릿이 동작할 수 있는 Command URI 결정
-  - `web.xml` : servlet mapping 먼저 쓰고 -> servlet names, url-patterns
-  - `@webServlet`
+- `web.xml` : servlet mapping 먼저 쓰고 -> servlet names, url-patterns
+- `@webServlet`
 - WAS 재구동
 
 ### Servlet의 단점
 
-- 개발 소스와 디자인 소스가 섞여있음. 서로의 role이 확실치않아 협업이 힘들어짐  
+- 개발 소스와 디자인 소스가 섞여있음. 서로의 role이 확실치않아 협업이 힘들어짐
 - 개발 후 운영, 수정이 힘듦 (개발 등록 매핑 서버재구동해서 새로운 인스턴스 만들어지게하기.. 할 것 넘 많음)
 
 ## JSP(Java Server Page)
@@ -46,8 +47,8 @@ Servlet의 단점을 해결해주는 템플릿이 확장된 게 jsp다!
 #### MVC (책임 분리를 위한 구조 중 하나)
 
 - 모델: service+dao+vo
-- 뷰: view 
-- 컨트롤러: controller 
+- 뷰: view
+- 컨트롤러: controller
 
 1. 정적 텍스트: `HTML`, `CSS`, `JavaScript`, 일반 텍스트
 2. `scriptlet`
@@ -56,7 +57,7 @@ Servlet의 단점을 해결해주는 템플릿이 확장된 게 jsp다!
 
 #### Directive(지시자)
 
-`<%@ 지시자명 속성="값" %>` : JSP 페이지에 대한 환경설정 혹은 전 처리  
+`<%@ 지시자명 속성="값" %>` : JSP 페이지에 대한 환경설정 혹은 전 처리
 
 - `page`: 설정 정보(metadata, 로직에 영향 끼치진 않음)
 - include: 동적 내포
