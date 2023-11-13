@@ -4,10 +4,11 @@ date: 2022-01-14 11:00
 tags:
 - RUBY
 description: 지킬로 깃허브 페이지 만들다 만난 에러
+unpublished: true
 ---
 
 Facing with many errors while setting up a Jekyll github page, I'm logging it for the people like me.  
-The problom was, I wanted to run the local server with the instruction  
+The problom was, I wanted to run the local server with the instruction
 
 ```shell
 bundle exec jekyll serve
@@ -15,12 +16,12 @@ bundle exec jekyll serve
 
 but the terminal showed me **Permission errors**.  
 Some said I should **change the system preference to give iTerm the full disk access** but I don't think it was the reason.  
-Thanks to Vidyut, I **solved the error** and the helpful link is 
+Thanks to Vidyut, I **solved the error** and the helpful link is
 [here](https://luther.io/macos/how-to-install-latest-ruby-on-a-mac/)
 
 -------------------------
 
-## To do list 
+## To do list
 
 - [ ] Delete previous Gemfile.lock
 - [ ] Install Command Line Tools for Xcode
@@ -35,7 +36,7 @@ Thanks to Vidyut, I **solved the error** and the helpful link is
 For me, it was the problem **I didn't install 'Command Line Tools for Xcode'.**  
 Also, you need to remove the **Gemfile.lock** in your github page directory before you install bundle.  
 I followed his track and reinstalled homebrew, ruby, and jekyll.  
-And after 'bundle exec jekyll serve', 
+And after 'bundle exec jekyll serve',
 
 -------------------------
 

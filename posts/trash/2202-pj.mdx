@@ -5,6 +5,7 @@ published: false
 tags:
 - git
 description: Devops, 프론트 설계 등
+unpublished: true
 ---
 
 ## Devops (git)
@@ -15,7 +16,7 @@ e.g. 회원가입 개발용 브랜치(feat/Join), 로그인 개발용 브랜치(
 ## 프론트엔드 설계
 
 1. 백엔드 API 명세서에 맞게 리액트 컴포넌트 구조를 설계하자. **단일 책임의 원칙**  
-    e.g. 유저의 프로필 이미지를 표시하는 컴포넌트가 **이미지가 없을 때 랜덤 이미지까지 생성한다면 단일 책임 원칙 위반**임.
+e.g. 유저의 프로필 이미지를 표시하는 컴포넌트가 **이미지가 없을 때 랜덤 이미지까지 생성한다면 단일 책임 원칙 위반**임.
 2. 페이지를 나눌 수 없을 때까지 쪼개서 재사용성 극대화 (아토믹 디자인)
 3. 내용물(비즈니스 로직)과 껍데기(UI Component)를 분리하고 상태 주입을 위한 컴포넌트를 이용해 주입
 
@@ -27,5 +28,5 @@ e.g. 회원가입 개발용 브랜치(feat/Join), 로그인 개발용 브랜치(
 ## React 프로젝트 만드는 순서
 
 - create-react-app 하고 `components`, `store(for Redux)` 등 필요한 하위 디렉토리 만들기
-- store dir 안에 `index.js`를 만든다. root reducer 역할을 함. 
+- store dir 안에 `index.js`를 만든다. root reducer 역할을 함.
 - store 아래 `modules` dir를 만든다. 그리고 액션 타입과 액션 생성 함수를 만든다.

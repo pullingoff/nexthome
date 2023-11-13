@@ -5,6 +5,7 @@ tags:
 - Web
 - HTTP
 description: 웹 서버와 WAS의 차이, 웹 서버의 역할, 확장 CGI
+unpublished: true
 ---
 
 ## 웹 프로그래밍이란?
@@ -13,7 +14,7 @@ description: 웹 서버와 WAS의 차이, 웹 서버의 역할, 확장 CGI
 - 요리 주문(요구사항 분석) -> 재료 준비 (db의 raw data) -> 레시피(로직)대로 가공해 information으로 만듦 -> 요리를 내보냄
 **웹프로그래밍: 클라이언트 사이드 모듈 / 서버 사이드 모듈 두개가 한 공간에서 유기적으로 돌아가게 하는 것**
 
-Application(context): 명령어의 집합. 
+Application(context): 명령어의 집합.
 e.g. was는 자기 컨텍스트에서 그 요청에 답할수있는 컨텍스트를 찾음. 클라이언트가 응답 받아서 브라우저로 렌더링함
 
 ## 일괄 처리가 필요한 상황
@@ -33,7 +34,7 @@ e.g. was는 자기 컨텍스트에서 그 요청에 답할수있는 컨텍스트
 ## WEB: 논리적인 의미의 공간
 
 인터넷(International Network): 웹을 실제로 구현한 게 인터넷/ 클라이언트의 요청과 서버의 응답이 오고가는 매체  
-네트워크: 정보를 주고받기위한 물리적 매체/ data server and client  
+네트워크: 정보를 주고받기위한 물리적 매체/ data server and client
 
 ## HTTP protocol
 
@@ -47,7 +48,7 @@ IP: 정보 요청이나 응답 전송하려면 클라, 서버 서로 식별해�
 
 ## IPv4, IPv6 비교
 
-- IPv4: 최대값 255씩 4섹터 -> 2의8승(8비트 ) * 4 = 32bit/ 2의 32제곱..  
+- IPv4: 최대값 255씩 4섹터 -> 2의8승(8비트 ) * 4 = 32bit/ 2의 32제곱..
 - Ipv6: 영어f까지만있음 16진수 = 16진수는 4비트 필요..... -> 16* 8세트 = 128비트
 
 근데 누가 네이버 ip 주소 외우고 다니냐 -> 걍 domain name 씀
@@ -61,7 +62,7 @@ NIC(network information centre) 나라마다 있음. 우리나라로는 KISA로 
 ## HTML과 JavaScript 비교
 
 html: 정적static (시계 구현 불가능)  
-자바스크립트: 동적  
+자바스크립트: 동적
 
 BUT 자바스크립트 단점: 브라우저에서만 돌아간다. (due to 브라우저 엔진) 즉, 클라이언트가 실행한다) => 서버 사이드의 데이터를 가져올 수 없다.(=사용할수있는 데이터가 클라이언트 사이드로 한정되어있다.) -> 서버사이드 애플리케이션 needed
 
@@ -90,7 +91,7 @@ IP는 pc구별을 위한 것이고, 한 PC 안에서 서비스 구분은 Port �
 ### 3. 실행
 
 : 코딩, 컴파일,실행할 수 있는것 모음은 jdk에 담겨있다. 자바 SE는 기업용이 아니라 servlet api를 가지고 있지 않기 때문에 apache tomcat으로부터 api를 빌려서 실행  
-CGI: 클라이언트 요청에 따라 하나의 요청당 하나의 동적인 웹 페이지를 생성함.  
+CGI: 클라이언트 요청에 따라 하나의 요청당 하나의 동적인 웹 페이지를 생성함.
 
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbNzqkt%2FbtqHjrvGsIl%2FszkOSSF10gv1zlvbcRBEH1%2Fimg.png)
 
@@ -99,8 +100,8 @@ CGI: 클라이언트 요청에 따라 하나의 요청당 하나의 동적인 �
 :Server, WAS(Web Application Server) app = context.
 
 - was가 제공하는건 앱이자 컨텍스트, Container(=web container/ servlet container)
-  - 컨테이너란? 내부 컴포넌트의 life cycle을 관리하는 관리자  
-       ( e.g. javaFX- 에서 뭐 만들려면 버튼->페인->...페인 죽으면 버튼도 죽는다)  
+- 컨테이너란? 내부 컴포넌트의 life cycle을 관리하는 관리자
+( e.g. javaFX- 에서 뭐 만들려면 버튼->페인->...페인 죽으면 버튼도 죽는다)
 - 이 라이프사이클 내에서 컨테이너인 톰캣이 무슨 역할을 하는가?
 
 ### lifecycle callback
