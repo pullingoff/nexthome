@@ -3,19 +3,19 @@ title: "Utterances 사용해서 깃허브 댓글창 만들기"
 date: 2022-04-01 10:00
 tags:
 - Utterances
-description: 
+description: 깃허브 기술 블로그에 댓글 기능 추가하기
 ---
 
 [Utterances 공식문서](https://utteranc.es/)에서 하라는대로 깃허브 리포 만들고
- Utterances Install 한 후 본인의 vuePress에서 사용하는 `Layouts.vue`에 맞춰 넣기만 하면 된다. 
- 나는 GlobalLayout에 넣었더니 Page 컴포넌트가 기본적으로 포함하는 PageNav 아래에 나와서 안 예뻐서 Page 컴포넌트 안에 넣었다.
+Utterances Install 한 후 본인의 vuePress에서 사용하는 `Layouts.vue`에 맞춰 넣기만 하면 된다.
+나는 GlobalLayout에 넣었더니 Page 컴포넌트가 기본적으로 포함하는 PageNav 아래에 나와서 안 예뻐서 Page 컴포넌트 안에 넣었다.
 
 그런데 Vuepress 로컬 서버 실행시 **'Uncaught TypeError: AllHtmlEntities is not a constructor'**가 떴다.
 
 ![error](/images/blog/2204/htmlerror.png)
 
-구글링해보면 '뫄뫄 is not a constructor' 에러의 경우 import를 잘못 해줘서 발생하는 경우가 있었다. 
-그러나 내 프로젝트에는 AllHtmlEntities가 import되는 코드가 없었다.  
+구글링해보면 '뫄뫄 is not a constructor' 에러의 경우 import를 잘못 해줘서 발생하는 경우가 있었다.
+그러나 내 프로젝트에는 AllHtmlEntities가 import되는 코드가 없었다.
 
 [그러다 보게된 강같은 글!](https://github.com/vuejs/vuepress/issues/2996)
 
@@ -26,11 +26,11 @@ vuepress repo에 이미 issue로 올라와있다.
 
 그래서 yarn.lock에서 html-entities를 쳐보면, 정말 두 버전이 설치되어있는걸 확인할 수 있다.
 
-그래서 바로 터미널에서 `npm uninstall html-entities@^2.3.2`를 입력해 상위 버전을 지웠다. 
+그래서 바로 터미널에서 `npm uninstall html-entities@^2.3.2`를 입력해 상위 버전을 지웠다.
 대체로 `yarn remove html-entities@삭제할 버전`을 입력해도 해결될 것이다.
 
 에러 해결 완료! 🎉
 
-+ vuepress를 쓸 때 버전 관련한 문제가 많았다. 
-이유를 찾아보니 vuepress 레포에 버그 리포트로 많이 올라와있던데, 이런 일이 자주 발생하는 듯 하다. 
++ vuepress를 쓸 때 버전 관련한 문제가 많았다.
+이유를 찾아보니 vuepress 레포에 버그 리포트로 많이 올라와있던데, 이런 일이 자주 발생하는 듯 하다.
 그럴 땐 대부분 에러를 package.json의 디펜던시들을 수정해줌으로서 수정할 수 있었다.
