@@ -1,0 +1,42 @@
+---
+title: "기술 블로그 라이트하우스로 성능 개선하기"
+date: 2023-11-09 11:00
+tags:
+- 성능개선
+- 라이트하우스
+description: Next.js 이미지 사이즈 최적화
+---
+
+[작년 초 라이트하우스로 성능을 개선](https://haeun.vercel.app/blog/2204-lighthouse)했었는데요!
+그 이후로 여러 기능을 추가하고 리팩토링을 했어서, 다시 한번 라이트하우스 점수를 체크해보았습니다.
+
+## 개선 전 총점
+
+<img alt='라이트하우스 총점' src='/images/blog/23/lighthouseTotal.png' width='450px'/>
+
+개선 전에는 성능 77점, 접근성 100점, Best Practices 100점, 검색엔진 최적화 86점이 나왔습니다.
+작년에 검사했을 때 96점, 100점, 92점, 100점이었으니 성능과 SEO 점수를 다시 올리기로 했습니다!
+
+## 성능 진단
+
+<img alt='성능 진단' src='/images/blog/23/lighthousePerformance.png' width='450px'/>
+
+자세한 진단을 보면 첫째로는 서버 응답 시간이 느렸습니다.
+
+### 이미지 사이즈 최적화
+
+두번째로는 메인 화면에 있는 사진의 크기가 적절하지 않았다고 합니다.
+실제로 보여지는 거에 비해 큰 사이즈의 이미지를 가져오고 있기 때문인 것 같습니다.
+`next/image`의 `sizes` 속성을 사용해 최적화를 하라고 제안하더군요!
+이 메인 이미지의 경우 최대 800px으로 커질 수 있기 때문에 `sizes`를 사용해 800px으로 크기를 제한했습니다.
+
+### SEO 진단
+
+<img alt='SEO 진단' src='/images/blog/23/lighthouseSEO.png' width='450px'/>
+
+첫번째로는 문서에 meta description이 없다기에 추가해주었습니다.
+meta-description을 이미 넣어둬서 카카오톡으로 공유할 때도 뜨고 개발자도구에서도 확인 가능한데
+왜 뜨지ㅣ?
+
+
+블로그 글이나 다른 페이지에는 meta description이 있는데 메인 화면에선 빼먹었더라구요 하하...

@@ -1,0 +1,40 @@
+---
+title: "Next.js 13"
+date: 2023-11-01 12:00
+tags:
+- Next.js
+description: App Router의 등장
+---
+
+## Next.js 13
+
+이전 Next.js 버전까지는 Pages Router 방식으로, pages 디렉토리 안에 넣으면 파일 시스템 구조대로 라우팅이 되었다.
+Next.js 13에는 App Router 방식이 등장했다.
+또한 기본 컴포넌트 렌더링 방식으로 React 18의 RSC(React Server Component)을 채택하였다.
+
+### App Router
+
+App Router는 React 18의 RSC(React Server Component), Suspense를 기본적으로 고려한 방식이다.
+
+### Streaming
+
+Suspense를 사용해 컴포넌트 단위로 하이드레이션을 할 수 있게 되었다. 이
+것을 [Streaming](https://nextjs.org/blog/next-13#streaming)이라고 한다.
+예전에는 SSR을 하려면 데이터가 모두 준비될 때까지 기다려야했다가 전체를 그려야했다.
+이제 Streaming을 통해 데이터가 준비되는 만큼 UI를 미리 그려둘 수 있다.
+그 결과 유저에게 더 빨리 의미 있는 컨텐츠를 제공할 수 있다.
+
+## RSC (리액트 서버 컴포넌트)
+
+RSC는 서버에서 렌더링할 수 있는 컴포넌트다. 즉 RSC를 통해 개발자가
+컴포넌트를 렌더링할 곳을 선택할 수 있다. 기존의 SSR과 다른 점이라면
+SSR은 서버에서 **페이지 단위**로 정적 리소스를 생성했다면, RSC는 **컴포넌트 단위**로
+정적인 리소스를 생성할 수 있다.
+
+RSC를 사용하면 클라이언트로 보내는 JS 번들 크기를 줄일 수 있고, DB와 좀 더 가까운 곳에서
+데이터를 조회하므로 속도도 더 빨라질 수 있다.
+
+그러나 모든 컴포넌트를 RSC로 만들 순 없다. 브라우저 API를 사용하거나 useState, useEffect 등의 훅을 사용해야할 땐
+여전히 클라이언트 컴포넌트를 사용해야한다. 그럴 땐 파일 가장 첫줄에 'use client'라고 명시해야한다.
+또한 사용에 제약이 있으므로, 클라이언트 컴포넌트를 최대한 말단(leaves)에서 사용하는 것이 권장된다.
+서버 컴포넌트에서 클라이언트 컴포넌트를 불러오는 것은 가능하지만 그 반대는 불가능하다.
