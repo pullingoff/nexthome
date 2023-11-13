@@ -10,11 +10,11 @@ const MetadataBox = ({ customMetadata }: { customMetadata?: Metadata }) => {
   return (
     <Head>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta property="og:site_name" content={metadata.title} key="" />
-      <meta property="og:title" content={metadata.title} key="" />
+      <meta property="og:site_name" content={metadata.title} />
+      <meta property="og:title" content={metadata.title} />
       <title>{metadata.title}</title>
-      <meta content={metadata.description} name="description" key="" />
-      <meta property="og:description" content={metadata.description} key="" />
+      <meta name="description" content={metadata.description} />
+      <meta property="og:description" content={metadata.description} />
       {metadata.date && (
         <meta property="article:published_time" content={metadata.date} />
       )}
