@@ -3,7 +3,7 @@ title: "브라우저 스토리지 비교 (웹 스토리지, 캐시, 쿠키)"
 date: 2020-09-05 08:00
 tags:
 - Session
-description: 
+description: 브라우저에는 값을 저장할 수 있는 브라우저 저장소들이 있다.
 ---
 
 브라우저에는 값을 저장할 수 있는 브라우저 저장소들이 있다.
@@ -39,14 +39,14 @@ description:
 - 만약 알라딘에서 장바구니 담을때 정보를 클라이언트쪽에 저장하면 쿠키, 서버쪽에 저장하면 세션
 - 세션의 경우 브라우저가 다르면 다름, 세션 ID존재
 
-## Session Tracking Mode 
+## Session Tracking Mode
 
 - 세션 ID를 통해 세션을 식별하는 방법
 - 클라이언트한테서 요청이 왔는데 ID가 없으면 최초의 요청으로 인식하고 새로운 ID를 만든다. 그 후 응답데이터에 세션 ID를 포함시켜 보내면 클라이언트쪽에서 다시 그 세션 ID를 담아서 보냄
 
 1. COOKIE: e.g. JSESSIONID 와 같은 세션 아이디를 식별할 수 있는 쿠키를 C-S 사이에서 주고 받는다.
 2. SSL : Secure Layer를 통해 세션 아이디를 주고받는 방법. 전송 계층을 보안 처리하여 데이터를 보호하는 방법의 일종
-     (http: non-secure, https: secure)
+(http: non-secure, https: secure)
 3. URL: 세션 식별을 위한 아이디를 request line을 통해 주고받는 방법 (보안에 취약)
 
 ## 세션 종료 조건

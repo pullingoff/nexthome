@@ -3,7 +3,7 @@ title: '자바스크립트 함수 실행 이해하기 (콜스택, 이벤트루�
 date: 2021-04-01 09:00
 tags:
   - JavaScript
-description:
+description: 콜스택, 이벤트 루프와 태스크 등
 ---
 
 원문 링크: [Understanding Javascript Function Executions — Call Stack, Event Loop, Tasks & more](https://medium.com/@gaurav.pandvia/understanding-javascript-function-executions-tasks-event-loop-call-stack-more-part-1-5683dea1f5ec)
@@ -26,7 +26,7 @@ description:
 
 - 프로그램의 함수 호출을 기록하는 자료구조 (함수를 실행하면 스택에 그 함수를 push, 가장 나중에 넣은 걸 pop)
 - 재귀적으로 한 함수를 여러번 호출하면 무한 루프가 생긴다. 그렇게 되면 `RangeError: Maximum call stack size excedeed` 에러를 던진다.
-  (크롬 브라우저의 경우 스택의 제한은 16000 프레임이다.)
+(크롬 브라우저의 경우 스택의 제한은 16000 프레임이다.)
 
 #### Heap
 
@@ -34,7 +34,7 @@ description:
 
 #### Queue
 
-- 한 자바스크립트 런타임은 한 메시지큐를 포함한다. 
+- 한 자바스크립트 런타임은 한 메시지큐를 포함한다.
 메시지큐는 process되어야하는 메시지와 관련되어 실행되어야하는 콜백 함수의 목록이다.
 만약 스택이 충분한 용량을 가지고 있으면 메시지는 큐에서 꺼내져서 실행된다.
 메시지 프로세싱은 스택이 비워지면 끝난다. 

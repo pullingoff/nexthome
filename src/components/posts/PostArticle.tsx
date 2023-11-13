@@ -181,7 +181,7 @@ const PostHeadings = ({ headings }: { headings: Heading[] }) => {
   return (
     <>
       {headings ? (
-        <aside className="sticky min-w-[15%] max-h-[90vh] ml-4 top-[70px] hidden md:block">
+        <aside className="sticky min-w-[15%] max-h-[90vh] ml-4 top-[70px] hidden lg:block">
           <ul className="text-sm text-[#1e293bd1] pl-4 border-l-[#1e293bd1] border-l border-solid">
             {headings.map(heading => (
               <li

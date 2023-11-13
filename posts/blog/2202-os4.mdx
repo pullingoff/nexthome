@@ -1,9 +1,9 @@
 ---
-title: "CPU 스케쥴링 알고리즘의 종류와 방법 (FCFS, SJF, RR 등)"
+title: "CPU 스케쥴링 알고리즘의 종류와 방법"
 date: 2022-02-20 08:00
 tags:
 - 운영체제
-description: 
+description: FCFS, SJF, RR 등
 ---
 
 ## CPU Scheduling
@@ -40,11 +40,11 @@ description:
 
 2. Throughput (처리량)
 
-- CPU Burst의 갯수. 처리 완료한 갯수  
+- CPU Burst의 갯수. 처리 완료한 갯수
 
 ### 프로세스 입장
 
-1. Turnaround Time (소요시간, 반환시간)  
+1. Turnaround Time (소요시간, 반환시간)
 
 - cpu를 받아서 다 쓸 때까지 걸린 시간 (CPU burst 시작~끝)
 
@@ -118,7 +118,7 @@ response time: 첫번째 음식이 나올때까지 기다린 시간
 - foreground(interactive): 라운드로빈
 - background(batch, no human interaction): 선착순
 - Queue에 대한 스케줄링이 필요
-  - Fixed priority scheduling: fore 부터 -> background / starvation 우려 있음
+- Fixed priority scheduling: fore 부터 -> background / starvation 우려 있음
 - **처음 들어온 프로세스는 우선순위 우선으로** 해줬다가 여러번 필요할 수록 우선순위가 뒤로 밀린다.
 
 ## multiple processor scheduling
