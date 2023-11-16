@@ -16,7 +16,7 @@ export interface WorkProject {
 
 export interface Experience {
   organization: string;
-  description: string;
+  description?: string;
   link?: string;
   period: string;
   projects?: WorkProject[];
@@ -30,7 +30,7 @@ export interface TechStack {
 
 export interface Education {
   institute: string;
-  course: string;
+  course?: string;
   period: string;
   details?: string[];
 }
@@ -61,6 +61,7 @@ export interface MyInfo {
   job: string;
   email: string;
   github: string;
+  mainSentence: string;
   firstSentences: string[];
 }
 

@@ -32,7 +32,7 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
           ))}
         {title.includes('Skills') &&
           list.map((skill: TechStack) => (
-            <span className="leading-6 font-bold" key={skill.type}>
+            <span className="leading-6 font-bold mb-1" key={skill.type}>
               - {skill.type}:
               {skill?.skill.map(sk => (
                 <span
@@ -60,7 +60,7 @@ const WorkProjectBox = (pj: WorkProject) => {
           </h3>
         </Link>
       ) : (
-        <h3 className="mx-0 my-2"> {pj.title}</h3>
+        <>{pj.title && <h3 className="mx-0 my-2">• {pj.title}</h3>}</>
       )}
       <p className="font-medium mb-2 pl-1">{pj.description}</p>
       {pj.tech?.map(t => (
@@ -81,7 +81,9 @@ const EducationBox = (edu: Education) => {
   return (
     <>
       <S.Org>{edu.institute}</S.Org>
-      <DateSection first={edu.course} last={edu.period} />
+      <span className="font-normal">
+        {edu.course} | {edu.period}
+      </span>
       {edu.details && <DetailSection list={edu.details} />}
     </>
   );
@@ -95,11 +97,16 @@ const ProjectBox = (exp: Experience) => {
           <S.Org className="hover:cursor-pointer hover:text-[salmon]">
             {exp.organization} 🔗
           </S.Org>
+          / {exp.period}
+          {exp.description && (
+            <p className="mt-2 font-bold">: {exp.description}</p>
+          )}
         </Link>
       ) : (
-        <S.Org>{exp.organization}</S.Org>
+        <>
+          <S.Org>{exp.organization}</S.Org> {exp.description} / {exp.period}
+        </>
       )}
-      <DateSection first={exp.description} last={exp.period} />
       {exp.projects?.map((pj, idx) => (
         <div key={pj.title || idx}>
           <WorkProjectBox {...pj} />
@@ -107,14 +114,6 @@ const ProjectBox = (exp: Experience) => {
       ))}
       {exp.details && <DetailSection list={exp.details} />}
     </>
-  );
-};
-
-const DateSection = ({ first, last }: { first: string; last: string }) => {
-  return (
-    <span className="font-normal">
-      {first} | {last}
-    </span>
   );
 };
 
