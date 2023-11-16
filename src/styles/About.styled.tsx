@@ -3,16 +3,17 @@ import styled from 'styled-components';
 const S: any = {};
 
 S.Org = styled.span`
-  display: block;
+  //display: block;
   font-weight: 800;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  margin-right: 0.25rem;
 `;
 
 S.SectionHeader = styled.h2`
   margin: 1.25rem 0 0.5rem;
   font-size: 1.75rem;
-  color: var(--theme1-color);
+  color: var(--color-point-blue);
   font-weight: 800;
   letter-spacing: initial;
 `;

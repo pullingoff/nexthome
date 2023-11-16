@@ -35,9 +35,10 @@ const ResumeHeader = () => {
       <span className="font-normal mt-1">
         Email: {headerInfo.email} <br />
       </span>
-      <div className="mt-2">
+      <div className="mt-2 ml-1">
+        <h3 className="mb-1">{headerInfo.mainSentence}</h3>
         {headerInfo.firstSentences?.map((stc, idx) => (
-          <span key={idx} className="block font-medium mx-0 mb-1">
+          <span key={idx} className="block font-medium mx-0 mb-0.5">
             {stc}
           </span>
         ))}
