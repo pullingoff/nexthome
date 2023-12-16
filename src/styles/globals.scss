@@ -5,12 +5,6 @@
 @import './settings.variables.scss';
 @import "./_mixin.scss";
 
-@layer base {
-  ul, ol {
-    list-style: revert;
-  }
-}
-
 // 여기 수정할거면 settings.variables.scss도 수정해야
 :root {
   box-sizing: border-box;
@@ -161,7 +155,7 @@ hr {
 
 ul {
   padding: 0;
-  //list-style: none;
+  list-style: none;
 }
 
 strike {
