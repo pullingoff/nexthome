@@ -1,5 +1,5 @@
 ---
-title: "기술 블로그 라이트하우스로 성능 개선하기"
+title: "기술 블로그 라이트하우스로 성능과 접근성 개선하기"
 date: 2023-11-09 11:00
 tags:
 - 성능개선
@@ -7,25 +7,24 @@ tags:
 description: Next.js 이미지 사이즈 최적화
 ---
 
-[작년 초 라이트하우스로 성능을 개선](https://haeun.vercel.app/blog/2204-lighthouse)했었는데요!
-그 이후로 여러 기능을 추가하고 리팩토링을 했어서, 다시 한번 라이트하우스 점수를 체크해보았습니다.
+![총 점](/images/blog/2204/score.png)
 
-## 개선 전 총점
+작년 초 라이트하우스로 성능과 접근성을 개선했었는데요!
+개선 전에는 점수가 퍼포먼스 77점, 접근성 92점, Best Practices 92점, SEO 92점이었고,
+개선 후에 96, 100, 92, 100점이 되었습니다.
+작년 초에 개선했던 내용과 이번에 추가로 개선한 내용을 합쳐 글을 엮었습니다.
 
-<img alt='라이트하우스 총점' src='/images/blog/23/lighthouseTotal.png' width='450px'/>
-
-개선 전에는 성능 77점, 접근성 100점, Best Practices 100점, 검색엔진 최적화 86점이 나왔습니다.
-작년에 검사했을 때 96점, 100점, 92점, 100점이었으니 성능과 SEO 점수를 다시 올리기로 했습니다!
-
-## 성능 진단
+### 네트워크 성능
 
 <img alt='성능 진단' src='/images/blog/23/lighthousePerformance.png' width='450px'/>
 
 자세한 진단을 보면 첫째로는 `Reduce initial server response time`.
 서버 응답 시간이 느리다고 합니다. 이 문제는 서버의 문제도 있지만 와이파이의 성능과 관련된거기도 해서요!
-첫 측정 시에는 카페에서 작업을 했던지라 집에 와서 다시 해보니 이 에러는 고쳐진 걸 확인했습니다!
+첫 측정 시에는 사람이 꽉 찬 카페에서 작업을 했던지라 집에 와서 다시 해보니 이 에러는 고쳐진 걸 확인했습니다!
 
 ### 이미지 사이즈 최적화
+
+![이미지 사이즈](/images/blog/2204/imgsize.png)
 
 두번째로는 `Properly size images`. 메인 화면에 있는 사진의 크기가 적절하지 않았다고 합니다.
 실제로 보여지는 거에 비해 큰 사이즈의 이미지를 가져오고 있기 때문인 것 같습니다.
@@ -35,18 +34,65 @@ description: Next.js 이미지 사이즈 최적화
 마지막인 `Reduce unused JavaScript`는 구글 애널리틱스 연결에 필요한 키를 넣어두지 않아서 그런거였습니다.
 Vercel 설정에 환경변수를 추가함으로써 위 문제도 해결했습니다.
 
+### Document doesn't have a `<title>` element
+
+사이트의 title이 있어야 스크린리더를 사용하는 사람들이 페이지의 개요를 알고, 서치엔진이 적절한 검색어와 사이트를 엮어줄 수 있습니다.
+
+제 블로그에서는 게시글별로 커스텀 메타데이터를 적용하고 있습니다.
+게시글이 아닌 페이지에 title이 없다고 해서 METADATA 상수를 사용해 기본값을 지정해주었습니다.
+
+js의 스프레드 연산자를 사용해 기본값을 먼저 넣어주고, 그 위에 커스텀 메타데이터를 덮어쓰도록 했습니다.
+
+```js
+const MetaContainer = ({customMetadata}: {
+    customMetadata?: CustomMetadata,
+}) => {
+    const config = {
+        ...METADATA,        // 기본값
+        ...customMetadata,      // 커스텀 메타데이터
+    }
+
+    return (
+        <Head>
+        <title>{config.title}</title>
+            <meta content="width=device-width, initial-scale=1" name="viewport" />
+            <meta name="robots" content="follow, index" />
+            <meta content={config.description} name="description" />
+        // 생략...
+      </Head>
+    )
+}
+```
+
+### Links do not have a discernible name
+
+![링크 이름 경고](/images/blog/2204/link.png)
+
+블로그 `footer`에 깃허브, 트위터, 링트인 링크가 달린 로고를 걸어두었는데 이 링크에 아무 텍스트가 적혀있지 않아서 난 이슈입니다.
+`aria-label` 속성을 추가하니 접근성이 100점이 되었습니다.
+
+![aria-label 추가](/images/blog/2204/aria.png)
+
+### `<html>` element does not have a [lang] attribute
+
+문서에 언어가 지정되어있지 않다고 합니다.
+`next.config.js`에서 수정해주면 됩니다. 제 블로그는 일단 한국어 컨텐츠뿐이라 kr로 지정해주었습니다.
+추후에 영어도 추가하고 영어컨텐츠를 좀 더 적을 수 있으면 좋겠네요.
+
+```js
+// next.config.js
+module.exports = {
+  // 생략
+  i18n: {
+    locales: ["kr"],
+    defaultLocale: "kr",
+  },
+}
+```
+
 ### SEO 진단
-
-<img alt='SEO 진단' src='/images/blog/23/lighthouseSEO.png' width='450px'/>
-
-첫번째로는 `Document does not have a meta description`.
-문서에 meta description이 없다고 합니다.
-그런데 저는 이미 meta description과 og:description을 자동으로 각 페이지에 들어가게 해뒀는데
-개발자도구로 보면 og:description만 보이더라구요.
-content도 null이나 빈 값이 될 리가 없게 기본값을 넣어뒀는데 말이죠!
-혹시나 해서 og:description과 description의 순서를 바꿔줬더니 빠지지 않고 동작하는 걸 확인했습니다.
 
 <img alt='요소 겹침 이슈' src='/images/blog/23/lighthouseTarget.png'/>
 
 그리고 위 문제는 모바일 뷰로 볼 경우 저 부분 요소들이 겹쳐서 그런 거였습니다.
-그래서 마진값을 수정해 해결했습니다!
+요소의 마진값을 수정해 해결했습니다!
