@@ -53,12 +53,7 @@ export const parseMarkdownToMdx = async (body: string) => {
     // 마크다운에서 html로 제대로 바꿀 수 있도록 도와주는 플러그인들
     mdxOptions: {
       remarkPlugins: [remarkMath, slug, remarkGfm],
-      rehypePlugins: [
-        // rehypeKatex,
-        prism,
-        parseCodeSnippet,
-        rehypeAutolinkHeadings,
-      ],
+      rehypePlugins: [prism, parseCodeSnippet, rehypeAutolinkHeadings],
     },
   });
 };

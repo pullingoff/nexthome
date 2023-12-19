@@ -2,19 +2,19 @@ import '#styles/globals.scss';
 import Layout from '#components/layout/Layout';
 import MetadataBox from '#components/MetadataBox';
 import { AppProps } from 'next/app';
-import { useState, useEffect } from 'react';
-import Loading from '#components/Loading';
+// import { useState, useEffect } from 'react';
+// import Loading from '#components/Loading';
 import hifiImg from '#public/hifi.png';
 import Image from 'next/image';
 import Script from 'next/script';
 import Link from 'next/link';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, []);
 
   return (
     <Layout>
@@ -37,7 +37,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         }}
       />
       <MetadataBox />
-      <Loading loading={loading} />
       <Component {...pageProps} />
       <CoffeeChat />
     </Layout>
