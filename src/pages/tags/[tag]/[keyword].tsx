@@ -1,7 +1,7 @@
 import ListLayout from '#components/ListLayout';
 import { getAllTags, getAllPosts } from '#lib/posts-related-api';
 import { POSTS_PER_PAGE } from '#src/config';
-import MetadataBox from '#components/MetadataBox';
+import MetadataHead from '#components/MetadataHead';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Post, ITag } from '#src/type';
 import Pagination from '#components/Pagination';
@@ -24,7 +24,7 @@ const Tag = ({
   };
   return (
     <>
-      <MetadataBox customMetadata={customMeta} />
+      <MetadataHead customMetadata={customMeta} />
       <KeywordBox
         pageNm={capitalizedTag}
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   allTags.forEach(({ tag }) => {
     const tagsCount = posts.filter(post =>
-      post.frontmatter.tags.find(t => t === tag)
+      post.frontMatter.tags.find(t => t === tag)
     ).length;
     [...new Array(Math.round(tagsCount / POSTS_PER_PAGE)).keys()].forEach(i => {
       paths.push({ params: { tag, keyword: `${i + 1}` } });
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { tag, keyword } = params as ITag;
   const pageNo = parseInt(keyword);
   const postsWithTag = allPosts.filter(post =>
-    post.frontmatter.tags.find(t => t === tag)
+    post.frontMatter.tags.find(t => t === tag)
   );
 
   if (

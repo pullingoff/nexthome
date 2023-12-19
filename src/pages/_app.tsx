@@ -1,6 +1,6 @@
 import '#styles/globals.scss';
 import Layout from '#components/layout/Layout';
-import MetadataBox from '#components/MetadataBox';
+import MetadataHead from '#components/MetadataHead';
 import { AppProps } from 'next/app';
 // import { useState, useEffect } from 'react';
 // import Loading from '#components/Loading';
@@ -36,7 +36,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           `,
         }}
       />
-      <MetadataBox />
+      <MetadataHead />
       <Component {...pageProps} />
       <CoffeeChat />
     </Layout>
@@ -45,7 +45,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
 const CoffeeChat = () => {
   return (
-    <div className="fixed cursor-pointer border border-[color:var(--theme1-color)] p-1 rounded-[50%] border-solid right-[3%] bottom-[4%] hover:shadow-[0_30px_45px_-15px_var(--theme1-color)] hover:scale-110">
+    <div className="fixed cursor-pointer border border-deep-blue p-1 rounded-[50%] border-solid right-[3%] bottom-[4%] hover:shadow-[0_30px_45px_-15px_var(--theme1-color)] hover:scale-110">
       <Link href="https://whattime.co.kr/haeun" target="_blank">
         <Image
           src={hifiImg}

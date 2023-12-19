@@ -38,15 +38,15 @@ export interface Education {
 export interface FrontMatter {
   title: string;
   tags: string[];
-  unpublished?: boolean;
   date: string;
+  recentUpdatedDate?: string;
   description: string;
   path: string;
 }
 
 export interface Post {
   slug: string;
-  frontmatter: FrontMatter;
+  frontMatter: FrontMatter;
   body: string;
   headings?: Heading[];
 }

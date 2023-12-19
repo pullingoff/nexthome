@@ -2,7 +2,7 @@ import { getAllPosts, getAllSlugs, getAllTags } from '#lib/posts-related-api';
 import { POSTS_PER_PAGE } from '#src/config';
 import Pagination from '#components/Pagination';
 import ListLayout from '#components/ListLayout';
-import MetadataBox from '#components/MetadataBox';
+import MetadataHead from '#components/MetadataHead';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ITag, Metadata } from '#src/type';
 import { ParsedUrlQuery } from 'querystring';
@@ -66,17 +66,15 @@ export default function BlogPage({
   currentPage,
   pageTotal,
   tags,
-  allSlugs,
 }: {
   posts: Post[];
   currentPage: number;
   pageTotal: number;
   tags: ITag[];
-  allSlugs: string[];
 }) {
   return (
     <>
-      <MetadataBox customMetadata={customMeta} />
+      <MetadataHead customMetadata={customMeta} />
       <TagBox tags={tags} />
       <ListLayout posts={posts} />
       <Pagination

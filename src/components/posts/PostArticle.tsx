@@ -1,5 +1,5 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import MetadataBox from '../MetadataBox';
+import MetadataHead from '../MetadataHead';
 import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
 import Comments from '#components/posts/Comments';
@@ -17,7 +17,7 @@ const PostArticle = ({
 }) => {
   const router = useRouter();
 
-  const { title, date, description } = post.frontmatter;
+  const { title, date, description } = post.frontMatter;
   const customMeta = {
     title: title,
     date: date,
@@ -25,7 +25,7 @@ const PostArticle = ({
   };
   return (
     <>
-      <MetadataBox customMetadata={customMeta} />
+      <MetadataHead customMetadata={customMeta} />
       <div className="flex items-start justify-center">
         <article className="max-w-[90vw]">
           <PostHeader date={date} title={title} />
@@ -33,7 +33,7 @@ const PostArticle = ({
             <MDXRemote {...mdxSource} />
           </article>
           <span
-            className="block mr-[-] ml-[-] text-[color:var(--color-point-blue)] font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-[salmon]"
+            className="block mr-[-] ml-[-] text-light-blue font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-[salmon]"
             onClick={() => router.back()}
           >
             &larr; 이전
@@ -50,12 +50,8 @@ export default PostArticle;
 const PostHeader = ({ date, title }: { date: string; title: string }) => {
   return (
     <header className="text-center animate-[1s_anim-lineUp_0.1s_ease-out_1] pt-3">
-      <time className="font-medium text-[color:var(--theme1-color)]">
-        {date}
-      </time>
-      <h1 className="md:text-3xl font-extrabold text-[color:var(--theme1-color)]">
-        {title}
-      </h1>
+      <time className="font-medium text-deep-blue">{date}</time>
+      <h1 className="md:text-3xl font-extrabold text-deep-blue">{title}</h1>
     </header>
   );
 };

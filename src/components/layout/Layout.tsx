@@ -19,7 +19,7 @@ export default Layout;
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col justify-center items-center text-center pt-8 pb-4 my-2 md:my-4 border-t border-[color:var(--theme1-color)]">
+    <footer className="flex flex-col justify-center items-center text-center pt-8 pb-4 my-2 md:my-4 border-t border-deep-blue">
       <Link href={`mailto:${METADATA.email}`} className="hover:font-bold">
         Email: {METADATA.email}
       </Link>

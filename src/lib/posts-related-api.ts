@@ -24,15 +24,14 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
   const allPostsData: Post[] = allFileNames.map(fileName => {
     const slug = fileName.split('/')[1].split('.mdx')[0];
     const fullPath = path.join(process.cwd(), 'posts', fileName);
-
     const fileContents = fs.readFileSync(fullPath, 'utf8'); // path에 있는 파일 내용 읽어오기
-    const { data: frontmatter, content: body } = matter(fileContents);
-    const fm: FrontMatter = frontmatter as FrontMatter;
+    const { data, content: body } = matter(fileContents);
+    const frontMatter = data as FrontMatter;
 
-    return { frontmatter: fm, body, slug };
+    return { frontMatter, body, slug };
   });
 
-  return allPostsData.filter(f => !f.frontmatter.unpublished).sort(sortByDate);
+  return allPostsData.sort(sortByDate);
 };
 
 export const getAllPosts: () => Promise<Post[]> = memoize(retrieveAllPosts);
@@ -53,7 +52,7 @@ type ITag = {
 const retrieveAllTags = async () => {
   const tags: string[] = (await getAllPosts()).reduce<string[]>(
     (prev: string[], curr: Post) => {
-      curr.frontmatter.tags.forEach((tag: string) => {
+      curr.frontMatter.tags.forEach((tag: string) => {
         prev.push(tag);
       });
       return prev;

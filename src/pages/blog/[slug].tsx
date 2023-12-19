@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { parseMarkdownToMdx } from '#utils/Markdown';
+import { parseMarkdownToMdx } from '#utils/markdown';
 import PostArticle from '#components/posts/PostArticle';
 import { markdownRegex } from '#src/lib';
 import { GetStaticPaths, GetStaticProps } from 'next';

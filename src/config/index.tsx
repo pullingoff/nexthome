@@ -17,5 +17,5 @@ export const MENUS = [
   { title: '이력서', path: '/about', emoji: '🕷' },
 ];
 
-// posts 폴더 안의 subdirectories
+// 공개할 posts 폴더 안의 subdirectories
 export const POST_DIRS: string[] = ['blog'];
