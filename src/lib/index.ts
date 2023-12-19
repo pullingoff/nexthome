@@ -4,8 +4,8 @@ export const markdownRegex = /(\.mdx$)|(\.md$)|(\.markdown$)/;
 
 export const sortByDate = (a: Post, b: Post) => {
   return (
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
+    new Date(b.frontMatter.date).valueOf() -
+    new Date(a.frontMatter.date).valueOf()
   );
 };
 

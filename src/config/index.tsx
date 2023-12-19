@@ -18,4 +18,4 @@ export const MENUS = [
 ];
 
 // posts 폴더 안의 subdirectories
-export const POST_DIRS: string[] = ['blog'];
+export const POST_DIRS: string[] = ['blog', 'trash'];

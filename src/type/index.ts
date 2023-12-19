@@ -46,7 +46,7 @@ export interface FrontMatter {
 
 export interface Post {
   slug: string;
-  frontmatter: FrontMatter;
+  frontMatter: FrontMatter;
   body: string;
   headings?: Heading[];
 }

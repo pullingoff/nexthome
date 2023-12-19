@@ -17,7 +17,7 @@ const PostArticle = ({
 }) => {
   const router = useRouter();
 
-  const { title, date, description } = post.frontmatter;
+  const { title, date, description } = post.frontMatter;
   const customMeta = {
     title: title,
     date: date,

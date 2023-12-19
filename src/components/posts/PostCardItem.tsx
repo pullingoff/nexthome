@@ -5,18 +5,18 @@ import Link from 'next/link';
 
 const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
   const [publishedAt, setPublishedAt] = useState<string>('');
-  const { title, description, tags } = post.frontmatter;
+  const { title, description, tags } = post.frontMatter;
 
   // 사파리용 split 서버, 클라이언트 다른 경우가 있음
   useEffect(() => {
     try {
       setPublishedAt(
-        format(new Date(post.frontmatter.date), 'yyyy년 MM월 dd일')
+        format(new Date(post.frontMatter.date), 'yyyy년 MM월 dd일')
       );
     } catch (e) {
-      setPublishedAt(post.frontmatter.date.toString().split(/(\s+)/)[0]);
+      setPublishedAt(post.frontMatter.date.toString().split(/(\s+)/)[0]);
     }
-  }, [post.frontmatter.date]);
+  }, [post.frontMatter.date]);
 
   return (
     <div className="relative flex flex-col overflow-hidden h-full border border-medium-blue z-0 rounded-lg hover:-translate-y-2 hover:shadow-[10px_10px_lightgray] hover:duration-200">
