@@ -12,11 +12,11 @@ const detailItemClasses =
 const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
     <main className='before:content-["_"] before:relative before:block before:mt-4 before:border-t-[lightgrey] before:border-t before:border-dashed before:top-px'>
-      <h2 className='text-2xl text-[color:var(--color-point-blue)] font-extrabold tracking-[initial] mt-5 mb-2 mx-0'>
-        <CustomEmoji aria='Woman Technologist'>👩🏻‍💻 </CustomEmoji>
+      <h2 className="text-2xl text-[color:var(--color-point-blue)] font-extrabold tracking-[initial] mt-5 mb-2 mx-0">
+        <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
         {title}
       </h2>
-      <section className='w-full flex flex-col flex-nowrap mb-4'>
+      <section className="w-full flex flex-col flex-nowrap mb-4">
         {title.includes('Education') &&
           list.map((edu: Education) => (
             <Fragment key={edu.course}>
@@ -37,9 +37,9 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
           ))}
         {title.includes('Skills') &&
           list.map((skill: TechStack) => (
-            <span className='leading-6 font-bold mb-1' key={skill.type}>
+            <span className="leading-6 font-bold mb-1" key={skill.type}>
               - {skill.type}:
-              {skill?.skill.map((sk) => (
+              {skill?.skill.map(sk => (
                 <span
                   className='font-normal [&:not(:last-child):after]:content-[","]'
                   key={sk}
@@ -59,17 +59,17 @@ const WorkProjectBox = (pj: WorkProject) => {
   return (
     <>
       {pj.link ? (
-        <Link href={pj.link} target='_blank'>
-          <h3 className='mx-0 my-2 hover:cursor-pointer hover:text-[salmon]'>
+        <Link href={pj.link} target="_blank">
+          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-[salmon]">
             {pj.title} 🔗
           </h3>
         </Link>
       ) : (
-        <>{pj.title && <h3 className='mx-0 my-2'>• {pj.title}</h3>}</>
+        <>{pj.title && <h3 className="mx-0 my-2">• {pj.title}</h3>}</>
       )}
-      <p className='font-medium mb-2 pl-1'>{pj.description}</p>
+      <p className="font-medium mb-2 pl-1">{pj.description}</p>
       {pj.tech?.map((t, idx) => (
-        <span className='font-normal pl-1' key={t}>
+        <span className="font-normal pl-1" key={t}>
           {t}
           {idx === pj.tech.length - 1 ? '' : ','}
         </span>
@@ -91,7 +91,7 @@ const EducationBox = (edu: Education) => {
   return (
     <>
       <span className={orgClasses}>{edu.institute}</span>
-      <span className='font-normal'>
+      <span className="font-normal">
         {edu.course} | {edu.period}
       </span>
       {edu.details && <DetailSection list={edu.details} />}
@@ -107,11 +107,11 @@ const ProjectBox = (exp: Experience) => {
   return (
     <>
       {exp.link ? (
-        <Link href={exp.link} target='_blank'>
+        <Link href={exp.link} target="_blank">
           <span className={linkedOrgClasses}>{exp.organization} 🔗</span>/{' '}
           {exp.period}
           {exp.description && (
-            <p className='mt-2 font-bold'>: {exp.description}</p>
+            <p className="mt-2 font-bold">: {exp.description}</p>
           )}
         </Link>
       ) : (

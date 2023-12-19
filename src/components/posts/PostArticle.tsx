@@ -4,7 +4,7 @@ import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
 import Comments from '#components/posts/Comments';
 import Link from 'next/link';
-import styles from './post.module.scss'
+import styles from './post.module.scss';
 
 const PostArticle = ({
   post,
@@ -26,13 +26,18 @@ const PostArticle = ({
   return (
     <>
       <MetadataBox customMetadata={customMeta} />
-      <div className='flex items-start justify-center'>
-        <article className='max-w-[90vw]'>
+      <div className="flex items-start justify-center">
+        <article className="max-w-[90vw]">
           <PostHeader date={date} title={title} />
           <article className={styles.postContent}>
             <MDXRemote {...mdxSource} />
           </article>
-          <span className='block mr-[-] ml-[-] text-[color:var(--color-point-blue)] font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-[salmon]' onClick={() => router.back()}>&larr; 이전</span>
+          <span
+            className="block mr-[-] ml-[-] text-[color:var(--color-point-blue)] font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-[salmon]"
+            onClick={() => router.back()}
+          >
+            &larr; 이전
+          </span>
         </article>
         {headings && <PostHeadings headings={headings} />}
       </div>
