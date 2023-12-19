@@ -1,6 +1,8 @@
-@import "./settings.variables";
-
 // mobile first!!
+
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 980px; // max-width
 
 @mixin notDesktop {       // 지양하자
   @media (max-width: #{$breakpoint-tablet - 1px}) {

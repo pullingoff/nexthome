@@ -2,26 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './settings.variables.scss';
 @import "./_mixin.scss";
 
 // 여기 수정할거면 settings.variables.scss도 수정해야
 :root {
   box-sizing: border-box;
-  --breakpoint-mobile: #{$breakpoint-mobile};
-  --breakpoint-tablet: #{$breakpoint-tablet};
-  --breakpoint-desktop: #{$breakpoint-desktop};
+  --breakpoint-desktop: 980px;
 
-  --theme1-color: #{$theme1-color};
-  --theme2-color: #{$theme2-color};
+  --theme1-color: #1e293b;
+  --theme2-color: #5e7692;
   --bg-yellow: #ffffff;
   --bg-yellow--opaque: #ffffffc3;
-  --color-pale-bg: #{$color-pale-bg};
+  --color-pale-bg: #ffffff;
   --color-white: white;
   --color-point-blue: #549dcf;
   --color-deep-navy: #0e264d;
   --border-radius-sm: 6px;
-  --border-on-light: darken($color-pale-bg, 5%);
+  --border-on-light: darken(#ffffff, 5%);
   --color-text-lighter: salmon;
 
   --sm: 0.25rem;
@@ -198,13 +195,13 @@ sub {
 
 // drag 시 컬러
 ::selection {
-  background: lighten($theme1-color, 10%);
+  background: lighten(#1e293b, 10%);
   color: white;
 }
 
 // drag (firefox)
 ::-moz-selection {
-  background: lighten($theme1-color, 10%);
+  background: lighten(#1e293b, 10%);
   color: white;
 }
 
