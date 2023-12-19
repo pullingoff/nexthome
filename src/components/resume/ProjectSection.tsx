@@ -12,7 +12,7 @@ const detailItemClasses =
 const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
     <main className='before:content-["_"] before:relative before:block before:mt-4 before:border-t-[lightgrey] before:border-t before:border-dashed before:top-px'>
-      <h2 className="text-2xl text-[color:var(--color-point-blue)] font-extrabold tracking-[initial] mt-5 mb-2 mx-0">
+      <h2 className="text-2xl text-light-blue font-extrabold tracking-[initial] mt-5 mb-2 mx-0">
         <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
         {title}
       </h2>

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { METADATA } from '#src/config';
 import { Metadata } from '#src/type';
 
-const MetadataBox = ({ customMetadata }: { customMetadata?: Metadata }) => {
+const MetadataHead = ({ customMetadata }: { customMetadata?: Metadata }) => {
   const metadata = {
     ...METADATA, // 기본값
     ...customMetadata, // 커스텀 메타데이터
@@ -26,4 +26,4 @@ const MetadataBox = ({ customMetadata }: { customMetadata?: Metadata }) => {
   );
 };
 
-export default MetadataBox;
+export default MetadataHead;

@@ -20,6 +20,11 @@ module.exports = {
       // => @media (min-width: 1024px) { ... }
     },
     extend: {},
+    colors: {
+      'light-blue': '#549dcf',
+      'medium-blue': '#5e7692', // default
+      'deep-blue': '#1e293b',
+    },
   },
   plugins: [],
 };

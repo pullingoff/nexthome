@@ -1,7 +1,7 @@
 export const GithubLogo = ({ style }: { style?: React.CSSProperties }) => {
   return (
     <svg
-      className="fill-[var(--theme1-color)] hover:fill-[salmon]"
+      className="fill-deep-blue hover:fill-[salmon]"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"

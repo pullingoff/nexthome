@@ -1,7 +1,7 @@
 import ListLayout from '#components/ListLayout';
 import { getAllTags, getAllPosts } from '#lib/posts-related-api';
 import { POSTS_PER_PAGE } from '#src/config';
-import MetadataBox from '#components/MetadataBox';
+import MetadataHead from '#components/MetadataHead';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Post, ITag } from '#src/type';
 import Pagination from '#components/Pagination';
@@ -24,7 +24,7 @@ const Tag = ({
   };
   return (
     <>
-      <MetadataBox customMetadata={customMeta} />
+      <MetadataHead customMetadata={customMeta} />
       <KeywordBox
         pageNm={capitalizedTag}
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
