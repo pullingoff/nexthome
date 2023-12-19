@@ -8,5 +8,3 @@ export const sortByDate = (a: Post, b: Post) => {
     new Date(a.frontMatter.recentUpdatedDate || a.frontMatter.date).valueOf()
   );
 };
-
-export const addRecentUpdateDateToFrontMatter = () => {};

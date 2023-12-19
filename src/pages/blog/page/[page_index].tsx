@@ -66,13 +66,11 @@ export default function BlogPage({
   currentPage,
   pageTotal,
   tags,
-  allSlugs,
 }: {
   posts: Post[];
   currentPage: number;
   pageTotal: number;
   tags: ITag[];
-  allSlugs: string[];
 }) {
   return (
     <>
