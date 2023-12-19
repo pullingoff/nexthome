@@ -1,17 +1,22 @@
-import S from '#styles/About.styled';
 import CustomEmoji from '#components/common/CustomEmoji';
 import { Education, Experience, TechStack, WorkProject } from '#src/type';
 import { Fragment } from 'react';
 import Link from 'next/link';
+import classNames from 'classnames';
+
+const orgClasses = classNames('font-extrabold text-xl mr-1 mb-1');
+const detailListClasses = 'mb-4 m-1 list-none';
+const detailItemClasses =
+  'mx-0 my-1 pl-1 before:content-["-"] before:relative before:mr-2';
 
 const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
-    <main className="before:content-['_'] before:relative before:block before:mt-4 before:border-t-[lightgrey] before:border-t before:border-dashed before:top-px">
-      <S.SectionHeader>
-        <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
+    <main className='before:content-["_"] before:relative before:block before:mt-4 before:border-t-[lightgrey] before:border-t before:border-dashed before:top-px'>
+      <h2 className='text-2xl text-[color:var(--color-point-blue)] font-extrabold tracking-[initial] mt-5 mb-2 mx-0'>
+        <CustomEmoji aria='Woman Technologist'>👩🏻‍💻 </CustomEmoji>
         {title}
-      </S.SectionHeader>
-      <S.OrgContainer>
+      </h2>
+      <section className='w-full flex flex-col flex-nowrap mb-4'>
         {title.includes('Education') &&
           list.map((edu: Education) => (
             <Fragment key={edu.course}>
@@ -32,11 +37,11 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
           ))}
         {title.includes('Skills') &&
           list.map((skill: TechStack) => (
-            <span className="leading-6 font-bold mb-1" key={skill.type}>
+            <span className='leading-6 font-bold mb-1' key={skill.type}>
               - {skill.type}:
-              {skill?.skill.map(sk => (
+              {skill?.skill.map((sk) => (
                 <span
-                  className="font-normal [&:not(:last-child):after]:content-[',']"
+                  className='font-normal [&:not(:last-child):after]:content-[","]'
                   key={sk}
                 >
                   {' '}
@@ -45,7 +50,7 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
               ))}
             </span>
           ))}
-      </S.OrgContainer>
+      </section>
     </main>
   );
 };
@@ -54,24 +59,29 @@ const WorkProjectBox = (pj: WorkProject) => {
   return (
     <>
       {pj.link ? (
-        <Link href={pj.link} target="_blank">
-          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-[salmon]">
+        <Link href={pj.link} target='_blank'>
+          <h3 className='mx-0 my-2 hover:cursor-pointer hover:text-[salmon]'>
             {pj.title} 🔗
           </h3>
         </Link>
       ) : (
-        <>{pj.title && <h3 className="mx-0 my-2">• {pj.title}</h3>}</>
+        <>{pj.title && <h3 className='mx-0 my-2'>• {pj.title}</h3>}</>
       )}
-      <p className="font-medium mb-2 pl-1">{pj.description}</p>
-      {pj.tech?.map(t => (
-        <S.PjTech key={t}>{t}</S.PjTech>
+      <p className='font-medium mb-2 pl-1'>{pj.description}</p>
+      {pj.tech?.map((t, idx) => (
+        <span className='font-normal pl-1' key={t}>
+          {t}
+          {idx === pj.tech.length - 1 ? '' : ','}
+        </span>
       ))}
       {pj.details && (
-        <S.DetailList>
+        <ul className={detailListClasses}>
           {pj.details.map((det, idx) => (
-            <S.DetailItem key={idx}>{det} </S.DetailItem>
+            <li className={detailItemClasses} key={idx}>
+              {det}{' '}
+            </li>
           ))}
-        </S.DetailList>
+        </ul>
       )}
     </>
   );
@@ -80,8 +90,8 @@ const WorkProjectBox = (pj: WorkProject) => {
 const EducationBox = (edu: Education) => {
   return (
     <>
-      <S.Org>{edu.institute}</S.Org>
-      <span className="font-normal">
+      <span className={orgClasses}>{edu.institute}</span>
+      <span className='font-normal'>
         {edu.course} | {edu.period}
       </span>
       {edu.details && <DetailSection list={edu.details} />}
@@ -90,21 +100,24 @@ const EducationBox = (edu: Education) => {
 };
 
 const ProjectBox = (exp: Experience) => {
+  const linkedOrgClasses = classNames(
+    orgClasses,
+    'hover:cursor-pointer hover:text-[salmon]'
+  );
   return (
     <>
       {exp.link ? (
-        <Link href={exp.link} target="_blank">
-          <S.Org className="hover:cursor-pointer hover:text-[salmon]">
-            {exp.organization} 🔗
-          </S.Org>
-          / {exp.period}
+        <Link href={exp.link} target='_blank'>
+          <span className={linkedOrgClasses}>{exp.organization} 🔗</span>/{' '}
+          {exp.period}
           {exp.description && (
-            <p className="mt-2 font-bold">: {exp.description}</p>
+            <p className='mt-2 font-bold'>: {exp.description}</p>
           )}
         </Link>
       ) : (
         <>
-          <S.Org>{exp.organization}</S.Org> {exp.description} / {exp.period}
+          <span className={orgClasses}>{exp.organization}</span>{' '}
+          {exp.description} / {exp.period}
         </>
       )}
       {exp.projects?.map((pj, idx) => (
@@ -119,11 +132,13 @@ const ProjectBox = (exp: Experience) => {
 
 const DetailSection = ({ list }: { list: string[] }) => {
   return (
-    <S.DetailList>
+    <ul className={detailListClasses}>
       {list.map((det, idx) => (
-        <S.DetailItem key={idx}>{det} </S.DetailItem>
+        <li className={detailItemClasses} key={idx}>
+          {det}{' '}
+        </li>
       ))}
-    </S.DetailList>
+    </ul>
   );
 };
 
