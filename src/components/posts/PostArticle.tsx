@@ -27,43 +27,21 @@ const PostArticle = ({
   return (
     <>
       <MetadataBox customMetadata={customMeta} />
-      <S.PostBox>
-        <article>
+      <div className='flex items-start justify-center'>
+        <article className='max-w-[90vw]'>
           <PostHeader date={date} title={title} />
           <S.ContentBox>
             <MDXRemote {...mdxSource} />
           </S.ContentBox>
-          <S.GoBackBtn onClick={() => router.back()}>&larr; 이전</S.GoBackBtn>
+          <span className='block mr-[-] ml-[-] text-[color:var(--color-point-blue)] font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-[salmon]' onClick={() => router.back()}>&larr; 이전</span>
         </article>
         {headings && <PostHeadings headings={headings} />}
-      </S.PostBox>
+      </div>
       <Comments />
     </>
   );
 };
 export default PostArticle;
-
-S.PostBox = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-start;
-  justify-content: center;
-
-  article {
-    max-width: 90vw;
-  }
-`;
-S.GoBackBtn = styled.span`
-  display: block;
-  margin: calc(2% - 1px);
-  color: var(--color-point-blue);
-  font-weight: 700;
-  cursor: pointer;
-
-  &:hover {
-    color: salmon;
-  }
-`;
 
 S.ContentBox = styled.div`
   &:before {
