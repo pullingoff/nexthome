@@ -33,7 +33,6 @@ title
 tags
 date
 description
-unpublished // optional
 ```
 
 ### 추가될 기능들

@@ -27,14 +27,11 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
     const fileContents = fs.readFileSync(fullPath, 'utf8'); // path에 있는 파일 내용 읽어오기
     const { data, content: body } = matter(fileContents);
     const frontMatter = data as FrontMatter;
-    if (frontMatter.unpublished === undefined) {
-      frontMatter.unpublished = false;
-    }
 
     return { frontMatter, body, slug };
   });
 
-  return allPostsData.filter(f => !f.frontMatter.unpublished).sort(sortByDate);
+  return allPostsData.sort(sortByDate);
 };
 
 export const getAllPosts: () => Promise<Post[]> = memoize(retrieveAllPosts);

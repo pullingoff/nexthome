@@ -38,8 +38,8 @@ export interface Education {
 export interface FrontMatter {
   title: string;
   tags: string[];
-  unpublished?: boolean;
   date: string;
+  recentUpdatedDate?: string;
   description: string;
   path: string;
 }
