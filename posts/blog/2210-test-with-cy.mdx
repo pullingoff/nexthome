@@ -169,7 +169,7 @@ describe('게시글 상세조회 테스트', () => {
 짜잔~ 이렇게 POM 패턴으로 코드를 구성하면 이후에 로그인 버튼 마크업이 바뀌어도
 모든 테스트코드에서 수정할 필요 없이 `PostPage.js`에서만 수정하면 됩니다.
 
-POM 패턴에 대한 자세한 설명은 [이 글](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b)을 
+POM 패턴에 대한 자세한 설명은 [이 글](https://medium.com/tech-tajawal/page-object-model-pom-design-pattern-f9588630800b)을
 참고하세요.
 
 ## Cypress 테스트 구현 시 주의할 점
@@ -184,9 +184,40 @@ POM 패턴에 대한 자세한 설명은 [이 글](https://medium.com/tech-tajaw
 
 ### 쿠키 초기화
 
-Cypress는 **각 테스트마다 브라우저의 상태를 초기화**합니다. 모든 `it()`마다 쿠키가 깨끗히 지워집니다. 
-테스트중인 앱이 인증 토큰을 저장하는데 쿠키를 사용한다면 로그아웃이 되어버립니다. 
+Cypress는 **각 테스트마다 브라우저의 상태를 초기화**합니다. 모든 `it()`마다 쿠키가 깨끗히 지워집니다.
+테스트중인 앱이 인증 토큰을 저장하는데 쿠키를 사용한다면 로그아웃이 되어버립니다.
 
 이럴 땐 맨 처음 로그인을 하면서 `SESSIONID` 또는 기억해야할 데이터 값을 전역 변수에 할당해두고, `beforeEach`로 쿠키에 해당 데이터를 넣어주도록 하면 됩니다.
 
+## (추가) 다른 e2e 테스트 툴과 비교하기
+
+사실 처음 e2e 테스트 프레임워크를 선택했을 때 깊게 찾아보지 않고 Cypress를 선택했었는데요.
+Cypress 말고도 Selenium WebDriver, Playwright 등 10개가 넘는 툴들이 있다는 걸 알게 되었습니다.
+늦게나마 다른 툴들과 비교를 해본다면
+
+**Cypress의 장점**
+
+1. 설치와 세팅이 간단한지: Selenium은 드라이버를 설치해야하고 브라우저별 설정을 관리해줘야하는 반면,
+Cypress는 세팅이 쉽고 설치가 간단합니다.
+2. 크로스 브라우징: Puppeteer 등의 툴은 브라우저의 제한이 있는 반면
+Cypress는 Chrome, Firefox, Edge 등 다양한 브라우저를 지원합니다.
+3. watch mode: Cypress는 테스트 실행 이후 코드가 변경되면 자동으로 다시 수행되게 할 수 있습니다.
+4. 테스트가 동작하는 걸 눈으로 바로 볼 수 있는지: Cypress의 경우 GUI로 테스트가 실행되는 걸 눈으로 바로 볼 수 있습니다.
+테스트 장면을 녹화해서 다른 사람한테 보여줘야할 때 유용했어요.
+
+**Cypress의 단점**
+
+1. 유료 병렬 테스트: Cypress로 병렬 테스트를 하려면 유료 플랜에 가입해야합니다.
+Playwright의 경우, 무료로 가능하다고 합니다.
+또 Cypress로 병렬 테스트를 하면 가상머신을 이용해 테스트하는데 가능은 하지만 리소스가 많이 필요해 추천하지 않는다고 하네요.
+2. IDE 익스텐션이 없습니다. 저는 인텔리제이를 주로 사용하지만, Playwright의 경우 VSCode 익스텐션이 있어서
+spec 안에서 원하는 테스트만 돌릴 수도 있다고 합니다.
+
+프레임워크가 아주 다양하니 잘 비교하셔서 선택하시길 바랍니다!
+
 끝 🔎
+
+## References
+
+- [playwright vs cypress](https://www.browserstack.com/guide/playwright-vs-cypress)
+- [Top 10 End To End Testing Tools and Frameworks Explained](https://testsigma.com/blog/end-to-end-testing-frameworks/)
