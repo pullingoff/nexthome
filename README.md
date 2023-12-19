@@ -1,11 +1,11 @@
-## [블로그 구경 가기](https://haeun.vercel.app/)
+## 👀 [블로그 구경 가기](https://haeun.vercel.app/)
 
 <a href="https://haeun.vercel.app" target="_blank" >
   <img width="550" alt="사이트 메인" src="https://github.com/pullingoff/nexthome/assets/50111853/bb8ab3ba-7532-45df-be15-7132be234025">
 </a>
 
-`Next.js`를 사용해 직접 디자인하고 개발한 기술 블로그입니다.
-제 생각을 담은 글과 배운 것들 중 기록해봄직한 것, 이력서를 정리합니다.
+`Next.js`를 사용해 직접 디자인하고 개발한 기술 블로그입니다.  
+생각을 담은 글과 배운 것들 중 기록해봄직한 것, 이력서를 정리합니다.
 
 ### 소개
 
@@ -17,17 +17,21 @@
 
 ### 기술 스택
 
-- 개발: `React`, `Next.js`, `TypeScript`  
-- 스타일: `styled-components`, `SCSS`  
-- 마크다운 처리: `Markdown`, `MDXRemote`, `remark`  
+- 개발: `React`, `Next.js`, `TypeScript`
+- 스타일: `Tailwind CSS`, `SCSS`
+- 마크다운 처리: `Markdown`, `MDXRemote`, `remark`
 - 기타: `Vercel`, `Git`, `husky`
+
+**이전에 사용했으나 지금은 사용하지 않는 기술**
+
+- `styled-components`
 
 ### frontmatter
 
 ```markdown
 title
 tags
-date 
+date
 description
 unpublished // optional
 ```
