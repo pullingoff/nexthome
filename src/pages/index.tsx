@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { Post } from '#src/type';
 import { getRecentPosts } from '#lib/posts-related-api';
-import mainImg from '#public/images/main.jpg';
+import mainImg from '#public/images/main.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -43,7 +43,11 @@ const Main = () => {
           alt="박하은의 이력서 보러가기"
           src={mainImg}
           priority
-          sizes="800px"
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
           placeholder="blur"
         />
       </Link>
