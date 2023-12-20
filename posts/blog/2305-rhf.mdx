@@ -11,11 +11,11 @@ description: 리액트로 폼 구현할 때 onChange, value, 상태의 props dri
 
 짧게 요약한 내용입니다.
 
-<img width="700" alt='회원가입 as-is' src='/images/blog/2305/ex-asis.png' />
+![회원가입 as-is](/images/blog/2305/ex-asis.png)
 
-이랬던 코드를 
+이랬던 코드를
 
-<img width="700" alt='회원가입 to-be' src='/images/blog/2305/ex-tobe.png' />
+![회원가입 to-be](/images/blog/2305/ex-tobe.png)
 
 이렇게 바꾸었습니다.
 
@@ -41,7 +41,7 @@ description: 리액트로 폼 구현할 때 onChange, value, 상태의 props dri
     });
 ```
 
-원래는 비밀번호, 비밀번호 재입력 필드가 validate한지 여부를 담는 불린값(`passwordOk`)과 
+원래는 비밀번호, 비밀번호 재입력 필드가 validate한지 여부를 담는 불린값(`passwordOk`)과
 그 상태에 따른 에러 또는 성공 메시지(`passwordMsg`)을 상태로 가지고 있었습니다.
 원래 상태를 관리할 때 상태(`password`) 외에 그 상태에 따라 결정되는 값(`passwordMsg`, `passwordOk`)은 상태에 담지 않는게 맞는데요.
 
@@ -59,8 +59,8 @@ description: 리액트로 폼 구현할 때 onChange, value, 상태의 props dri
 ```
 
 기존 코드를 저렇게 작성했던 이유는 필드 간의 의존성 때문이었습니다.
-비밀번호가 바뀔 때마다 정규 표현식에 맞는지 확인하고 바로바로 에러메시지를 표시해줘야 했고, 비밀번호 확인 필드가 그 비밀번호와 일치하는지 다시 밸리데이션해야했습니다. 
-이런 값들을 JSX 내부에서 그때그때 밸리데이션하게 하기보단 state로 분리해서 `onChange` 내에서 검사 후 `setStatus`를 한번에 하도록 했었어요.  
+비밀번호가 바뀔 때마다 정규 표현식에 맞는지 확인하고 바로바로 에러메시지를 표시해줘야 했고, 비밀번호 확인 필드가 그 비밀번호와 일치하는지 다시 밸리데이션해야했습니다.
+이런 값들을 JSX 내부에서 그때그때 밸리데이션하게 하기보단 state로 분리해서 `onChange` 내에서 검사 후 `setStatus`를 한번에 하도록 했었어요.
 
 이 방법이 베스트가 아니라는 걸 알면서도 구현했던 거지만
 밸리데이션 내용이 너무 길어졌고, 코드가 복잡해져 어떤 코드를 수정할 때 다른 부분에도 영향이 갈까봐 찝찝해지기 시작했습니다.
@@ -104,7 +104,7 @@ react-hook-form, 줄여서 rhf는 폼을 관리하고 활용할 수 있는 커�
 ```
 
 가장 먼저, `useForm`을 세팅했습니다. `mode` 속성으로 `onChange`마다 validation 하도록 변경해주었습니다.
-기본 설정은 `onSubmit`으로, 폼이 submit될 때에만 밸리데이션 처리를 합니다. 
+기본 설정은 `onSubmit`으로, 폼이 submit될 때에만 밸리데이션 처리를 합니다.
 위 폼에선 회원가입에 필요한 `userId`, `password`, `confirmPassword` 필드를 관리합니다.
 `useState`와 비슷한 구조로 `defaultValues`를 지정해줍니다.
 
@@ -158,8 +158,8 @@ react-hook-form, 줄여서 rhf는 폼을 관리하고 활용할 수 있는 커�
     />
 ```
 
-정규표현식 말고도 커스텀 validation 규칙을 추가할 수 있습니다. 
-위 코드에선 `sameAsPw`라는 이름의 validation 규칙이 있고, 폼의 `password`와 값 `v`가 같은지 확인합니다. 같지 않을 경우'*비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다*'라는 에러 메시지가 표시됩니다. 
+정규표현식 말고도 커스텀 validation 규칙을 추가할 수 있습니다.
+위 코드에선 `sameAsPw`라는 이름의 validation 규칙이 있고, 폼의 `password`와 값 `v`가 같은지 확인합니다. 같지 않을 경우'*비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다*'라는 에러 메시지가 표시됩니다.
 
 참고로 저는 이 에러메시지들을 상수화해놓고 따로 구현하였으나, 예시 코드의 가독성을 위해 직접 넣어주었습니다.
 
@@ -187,9 +187,9 @@ react-hook-form, 줄여서 rhf는 폼을 관리하고 활용할 수 있는 커�
 이렇게 하면 `checkId`는 `MouseEvent`가 아니라 react-hook-form에서 정의한 타입 `SubmitHandler`을 리턴하며 해당 폼에서 관리하는 `data`를 받아 사용할 수 있습니다.
 
 이런 식으로 react-hook-form을 사용해 리액트에서 폼과 인풋을 간단하게 구현하고 관리할 수 있습니다.
-직접 리액트 `state`로 폼 인풋의 `value`를 계속 추적하고 `onChange` 핸들러를 전해줄 필요가 없게 되었습니다. 
+직접 리액트 `state`로 폼 인풋의 `value`를 계속 추적하고 `onChange` 핸들러를 전해줄 필요가 없게 되었습니다.
 
-이렇게 react-hook-form을 직접 써보니 너무 좋아서 회사 프로젝트에도 도입을 했는데요! 
+이렇게 react-hook-form을 직접 써보니 너무 좋아서 회사 프로젝트에도 도입을 했는데요!
 그 프로젝트에선 MUI의 `TextField` 컴포넌트를 공통화해 사용하고 있었는데요. 그 컴포넌트와 react-hook-form의 `FormContextProvider`, `useController`를 함께 사용하였습니다.
 인풋을 동적으로 추가해야하는 부분에서는 `useFieldArray`를 유용하게 사용했구요!
 

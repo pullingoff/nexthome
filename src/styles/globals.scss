@@ -4,11 +4,22 @@
 
 @import "./_mixin.scss";
 
+@layer base {
+  ol {
+    list-style: revert;
+  }
+}
+
+@layer components {
+  .lg-gap {
+    @apply max-w-[calc(980px_-_150px)]
+  }
+}
+
 // 여기 수정할거면 settings.variables.scss도 수정해야
 :root {
   box-sizing: border-box;
-  --breakpoint-desktop: 980px;
-  --theme1-color: #1e293b; // tailwind deep-blue
+  --deep-blue: #1e293b; // tailwind deep-blue
 }
 
 html {
@@ -24,12 +35,12 @@ html {
 }
 
 body {
-  color: var(--theme1-color);
-  line-height: 1.4;
+  color: var(--deep-blue);
   margin: 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  letter-spacing: -0.5px;
 
   > div {
     width: -webkit-fill-available;
@@ -37,189 +48,22 @@ body {
   }
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-menu,
-nav,
-section {
-  display: block;
-}
-
-h1, h2, h3, h4 {
-  color: var(--theme1-color);
-  font-weight: bold;
-  letter-spacing: -1px;
-}
-
-h1 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  line-height: 1.25;
-  clear: both;
-}
-
-h2 {
-  font-size: 1.25rem;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-b,
-strong {
-  font-weight: 600;
-}
-
-@include desktop {
-
+@media (min-width: #{$breakpoint-desktop}) {
   .post-content h1, .post-content h2, .post-content h3, .post-content h4 {
     margin-top: 2.3rem;
     margin-bottom: 1px;
   }
 }
 
-article.post {
-  margin-top: 20px;
-}
-
-article {
-  padding-top: 0;
-  line-height: 170%;
-  word-break: break-word;
-  // max-width: 90%;
-}
-
-abbr {
-  text-decoration: none;
-  border-bottom-width: 0;
-  line-height: 0;
-}
-
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-[hidden],
-template {
-  display: none;
-}
-
-pre {
-  overflow: auto;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  border: none;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-strike {
-  opacity: 0.8;
-}
-
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-small {
-  font-size: 80%;
-}
-
-mark {
-  background: #ff0;
-  color: #000;
-}
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-
 // drag 시 컬러
-::selection {
+::selection, ::-moz-selection {
   background: lighten(#1e293b, 10%);
   color: white;
 }
 
-// drag (firefox)
-::-moz-selection {
-  background: lighten(#1e293b, 10%);
-  color: white;
-}
-
-p.post-meta {
-  color: #b0b0b0;
-}
-
-img {
-  border: 0;
-  max-width: 100%;
-}
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-dfn {
-  font-style: italic;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-blockquote {
-  margin-top: 2rem;
-  margin-left: 0;
-  margin-bottom: 2rem;
-  padding-left: 1rem;
-  border-left: 3px solid #ccc;
-
-  p {
-    font-size: 1.05rem;
-    line-height: 1.3;
-  }
-
-  cite {
-    display: block;
-    color: salmon;
-    margin-top: 0.5rem;
-  }
-}
+//svg:not(:root) {
+//  overflow: hidden;
+//}
 
 @keyframes anim-lineUp {
   0% {
@@ -241,196 +85,4 @@ blockquote {
 
 pre {
   overflow-x: auto;
-}
-
-/**
- * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
- * 1. Make the element just wide enough to fit its content.
- * 2. Always fill the visible space in .code-highlight.
- */
-.code-highlight {
-  float: left; /* 1 */
-  min-width: 100%; /* 2 */
-}
-
-.code-line {
-  display: block;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-left: -16px;
-  margin-right: -16px;
-  border-left-width: 4px;
-  border-left-color: rgba(31, 41, 55, 0); /* Set code block color */
-}
-
-.code-line.inserted {
-  background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
-}
-
-.code-line.deleted {
-  background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
-}
-
-.highlight-line {
-  margin-left: -16px;
-  margin-right: -16px;
-  background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
-  border-left-width: 4px;
-  border-left-color: rgb(59, 130, 246); /* Set highlight accent border color */
-}
-
-.line-number::before {
-  display: inline-block;
-  width: 1rem;
-  text-align: right;
-  margin-right: 16px;
-  margin-left: -8px;
-  color: rgb(156, 163, 175); /* Line number color */
-  content: attr(line);
-}
-
-/**
-* xonokai theme for JavaScript, CSS and HTML
-* based on: https://github.com/MoOx/sass-prism-theme-base by Maxime Thirouin ~ MoOx --> http://moox.fr/ , which is Loosely based on Monokai textmate theme by http://www.monokai.nl/
-* license: MIT; http://moox.mit-license.org/
-*/
-code,
-code[class*="language-"],
-pre[class*="language-"] {
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: normal;
-  font-family: Menlo, Monaco, "Courier New", monospace;
-  font-size: 14px;
-  color: white;
-  text-shadow: none;
-}
-
-pre > code[class*="language-"] {
-  font-size: 1em;
-}
-
-code, pre[class*="language-"],
-:not(pre) > code[class*="language-"] {
-  background: var(--theme1-color);
-}
-
-pre[class*="language-"] {
-  padding: 15px;
-  border-radius: 4px;
-  border: 1px solid #e1e1e8;
-  overflow: auto;
-  position: relative;
-
-  code {
-    white-space: pre;
-    display: block;
-  }
-}
-
-* > code {
-  padding: 0.2rem;
-  font-size: .85rem;
-}
-
-p > code, li > code {
-  background: #e4e7ea;
-  color: black;
-  position: relative;
-  padding: 0.11em 0.3em;
-  margin: 0 0.1rem;
-  bottom: 2px;
-  border-radius: 0.3em;
-  font-weight: 600;
-}
-
-:not(pre) > code[class*="language-"] {
-  padding: 0.15em 0.2em 0.05em;
-  border-radius: .3em;
-  border: 0.13em solid #7a6652;
-  box-shadow: 1px 1px 0.3em -0.1em #000 inset;
-}
-
-.token.namespace {
-  opacity: .7;
-}
-
-span.text-code-khaki {
-  color: #f0fb2b;
-}
-
-span.text-code-purple {
-  color: #bb9cf9;
-}
-
-span.text-code-yellow {
-  color: #e6d06c;
-}
-
-span.text-code-red {
-  color: #ef3b7d;
-}
-
-span.text-code-blue {
-  color: #76d9e6;
-}
-
-span.text-code-orange {
-  color: rgb(255, 192, 110);
-}
-
-span.line-number::before {
-  font-weight: bold;
-}
-
-span.text-gray-400 {
-  color: #bebec5;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-span.italic {
-  font-style: italic;
-}
-
-code.language-markup {
-  color: #f9f9f9;
-}
-
-span.text-code-pink {
-  color: #dc5d9f;
-}
-
-span.text-code-green {
-  color: #abf7d4;
-}
-
-span.text-code-sky {
-  color: #76d9e6;
-}
-
-
-/* Line highlight plugin */
-.line-highlight.line-highlight {
-  padding: 0;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.line-highlight.line-highlight:before,
-.line-highlight.line-highlight[data-end]:after {
-  padding: 0.2em 0.5em;
-  background-color: rgba(255, 255, 255, 0.4);
-  color: black;
-  height: 1em;
-  line-height: 1em;
-  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
 }

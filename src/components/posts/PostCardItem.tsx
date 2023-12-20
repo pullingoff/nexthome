@@ -32,7 +32,7 @@ const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
       <section className="flex flex-wrap ml-5 mr-auto mt-0 mb-4">
         {tags?.map((text: string) => (
           <Link
-            className="text-[white] uppercase text-[0.85rem] font-semibold bg-deep-blue rounded ml-0 mr-2 mt-0 mb-2 px-2 py-0.5 hover:text-deep-blue hover:bg-[initial] hover:shadow-[0_0_0_2px_var(--theme1-color)_inset]"
+            className="text-[white] uppercase text-[0.85rem] font-semibold bg-deep-blue rounded ml-0 mr-2 mt-0 mb-2 px-2 py-0.5 hover:text-deep-blue hover:bg-[initial] hover:shadow-deep-blue"
             key={text}
             href={`/tags/${text}/1`}
           >

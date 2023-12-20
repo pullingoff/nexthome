@@ -19,12 +19,12 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
   return (
     <>
       <Main />
-      <h1 className="font-extrabold text-3xl">Recent Posts</h1>
+      <h1 className="font-extrabold text-3xl my-3">Recent Posts</h1>
       <ul>
         {recentPosts.map(({ frontMatter, slug }, idx) => (
           <li
             key={idx}
-            className="font-medium text-base md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-[salmon]"
+            className="font-medium text-base md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-light-blue"
           >
             <Link href={`/blog/${slug}`}>{frontMatter.title}</Link>
           </li>

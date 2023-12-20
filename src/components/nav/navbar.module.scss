@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid var(--theme1-color);
+  border-bottom: 1px solid var(--deep-blue);
 
   .siteNav {
     background-color: #ffffffc3;
@@ -19,19 +19,18 @@
   }
 }
 
-
 .navMenuUl {
   display: flex;
   position: absolute;
   top: 0;
   right: 0;
-  justify-content: space-around;
-  float: right;
-  padding: 15px 0;
-  margin-right: 30px;
+  //justify-content: space-around;
+  //float: right;
+  padding: 1rem 0;
+  margin-right: 2rem;
 
-  a {
-    font-weight: 800;
+  li {
+    font-weight: bold;
   }
 }
 
@@ -48,14 +47,14 @@
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: var(--theme1-color);
+  background-color: var(--deep-blue);
   margin: 6px 0;
   transition: 0.4s;
 }
 
 /* mobile에서만 Rotate first bar */
 
-@include notDesktop {
+@media (max-width: #{$breakpoint-tablet - 1px}) {
   .open {
 
     .bar1 {
@@ -90,19 +89,9 @@
       }
     }
   }
-
 }
 
-@include desktop {
-  .threeBarNav {
-    display: none;
-  }
-  .navMenuUl {
-    display: initial;
-  }
-}
-
-@include tablet {
+@media (min-width: #{$breakpoint-tablet}) {
   .threeBarNav {
     display: none;
   }
