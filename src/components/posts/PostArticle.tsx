@@ -4,8 +4,6 @@ import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
 import Comments from '#components/posts/Comments';
 import Link from 'next/link';
-import styles from './post.module.scss';
-import '#styles/codeInPost.scss';
 import classNames from 'classnames';
 
 const PostArticle = ({
@@ -33,7 +31,7 @@ const PostArticle = ({
       <div className="flex items-start">
         <article className={articleClasses}>
           <PostHeader date={date} title={title} />
-          <article className={styles.postContent}>
+          <article className="postContent">
             <MDXRemote {...mdxSource} />
           </article>
           <span

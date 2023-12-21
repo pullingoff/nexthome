@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "./_mixin.scss";
+@import "./post.scss";
 
 @layer base {
   ol {
