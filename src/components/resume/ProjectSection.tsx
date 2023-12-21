@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 
-const orgClasses = classNames('font-extrabold text-xl mr-1 mb-1');
+const orgClasses = classNames('font-bold text-xl mr-1 mb-1');
 const detailListClasses = 'mb-4 m-1 list-none';
 const detailItemClasses =
   'mx-0 my-1 pl-1 before:content-["-"] before:relative before:mr-2';
@@ -60,12 +60,16 @@ const WorkProjectBox = (pj: WorkProject) => {
     <>
       {pj.link ? (
         <Link href={pj.link} target="_blank">
-          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-[salmon]">
+          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-light-blue">
             {pj.title} 🔗
           </h3>
         </Link>
       ) : (
-        <>{pj.title && <h3 className="mx-0 my-2">• {pj.title}</h3>}</>
+        <>
+          {pj.title && (
+            <h3 className="text-lg font-bold mx-0 my-2">• {pj.title}</h3>
+          )}
+        </>
       )}
       <p className="font-medium mb-2 pl-1">{pj.description}</p>
       {pj.tech?.map((t, idx) => (
@@ -102,7 +106,7 @@ const EducationBox = (edu: Education) => {
 const ProjectBox = (exp: Experience) => {
   const linkedOrgClasses = classNames(
     orgClasses,
-    'hover:cursor-pointer hover:text-[salmon]'
+    'hover:cursor-pointer hover:text-light-blue'
   );
   return (
     <>

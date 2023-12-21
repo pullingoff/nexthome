@@ -9,7 +9,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [335, 640, 758, 980, 1080, 1200, 1920, 2048],
   },
   i18n: {
     locales: ['kr'],

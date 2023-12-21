@@ -7,9 +7,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
-      <main className="max-w-[calc(var(--breakpoint-desktop)_-_150px)] min-h-[70vh] m-auto p-5">
-        {children}
-      </main>
+      <main className="lg-gap min-h-[70vh] m-auto p-5">{children}</main>
       <Footer />
     </>
   );

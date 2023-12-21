@@ -4,7 +4,7 @@ import { Heading, Post } from '#src/type';
 import { useRouter } from 'next/router';
 import Comments from '#components/posts/Comments';
 import Link from 'next/link';
-import styles from './post.module.scss';
+import classNames from 'classnames';
 
 const PostArticle = ({
   post,
@@ -23,17 +23,19 @@ const PostArticle = ({
     date: date,
     description: description,
   };
+
+  const articleClasses = classNames(headings.length > 0 ? 'max-w-[90vw]' : '');
   return (
     <>
       <MetadataHead customMetadata={customMeta} />
-      <div className="flex items-start justify-center">
-        <article className="max-w-[90vw]">
+      <div className="flex items-start">
+        <article className={articleClasses}>
           <PostHeader date={date} title={title} />
-          <article className={styles.postContent}>
+          <article className="postContent">
             <MDXRemote {...mdxSource} />
           </article>
           <span
-            className="block mr-[-] ml-[-] text-light-blue font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-[salmon]"
+            className="block mr-[-] ml-[-] text-deep-blue font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-light-blue"
             onClick={() => router.back()}
           >
             &larr; 이전
@@ -51,7 +53,7 @@ const PostHeader = ({ date, title }: { date: string; title: string }) => {
   return (
     <header className="text-center animate-[1s_anim-lineUp_0.1s_ease-out_1] pt-3">
       <time className="font-medium text-deep-blue">{date}</time>
-      <h1 className="md:text-3xl font-extrabold text-deep-blue">{title}</h1>
+      <h1 className="md:text-2xl font-extrabold text-deep-blue">{title}</h1>
     </header>
   );
 };
@@ -64,8 +66,8 @@ const PostHeadings = ({ headings }: { headings: Heading[] }) => {
   return (
     <>
       {headings ? (
-        <aside className="sticky min-w-[15%] max-h-[90vh] ml-4 top-[70px] hidden lg:block">
-          <ul className="text-sm text-[#1e293bd1] pl-4 border-l-[#1e293bd1] border-l border-solid">
+        <aside className="sticky min-w-[15%] max-h-[90vh] ml-2 top-[70px] hidden lg:block">
+          <ul className="text-sm text-[#1e293bd1] pl-2 border-l-deep-gray border-l">
             {headings.map(heading => (
               <li
                 key={heading.text}

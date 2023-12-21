@@ -19,7 +19,7 @@ const NavMenu = ({
     <li className="inline-block text-deep-blue text-2xl font-semibold ml-6">
       <Link
         href={menu.path}
-        className={`inline-block relative hover:text-[salmon] after:content-[''] after:absolute after:w-full after:h-[0.1rem] after:bg-[salmon] after:opacity-0 after:transition-opacity after:origin-center after:scale-0 after:left-0 after:bottom-0 hover:after:opacity-100 hover:after:scale-100 ${className}`}
+        className={`inline-block relative hover:text-light-blue after:content-[''] after:absolute after:w-full after:h-[0.1rem] after:bg-light-blue after:opacity-0 after:transition-opacity after:origin-center after:scale-0 after:left-0 after:bottom-0 hover:after:opacity-100 hover:after:scale-100 ${className}`}
       >
         {children ? children : menu.title}
       </Link>

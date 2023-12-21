@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { Post } from '#src/type';
 import { getRecentPosts } from '#lib/posts-related-api';
-import mainImg from '#public/images/main.jpg';
+import mainImg from '#public/images/main.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,12 +19,12 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
   return (
     <>
       <Main />
-      <h1 className="font-extrabold text-3xl">Recent Posts</h1>
+      <h1 className="font-extrabold text-3xl my-3">Recent Posts</h1>
       <ul>
         {recentPosts.map(({ frontMatter, slug }, idx) => (
           <li
             key={idx}
-            className="font-medium text-base md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-[salmon]"
+            className="font-medium text-base md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-light-blue"
           >
             <Link href={`/blog/${slug}`}>{frontMatter.title}</Link>
           </li>
@@ -43,7 +43,11 @@ const Main = () => {
           alt="박하은의 이력서 보러가기"
           src={mainImg}
           priority
-          sizes="800px"
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
           placeholder="blur"
         />
       </Link>

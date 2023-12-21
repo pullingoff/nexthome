@@ -2,20 +2,9 @@ import '#styles/globals.scss';
 import Layout from '#components/layout/Layout';
 import MetadataHead from '#components/MetadataHead';
 import { AppProps } from 'next/app';
-// import { useState, useEffect } from 'react';
-// import Loading from '#components/Loading';
-import hifiImg from '#public/hifi.png';
-import Image from 'next/image';
 import Script from 'next/script';
-import Link from 'next/link';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  // const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, []);
-
   return (
     <Layout>
       <Script
@@ -38,23 +27,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       />
       <MetadataHead />
       <Component {...pageProps} />
-      <CoffeeChat />
     </Layout>
-  );
-};
-
-const CoffeeChat = () => {
-  return (
-    <div className="fixed cursor-pointer border border-deep-blue p-1 rounded-[50%] border-solid right-[3%] bottom-[4%] hover:shadow-[0_30px_45px_-15px_var(--theme1-color)] hover:scale-110">
-      <Link href="https://whattime.co.kr/haeun" target="_blank">
-        <Image
-          src={hifiImg}
-          alt="Hifi 3D Illustration by Welson Hendra"
-          width={50}
-          height={50}
-        />
-      </Link>
-    </div>
   );
 };
 

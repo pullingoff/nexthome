@@ -40,7 +40,7 @@ const Navbar = () => {
           ))}
           <NavMenu
             menu={{ title: '', path: 'https://github.com/pullingoff' }}
-            className="bottom-[-5px] hover:fill-[salmon]"
+            className="bottom-[-5px] hover:fill-light-blue"
           >
             <GithubLogo />
           </NavMenu>

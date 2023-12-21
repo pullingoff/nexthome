@@ -11,19 +11,21 @@ module.exports = {
   theme: {
     screens: {
       sm: '335px',
-      // => @media (min-width: 640px) { ... }
-
       md: '758px',
-      // => @media (min-width: 768px) { ... }
-
       lg: '980px',
-      // => @media (min-width: 1024px) { ... }
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        'deep-blue': '0 0 0 2px #1e293b',
+      },
+    },
     colors: {
       'light-blue': '#549dcf',
       'medium-blue': '#5e7692', // default
       'deep-blue': '#1e293b',
+      'light-gray': '#D3D3D37F',
+      'deep-gray': '#1e293bd1',
+      'opaque-white': '#ffffffc3',
     },
   },
   plugins: [],
