@@ -6,7 +6,7 @@ import PostArticle from '#components/posts/PostArticle';
 import { markdownRegex } from '#src/lib';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Heading, Post } from '#src/type';
-import { getAllPosts } from '#lib/posts-related-api';
+import { getAllPosts } from '#lib/posts';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 const blogDir = path.join(process.cwd(), 'posts', 'blog'); // current directory/posts
@@ -34,12 +34,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: 'blocking' };
 };
 
-interface SlugInterface {
+interface Slug {
   [key: string]: string | string[] | null;
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as SlugInterface;
+  const { slug } = params as Slug;
 
   const markdownToMeta = fs.readFileSync(
     path.join(blogDir, slug + '.mdx'),

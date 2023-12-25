@@ -1,4 +1,4 @@
-import { getAllPosts, getAllSlugs, getAllTags } from '#lib/posts-related-api';
+import { getAllPosts, getAllSlugs, getAllTags } from '#lib/posts';
 import { POSTS_PER_PAGE } from '#src/config';
 import Pagination from '#components/Pagination';
 import ListLayout from '#components/ListLayout';
@@ -27,12 +27,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: 'blocking' };
 };
 
-interface IPage extends ParsedUrlQuery {
+interface Page extends ParsedUrlQuery {
   page_index: string;
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { page_index } = (params as IPage) || {};
+  const { page_index } = (params as Page) || {};
   const page: number = parseInt(page_index || '1');
   const posts = await getAllPosts();
   const pageTotal = Math.ceil(posts.length / POSTS_PER_PAGE);

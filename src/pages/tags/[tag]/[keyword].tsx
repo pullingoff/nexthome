@@ -1,5 +1,5 @@
 import ListLayout from '#components/ListLayout';
-import { getAllTags, getAllPosts } from '#lib/posts-related-api';
+import { getAllTags, getAllPosts } from '#lib/posts';
 import { POSTS_PER_PAGE } from '#src/config';
 import MetadataHead from '#components/MetadataHead';
 import { GetStaticPaths, GetStaticProps } from 'next';

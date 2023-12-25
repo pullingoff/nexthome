@@ -13,9 +13,12 @@ export const POSTS_PER_PAGE = 10;
 
 // nav bar에 나타날 메뉴
 export const MENUS = [
-  { title: '기록', path: '/blog/page/1', emoji: '📝' },
+  { title: '기록', path: '/blog', emoji: '📝' },
   { title: '이력서', path: '/about', emoji: '🕷' },
 ];
+
+// parent directory name
+export const POSTS_DIR = 'posts';
 
 // 공개할 posts 폴더 안의 subdirectories
 export const POST_DIRS: string[] = ['blog'];
