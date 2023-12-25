@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import { sortByDate } from '.';
 import { POST_DIRS, POSTS_DIR } from '#src/config';
 import { FrontMatter, Post } from '#src/type';
-import memoize from 'memoizee';
 
 const retrieveAllPosts = async (): Promise<Post[]> => {
   let allFileNames: string[] = [];
@@ -34,7 +33,7 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
   return allPostsData.sort(sortByDate);
 };
 
-export const getAllPosts: () => Promise<Post[]> = memoize(retrieveAllPosts);
+export const getAllPosts: () => Promise<Post[]> = retrieveAllPosts;
 
 // 최신 글 10개
 export const getRecentPosts = async () => {
@@ -67,7 +66,7 @@ const retrieveAllTags = async () => {
   return tagWithCount.sort((a: ITag, b: ITag) => b.count - a.count);
 };
 
-export const getAllTags: () => Promise<ITag[]> = memoize(retrieveAllTags);
+export const getAllTags: () => Promise<ITag[]> = retrieveAllTags;
 
 const retrieveAllSlugs = async () => {
   const slugs: string[] = (await getAllPosts()).map(post => {
@@ -77,4 +76,4 @@ const retrieveAllSlugs = async () => {
   return slugs;
 };
 
-export const getAllSlugs: () => Promise<string[]> = memoize(retrieveAllSlugs);
+export const getAllSlugs: () => Promise<string[]> = retrieveAllSlugs;
