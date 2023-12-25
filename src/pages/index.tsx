@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import { Post } from '#src/type';
-import { getRecentPosts } from '#lib/posts-related-api';
+import { getRecentPosts } from '#lib/posts';
 import mainImg from '#public/images/main.webp';
 import Image from 'next/image';
 import Link from 'next/link';

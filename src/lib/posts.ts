@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { sortByDate } from '.';
-import { POST_DIRS } from '#src/config';
+import { POST_DIRS, POSTS_DIR } from '#src/config';
 import { FrontMatter, Post } from '#src/type';
 import memoize from 'memoizee';
 
@@ -10,7 +10,7 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
   let allFileNames: string[] = [];
   for (const menu of POST_DIRS) {
     const fileNames: string[] = fs
-      .readdirSync(path.join(process.cwd(), 'posts', menu))
+      .readdirSync(path.join(process.cwd(), POSTS_DIR, menu))
       .filter(f => {
         return !f.startsWith('.DS_');
       });
@@ -23,7 +23,7 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
 
   const allPostsData: Post[] = allFileNames.map(fileName => {
     const slug = fileName.split('/')[1].split('.mdx')[0];
-    const fullPath = path.join(process.cwd(), 'posts', fileName);
+    const fullPath = path.join(process.cwd(), POSTS_DIR, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8'); // path에 있는 파일 내용 읽어오기
     const { data, content: body } = matter(fileContents);
     const frontMatter = data as FrontMatter;
