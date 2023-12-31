@@ -8,8 +8,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { Heading, Post } from '#src/type';
 import { getAllPosts } from '#lib/posts';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { POSTS_DIR } from '#src/config';
 
-const blogDir = path.join(process.cwd(), 'posts', 'blog'); // current directory/posts
+const blogDir = path.join(process.cwd(), POSTS_DIR, 'blog'); // current directory/posts
 
 const PostPage = (props: {
   post: Post;
