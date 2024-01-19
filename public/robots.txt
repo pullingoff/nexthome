@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /ignore-pages
+
+# Host
+Host: https://haeun.dev
+
+# Sitemaps
+Sitemap: https://haeun.dev/sitemap.xml

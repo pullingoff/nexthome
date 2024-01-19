@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "sitemap": "sh scripts/submit-sitemap.sh",
+    "build": "next-sitemap && next build",
     "start": "tsc-watch --onSuccess 'node dist/app.js' ",
     "lint": "next lint --fix",
     "export": "next export",
@@ -49,6 +48,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.0",
     "next-mdx-remote": "^4.0.0",
+    "next-sitemap": "^4.2.3",
     "postcss": "^8.4.32",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.3.5",
