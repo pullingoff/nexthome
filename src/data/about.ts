@@ -61,6 +61,24 @@ export const projectExperiences: Experience[] = [
 
 export const workExperiences: Experience[] = [
   {
+    organization: '머스트잇',
+    description: '프론트엔드 개발자',
+    period: '2024.02 ~ 현재',
+    projects: [
+      {
+        title: '머스트잇 프론트엔드 개발',
+        description:
+          '국내 탑 명품 이커머스인 머스트잇 서비스의 프론트엔드와 BFF API를 개발',
+        tech: [
+          'Vue',
+        ],
+        details: [
+          '머스트잇 웹 및 BFF 패턴을 활용한 API 개발',
+        ],
+      },
+    ],
+  },
+  {
     organization: '파스토',
     description: '프론트엔드 개발자',
     period: '2022.07 ~ 2023.08',
@@ -100,7 +118,6 @@ export const workExperiences: Experience[] = [
           '테스트에 반복적으로 사용되는 로그인, 로그아웃 등의 커스텀 커맨드를 구현해 휴먼 에러 제로화',
         ],
       },
-
       {
         title: '팀 문화와 생산성에 기여',
         tech: [],
