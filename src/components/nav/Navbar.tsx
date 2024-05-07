@@ -1,11 +1,9 @@
-import styles from './navbar.module.scss';
-import { useState } from 'react';
-import { MENUS } from '#src/config';
-import NavMenu from './NavMenu';
-import spiderLogo from '#public/logo.svg';
-import { GithubLogo } from 'public/logos';
-import Image from 'next/image';
-import Link from 'next/link';
+import styles from "./navbar.module.scss";
+import { useState } from "react";
+import { MENUS } from "#src/config";
+import NavMenu from "./NavMenu";
+import { GithubLogo } from "public/logos";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -23,8 +21,9 @@ const Navbar = () => {
       }
     >
       <nav className={styles.siteNav}>
-        <SpiderLogo />
-
+        <Link className="inline-block w-16 m-2" href="/">
+          <p>home.</p>
+        </Link>
         <div className={styles.threeBarNav} onClick={onToggleNav}>
           <div className={styles.bar1}></div>
           <div className={styles.bar2}></div>
@@ -39,7 +38,7 @@ const Navbar = () => {
             <NavMenu key={idx} menu={menu} />
           ))}
           <NavMenu
-            menu={{ title: '', path: 'https://github.com/pullingoff' }}
+            menu={{ title: "", path: "https://github.com/pullingoff" }}
             className="bottom-[-5px] hover:fill-light-blue"
           >
             <GithubLogo />
@@ -47,19 +46,6 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
-  );
-};
-
-const SpiderLogo = () => {
-  return (
-    <Link className="inline-block w-16 m-2" href="/">
-      <Image
-        className="hover:rotate-[360deg] transition-transform duration-[0.3s]"
-        alt="spider"
-        width={45}
-        src={spiderLogo}
-      />
-    </Link>
   );
 };
 
