@@ -5,6 +5,7 @@ import { MENUS } from "#src/config";
 import NavMenu from "./NavMenu";
 import { GithubLogo } from "public/logos";
 import Link from "next/link";
+import classNames from "classnames";
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -21,16 +22,16 @@ const Navbar = () => {
           : styles.navContainer
       }
     >
-      <nav className={styles.siteNav}>
+      <div className={styles.navContents}>
         <Link className="inline-block w-16 m-2" href="/">
-          <p>home.</p>
+          home
         </Link>
         <div className={styles.threeBarNav} onClick={onToggleNav}>
           <div className={styles.bar1}></div>
           <div className={styles.bar2}></div>
           <div className={styles.bar3}></div>
         </div>
-        <div
+        <ul
           role="navigation"
           className={styles.navMenuUl}
           onClick={onToggleNav}
@@ -44,8 +45,8 @@ const Navbar = () => {
           >
             <GithubLogo />
           </NavMenu>
-        </div>
-      </nav>
+        </ul>
+      </div>
     </header>
   );
 };

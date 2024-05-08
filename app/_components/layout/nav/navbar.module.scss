@@ -5,12 +5,15 @@
   top: 0;
   z-index: 100;
   border-bottom: 1px solid var(--deep-blue);
+  width: 100%;
 
-  .siteNav {
+  .navContents {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
     background-color: #ffffffc3;
     position: relative;
     backdrop-filter: saturate(180%) blur(20px);
-    top: 0;
     z-index: 100;
 
     &.open {
@@ -19,25 +22,10 @@
   }
 }
 
-.navMenuUl {
-  display: flex;
-  position: absolute;
-  top: 0;
-  right: 0;
-  //justify-content: space-around;
-  //float: right;
-  padding: 1rem 0;
-  margin-right: 2rem;
-
-  li {
-    font-weight: bold;
-  }
-}
-
 .threeBarNav {
   display: block;
   cursor: pointer;
-  margin: 1rem;
+  margin: 0.75rem;
   float: right;
   @at-root .navMenuUl {
     display: none;
@@ -84,8 +72,8 @@
 
       li {
         font-size: 1.5rem;
-        margin-bottom: 2vh;
-        margin-left: 8vw;
+        padding: 1vh 2vh;
+        margin-left: 3vw;
       }
     }
   }
@@ -96,6 +84,6 @@
     display: none;
   }
   .navMenuUl {
-    display: initial;
+    display: inherit;
   }
 }
