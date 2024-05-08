@@ -6,6 +6,7 @@ import fs from "fs";
 import { markdownRegex } from "#src/lib";
 import path from "path";
 import { POSTS_DIR } from "#src/config";
+import { redirect } from "next/navigation";
 
 const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current directory/posts
 
@@ -20,7 +21,9 @@ export async function generateStaticParams() {
 }
 
 export default async function ArticlePage({ params }: any) {
-  console.log(params);
   const props = await getPost(params.slug);
-  return <Article {...props} />;
+  if (!props) {
+    redirect("/");
+  }
+  return <>{props.post && <Article {...props} />}</>;
 }
