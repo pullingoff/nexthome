@@ -1,0 +1,23 @@
+---
+title: "Next.js 블로그 pages router에서 app router로 마이그레이션"
+date: 2024-05-08 18:00
+tags:
+- Next
+description:
+---
+
+- styled-components 제거, tailwind로 마이그레이션
+- next.js migration 문서 읽으면서 todo 주석 추가
+
+기존의 _app.tsx는 구글 애널리틱스와 메터데이터 등 가지고 있었어서 얘네도 그대로 layout.tsx로 가져올수 없음
+메타데이터 관련 링크는 여기 https://nextjs.org/docs/app/api-reference/functions/generate-metadata
+
+### Step 4: migrating Pages
+
+2단계로 나눠 작업한다.
+1. 기본 페이지 컴포넌트들을 새 클라이언트 컴포넌트로 옮길 것
+2. 옮긴 클라이언트 컴포넌트들을 app 디렉토리의 page.js에 임포트하기
+
+대표적으로 홈페이지 메인 화면에서 최근 쓰여진 글을 가져오는 api를 변경한다.
+[새로운 데이터 페칭 api](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating)들을 활용한다.
+기존 api에선 memoization을 직접 하고 있었는데 이 api는 요청을 자동으로 메모이제이션 하기에 이제 안 해줘도 된다.

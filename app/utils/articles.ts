@@ -1,11 +1,12 @@
 import { FrontMatter, Post } from "#src/type";
-import { POST_DIRS, POSTS_DIR } from "#src/config";
+import { POST_DIRS, POSTS_DIR, POSTS_PER_PAGE } from "#src/config";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { sortByDate } from "#src/lib";
 
-const retrieveAllPosts = async (): Promise<Post[]> => {
+// 글 전체
+export const getAllPosts = async (): Promise<Post[]> => {
   let allFileNames: string[] = [];
   for (const menu of POST_DIRS) {
     const fileNames: string[] = fs
@@ -20,7 +21,7 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
     allFileNames = [...allFileNames, ...filesInDir];
   }
 
-  const allPostsData: Post[] = allFileNames.map((fileName) => {
+  const allPosts: Post[] = allFileNames.map((fileName) => {
     const slug = fileName.split("/")[1].split(".mdx")[0];
     const fullPath = path.join(process.cwd(), POSTS_DIR, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8"); // path에 있는 파일 내용 읽어오기
@@ -30,13 +31,26 @@ const retrieveAllPosts = async (): Promise<Post[]> => {
     return { frontMatter, body, slug };
   });
 
-  return allPostsData.sort(sortByDate);
+  return allPosts.sort(sortByDate);
+};
+
+// 페이지 갯수별 글
+export const getPostsByPage = async (page: number) => {
+  const allPosts = await getAllPosts();
+  const startIndex = (page - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const orderedPosts = allPosts.slice(startIndex, endIndex);
+
+  return {
+    posts: orderedPosts,
+    currentPage: page,
+  };
 };
 
 // 최신 글 10개
 export const getRecentPosts = async () => {
-  const allPosts = await retrieveAllPosts();
+  const allPosts = await getAllPosts();
   return {
-    recentPosts: allPosts.sort(sortByDate).slice(0, 9), // prop으로 모든 블로그 포스트 넘겨주기
+    recentPosts: allPosts.slice(0, 9),
   };
 };
