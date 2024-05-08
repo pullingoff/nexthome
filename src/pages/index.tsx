@@ -1,9 +1,9 @@
-import { GetStaticProps } from 'next';
-import { Post } from '#src/type';
-import { getRecentPosts } from '#lib/posts';
-import mainImg from '#public/images/main.webp';
-import Image from 'next/image';
-import Link from 'next/link';
+import { GetStaticProps } from "next";
+import { Post } from "#src/type";
+import { getRecentPosts } from "#lib/posts";
+import mainImg from "#public/images/main.webp";
+import Image from "next/image";
+import Link from "next/link";
 
 export const getStaticProps: GetStaticProps = async () => {
   const { recentPosts } = await getRecentPosts();
@@ -42,11 +42,10 @@ const Main = () => {
           className="cursor-pointer brightness-100 transition ease-linear delay-75 hover:scale-110 hover:brightness-75 duration-150"
           alt="박하은의 이력서 보러가기"
           src={mainImg}
-          priority
           sizes="100vw"
           style={{
-            width: '100%',
-            height: 'auto',
+            width: "100%",
+            height: "auto",
           }}
           placeholder="blur"
         />
