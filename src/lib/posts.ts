@@ -1,30 +1,30 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { sortByDate } from '.';
-import { POST_DIRS, POSTS_DIR } from '#src/config';
-import { FrontMatter, Post } from '#src/type';
-import memoizeOne from 'memoize-one';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { sortByDate } from ".";
+import { POST_DIRS, POSTS_DIR } from "#src/config";
+import { FrontMatter, Post } from "#src/type";
+import memoizeOne from "memoize-one";
 
 const retrieveAllPosts = async (): Promise<Post[]> => {
   let allFileNames: string[] = [];
   for (const menu of POST_DIRS) {
     const fileNames: string[] = fs
       .readdirSync(path.join(process.cwd(), POSTS_DIR, menu))
-      .filter(f => {
-        return !f.startsWith('.DS_');
+      .filter((f) => {
+        return !f.startsWith(".DS_");
       });
 
-    const filesInDir: string[] = fileNames.map(file => {
+    const filesInDir: string[] = fileNames.map((file) => {
       return `${menu}/${file}`;
     });
     allFileNames = [...allFileNames, ...filesInDir];
   }
 
-  const allPostsData: Post[] = allFileNames.map(fileName => {
-    const slug = fileName.split('/')[1].split('.mdx')[0];
+  const allPostsData: Post[] = allFileNames.map((fileName) => {
+    const slug = fileName.split("/")[1].split(".mdx")[0];
     const fullPath = path.join(process.cwd(), POSTS_DIR, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8'); // path에 있는 파일 내용 읽어오기
+    const fileContents = fs.readFileSync(fullPath, "utf8"); // path에 있는 파일 내용 읽어오기
     const { data, content: body } = matter(fileContents);
     const frontMatter = data as FrontMatter;
 
@@ -60,9 +60,9 @@ const retrieveAllTags = async () => {
     []
   );
 
-  const tagWithCount = [...new Set(tags)].map(tag => ({
+  const tagWithCount = [...new Set(tags)].map((tag) => ({
     tag,
-    count: tags.filter(t => t === tag).length,
+    count: tags.filter((t) => t === tag).length,
   }));
   return tagWithCount.sort((a: ITag, b: ITag) => b.count - a.count);
 };
@@ -70,7 +70,7 @@ const retrieveAllTags = async () => {
 export const getAllTags: () => Promise<ITag[]> = retrieveAllTags;
 
 const retrieveAllSlugs = async () => {
-  const slugs: string[] = (await getAllPosts()).map(post => {
+  const slugs: string[] = (await getAllPosts()).map((post) => {
     return post.slug;
   });
 

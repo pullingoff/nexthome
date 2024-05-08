@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import GlobalLayout from "./_components/layout/GlobalLayout";
 import GoogleAnalytics from "./_components/SEO/GoogleAnalytics";
 
 export default function RootLayout({
@@ -13,7 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GoogleAnalytics />
-        {children}
+        <GlobalLayout>{children}</GlobalLayout>
       </body>
     </html>
   );

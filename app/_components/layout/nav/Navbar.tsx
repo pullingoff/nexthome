@@ -1,3 +1,4 @@
+"use client";
 import styles from "./navbar.module.scss";
 import { useState } from "react";
 import { MENUS } from "#src/config";

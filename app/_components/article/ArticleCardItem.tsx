@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import format from "date-fns/format";
 import Link from "next/link";
 
-const ArticleCardItem = ({ href, post }: { href: string; post: Post }) => {
+const ArticleCardItem = ({ post }: { post: Post }) => {
   const [publishedAt, setPublishedAt] = useState<string>("");
   const { title, description, tags } = post.frontMatter;
 
@@ -21,7 +21,7 @@ const ArticleCardItem = ({ href, post }: { href: string; post: Post }) => {
 
   return (
     <div className="relative flex flex-col overflow-hidden h-full border border-medium-blue z-0 rounded-lg hover:-translate-y-2 hover:shadow-[10px_10px_lightgray] hover:duration-200">
-      <Link href={href}>
+      <Link href={`/article/${post.slug}`}>
         <section className="flex flex-col pb-2.5 p-5 [&>*]:block">
           <h3 className="font-bold mt-1">{title}</h3>
           <p className="text-[0.95rem] leading-normal overflow-hidden text-ellipsis mx-0 my-2.5">

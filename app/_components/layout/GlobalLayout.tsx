@@ -1,9 +1,9 @@
-import Navbar from '../nav/Navbar';
-import { ReactNode } from 'react';
-import { METADATA } from '#src/config';
-import Link from 'next/link';
+import Navbar from "./nav/Navbar";
+import { ReactNode } from "react";
+import { METADATA } from "#src/config";
+import Link from "next/link";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const GlobalLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
@@ -13,7 +13,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default Layout;
+export default GlobalLayout;
 
 const Footer = () => {
   return (

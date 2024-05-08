@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import HomePage from "./home-page";
-import { getRecentPosts } from "./utils/articles";
+import { getRecentPosts } from "./utils/article";
 
 // TODO: MetadataHead 파일 마이그레이션
 export const metadata: Metadata = {

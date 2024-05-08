@@ -1,7 +1,7 @@
-import { retrieveAllTags } from "../utils/tags";
+import { retrieveAllTags } from "../utils/tag";
 import TagList from "../_components/article/TagList";
 import ListLayout from "../_components/layout/ListLayout";
-import { getAllPosts, getPostsByPage } from "../utils/articles";
+import { getAllPosts, getPostsByPage } from "../utils/article";
 
 async function getTags() {
   const tags = await retrieveAllTags();

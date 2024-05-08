@@ -16,7 +16,7 @@ export default function HomePage({ recentPosts }: { recentPosts: Post[] }) {
             key={idx}
             className="font-medium text-base md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-light-blue"
           >
-            <Link href={`/blog/${slug}`}>{frontMatter.title}</Link>
+            <Link href={`/article/${slug}`}>{frontMatter.title}</Link>
           </li>
         ))}
       </ul>

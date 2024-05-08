@@ -1,9 +1,28 @@
-import { FrontMatter, Post } from "#src/type";
+import { FrontMatter, Heading, Post } from "#src/type";
 import { POST_DIRS, POSTS_DIR, POSTS_PER_PAGE } from "#src/config";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { sortByDate } from "#src/lib";
+import { parseMarkdownToMdx } from "#utils/markdown";
+import { getHeadings } from "./markdown";
+
+const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current directory/posts
+
+// 글 하나
+export const getPost = async (slug: string) => {
+  const posts = await getAllPosts();
+  const post = posts.find((p) => p?.slug === slug)!;
+  const markdownToMeta = fs.readFileSync(
+    path.join(blogDir, slug + ".mdx"),
+    "utf-8"
+  );
+  const { content } = matter(markdownToMeta);
+  const headings = getHeadings(content);
+  const mdxSource = await parseMarkdownToMdx(content);
+
+  return { post, headings, mdxSource };
+};
 
 // 글 전체
 export const getAllPosts = async (): Promise<Post[]> => {
