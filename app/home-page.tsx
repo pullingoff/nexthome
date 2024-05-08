@@ -1,21 +1,11 @@
-import { GetStaticProps } from "next";
+"use client";
+
 import { Post } from "#src/type";
-import { getRecentPosts } from "#lib/posts";
-import mainImg from "#public/images/main.webp";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import mainImg from "#public/images/main.webp";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { recentPosts } = await getRecentPosts();
-
-  return {
-    props: {
-      recentPosts,
-    },
-  };
-};
-
-const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
+export default function HomePage({ recentPosts }: { recentPosts: Post[] }) {
   return (
     <>
       <Main />
@@ -32,7 +22,7 @@ const Home = ({ recentPosts }: { recentPosts: Post[] }) => {
       </ul>
     </>
   );
-};
+}
 
 const Main = () => {
   return (
@@ -53,5 +43,3 @@ const Main = () => {
     </section>
   );
 };
-
-export default Home;
