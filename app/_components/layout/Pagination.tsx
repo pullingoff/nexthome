@@ -1,20 +1,21 @@
-import { POSTS_PER_PAGE } from '../config/';
-import Link from 'next/link';
-import classNames from 'classnames';
+import Link from "next/link";
+import classNames from "classnames";
+import { POSTS_PER_PAGE } from "#src/config";
 
-interface IPagination {
+interface Pagination {
   path: string;
-  pageTotal: number;
+  totalPageCount: number;
   currentPage: number;
 }
 
-const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
+const Pagination = ({ totalPageCount, currentPage, path }: Pagination) => {
   // pagination은 pageTotal이 기준보다 클 때 보여주자.
-  const isFirst = currentPage === 1 && pageTotal > POSTS_PER_PAGE;
-  const isLast = currentPage === pageTotal && pageTotal > POSTS_PER_PAGE;
+  const isFirst = currentPage === 1 && totalPageCount > POSTS_PER_PAGE;
+  const isLast =
+    currentPage === totalPageCount && totalPageCount > POSTS_PER_PAGE;
 
   const linkButtonClasses =
-    'text-xl m-0 px-1 py-1.5 hover:cursor-pointer hover:-translate-y-0.5';
+    "text-xl m-0 px-1 py-1.5 hover:cursor-pointer hover:-translate-y-0.5";
 
   return (
     <nav className="flex justify-center items-center gap-1.5 m-4">
@@ -23,8 +24,8 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
           &lt;
         </Link>
       )}
-      {pageTotal &&
-        Array(pageTotal)
+      {totalPageCount &&
+        Array(totalPageCount)
           .fill(0)
           .map((_, i) => (
             <Link
@@ -32,14 +33,14 @@ const Pagination = ({ pageTotal, currentPage, path }: IPagination) => {
               href={`/${path}/${i + 1}`}
               data-iscurrent={i === currentPage - 1}
               className={classNames(linkButtonClasses, {
-                'text-deep-blue font-bold': i === currentPage - 1,
+                "text-deep-blue font-bold": i === currentPage - 1,
               })}
             >
               {i + 1}
             </Link>
           ))}
       {isFirst && (
-        <Link className={linkButtonClasses} href={`/${path}/${pageTotal}`}>
+        <Link className={linkButtonClasses} href={`/${path}/${totalPageCount}`}>
           &gt;
         </Link>
       )}

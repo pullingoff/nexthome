@@ -62,11 +62,13 @@ export const getPostsByPage = async (page: number) => {
   const allPosts = await getAllPosts();
   const startIndex = (page - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
+  const totalPageCount = Math.ceil(allPosts.length / POSTS_PER_PAGE);
   const orderedPosts = allPosts.slice(startIndex, endIndex);
 
   return {
     posts: orderedPosts,
     currentPage: page,
+    totalPageCount,
   };
 };
 

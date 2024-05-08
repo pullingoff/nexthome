@@ -1,13 +1,12 @@
-import { getAllPosts, getAllSlugs, getAllTags } from '#lib/posts';
-import { POSTS_PER_PAGE } from '#src/config';
-import Pagination from '#components/Pagination';
-import ListLayout from '#components/ListLayout';
-import MetadataHead from '#components/MetadataHead';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { ITag, Metadata } from '#src/type';
-import { ParsedUrlQuery } from 'querystring';
-import TagBox from '#components/posts/TagBox';
-import { Post } from '#src/type';
+import { getAllPosts, getAllSlugs, getAllTags } from "#lib/posts";
+import { POSTS_PER_PAGE } from "#src/config";
+import ListLayout from "#components/ListLayout";
+import MetadataHead from "#components/MetadataHead";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { ITag, Metadata } from "#src/type";
+import { ParsedUrlQuery } from "querystring";
+import TagBox from "#components/posts/TagBox";
+import { Post } from "#src/type";
 
 const customMeta: Metadata = {
   title: `Blog: 개발자 박하은`,
@@ -24,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     });
   }
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: "blocking" };
 };
 
 interface Page extends ParsedUrlQuery {
@@ -33,7 +32,7 @@ interface Page extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { page_index } = (params as Page) || {};
-  const page: number = parseInt(page_index || '1');
+  const page: number = parseInt(page_index || "1");
   const posts = await getAllPosts();
   const pageTotal = Math.ceil(posts.length / POSTS_PER_PAGE);
 
@@ -77,11 +76,6 @@ export default function BlogPage({
       <MetadataHead customMetadata={customMeta} />
       <TagBox tags={tags} />
       <ListLayout posts={posts} />
-      <Pagination
-        path="blog/page"
-        currentPage={currentPage}
-        pageTotal={pageTotal}
-      />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { POSTS_PER_PAGE } from "#src/config";
 import { retrieveAllTags } from "../../../utils/tag";
 import TagList from "../../../_components/article/TagList";
 import ListLayout from "../../../_components/layout/ListLayout";
+import Pagination from "../../../_components/layout/Pagination";
 
 type Params = {
   page_index: string;
@@ -39,14 +40,21 @@ export default async function ArticleListPage({
   params: Params;
   searchParams: any;
 }) {
-  const page_num = parseInt(params.page_index);
+  const page_num = parseInt(params.page_index || "1");
   const allTags = await getTags();
-  const { posts } = await getArticlesByPage(page_num);
+  const { posts, currentPage, totalPageCount } = await getArticlesByPage(
+    page_num
+  );
 
   return (
     <>
       <TagList tags={allTags} />
       <ListLayout posts={posts} />
+      <Pagination
+        path="article/page"
+        totalPageCount={totalPageCount}
+        currentPage={currentPage}
+      />
     </>
   );
 }

@@ -1,10 +1,9 @@
-import ListLayout from '#components/ListLayout';
-import { getAllTags, getAllPosts } from '#lib/posts';
-import { POSTS_PER_PAGE } from '#src/config';
-import MetadataHead from '#components/MetadataHead';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { Post, ITag } from '#src/type';
-import Pagination from '#components/Pagination';
+import ListLayout from "#components/ListLayout";
+import { getAllTags, getAllPosts } from "#lib/posts";
+import { POSTS_PER_PAGE } from "#src/config";
+import MetadataHead from "#components/MetadataHead";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { Post, ITag } from "#src/type";
 
 const Tag = ({
   posts,
@@ -30,11 +29,6 @@ const Tag = ({
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
       />
       <ListLayout posts={posts} />
-      <Pagination
-        path={`tags/${tag}`}
-        currentPage={pageNo}
-        pageTotal={pageTotal}
-      />
     </>
   );
 };
@@ -48,17 +42,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths: { params: { tag: string; keyword: string } }[] = [];
 
   allTags.forEach(({ tag }) => {
-    const tagsCount = posts.filter(post =>
-      post.frontMatter.tags.find(t => t === tag)
+    const tagsCount = posts.filter((post) =>
+      post.frontMatter.tags.find((t) => t === tag)
     ).length;
-    [...new Array(Math.round(tagsCount / POSTS_PER_PAGE)).keys()].forEach(i => {
-      paths.push({ params: { tag, keyword: `${i + 1}` } });
-    });
+    [...new Array(Math.round(tagsCount / POSTS_PER_PAGE)).keys()].forEach(
+      (i) => {
+        paths.push({ params: { tag, keyword: `${i + 1}` } });
+      }
+    );
   });
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 };
 
@@ -67,8 +63,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { tag, keyword } = params as ITag;
   const pageNo = parseInt(keyword);
-  const postsWithTag = allPosts.filter(post =>
-    post.frontMatter.tags.find(t => t === tag)
+  const postsWithTag = allPosts.filter((post) =>
+    post.frontMatter.tags.find((t) => t === tag)
   );
 
   if (
@@ -87,7 +83,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      posts: resultPosts.map(post => ({ ...post, path: '' })),
+      posts: resultPosts.map((post) => ({ ...post, path: "" })),
       tag,
       pageNo,
       pageTotal: Math.ceil(postsWithTag.length / POSTS_PER_PAGE),
