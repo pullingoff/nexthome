@@ -1,11 +1,9 @@
-import { FrontMatter, Heading, Post } from "#src/type";
-import { POST_DIRS, POSTS_DIR, POSTS_PER_PAGE } from "#src/config";
+import { FrontMatter, Heading, Post } from "app/_components/type";
+import { POST_DIRS, POSTS_DIR, POSTS_PER_PAGE } from "app/config";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { sortByDate } from "#src/lib";
-import { parseMarkdownToMdx } from "#utils/markdown";
-import { getHeadings } from "./markdown";
+import { getHeadings, parseMarkdownToMdx } from "./markdown";
 
 const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current directory/posts
 
@@ -78,4 +76,11 @@ export const getRecentPosts = async () => {
   return {
     recentPosts: allPosts.slice(0, 9),
   };
+};
+
+export const sortByDate = (a: Post, b: Post) => {
+  return (
+    new Date(b.frontMatter.recentUpdatedDate || b.frontMatter.date).valueOf() -
+    new Date(a.frontMatter.recentUpdatedDate || a.frontMatter.date).valueOf()
+  );
 };

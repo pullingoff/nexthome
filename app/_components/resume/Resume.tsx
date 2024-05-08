@@ -1,4 +1,4 @@
-import ProjectSection from './ProjectSection';
+import ProjectSection from "./ProjectSection";
 import {
   education,
   headerInfo,
@@ -6,7 +6,7 @@ import {
   projectExperiences,
   techStacks,
   workExperiences,
-} from '#src/data/about';
+} from "../../data/about";
 
 const Resume = () => {
   return (

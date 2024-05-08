@@ -1,7 +1,7 @@
 "use client";
 import styles from "./navbar.module.scss";
 import { useState } from "react";
-import { MENUS } from "#src/config";
+import { MENUS } from "app/config";
 import NavMenu from "./NavMenu";
 import { GithubLogo } from "public/logos";
 import Link from "next/link";

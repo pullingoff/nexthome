@@ -1,10 +1,10 @@
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import MetadataHead from '../MetadataHead';
-import { Heading, Post } from '#src/type';
-import { useRouter } from 'next/router';
-import Comments from '#components/posts/Comments';
-import Link from 'next/link';
-import classNames from 'classnames';
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import MetadataHead from "../MetadataHead";
+import { Heading, Post } from "app/_components/type";
+import { useRouter } from "next/router";
+import Comments from "../../../app/_components/article/Comments";
+import Link from "next/link";
+import classNames from "classnames";
 
 const PostArticle = ({
   post,
@@ -24,7 +24,7 @@ const PostArticle = ({
     description: description,
   };
 
-  const articleClasses = classNames(headings.length > 0 ? 'max-w-[90vw]' : '');
+  const articleClasses = classNames(headings.length > 0 ? "max-w-[90vw]" : "");
   return (
     <>
       <MetadataHead customMetadata={customMeta} />
@@ -59,7 +59,7 @@ const PostHeader = ({ date, title }: { date: string; title: string }) => {
 };
 
 const filterSpecialChars = (str: string) => {
-  return str.replace(':', '').replace('(', '').replace(')', '');
+  return str.replace(":", "").replace("(", "").replace(")", "");
 };
 
 const PostHeadings = ({ headings }: { headings: Heading[] }) => {
@@ -68,7 +68,7 @@ const PostHeadings = ({ headings }: { headings: Heading[] }) => {
       {headings ? (
         <aside className="sticky min-w-[15%] max-h-[90vh] ml-2 top-[70px] hidden lg:block">
           <ul className="text-sm text-[#1e293bd1] pl-2 border-l-deep-gray border-l">
-            {headings.map(heading => (
+            {headings.map((heading) => (
               <li
                 key={heading.text}
                 className="mb-0.5 hover:font-bold list-none [&:not(:last-child):after]:content-['﹒'] [&:not(:last-child):after]:block [&:not(:last-child):after]:leading-[0.5rem]"

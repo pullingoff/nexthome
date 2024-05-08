@@ -1,6 +1,6 @@
 import Link from "next/link";
 import classNames from "classnames";
-import { POSTS_PER_PAGE } from "#src/config";
+import { POSTS_PER_PAGE } from "app/config";
 
 interface Pagination {
   path: string;

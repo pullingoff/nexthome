@@ -1,6 +1,6 @@
 import Navbar from "./nav/Navbar";
 import { ReactNode } from "react";
-import { METADATA } from "#src/config";
+import { METADATA } from "app/config";
 import Link from "next/link";
 
 const GlobalLayout = ({ children }: { children: ReactNode }) => {

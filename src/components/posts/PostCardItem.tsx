@@ -1,17 +1,17 @@
-import { Post } from '#src/type';
-import { useEffect, useState } from 'react';
-import format from 'date-fns/format';
-import Link from 'next/link';
+import { Post } from "app/_components/type";
+import { useEffect, useState } from "react";
+import format from "date-fns/format";
+import Link from "next/link";
 
 const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
-  const [publishedAt, setPublishedAt] = useState<string>('');
+  const [publishedAt, setPublishedAt] = useState<string>("");
   const { title, description, tags } = post.frontMatter;
 
   // 사파리용 split 서버, 클라이언트 다른 경우가 있음
   useEffect(() => {
     try {
       setPublishedAt(
-        format(new Date(post.frontMatter.date), 'yyyy년 MM월 dd일')
+        format(new Date(post.frontMatter.date), "yyyy년 MM월 dd일")
       );
     } catch (e) {
       setPublishedAt(post.frontMatter.date.toString().split(/(\s+)/)[0]);
@@ -36,7 +36,7 @@ const PostCardItem = ({ href, post }: { href: string; post: Post }) => {
             key={text}
             href={`/tags/${text}/1`}
           >
-            {text.split(' ').join('-')}
+            {text.split(" ").join("-")}
           </Link>
         ))}
       </section>

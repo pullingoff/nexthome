@@ -6,7 +6,7 @@ import {
   projectExperiences,
   techStacks,
   workExperiences,
-} from "#data/about";
+} from "../data/about";
 
 export default function ResumePage() {
   return (

@@ -19,3 +19,12 @@ const TagList = ({ tags }: { tags: Tag[] }) => {
 };
 
 export default TagList;
+
+export const TagItem = ({ pageNm, desc }: { pageNm: string; desc: string }) => {
+  return (
+    <div className="px-0 py-2">
+      <h1 className="text-[2rem] font-extrabold mt-0 mb-1">{pageNm}</h1>
+      <h3 className="font-normal">{desc}</h3>
+    </div>
+  );
+};

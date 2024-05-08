@@ -1,6 +1,6 @@
 import { getAllPosts, getPostsByPage } from "../../../utils/article";
-import { POSTS_PER_PAGE } from "#src/config";
-import { retrieveAllTags } from "../../../utils/tag";
+import { POSTS_PER_PAGE } from "app/config";
+import { getAllTags } from "../../../utils/tag";
 import TagList from "../../../_components/article/TagList";
 import ListLayout from "../../../_components/layout/ListLayout";
 import Pagination from "../../../_components/layout/Pagination";
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 async function getTags() {
-  const tags = await retrieveAllTags();
+  const tags = await getAllTags();
   return tags;
 }
 

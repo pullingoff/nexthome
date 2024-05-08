@@ -1,12 +1,12 @@
-import { METADATA } from '#src/config';
-import { NextSeo, ArticleJsonLd } from 'next-seo';
+import { METADATA } from "app/config";
+import { NextSeo, ArticleJsonLd } from "next-seo";
 
 export const SEO = {
   title: METADATA.title,
   description: METADATA.description,
   openGraph: {
-    type: 'website',
-    locale: 'ko-KR',
+    type: "website",
+    locale: "ko-KR",
     url: METADATA.url,
     title: METADATA.title,
     description: METADATA.description,
@@ -56,7 +56,7 @@ export const BlogSeo = ({
   const publishedAt = new Date(date).toISOString();
   const modifiedAt = new Date(updatedAt || date).toISOString();
 
-  const featuredImages = images.map(img => {
+  const featuredImages = images.map((img) => {
     return {
       url: img,
       alt: title,
@@ -70,7 +70,7 @@ export const BlogSeo = ({
         description={summary}
         canonical={url}
         openGraph={{
-          type: 'article',
+          type: "article",
           article: {
             publishedTime: publishedAt,
             modifiedTime: modifiedAt,

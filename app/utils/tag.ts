@@ -1,12 +1,12 @@
-import { Post } from "#src/type";
-import { getAllPosts } from "#lib/posts";
+import { Post } from "app/_components/type";
+import { getAllPosts } from "./article";
 
 export type Tag = {
   count: number;
   tag: string;
 };
 
-export const retrieveAllTags = async () => {
+export const getAllTags = async () => {
   const tags: string[] = (await getAllPosts()).reduce<string[]>(
     (prev: string[], curr: Post) => {
       curr.frontMatter.tags.forEach((tag: string) => {

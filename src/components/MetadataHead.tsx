@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import { METADATA } from '#src/config';
-import { Metadata } from '#src/type';
+import Head from "next/head";
+import { METADATA } from "app/config";
+import { Metadata } from "#components/type";
 
 const MetadataHead = ({ customMetadata }: { customMetadata?: Metadata }) => {
   const metadata = {
