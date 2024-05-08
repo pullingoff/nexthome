@@ -13,6 +13,10 @@ const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current director
 export const getPost = async (slug: string) => {
   const posts = await getAllPosts();
   const post = posts.find((p) => p?.slug === slug)!;
+  if (!post) {
+    // 입력한 url(slug)가 유효하지 않은 경우
+    return;
+  }
   const markdownToMeta = fs.readFileSync(
     path.join(blogDir, slug + ".mdx"),
     "utf-8"

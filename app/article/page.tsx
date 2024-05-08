@@ -2,6 +2,7 @@ import { retrieveAllTags } from "../utils/tag";
 import TagList from "../_components/article/TagList";
 import ListLayout from "../_components/layout/ListLayout";
 import { getAllPosts, getPostsByPage } from "../utils/article";
+import { POSTS_PER_PAGE } from "#src/config";
 
 async function getTags() {
   const tags = await retrieveAllTags();
@@ -14,7 +15,6 @@ async function getArticlesByPage() {
   return posts;
 }
 
-// TODO: [page_index].tsx
 export default async function ArticleListPage() {
   const allTags = await getTags();
   const { posts } = await getArticlesByPage();
