@@ -1,4 +1,4 @@
-import ProjectSection from "../_components/resume/ProjectSection";
+import ProjectSection from './ProjectSection';
 import {
   education,
   headerInfo,
@@ -6,9 +6,9 @@ import {
   projectExperiences,
   techStacks,
   workExperiences,
-} from "#data/about";
+} from '#src/data/about';
 
-export default function ResumePage() {
+const Resume = () => {
   return (
     <main>
       <ResumeHeader />
@@ -19,7 +19,9 @@ export default function ResumePage() {
       <ProjectSection title="Education" list={education} />
     </main>
   );
-}
+};
+
+export default Resume;
 
 const ResumeHeader = () => {
   return (
