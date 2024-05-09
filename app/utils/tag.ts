@@ -24,10 +24,7 @@ export const getAllTags = async () => {
   return tagWithCount.sort((a: Tag, b: Tag) => b.count - a.count);
 };
 
-const retrieveAllSlugs = async () => {
-  const slugs: string[] = (await getAllPosts()).map((post) => {
-    return post.slug;
-  });
-
-  return slugs;
+export const getMostUsedTags = async (number = 10) => {
+  const allTags = await getAllTags();
+  return allTags.slice(0, number);
 };

@@ -4,7 +4,23 @@ import { getRecentPosts } from "./utils/article";
 
 // TODO: MetadataHead 파일 마이그레이션
 export const metadata: Metadata = {
-  title: "My Page Title",
+  title: "개발자 박하은",
+  description: "",
+  keywords: [
+    "개발",
+    "프론트엔드",
+    "개발자",
+    "리액트",
+    "Next.js",
+    "개발자 성장",
+  ],
+  openGraph: {
+    // url: '',
+    // site_name: '',
+    // title: '',
+    // description: '',
+    // image: ''
+  },
 };
 
 async function getPosts() {

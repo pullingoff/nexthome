@@ -1,4 +1,4 @@
-import { ParsedUrlQuery } from 'querystring';
+import { ParsedUrlQuery } from "querystring";
 
 export interface Metadata {
   title: string;
@@ -49,11 +49,6 @@ export interface Post {
   frontMatter: FrontMatter;
   body: string;
   headings?: Heading[];
-}
-
-export interface ITag extends ParsedUrlQuery {
-  keyword: string;
-  tag: string;
 }
 
 export interface MyInfo {

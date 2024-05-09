@@ -3,8 +3,7 @@ import { Post } from "#components/type";
 import { TagItem } from "#components/article/TagList";
 import Pagination from "#components/layout/Pagination";
 
-// TODO: pagination
-export const Tagssss = ({
+export const TagPostList = ({
   posts,
   tag,
   currentPage,

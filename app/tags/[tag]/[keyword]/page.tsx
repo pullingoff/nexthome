@@ -3,7 +3,7 @@ import { MARKDOWN_REGEX } from "#utils/markdown";
 import { getAllPosts } from "#utils/article";
 import { getAllTags } from "#utils/tag";
 import { POSTS_PER_PAGE } from "../../../config";
-import { Tagssss } from "./keyword-page";
+import { TagPostList } from "./keyword-page";
 import { ta } from "date-fns/locale";
 
 export async function generateStaticParams() {
@@ -67,17 +67,17 @@ type Params = {
 
 export default async function TagPage({ params }: { params: Params }) {
   const { posts, tag, currentPage, totalPageCount } = await getTagssss(params);
-  console.log();
+
   return (
-    <>
+    <section>
       {tag && (
-        <Tagssss
+        <TagPostList
           posts={posts}
           tag={tag}
           currentPage={currentPage}
           totalPageCount={totalPageCount}
         />
       )}
-    </>
+    </section>
   );
 }

@@ -10,14 +10,14 @@ import {
 
 export default function ResumePage() {
   return (
-    <main>
+    <section>
       <ResumeHeader />
       <ProjectSection title="Work Experiences" list={workExperiences} />
       <ProjectSection title="Projects" list={projectExperiences} />
       <ProjectSection title="Skills" list={techStacks} />
       <ProjectSection title="Other Experiences" list={otherExperiences} />
       <ProjectSection title="Education" list={education} />
-    </main>
+    </section>
   );
 }
 

@@ -2,10 +2,11 @@
 import styles from "./navbar.module.scss";
 import { useState } from "react";
 import { MENUS } from "app/config";
-import NavMenu from "./NavMenu";
+import NavMenuItem from "./NavMenuItem";
 import { GithubLogo } from "public/logos";
 import Link from "next/link";
-import classNames from "classnames";
+import Image from "next/image";
+import Logo from "public/logo.svg";
 
 const Navbar = () => {
   const [isNavOpen, setNavOpened] = useState(false);
@@ -24,7 +25,7 @@ const Navbar = () => {
     >
       <div className={styles.navContents}>
         <Link className="inline-block w-16 m-2" href="/">
-          home
+          <Image src={Logo} alt="pudding emoji" />
         </Link>
         <div className={styles.threeBarNav} onClick={onToggleNav}>
           <div className={styles.bar1}></div>
@@ -36,15 +37,12 @@ const Navbar = () => {
           className={styles.navMenuUl}
           onClick={onToggleNav}
         >
-          {MENUS.map((menu, idx) => (
-            <NavMenu key={idx} menu={menu} />
+          {MENUS.map((menu) => (
+            <NavMenuItem key={menu.path} menu={menu} />
           ))}
-          <NavMenu
-            menu={{ title: "", path: "https://github.com/pullingoff" }}
-            className="bottom-[-5px] hover:fill-light-blue"
-          >
+          <NavMenuItem menu={{ path: "https://github.com/pullingoff" }}>
             <GithubLogo />
-          </NavMenu>
+          </NavMenuItem>
         </ul>
       </div>
     </header>

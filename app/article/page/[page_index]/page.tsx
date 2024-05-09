@@ -1,6 +1,6 @@
 import { getAllPosts, getPostsByPage } from "../../../utils/article";
 import { POSTS_PER_PAGE } from "app/config";
-import { getAllTags } from "../../../utils/tag";
+import { getAllTags, getMostUsedTags } from "../../../utils/tag";
 import TagList from "../../../_components/article/TagList";
 import ListLayout from "../../../_components/layout/ListLayout";
 import Pagination from "../../../_components/layout/Pagination";
@@ -22,11 +22,6 @@ export async function generateStaticParams() {
   return paths;
 }
 
-async function getTags() {
-  const tags = await getAllTags();
-  return tags;
-}
-
 // 해당 페이지의 글 불러오기
 async function getArticlesByPage(page_num: number) {
   const posts = await getPostsByPage(page_num);
@@ -41,13 +36,13 @@ export default async function ArticleListPage({
   searchParams: any;
 }) {
   const page_num = parseInt(params.page_index || "1");
-  const allTags = await getTags();
+  const allTags = await getMostUsedTags(14);
   const { posts, currentPage, totalPageCount } = await getArticlesByPage(
     page_num
   );
 
   return (
-    <>
+    <section>
       <TagList tags={allTags} />
       <ListLayout posts={posts} />
       <Pagination
@@ -55,6 +50,6 @@ export default async function ArticleListPage({
         totalPageCount={totalPageCount}
         currentPage={currentPage}
       />
-    </>
+    </section>
   );
 }

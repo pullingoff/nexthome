@@ -10,7 +10,8 @@
   .navContents {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    align-items: center;
+    padding: 0 1rem;
     background-color: #ffffffc3;
     position: relative;
     backdrop-filter: saturate(180%) blur(20px);
@@ -62,7 +63,7 @@
     .navMenuUl { // mobile 에서는 샌드위치만 보인다.
       display: flex;
       position: fixed;
-      top: 60px; // 80이었음 원래
+      top: 78px;
       left: 0;
       background: white;
       width: 100vw;

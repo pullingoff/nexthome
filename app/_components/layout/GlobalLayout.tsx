@@ -7,7 +7,9 @@ const GlobalLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
-      <main className="lg-gap min-h-[70vh] m-auto p-5">{children}</main>
+      <main className="max-w-screen-lg md:flex gap-10 m-5 overflow-hidden">
+        {children}
+      </main>
       <Footer />
     </>
   );
@@ -17,7 +19,7 @@ export default GlobalLayout;
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col justify-center items-center text-center pt-8 pb-4 my-2 md:my-4 border-t border-deep-blue">
+    <footer className="w-full flex flex-col justify-center items-center text-center py-6 border-t border-deep-blue">
       <Link href={`mailto:${METADATA.email}`} className="hover:font-bold">
         Email: {METADATA.email}
       </Link>
