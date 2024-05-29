@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid var(--deep-blue);
+  border-bottom: 1px solid var(--deep-brown);
   width: 100%;
 
   .navContents {
@@ -36,7 +36,7 @@
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: var(--deep-blue);
+  background-color: var(--deep-brown);
   margin: 6px 0;
   transition: 0.4s;
 }

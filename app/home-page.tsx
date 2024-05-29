@@ -27,7 +27,7 @@ export default function HomePage({ recentPosts }: { recentPosts: Post[] }) {
           {recentPosts.map(({ frontMatter, slug }, idx) => (
             <li
               key={idx}
-              className="font-semibold md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-light-blue"
+              className="font-semibold md:mb-0.5 mb-1.5 before:content-['-'] before:mr-2 hover:text-light"
             >
               <Link href={`/article/${slug}`}>{frontMatter.title}</Link>
             </li>

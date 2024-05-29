@@ -33,7 +33,7 @@ const Pagination = ({ totalPageCount, currentPage, path }: Pagination) => {
               href={`/${path}/${i + 1}`}
               data-iscurrent={i === currentPage - 1}
               className={classNames(linkButtonClasses, {
-                "text-deep-blue font-bold": i === currentPage - 1,
+                "text-deep-brown font-bold": i === currentPage - 1,
               })}
             >
               {i + 1}

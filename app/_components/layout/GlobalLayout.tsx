@@ -19,7 +19,7 @@ export default GlobalLayout;
 
 const Footer = () => {
   return (
-    <footer className="w-full flex flex-col justify-center items-center text-center py-6 border-t border-deep-blue">
+    <footer className="w-full flex flex-col justify-center items-center text-center py-6 border-t border-deep-brown">
       <Link href={`mailto:${METADATA.email}`} className="hover:font-bold">
         Email: {METADATA.email}
       </Link>

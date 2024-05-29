@@ -13,7 +13,7 @@ const NavMenuItem = ({
   children?: React.ReactNode; // 메뉴 이름이 아닌 깃허브 로고 같은 경우
 }) => {
   return (
-    <li className="inline-block text-deep-blue text-2xl font-bold ml-6 hover:text-light-blue">
+    <li className="inline-block text-deep-brown text-2xl font-bold ml-6 hover:text-light">
       <Link href={menu.path}>{children ?? menu.title}</Link>
     </li>
   );

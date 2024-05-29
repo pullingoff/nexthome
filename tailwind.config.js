@@ -16,15 +16,14 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        "deep-blue": "0 0 0 2px #1e293b",
+        "deep-brown": "0 0 0 2px #1e293b",
       },
     },
     colors: {
-      "light-blue": "#a88376",
-      "medium-blue": "#8d6a5f", // default
-      "deep-blue": "#72554b",
-      "light-gray": "#ffec99",
-      "deep-gray": "#4b332a",
+      light: "#a88376",
+      "medium-brown": "#8d6a5f", // default
+      "deep-brown": "#543e37",
+      "light-yellow": "#ffec99",
       "opaque-white": "#ffffffc3",
     },
   },

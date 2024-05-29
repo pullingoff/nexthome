@@ -17,7 +17,7 @@ const detailItemClasses =
 const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
   return (
     <main className='before:content-["_"] before:relative before:block before:mt-4 before:border-t-[lightgrey] before:border-t before:border-dashed before:top-px'>
-      <h2 className="text-2xl text-light-blue font-extrabold tracking-[initial] mt-5 mb-2 mx-0">
+      <h2 className="text-2xl text-light font-extrabold tracking-[initial] mt-5 mb-2 mx-0">
         <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
         {title}
       </h2>
@@ -65,7 +65,7 @@ const WorkProjectBox = (pj: WorkProject) => {
     <>
       {pj.link ? (
         <Link href={pj.link} target="_blank">
-          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-light-blue">
+          <h3 className="mx-0 my-2 hover:cursor-pointer hover:text-light">
             {pj.title} 🔗
           </h3>
         </Link>
@@ -111,7 +111,7 @@ const EducationBox = (edu: Education) => {
 const ProjectBox = (exp: Experience) => {
   const linkedOrgClasses = classNames(
     orgClasses,
-    "hover:cursor-pointer hover:text-light-blue"
+    "hover:cursor-pointer hover:text-light"
   );
   return (
     <>

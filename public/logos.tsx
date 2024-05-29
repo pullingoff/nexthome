@@ -1,7 +1,7 @@
 export const GithubLogo = () => {
   return (
     <svg
-      className="fill-deep-blue hover:fill-light-blue"
+      className="fill-deep-brown hover:fill-light"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"

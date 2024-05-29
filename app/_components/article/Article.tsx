@@ -36,7 +36,7 @@ const PostArticle = ({
             <MDXRemote {...mdxSource} />
           </article>
           <span
-            className="block mr-[-] ml-[-] text-deep-blue font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-light-blue"
+            className="block mr-[-] ml-[-] text-deep-brown font-bold cursor-pointer mt-[calc(2%] mb-[1px)] hover:text-light"
             // onClick={() => router.back()}
           >
             &larr; 이전
@@ -53,8 +53,8 @@ export default PostArticle;
 const PostHeader = ({ date, title }: { date: string; title: string }) => {
   return (
     <header className="text-center animate-[1s_anim-lineUp_0.1s_ease-out_1] pt-3">
-      <time className="font-medium text-deep-blue">{date}</time>
-      <h1 className="md:text-2xl font-extrabold text-deep-blue">{title}</h1>
+      <time className="font-medium text-deep-brown">{date}</time>
+      <h1 className="md:text-2xl font-extrabold text-deep-brown">{title}</h1>
     </header>
   );
 };
@@ -68,7 +68,7 @@ const PostHeadings = ({ headings }: { headings: Heading[] }) => {
     <>
       {headings ? (
         <aside className="sticky min-w-[15%] max-h-[90vh] ml-2 top-[70px] hidden lg:block">
-          <ul className="text-sm text-[#1e293bd1] pl-2 border-l-deep-gray border-l">
+          <ul className="text-sm text-[#1e293bd1] pl-2 border-l-deep-brown border-l">
             {headings.map((heading) => (
               <li
                 key={heading.text}
