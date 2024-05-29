@@ -3,12 +3,12 @@
 import { Post } from "app/_components/type";
 import Link from "next/link";
 import Image from "next/image";
-import mainImg from "public/images/main.JPG";
+import mainImg from "public/images/main.webp";
 
 export default function HomePage({ recentPosts }: { recentPosts: Post[] }) {
   return (
     <>
-      <Link className="flex-1 cursor-pointer" href="/about">
+      <Link className="flex-1 cursor-pointer" href="/resume">
         <Image
           className="brightness-100 transition ease-linear delay-50 hover:brightness-75 duration-100"
           alt="박하은의 이력서 보러가기"
