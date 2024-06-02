@@ -1,5 +1,3 @@
-import { ParsedUrlQuery } from "querystring";
-
 export interface Metadata {
   title: string;
   url?: string;

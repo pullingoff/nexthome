@@ -1,10 +1,7 @@
-import fs from "fs";
-import { MARKDOWN_REGEX } from "#utils/markdown";
 import { getAllPosts } from "#utils/article";
 import { getAllTags } from "#utils/tag";
 import { POSTS_PER_PAGE } from "../../../config";
 import { TagPostList } from "./keyword-page";
-import { ta } from "date-fns/locale";
 
 export async function generateStaticParams() {
   const allTags = await getAllTags();
