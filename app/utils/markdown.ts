@@ -1,6 +1,5 @@
 // post content에서 ## 찾아서 헤딩 구성 (목차용)
 import { serialize } from "next-mdx-remote/serialize";
-import remarkMath from "remark-math";
 import slug from "remark-slug";
 import remarkGfm from "remark-gfm";
 import prism from "rehype-prism-plus";
@@ -70,7 +69,7 @@ export const parseMarkdownToMdx = async (body: string) => {
   return serialize(body, {
     // 마크다운에서 html로 제대로 바꿀 수 있도록 도와주는 플러그인들
     mdxOptions: {
-      remarkPlugins: [remarkMath, slug, remarkGfm],
+      remarkPlugins: [slug, remarkGfm],
       rehypePlugins: [prism, parseCodeSnippet, rehypeAutolinkHeadings],
     },
   });

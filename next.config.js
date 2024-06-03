@@ -19,7 +19,7 @@ module.exports = async (phase, { defaultConfig }) => {
       defaultLocale: "kr",
     },
     // webpack5: true,
-    webpack: (config) => {
+    webpack: (config, { isServer }) => {
       config.resolve.fallback = { fs: false };
       return config;
     },

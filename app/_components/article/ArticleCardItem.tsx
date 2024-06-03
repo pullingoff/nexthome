@@ -1,8 +1,8 @@
 "use client";
 import { Post } from "app/_components/type";
 import { useEffect, useState } from "react";
-import format from "date-fns/format";
 import Link from "next/link";
+import { formatDate } from "#utils/index";
 
 const ArticleCardItem = ({ post }: { post: Post }) => {
   const [publishedAt, setPublishedAt] = useState<string>("");
@@ -12,7 +12,7 @@ const ArticleCardItem = ({ post }: { post: Post }) => {
   useEffect(() => {
     try {
       setPublishedAt(
-        format(new Date(post.frontMatter.date), "yyyy년 MM월 dd일")
+        formatDate(new Date(post.frontMatter.date), "yyyy년 MM월 dd일")
       );
     } catch (e) {
       setPublishedAt(post.frontMatter.date.toString().split(/(\s+)/)[0]);
