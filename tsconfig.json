@@ -6,26 +6,20 @@
     "baseUrl": "./",
     "paths": { // @로 하니까 typescript랑 헷갈려함
       "#components/*": [
-        "src/components/*"
+        "app/_components/*"
       ],
       "#utils/*": [
-        "src/utils/*"
+        "app/utils/*"
       ],
       "#styles/*": [
-        "src/styles/*"
+        "app/styles/*"
       ],
       "#public/*": [
         "public/*"
       ],
-      "#lib/*": [
-        "src/lib/*"
-      ],
       "#data/*": [
-        "src/data/*"
+        "app/data/*"
       ],
-      "#src/*": [
-        "src/*"
-      ]
     },
     "outDir": "dist",
     "lib": [
