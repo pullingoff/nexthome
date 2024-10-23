@@ -9,7 +9,7 @@ description: setState는 비동기적으로 동작한다
 
 *가독성을 위해 문제와 관련없는 부분은 최대한 생략한 코드입니다.*
 
-## 문제 
+## 문제
 아래 코드는 유저가 여러 소셜 로그인 방법 중 **카카오 로그인을 선택**한 경우 동작합니다.
 순서는 이렇습니다. (코드 내 주석 참고)
 
@@ -64,7 +64,7 @@ async const kakaoLogin = (successCallback) => {
 ## 원인
 
 왜냐면 **setState는 이벤트핸들러 안에서 비동기적으로 호출**되기 때문입니다.
-setState는 컴포넌트를 바로바로 리렌더링하지 않고, 변경 사항을 대기열에 넣어두고 한번에 일괄적으로 갱신합니다. 
+setState는 컴포넌트를 바로바로 리렌더링하지 않고, 변경 사항을 대기열에 넣어두고 한번에 일괄적으로 갱신합니다.
 이 결과 setState을 여러번 호출해도 동일한 키에 대해서는 가장 마지막 값으로만 상태가 갱신되기도 합니다.
 
 ### 왜 굳이?
@@ -93,7 +93,7 @@ add() {
 
 첫째로, prevState를 사용해 새로운 객체를 return하면 됩니다.
 
-아래 예시에서 저는 ` fruits 배열의 원소가 객체의 key로 담긴 fruitState 객체`를 만들고 싶었습니다. 
+아래 예시에서 저는 ` fruits 배열의 원소가 객체의 key로 담긴 fruitState 객체`를 만들고 싶었습니다.
 그래서 이런 코드를 짰어요.
 
 ```javascript
@@ -105,8 +105,8 @@ fruits.map((val, idx) => {
 
 ```
 
-fruits 배열의 map() 메서드를 써서 setState를 하도록 했습니다. 
-하지만 이 코드를 실행하니 예상한 결과물은 `{orange: true, apple: true}`이었는데, 실제 결과물은 `{apple: true}`였습니다.  
+fruits 배열의 map() 메서드를 써서 setState를 하도록 했습니다.
+하지만 이 코드를 실행하니 예상한 결과물은 `{orange: true, apple: true}`이었는데, 실제 결과물은 `{apple: true}`였습니다.
 
 처음 `orange`가 `[val]`이었을 때 `fruitState`가 변하지 않은 상태에서 setFruitState를 한번 더 실행했기 때문에 마지막 setState만 빼고 이전의 setState 실행은 다 무시되어버린겁니다!!!
 
@@ -144,5 +144,3 @@ handleClick() {
 
 이 두 방법 중 저는 첫번째 방법을 주로 씁니다.  
 또 이외에도 useCallback 안에 setState을 넣어 처리할 수도 있습니다.
-
-![setState Thumbnail](/images/blog/2209/setstate_thumbnail.png)
