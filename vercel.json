@@ -1,0 +1,12 @@
+{
+    "build": {
+      "env": {
+        "NEXT_PUBLIC_API_URL": "https://haeun.dev"
+      }
+    },
+    "excludeFiles": [
+      ".git/**",
+      "node_modules/**",
+      "logs/**"
+    ]
+  }
