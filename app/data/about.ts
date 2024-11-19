@@ -69,8 +69,11 @@ export const workExperiences: Experience[] = [
         title: "머스트잇 프론트엔드 개발",
         description:
           "국내 탑 명품 이커머스인 머스트잇 서비스의 프론트엔드와 BFF API를 개발",
-        tech: ["Vue"],
-        details: ["머스트잇 웹 및 BFF 패턴을 활용한 API 개발"],
+        tech: ["Next.js", "TypeScript", "react-query", "zod", "zustand", "Vue"],
+        details: [
+          "Vue 2로 개발된 주문서 e2e 테스트 구현 후 Next.js 15로 마이그레이션 및 성능개선",
+          "머스트잇 웹 및 BFF API 개발",
+        ],
       },
     ],
   },
@@ -83,13 +86,7 @@ export const workExperiences: Experience[] = [
         title: "파스토셀프 2.0 개발",
         description:
           "네이버 No.1 공식 풀필먼트 협력사인 파스토의 새로운 쇼핑몰 통합관리 솔루션",
-        tech: [
-          "React",
-          "TypeScript",
-          "TanStack Query",
-          "react-hook-form",
-          "MUI",
-        ],
+        tech: ["React", "TypeScript", "react-query", "react-hook-form", "MUI"],
         details: [
           "아토믹 디자인과 Compound Components 패턴을 활용한 공통 Input, Textarea 컴포넌트를 설계 및 개발하여 개발 공수를 줄임",
           "react-hook-form을 포함한 고차 컴포넌트를 개발해 form 구현에 필요한 코드량을 30% 이상 감소시킴",
@@ -214,12 +211,12 @@ export const education: Education[] = [
     period: "2020.10",
     course: "SQL 개발자",
     details: [
-      "개발을 처음 배울 때부터 DB에 관심이 많았어서 흥미를 바탕으로 학습해 자격증을 취득",
+      // "개발을 처음 배울 때부터 DB에 관심이 많았어서 흥미를 바탕으로 학습해 자격증을 취득",
     ],
   },
   {
     institute: "Humber College",
-    period: "2018.06 ~ 2019.12",
+    period: "2019.12 졸업",
     course: "Marketing Diploma, 우등 졸업",
     details: [
       "캐나다에 위치한 대학으로, Toronto Marlies의 교내 세일즈 단원으로 발탁되어 디지털 마케팅 및 경기 티켓 판매",
@@ -244,7 +241,7 @@ export const techStacks: TechStack[] = [
   },
   {
     type: "그 외 업무에 활용가능한 기술",
-    skill: ["SQL", "Python", "Neo4j", "Git", "Jira"],
+    skill: ["SQL", "Python", "Neo4j"],
   },
   {
     type: "영어",
