@@ -23,6 +23,7 @@ module.exports = async (phase, { defaultConfig }) => {
       config.resolve.fallback = { fs: false };
       return config;
     },
+    output: "standalone",
     transpilePackages: ["next-mdx-remote"],
   };
   return nextConfig;
