@@ -1,15 +1,9 @@
-export interface Metadata {
-  title: string;
-  url?: string;
-  date?: string;
-}
-
 export interface WorkProject {
   title?: string;
-  tech: string[];
+  tech?: string[];
   link?: string;
   description?: string;
-  details: string[];
+  details?: string[];
 }
 
 export interface Experience {

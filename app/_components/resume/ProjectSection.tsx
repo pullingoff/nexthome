@@ -9,8 +9,8 @@ import { Fragment } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 
-const orgClasses = classNames("font-bold text-xl mr-1 mb-1");
-const detailListClasses = "mb-4 m-1 list-none";
+const orgClasses = classNames("font-bold text-lg mr-1 mb-1");
+const detailListClasses = "mb-1 m-1 list-none";
 const detailItemClasses =
   'mx-0 my-1 pl-1 before:content-["-"] before:relative before:mr-2';
 
@@ -21,7 +21,7 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
         <CustomEmoji aria="Woman Technologist">👩🏻‍💻 </CustomEmoji>
         {title}
       </h2>
-      <section className="w-full flex flex-col flex-nowrap mb-4">
+      <section className="w-full flex flex-col flex-nowrap mb-3">
         {title.includes("Education") &&
           list.map((edu: Education) => (
             <Fragment key={edu.course}>
@@ -49,7 +49,6 @@ const ProjectSection = ({ title, list }: { title: string; list: any[] }) => {
                   className='font-normal [&:not(:last-child):after]:content-[","]'
                   key={sk}
                 >
-                  {" "}
                   {sk}
                 </span>
               ))}
@@ -87,7 +86,7 @@ const WorkProjectBox = (pj: WorkProject) => {
         <ul className={detailListClasses}>
           {pj.details.map((det, idx) => (
             <li className={detailItemClasses} key={idx}>
-              {det}{" "}
+              {det}
             </li>
           ))}
         </ul>
@@ -99,10 +98,12 @@ const WorkProjectBox = (pj: WorkProject) => {
 const EducationBox = (edu: Education) => {
   return (
     <>
-      <span className={orgClasses}>{edu.institute}</span>
-      <span className="font-normal">
-        {edu.course} | {edu.period}
-      </span>
+      <p className={orgClasses}>
+        {edu.institute}
+        <span className="font-normal text-md">
+          {edu.course} | {edu.period}
+        </span>
+      </p>
       {edu.details && <DetailSection list={edu.details} />}
     </>
   );
@@ -117,7 +118,7 @@ const ProjectBox = (exp: Experience) => {
     <>
       {exp.link ? (
         <Link href={exp.link} target="_blank">
-          <span className={linkedOrgClasses}>{exp.organization} 🔗</span>/{" "}
+          <span className={linkedOrgClasses}>{exp.organization} 🔗</span>/
           {exp.period}
           {exp.description && (
             <p className="mt-2 font-bold">: {exp.description}</p>
@@ -125,7 +126,7 @@ const ProjectBox = (exp: Experience) => {
         </Link>
       ) : (
         <>
-          <span className={orgClasses}>{exp.organization}</span>{" "}
+          <span className={orgClasses}>{exp.organization}</span>
           {exp.description} / {exp.period}
         </>
       )}
@@ -144,7 +145,7 @@ const DetailSection = ({ list }: { list: string[] }) => {
     <ul className={detailListClasses}>
       {list.map((det, idx) => (
         <li className={detailItemClasses} key={idx}>
-          {det}{" "}
+          {det}
         </li>
       ))}
     </ul>
