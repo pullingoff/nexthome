@@ -1,6 +1,13 @@
-import { Education, Experience, MyInfo, TechStack } from "app/_components/type";
+import {
+  Education,
+  WorkExperience,
+  HeaderInfo,
+  OtherExperience,
+  Project,
+  Skill,
+} from "app/_components/type";
 
-export const headerInfo: MyInfo = {
+export const HEADER_INFO: HeaderInfo = {
   name: "박하은",
   job: "프론트엔드 엔지니어", //'Frontend Engineer',
   email: "devhaeun@gmail.com",
@@ -13,62 +20,72 @@ export const headerInfo: MyInfo = {
   ],
 };
 
-export const projectExperiences: Experience[] = [
+export const PROJECTS: Project[] = [
   {
     organization: "개인 블로그",
     link: "https://haeun.vercel.app",
     description:
       "라이트하우스 접근성, 최적화, SEO 점수 만점으로 직접 디자인, 개발하여 꾸준히 고도화 중인 블로그",
     period: "2022.02 ~ 현재",
-    projects: [
+    items: [
       {
-        tech: [
+        skills: [
           "Next.js",
           "TypeScript",
-          "styled-components",
-          "next-mdx-remote",
+          "Tailwind CSS",
           "Vercel",
           "husky",
+          "Git Workflow",
         ],
-        details: [
+        descriptions: [
           "직접 디자인하고 스타일 구현, mobile-first, 반응형 웹앱으로 다양한 기기에서 글을 읽을 수 있음",
-          "next-mdx-remote로 마크다운을 HTML로 재구성해 보여주고 frontmatter로 태그별 조회 가능",
-          "사이트맵과 페이지별 메타 태그를 사용해 SEO를 적용하고, Git workflow로 배포 시마다 사이트맵을 생성해 구글 검색 엔진에 등록하도록 자동화",
-          "husky로 깃 커밋 컨벤션을 지정해 일관성 있는 커밋 메시지를 작성하고자 노력함",
+          "사이트맵과 페이지별 메타 태그를 사용해 SEO를 적용하고, 배포 시마다 검색 엔진에 등록하도록 자동화",
         ],
       },
     ],
   },
 ];
 
-export const workExperiences: Experience[] = [
+export const WORK_EXPERIENCES: WorkExperience[] = [
   {
     organization: "머스트잇",
-    description: "프론트엔드 개발자",
+    description: "프론트엔드 엔지니어",
     period: "2024.02 ~ 현재",
     projects: [
       {
-        title: "머스트잇 프론트엔드 개발",
-        description:
-          "국내 탑 명품 이커머스인 머스트잇 서비스의 프론트엔드와 BFF API를 개발",
-        tech: ["Next.js", "TypeScript", "react-query", "zod", "zustand", "Vue"],
+        title: "프론트엔드 개발",
+        // description: "국내 탑 명품 이커머스인 머스트잇 서비스의 프론트엔드와 BFF API를 개발",
+        skills: [
+          "Next.js",
+          "TypeScript",
+          "react-query",
+          "zod",
+          "zustand",
+          "Vue",
+        ],
         details: [
           "Vue 2로 개발된 주문서 e2e 테스트 구현 후 Next.js 15로 마이그레이션 및 성능개선",
-          "머스트잇 웹 및 BFF API 개발",
+          "머스트잇 웹뷰 및 BFF API 개발",
         ],
       },
     ],
   },
   {
     organization: "파스토",
-    description: "프론트엔드 개발자",
+    description: "프론트엔드 엔지니어",
     period: "2022.07 ~ 2023.08",
     projects: [
       {
-        title: "파스토셀프 2.0 개발",
+        title: "파스토셀프(쇼핑몰 통합관리 솔루션) 2.0 개발",
         description:
           "네이버 No.1 공식 풀필먼트 협력사인 파스토의 새로운 쇼핑몰 통합관리 솔루션",
-        tech: ["React", "TypeScript", "react-query", "react-hook-form", "MUI"],
+        skills: [
+          "React",
+          "TypeScript",
+          "react-query",
+          "react-hook-form",
+          "MUI",
+        ],
         details: [
           "아토믹 디자인과 Compound Components 패턴을 활용한 공통 Input, Textarea 컴포넌트를 설계 및 개발",
           "react-hook-form을 포함한 고차 컴포넌트를 개발해 form 구현에 필요한 코드량을 30% 이상 감소",
@@ -77,7 +94,7 @@ export const workExperiences: Experience[] = [
       },
       {
         title: "정산 백오피스 개선 및 유지보수",
-        tech: ["React", "TypeScript", "Redux", "react-query", "MUI"],
+        skills: ["React", "TypeScript", "Redux", "react-query", "MUI"],
         details: [
           "확장 가능한 MUI 기반 공통 컴포넌트(Select, Header, Accordion 등)를 개발해 코드의 재사용성을 높임",
           "디자인 없이 백엔드 개발자들과 소통하며 사용성을 고려한 UX 개발",
@@ -85,9 +102,9 @@ export const workExperiences: Experience[] = [
       },
       {
         title: "홈페이지 테스트 자동화",
-        tech: ["Cypress"],
+        skills: ["Cypress"],
         details: [
-          "테스트 시 휴먼에러가 자주 발생했던 물류 견적 문의, 문의 내역 목록, 조회 페이지 개선을 위해 모든 케이스의 TC를 작성하고 버그 목록을 문서화",
+          "테스트 시 휴먼에러가 자주 발생했던 견적 문의 관련 페이지 개선을 위해 모든 케이스의 TC를 작성하고 버그 목록을 문서화",
           "Cypress로 견적 문의, 문의 목록, 조회 페이지 E2E 자동화 테스트 구현 및 POM 패턴을 사용해 유지보수 용이한 코드 작성",
 
           "테스트에 반복적으로 사용되는 로그인, 로그아웃 등의 커스텀 커맨드를 구현해 휴먼 에러 제로화",
@@ -95,7 +112,7 @@ export const workExperiences: Experience[] = [
       },
       {
         title: "팀 문화와 생산성에 기여",
-        tech: [],
+        skills: [],
         details: [
           "동료와 함께 성장하고자 스터디를 조직해 6개월 이상 주도하며 함수형 프로그래밍과 Next.js, 회고 스터디 진행",
           "업데이트가 되어있지 않은 프로젝트 설정 가이드를 현행화해 신규 입사자의 온보딩을 도움",
@@ -105,12 +122,12 @@ export const workExperiences: Experience[] = [
   },
   {
     organization: "유클리드소프트",
-    description: "풀스택 개발자",
+    description: "풀스택 엔지니어",
     period: "2020.12 ~ 2022.06",
     projects: [
       {
         title: "국가정보자원관리원 종합관제 보안시스템 (nMAPS)",
-        tech: ["Python", "Neo4j", "Django REST", "Shell", "go.js"],
+        skills: ["Python", "Neo4j", "Django REST", "Shell", "go.js"],
         description:
           "우리나라 모든 공공기관 웹 서비스, 네트워크, 물리 호스트간 관계를 시각화해 관제하는 프로그램",
         details: [
@@ -121,16 +138,15 @@ export const workExperiences: Experience[] = [
       },
       {
         title:
-          "창업진흥원 창업교육 플랫폼, KAIST 약물 상호작용 예측 하이브리드 앱 등",
+          "창업진흥원 창업교육 플랫폼, KAIST 약물 상호작용 예측 하이브리드 앱 구축",
       },
     ],
   },
 ];
 
-export const otherExperiences: Experience[] = [
+export const OTHER_EXPERIENCES: OtherExperience[] = [
   {
     organization: "펜지콘 발표: 회사에서 성장할 수 있는 환경 만들기",
-
     link: "https://haeun.vercel.app/blog/2309-fengicon",
     period: "2023.09",
     details: [
@@ -139,7 +155,6 @@ export const otherExperiences: Experience[] = [
   },
   {
     organization: "JunctionX Seoul 해커톤 통역 봉사",
-
     link: "https://haeun.vercel.app/blog/1905-junctx",
     period: "2019",
     details: [
@@ -148,7 +163,6 @@ export const otherExperiences: Experience[] = [
   },
   {
     organization: "Humber FYE 또래 멘토",
-    //description: '',
     link: "https://humber.ca/student-life/fye/",
     period: "2019 ~ 2020",
     details: [
@@ -163,13 +177,12 @@ export const education: Education[] = [
     period: "2020.04 ~ 2020.12",
   },
   {
-    institute: "SQLD 자격증 취득",
+    institute: "SQLD 취득",
     period: "2020.10",
   },
   {
-    institute: "Humber College",
-    period: "Marketing Diploma, 2019 우등 졸업",
-
+    institute: "Humber College, Marketing",
+    period: "2019 우등 졸업",
     details: [
       "캐나다에 위치한 대학으로, Toronto Marlies의 교내 세일즈 단원으로 발탁되어 디지털 마케팅 및 경기 티켓 판매",
       "양적 조사의 일환으로 70명의 남성에게 설문조사를 진행하고 포커스 그룹 인터뷰",
@@ -177,18 +190,18 @@ export const education: Education[] = [
   },
 ];
 
-export const techStacks: TechStack[] = [
+export const SKILLS: Skill[] = [
   {
     type: "프론트엔드",
-    skill: ["Next.js", "React", "TypeScript", "react-query", "zod"],
+    items: ["Next.js", "React", "TypeScript", "react-query", "zod"],
   },
   {
     type: "그 외 업무에 활용가능한 기술",
-    skill: ["SQL", "Python", "Neo4j"],
+    items: ["SQL", "Python", "Neo4j"],
   },
   {
     type: "영어",
-    skill: [
+    items: [
       "의견을 자유롭게 표현할 수 있고 단어의 뉘앙스 차이를 알아 적절한 변수명과 메서드명을 짓고자 노력함",
     ],
   },
