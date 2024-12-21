@@ -1,4 +1,4 @@
-import { Post } from "app/_components/type";
+import { Post } from "type";
 import ArticleCardItem from "../article/ArticleCardItem";
 
 const ListLayout = ({ posts }: { posts: Post[] }) => {

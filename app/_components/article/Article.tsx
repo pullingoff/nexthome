@@ -1,7 +1,7 @@
 "use client";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 // import MetadataHead from '../MetadataHead';
-import { Heading, Post } from "app/_components/type";
+import { Heading, Post } from "type";
 import { useRouter } from "next/router";
 import Comments from "./Comments";
 import Link from "next/link";

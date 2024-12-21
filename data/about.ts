@@ -5,7 +5,7 @@ import {
   OtherExperience,
   Project,
   Skill,
-} from "app/_components/type";
+} from "type";
 
 export const HEADER_INFO: HeaderInfo = {
   name: "박하은",

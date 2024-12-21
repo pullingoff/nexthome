@@ -1,5 +1,5 @@
 "use client";
-import { Post } from "app/_components/type";
+import { Post } from "type";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatDate } from "util/index";

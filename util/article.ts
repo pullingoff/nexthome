@@ -1,4 +1,4 @@
-import { FrontMatter, Heading, Post } from "app/_components/type";
+import { FrontMatter, Heading, Post } from "type";
 import { POST_DIRS, POSTS_DIR, POSTS_PER_PAGE } from "config";
 import fs from "fs";
 import path from "path";

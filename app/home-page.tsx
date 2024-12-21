@@ -1,6 +1,6 @@
 "use client";
 
-import { Post } from "./_components/type";
+import { Post } from "../type";
 import Link from "next/link";
 import Image from "next/image";
 import mainImg from "public/images/main.webp";
