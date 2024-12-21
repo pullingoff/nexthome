@@ -1,4 +1,4 @@
-import { Post } from "app/_components/type";
+import { Post } from "type";
 import { getAllPosts } from "./article";
 
 export type Tag = {

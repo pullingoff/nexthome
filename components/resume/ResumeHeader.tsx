@@ -1,4 +1,4 @@
-import { HEADER_INFO } from "#data/about";
+import { HEADER_INFO } from "data/about";
 
 const ResumeHeader = () => {
   return (

@@ -1,9 +1,9 @@
-import { getAllPosts, getPostsByPage } from "../../../utils/article";
-import { POSTS_PER_PAGE } from "app/config";
-import { getMostUsedTags } from "../../../utils/tag";
-import TagList from "../../../_components/article/TagList";
-import ListLayout from "../../../_components/layout/ListLayout";
-import Pagination from "../../../_components/layout/Pagination";
+import { getAllPosts, getPostsByPage } from "util/article";
+import { POSTS_PER_PAGE } from "config";
+import { getMostUsedTags } from "util/tag";
+import TagList from "components/article/TagList";
+import ListLayout from "components/layout/ListLayout";
+import Pagination from "components/layout/Pagination";
 
 type Params = {
   page_index: string;

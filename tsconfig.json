@@ -4,21 +4,9 @@
     "module": "esnext",
     "sourceMap": true,
     "baseUrl": "./",
-    "paths": { // @로 하니까 typescript랑 헷갈려함
+    "paths": {
       "#components/*": [
         "app/_components/*"
-      ],
-      "#utils/*": [
-        "app/utils/*"
-      ],
-      "#styles/*": [
-        "app/styles/*"
-      ],
-      "#public/*": [
-        "public/*"
-      ],
-      "#data/*": [
-        "app/data/*"
       ],
     },
     "outDir": "dist",

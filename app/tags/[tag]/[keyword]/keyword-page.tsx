@@ -1,7 +1,7 @@
-import ListLayout from "#components/layout/ListLayout";
-import { Post } from "#components/type";
-import { TagItem } from "#components/article/TagList";
-import Pagination from "#components/layout/Pagination";
+import ListLayout from "components/layout/ListLayout";
+import { Post } from "type";
+import { TagItem } from "components/article/TagList";
+import Pagination from "components/layout/Pagination";
 
 export const TagPostList = ({
   posts,
