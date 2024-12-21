@@ -1,6 +1,6 @@
-import { getAllPosts } from "#utils/article";
-import { getAllTags } from "#utils/tag";
-import { POSTS_PER_PAGE } from "../../../config";
+import { getAllPosts } from "util/article";
+import { getAllTags } from "util/tag";
+import { POSTS_PER_PAGE } from "../../../../config";
 import { TagPostList } from "./keyword-page";
 
 export async function generateStaticParams() {

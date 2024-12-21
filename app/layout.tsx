@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import GlobalLayout from "./_components/layout/GlobalLayout";
 import GoogleAnalytics from "./_components/SEO/GoogleAnalytics";
-import "./styles/globals.scss";
+import "../style/globals.scss";
 
 export default function RootLayout({
   // Layouts must accept a children prop.

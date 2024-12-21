@@ -2,7 +2,7 @@
 import { Post } from "app/_components/type";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { formatDate } from "#utils/index";
+import { formatDate } from "util/index";
 
 const ArticleCardItem = ({ post }: { post: Post }) => {
   const [publishedAt, setPublishedAt] = useState<string>("");
