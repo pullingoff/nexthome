@@ -1,4 +1,4 @@
-import CustomEmoji from "#components/common/CustomEmoji";
+import CustomEmoji from "components/common/CustomEmoji";
 import { Fragment } from "react";
 import { WORK_EXPERIENCES } from "data/about";
 

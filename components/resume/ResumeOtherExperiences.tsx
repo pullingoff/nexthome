@@ -1,4 +1,4 @@
-import CustomEmoji from "#components/common/CustomEmoji";
+import CustomEmoji from "components/common/CustomEmoji";
 import { OTHER_EXPERIENCES } from "data/about";
 import Link from "next/link";
 

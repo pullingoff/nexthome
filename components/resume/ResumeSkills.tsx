@@ -1,4 +1,4 @@
-import CustomEmoji from "#components/common/CustomEmoji";
+import CustomEmoji from "components/common/CustomEmoji";
 import { SKILLS } from "data/about";
 
 const ResumeSkills = () => {

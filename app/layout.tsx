@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import GlobalLayout from "./_components/layout/GlobalLayout";
-import GoogleAnalytics from "./_components/SEO/GoogleAnalytics";
+import GlobalLayout from "components/layout/GlobalLayout";
+import GoogleAnalytics from "components/SEO/GoogleAnalytics";
 import "../style/globals.scss";
 
 export default function RootLayout({

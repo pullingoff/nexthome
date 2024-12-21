@@ -1,5 +1,5 @@
-import { getPost } from "../../../util/article";
-import Article from "../../_components/article/Article";
+import { getPost } from "util/article";
+import Article from "components/article/Article";
 import fs from "fs";
 import path from "path";
 import { POSTS_DIR } from "config";
