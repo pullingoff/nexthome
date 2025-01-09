@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "./_mixin.scss";
+@import "./font.scss";
 @import "./post.scss";
 
 @layer base {
@@ -37,9 +38,10 @@ body {
   align-items: center;
   letter-spacing: -0.25px;
 
+  font-family: "Wanted Sans Std";
+
   > div {
     width: -webkit-fill-available;
-
   }
 }
 
