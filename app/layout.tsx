@@ -23,6 +23,9 @@ export default function RootLayout({
 
 // TODO: 넥스트의 built-in SEO support, customMetadata
 export const metadata: Metadata = {
-  title: "개발자 박하은",
-  description: "Welcome to Next.js",
+  title: "pullingoff",
+  description: "프론트엔드 개발자 박하은의 블로그",
+  icons: {
+    icon: "../public/favicon.ico",
+  },
 };
