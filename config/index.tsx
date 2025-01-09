@@ -1,8 +1,8 @@
 export const METADATA = {
   url: "https://haeun.dev",
-  title: "개발자 박하은",
+  title: "pullingoff",
   author: "박하은",
-  description: "개발자 박하은의 블로그입니다.",
+  description: "프론트엔드 개발자 박하은의 블로그입니다.",
   email: "devhaeun@gmail.com",
   github: "pullingoff",
   linkedinLink: "https://www.linkedin.com/in/hailey-park/",
