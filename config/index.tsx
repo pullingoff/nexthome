@@ -11,12 +11,6 @@ export const METADATA = {
 // 글 목록 페이지네이션
 export const POSTS_PER_PAGE = 10;
 
-// nav bar에 나타날 메뉴
-export const MENUS = [
-  { title: "기록", path: "/article" },
-  // { title: "이력서", path: "/resume" },
-];
-
 // parent directory name
 export const POSTS_DIR = "posts";
 
