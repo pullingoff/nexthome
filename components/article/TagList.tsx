@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Tag } from "util/tag";
+import { Tag } from "lib/util/tag";
 
 const TagList = ({ tags }: { tags: Tag[] }) => {
   return (

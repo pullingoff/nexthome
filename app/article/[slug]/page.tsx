@@ -1,10 +1,10 @@
-import { getPost } from "util/article";
+import { getPost } from "lib/util/article";
 import Article from "components/article/Article";
 import fs from "fs";
 import path from "path";
 import { POSTS_DIR } from "config";
 import { redirect } from "next/navigation";
-import { MARKDOWN_REGEX } from "util/markdown";
+import { MARKDOWN_REGEX } from "lib/util/markdown";
 
 const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current directory/posts
 
