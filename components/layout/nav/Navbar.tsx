@@ -10,7 +10,7 @@ const Navbar = () => {
     <header className={styles.navContainer}>
       <div className={styles.navContents}>
         <Link className="inline-block w-16 m-2" href="/">
-          <Image src={Logo} alt="pudding emoji" />
+          <Image width={40} src={Logo} alt="pudding emoji" />
         </Link>
         <Link className={styles.right} href="https://github.com/pullingoff">
           <GithubLogo />
