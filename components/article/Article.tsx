@@ -53,8 +53,8 @@ export default PostArticle;
 const PostHeader = ({ date, title }: { date: string; title: string }) => {
   return (
     <header className="text-center animate-[1s_anim-lineUp_0.1s_ease-out_1] pt-3">
-      <time className="font-medium text-deep-brown">{date}</time>
-      <h1 className="md:text-2xl font-extrabold text-deep-brown">{title}</h1>
+      <time className="font-medium text-md text-deep-brown">{date}</time>
+      <h1 className="md:text-2xl text-xl font-extrabold text-deep-brown">{title}</h1>
     </header>
   );
 };

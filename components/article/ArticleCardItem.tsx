@@ -20,13 +20,15 @@ const ArticleCardItem = ({ post }: { post: Post }) => {
   }, [post.frontMatter.date]);
 
   return (
-    <div className="relative flex flex-col overflow-hidden h-full border border-medium-brown z-0 rounded-lg hover:-translate-y-2 hover:shadow-[10px_10px_lightgray] hover:duration-200">
+    <div className="relative flex flex-col overflow-hidden h-full z-0 rounded-lg hover:border-deep-brown hover:border-[1px]">
       <Link href={`/article/${post.slug}`}>
-        <section className="flex flex-col pb-2.5 p-5 [&>*]:block">
-          <h3 className="font-bold mt-1">{title}</h3>
-          <p className="text-[0.95rem] leading-normal overflow-hidden text-ellipsis mx-0 my-2.5">
-            {description}
-          </p>
+        <section className="flex flex-col pb-2 p-5 [&>*]:block">
+          <h3 className="font-bold mt-1 text-xl">{title}</h3>
+          {description && (
+            <p className="text-sm leading-normal overflow-hidden text-ellipsis mx-0 my-1">
+              {description}
+            </p>
+          )}
           <p className="text-[0.8rem] mx-0 my-1">{publishedAt}</p>
         </section>
       </Link>
