@@ -1,7 +1,5 @@
-import { getAllPosts, getPostsByPage } from "util/article";
+import { getAllPosts, getPostsByPage } from "lib/util/article";
 import { POSTS_PER_PAGE } from "config";
-import { getMostUsedTags } from "util/tag";
-import TagList from "components/article/TagList";
 import ListLayout from "components/layout/ListLayout";
 import Pagination from "components/layout/Pagination";
 
@@ -28,22 +26,14 @@ async function getArticlesByPage(page_num: number) {
   return posts;
 }
 
-export default async function ArticleListPage({
-  params,
-  searchParams,
-}: {
-  params: Params;
-  searchParams: any;
-}) {
+export default async function ArticleListPage({ params }: { params: Params }) {
   const page_num = parseInt(params.page_index || "1");
-  const allTags = await getMostUsedTags(14);
   const { posts, currentPage, totalPageCount } = await getArticlesByPage(
     page_num
   );
 
   return (
     <section>
-      <TagList tags={allTags} />
       <ListLayout posts={posts} />
       <Pagination
         path="article/page"

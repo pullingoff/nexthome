@@ -1,5 +1,5 @@
 import { getPost } from "lib/util/article";
-import Article from "components/article/Article";
+import Article, { ArticleComments } from "components/article/Article";
 import fs from "fs";
 import path from "path";
 import { POSTS_DIR } from "config";
@@ -23,5 +23,10 @@ export default async function ArticlePage({ params }: any) {
   if (!props) {
     redirect("/");
   }
-  return <>{props.post && <Article {...props} />}</>;
+  return (
+    <>
+      {props.post && <Article {...props} />}
+      <ArticleComments />
+    </>
+  );
 }

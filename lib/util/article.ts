@@ -1,4 +1,4 @@
-import { FrontMatter, Heading, Post } from "type";
+import { FrontMatter, Post } from "type";
 import { POST_DIRS, POSTS_DIR, POSTS_PER_PAGE } from "config";
 import fs from "fs";
 import path from "path";
@@ -10,7 +10,7 @@ const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current director
 // 글 하나
 export const getPost = async (slug: string) => {
   const posts = await getAllPosts();
-  const post = posts.find((p) => p?.slug === slug)!;
+  const post = posts.find((p) => p?.slug === slug);
   if (!post) {
     // 입력한 url(slug)가 유효하지 않은 경우
     return;
@@ -71,12 +71,12 @@ export const getPostsByPage = async (page: number) => {
 };
 
 // 최신 글 10개
-export const getRecentPosts = async () => {
-  const allPosts = await getAllPosts();
-  return {
-    recentPosts: allPosts.slice(0, 9),
-  };
-};
+// export const getRecentPosts = async () => {
+//   const allPosts = await getAllPosts();
+//   return {
+//     recentPosts: allPosts.slice(0, 9),
+//   };
+// };
 
 export const sortByDate = (a: Post, b: Post) => {
   return (
