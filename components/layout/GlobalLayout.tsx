@@ -7,9 +7,7 @@ const GlobalLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
-      <main className="max-w-screen-lg md:flex gap-5 m-5 overflow-hidden">
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </>
   );
