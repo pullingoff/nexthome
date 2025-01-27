@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import HomePage from "./home-page";
-import { getRecentPosts } from "../lib/util/article";
+import { getAllPosts } from "../lib/util/article";
 
 // TODO: MetadataHead 파일 마이그레이션
 export const metadata: Metadata = {
@@ -23,14 +23,11 @@ export const metadata: Metadata = {
   },
 };
 
-async function getPosts() {
-  const { recentPosts } = await getRecentPosts();
-  return recentPosts;
-}
-
 export default async function Page() {
-  // Fetch data directly in a Server Component
-  const recentPosts = await getPosts();
-  // Forward fetched data to your Client Component
-  return <HomePage recentPosts={recentPosts} />;
+  // steaming ssr: initial data
+  const allPosts = await getAllPosts();
+  const INITIAL_LIMIT = 10;
+  const initialPosts = allPosts.slice(0, INITIAL_LIMIT);
+
+  return <HomePage initialPosts={initialPosts} totalCount={allPosts.length} />;
 }
