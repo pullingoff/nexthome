@@ -54,13 +54,9 @@ body {
 
 // drag 시 컬러
 ::selection, ::-moz-selection {
-  background: lighten(#1e293b, 10%);
+  background: lighten(#543e37, 10%);
   color: white;
 }
-
-//svg:not(:root) {
-//  overflow: hidden;
-//}
 
 @keyframes anim-lineUp {
   0% {

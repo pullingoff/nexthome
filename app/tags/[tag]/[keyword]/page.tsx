@@ -1,5 +1,5 @@
-import { getAllPosts } from "util/article";
-import { getAllTags } from "util/tag";
+import { getAllPosts } from "lib/util/article";
+import { getAllTags } from "lib/util/tag";
 import { POSTS_PER_PAGE } from "config";
 import { TagPostList } from "./keyword-page";
 

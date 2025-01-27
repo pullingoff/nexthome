@@ -14,11 +14,6 @@ module.exports = {
       md: "758px",
       lg: "980px",
     },
-    extend: {
-      boxShadow: {
-        "deep-brown": "0 0 0 2px #1e293b",
-      },
-    },
     colors: {
       light: "#a88376",
       "medium-brown": "#8d6a5f", // default

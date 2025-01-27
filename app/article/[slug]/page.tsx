@@ -1,10 +1,10 @@
-import { getPost } from "util/article";
-import Article from "components/article/Article";
+import { getPost } from "lib/util/article";
+import Article, { ArticleComments } from "components/article/Article";
 import fs from "fs";
 import path from "path";
 import { POSTS_DIR } from "config";
 import { redirect } from "next/navigation";
-import { MARKDOWN_REGEX } from "util/markdown";
+import { MARKDOWN_REGEX } from "lib/util/markdown";
 
 const blogDir = path.join(process.cwd(), POSTS_DIR, "blog"); // current directory/posts
 
@@ -23,5 +23,10 @@ export default async function ArticlePage({ params }: any) {
   if (!props) {
     redirect("/");
   }
-  return <>{props.post && <Article {...props} />}</>;
+  return (
+    <>
+      {props.post && <Article {...props} />}
+      <ArticleComments />
+    </>
+  );
 }
