@@ -16,12 +16,8 @@ export const TagPostList = ({
 }) => {
   const capitalizedTag: string = tag.toUpperCase();
 
-  // const customMeta = {
-  //   title: `${capitalizedTag} : 개발자 박하은`,
-  // };
   return (
     <>
-      {/*<MetadataHead customMetadata={customMeta} />*/}
       <TagItem
         pageNm={capitalizedTag}
         desc={`'${capitalizedTag}'에 관한 글들을 모아봤어요.`}
