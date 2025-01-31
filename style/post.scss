@@ -53,7 +53,7 @@
   h1,
   h2,
   h3 {
-    margin: 1rem 0 1rem;
+    margin: 1rem 0 .5rem;
   }
 
   h1,
@@ -68,7 +68,16 @@
       content: '# ';
     }
 
-    font-weight: 600;
+    font-weight: 800;
+  }
+
+  p { 
+    font-weight: 500;
+    margin: .75rem 0 .5rem;
+  }
+
+  br {
+
   }
 
   // h2 바로 아래 p는 margin-top 제거
