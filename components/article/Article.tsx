@@ -1,7 +1,6 @@
 "use client";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Heading, Post } from "type";
-import { useRouter } from "next/navigation";
 import Comments from "./Comments";
 import Link from "next/link";
 import classNames from "classnames";
@@ -27,7 +26,7 @@ const PostArticle = ({
     <>
       <div
         id="article"
-        className="max-w-screen-sm Rmd:max-w-screen-md flex items-start"
+        className="max-w-screen-sm md:max-w-screen-md flex items-start"
       >
         <article className={articleClasses}>
           <PostHeader date={date} title={title} />
