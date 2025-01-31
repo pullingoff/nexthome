@@ -55,7 +55,7 @@ export default function HomePage({ initialPosts, totalCount }: Props) {
   return (
     <article id="home" className="md:flex gap-5 m-5 overflow-hidden">
       <Link
-        className="cursor-pointer basis-1/4 shrink-0"
+        className="cursor-pointer basis-1/4 shrink-0 hidden md:block"
         href="https://www.linkedin.com/in/hailey-park/"
         target="_blank"
       >
