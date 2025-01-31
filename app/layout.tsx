@@ -23,7 +23,4 @@ export default function RootLayout({
 export const metadata: Metadata = {
   title: "pullingoff",
   description: "프론트엔드 개발자 박하은의 블로그",
-  icons: {
-    icon: "../public/favicon.ico",
-  },
 };
